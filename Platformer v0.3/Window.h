@@ -5,7 +5,6 @@
 #include "SFML/Graphics.hpp"
 
 #include "AssetAllocator.h"
-#include "Entity.h"
 
 class Entity;
 
@@ -19,9 +18,6 @@ public:
 	void BeginDraw();
 	void Draw(const sf::Drawable& drawable);
 	void Draw(const sf::Vertex* vertices, std::size_t vertexCount, sf::PrimitiveType type);
-	void Draw(sf::CircleShape shape);
-	void Draw(Entity* entity);
-	//TODO по необходимости добавить различные способы отрисовки
 	void EndDraw();
 
 	sf::Vector2u GetCentre() const;

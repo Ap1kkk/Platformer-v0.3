@@ -1,9 +1,8 @@
 #pragma once
 
 #include "DataTypes.h"
-//typedef unsigned int ComponentTypeId;
+#include "EntityManager.h"
 #include "Debug.h"
-#include "EntityManager2.h"
 
 class IComponent
 {
@@ -11,7 +10,7 @@ public:
 	IComponent() : componentId(componentIdCounter++) {}
 	virtual ~IComponent()
 	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
+		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
 
 	//virtual void EarlyUpdate(float deltaTime) = 0;

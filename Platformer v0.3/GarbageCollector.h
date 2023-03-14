@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EntityManager2.h"
+#include "EntityManager.h"
 #include "ComponentManager.h"
 
 class GarbageCollector
@@ -11,7 +11,7 @@ public:
 	static void DestroyEntity(EntityId entityId)
 	{
 		//TODO добавить очистку из всех систем
-		EntityManager2::DestroyEntity(entityId);
+		EntityManager::DestroyEntity(entityId);
 	}
 
 	static void DestroyComponent(ComponentId componentId)

@@ -135,16 +135,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetAllocator.cpp" />
+    <ClCompile Include="Bitmask.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Entity2.cpp" />
     <ClCompile Include="EntityManager.cpp" />
-    <ClCompile Include="EntityManager2.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="IBody.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="PhysicComponent.cpp" />
+    <ClCompile Include="PhysicsDebugDraw.cpp" />
     <ClCompile Include="PhysicSystem.cpp" />
     <ClCompile Include="Platformer v0.3.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
@@ -152,20 +155,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h" />
+    <ClInclude Include="Bitmask.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="DataTypes.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="Entity2.h" />
     <ClInclude Include="EntityManager.h" />
-    <ClInclude Include="EntityManager2.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GarbageCollector.h" />
+    <ClInclude Include="IBody.h" />
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="IEntity.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="PhysicComponent.h" />
+    <ClInclude Include="PhysicsDebugDraw.h" />
     <ClInclude Include="PhysicSystem.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="TransformComponent.h" />

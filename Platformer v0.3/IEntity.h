@@ -10,7 +10,7 @@ public:
 	IEntity() : entityId(entityIdCounter++) {}
 	virtual ~IEntity()
 	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
+		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
 	//virtual void EarlyUpdate(float deltaTime) = 0;
 	//virtual void Update(float deltaTime) = 0;

@@ -11,7 +11,7 @@ void RenderSystem::Draw()
 	}
 }
 
-void RenderSystem::AddDrawable(Entity2* entity)
+void RenderSystem::AddDrawable(Entity* entity)
 {
 	//auto id = entity->
 }

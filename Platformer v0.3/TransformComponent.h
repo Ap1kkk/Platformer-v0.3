@@ -6,10 +6,21 @@
 class TransformComponent : public Component
 {
 public:
-	TransformComponent() : Component() {}
+	TransformComponent() {}
 	~TransformComponent() 
 	{
 		Debug::LogWarning("Destructor", typeid(*this).name());
+	}
+
+	void AddPosition(sf::Vector2f position)
+	{
+		this->position += position;
+	}
+
+	void AddPosition(float x, float y)
+	{
+		this->position.x += x;
+		this->position.y += y;
 	}
 
 	void SetPosition(sf::Vector2f position)
@@ -26,6 +37,8 @@ public:
 	{
 		return position;
 	}
+
+	//TODO добавить rotation
 
 private:
 	sf::Vector2f position;

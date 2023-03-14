@@ -7,7 +7,10 @@ class Component : public IComponent
 {
 public:
 	Component() {}
-	virtual ~Component() { Debug::LogWarning("Destructor", typeid(*this).name()); }
+	virtual ~Component() 
+	{
+		//Debug::LogWarning("Destructor", typeid(*this).name());
+	}
 
 	void EarlyUpdate() override {}
 	void Update() override {}

@@ -64,6 +64,11 @@ void Debug::Log(const std::string& msg, const std::string& from)
 	std::cout << std::setiosflags(std::ios::left) << std::setw(DEBUG_LEFT_SIZE) << from << std::setiosflags(std::ios::left) << std::setw(DEBUG_TYPE_SIZE) << " LOG: " << msg << "\n";
 }
 
+void Debug::Log(const sf::Vector2f vector)
+{
+	std::cout << "LOG: (" << vector.x << " ; " << vector.y << ")\n";
+}
+
 void Debug::LogWarning(const std::string& msg)
 {
 	SetConsoleTextAttribute(handle, (int)ConsoleColor::YELLOW);

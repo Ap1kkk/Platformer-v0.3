@@ -3,41 +3,43 @@
 #include <box2d/box2d.h>
 #include "Game.h"
 
-
-#include "EntityManager2.h"
-#include "Entity2.h"
-#include "TransformComponent.h"
-#include "GameObject.h"
+// ----FOR TEST-----
+//#include "EntityManager.h"
+//#include "Entity.h"
+//#include "TransformComponent.h"
+//#include "GameObject.h"
 
 #include "Debug.h"
 
 int main()
 {
- //   Game game;
- //   
-	//while (game.IsRunning())
-	//{
-	//	game.ProcessInput();
-	//	game.EarlyUpdate();
-	//	game.Update();
-	//	game.LateUpdate();
-	//	game.Draw();
-	//	game.CalculateDeltaTime();
-	//}
+    Game game(b2Vec2(0, 10));
+    
+	while (game.IsRunning())
+	{
+		game.ProcessInput();
+		game.EarlyUpdate();
+		game.Update();
+		game.LateUpdate();
+		game.Draw();
+		game.CalculateDeltaTime();
+	}
 
-	EntityManager2* em2 = new EntityManager2;
+	// ----FOR TEST-----
 
-	auto gameObj = EntityManager2::CreateEntity<GameObject>();
+	//EntityManager* em2 = new EntityManager;
 
-	std::string str = "string";
+	//auto gameObj = EntityManager::CreateEntity<GameObject>();
 
-	ComponentManager::CreateComponent<DrawableComponent>();
-	//gameObj->AddComponent<TransformComponent>();
+	//std::string str = "string";
 
-	//auto transform = gameObj->GetComponent<TransformComponent>();
-	//transform->Foo();
-	//gameObj->DeleteComponent(transform->GetComponentId());
-	//gameObj->Destroy();
+	//ComponentManager::CreateComponent<DrawableComponent>();
+	////gameObj->AddComponent<TransformComponent>();
 
-	delete em2;
+	////auto transform = gameObj->GetComponent<TransformComponent>();
+	////transform->Foo();
+	////gameObj->DeleteComponent(transform->GetComponentId());
+	////gameObj->Destroy();
+
+	//delete em2;
 }

@@ -45,6 +45,7 @@ public:
 
 	static void Log(const std::string& msg);
 	static void Log(const std::string& msg, const std::string& from);
+	static void Log(const sf::Vector2f vector);
 	static void LogWarning(const std::string& msg);
 	static void LogWarning(const std::string& msg, const std::string& from);
 	static void LogError(const std::string& msg);

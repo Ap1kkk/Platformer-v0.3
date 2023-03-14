@@ -1,56 +1,65 @@
 #pragma once
 
 #include <unordered_map>
-#include <vector>
 
-#include "box2d/box2d.h"
-
-#include "Entity.h"
-#include "Window.h"
+#include "IEntity.h"
 #include "Debug.h"
+
+#include <iostream>
 
 class EntityManager
 {
 public:
-	EntityManager();
+	EntityManager()
+	{
+		Debug::Log("Initialized", typeid(*this).name());
+	}
+	~EntityManager() 
+	{
+		for (auto& entity : entities)
+		{
+			delete entity.second;
+		}
 
-	void Add(std::string name, Entity* entity);
-	void Add(std::string name, std::string filename, bool dynamic);
-	Entity* Get(std::string name);
+	}
 
-	unsigned int GetEntityId(Entity& entity);
+	template<class E>
+	static E* const CreateEntity()
+	{
+		auto entity = new E;
+		EntityId id = entity->GetEntityId();
+		entities.insert(std::make_pair(id, static_cast<IEntity*>(entity)));
+		return entity;
+	}
 
-	//void EarlyUpdate(float deltaTime);
-	void Update(float deltaTime);
-	void LateUpdate(float deltaTime);
-	void Draw(Window* window);
+	static void DestroyEntity(EntityId entityId)
+	{
+		auto itr = entities.find(entityId);
+		if (itr != entities.end())
+		{
+			auto entity = (*itr).second;
+			delete entity;
+			entities.erase(itr);
+			Debug::LogWarning("Entity with id: " + std::to_string(entityId) + " was deleted.", typeid(EntityManager).name());
+		}
+	}
+	
+	template<class C>
+	static C* GetEntityById(EntityId id)
+	{
+		auto itr = entities.find(id);
+		if (itr != entities.end())
+		{
+			return static_cast<C*>((*itr).second);
+		}
+		else
+		{
+			Debug::LogWarning("Entity with id: " + std::to_string(id) + " not found");
+			return nullptr;
+		}
+	}
 
-	~EntityManager();
 private:
-	//TODO заменить на хранение индексов сущностей
-	std::unordered_map<std::string, Entity*> entities;
-
-	b2World* world;
+	static std::unordered_map<EntityId, IEntity*> entities;
 };
 
-//class EntityManager
-//{
-//public:
-//	EntityManager();
-//
-//	void Add(std::string name, Entity* entity);
-//	void Add(std::string name, std::string filename, bool dynamic);
-//
-//	unsigned int GetEntityById(unsigned int id);
-//
-//	//void EarlyUpdate(float deltaTime);
-//	void Update(float deltaTime);
-//	void LateUpdate(float deltaTime);
-//	void Draw(Window* window);
-//
-//	~EntityManager();
-//private:
-//	std::unordered_map<unsigned int, std::unique_ptr<Entity>> entities;
-//
-//	b2World* world;
-//};

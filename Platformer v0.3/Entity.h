@@ -1,53 +1,106 @@
 #pragma once
 
-#include <string>
+#include <any>
+#include <unordered_map>
 
-#include "SFML/Graphics.hpp"
-#include "box2d/box2d.h"
-
-#include "AssetAllocator.h"
-
+#include "IEntity.h"
+#include "Component.h"
 #include "Debug.h"
 
-typedef unsigned int EntityID;
+#include "ComponentManager.h"
 
-class Entity : public sf::Sprite
+#include "GarbageCollector.h"
+
+class Entity : public IEntity
 {
 public:
-	sf::Vector2f velocity;
+	Entity() {}
+	virtual ~Entity() 
+	{
+		Debug::LogWarning("Destructor", typeid(*this).name());
+		if (components.size() > 0)
+		{
+			for (auto& component : components)
+			{
+				auto componentId = component.second->GetComponentId();
+				GarbageCollector::DestroyComponent(componentId);
+			}
+		}
+	}
 
-	Entity(b2World* world);
+	//void EarlyUpdate() override {}
 
-	virtual void Load(std::string filename, bool dynamic);
+	//void Update() override {}
 
-	virtual void Update(float deltaTime);
+	//void LateUpdate() override {}
 
-	bool CheckCollision(Entity* entity);
+	template<class C>
+	C* AddComponent()
+	{
+		ComponentType compType = typeid(C).name();
 
-	virtual void Collision(Entity* entity);
+		auto itr = components.find(compType);
+		if (itr == components.end())
+		{
+			auto component = ComponentManager::CreateComponent<C>();
+			component->SetOwner(entityId);
+			components.insert(std::make_pair(compType, static_cast<IComponent*>(component)));
+			return component;
+		}
+		else
+		{
+			Debug::LogError("Component with type " + compType + " was already attached");
+			return nullptr;
+		}
+	}
 
-	unsigned int GetId() const;
+	template<class C>
+	C* GetComponent() const
+	{
+		ComponentType componentType = typeid(C).name();
+		auto itr = components.find(componentType);
+		if (itr != components.end())
+		{
+			for (auto& component : components)
+			{
+				if (component.first == componentType)
+				{
+					return static_cast<C*>(component.second);
+				}
+			}
+		}
+		else
+		{
+			Debug::LogError("Component wasn't found");
+			return nullptr;
+		}
+	}
+	
+	void DeleteComponent(ComponentId id)
+	{
+		auto itr = components.find(ComponentManager::GetComponentTypeById(id));
+		if (itr != components.end())
+		{
+			ComponentManager::DestroyComponent(id);
+			components.erase(itr);
+		}
+	}
+	
+	// TODO если дважды вызвать этот метод до будет выбрасываться исключение в list.h которое нельзя поймать 
+	// Поэтому я хз как это фиксить :)
+	void Destroy()
+	{
+		for (auto& component : components)
+		{
+			
+			auto componentId = component.second->GetComponentId();
+			GarbageCollector::DestroyComponent(componentId);
+		}
+		components.clear();
 
-	int GroupID();
+		GarbageCollector::DestroyEntity(this->entityId);
+	}
 
-	int Active();
-
-	void Destroy();
-	b2Body* body;
-
-	~Entity();
-protected:
-	int active;
-	int groupId;
-	b2World* world;
-	b2BodyDef* bodyDef;
-	b2PolygonShape* shape;
-	b2FixtureDef* fixtureDef;
 private:
-	sf::Texture* texture;
-	std::pair<sf::Vector2f, sf::Vector2u> drawableCollider;
-
-	EntityID entityId;
-	static EntityID idCounter;
+	std::unordered_map<ComponentType, IComponent*> components;
 };
-

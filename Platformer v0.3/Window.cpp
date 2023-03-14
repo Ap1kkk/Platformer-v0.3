@@ -32,16 +32,6 @@ void Window::Draw(const sf::Vertex* vertices, std::size_t vertexCount, sf::Primi
 	window.draw(vertices, vertexCount, type);
 }
 
-void Window::Draw(sf::CircleShape shape)
-{
-	window.draw(shape);
-}
-
-void Window::Draw(Entity* entity)
-{
-	window.draw(*entity);
-}
-
 void Window::EndDraw()
 {
 	window.display();

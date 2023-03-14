@@ -1,24 +1,59 @@
 #pragma once
 #include <unordered_map>
-#include <vector>
 
 #include "box2d/box2d.h"
 
-#include "Entity.h"
-#include "Window.h"
+#include "IBody.h"
+#include "PhysicsDebugDraw.h"
 #include "Debug.h"
 
 class PhysicSystem
 {
 public:
-	PhysicSystem();
-	~PhysicSystem();
+	PhysicSystem(b2Vec2 gravity)
+	{
+		world->SetGravity(gravity);
+		Debug::Log("Initialized", typeid(*this).name());
+	}
+	~PhysicSystem()
+	{
+		delete world;
+	}
 
-	void Update(float deltaTime);
+	void Update(float timeStep, int velocityIterations, int positionIterations)
+	{
+		world->Step(timeStep, velocityIterations, positionIterations);
+	}
+
+	void DrawDebug() { world->DebugDraw(); }
+
+	void SetDebugDraw(PhysicsDebugDraw* debugDraw)
+	{
+		world->SetDebugDraw(debugDraw);
+	}
+
+	static b2Body* CreateBody(b2BodyDef* bodyDef, EntityId ownerId)
+	{
+		b2Body* body = world->CreateBody(bodyDef);
+		bodies.insert(std::make_pair(ownerId, body));
+		return body;
+	}
+
+	static void DestroyBody(b2Body* body)
+	{
+		world->DestroyBody(body);
+	}
+
+	template<class C>
+	static void SetContactListener(C* instancePtr)
+	{
+		world->SetContactListener(instancePtr);
+	}
 
 private:
-	std::unordered_map<std::string, Entity*> entities;
+	static std::unordered_map<EntityId, b2Body*> bodies;
+	//static std::unordered_map<EntityId, IConctactListener> contactListeners; 
 
-	b2World* world;
+	static b2World* world;
 };
 

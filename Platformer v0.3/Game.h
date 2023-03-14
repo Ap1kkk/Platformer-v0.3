@@ -1,17 +1,20 @@
 #pragma once
 
-#include <iostream>
 #include "SFML/Graphics.hpp"
 #include "AssetAllocator.h"
 #include "Window.h"
 #include "EntityManager.h"
-
-//TODO добавить указатель на менеджера сущностей
+#include "PhysicSystem.h"
+#include "GameObject.h"
+#include "Input.h"
+#include "PhysicsDebugDraw.h"
+#include "Debug.h"
 
 class Game
 {
 public:
-	Game();
+	Game(b2Vec2 gravity);
+	~Game();
 
 	void ProcessInput();
 	void EarlyUpdate();
@@ -26,8 +29,14 @@ private:
 	Window window;
 	AssetAllocator* assetAllocator;
 	EntityManager* entityManger;
+	PhysicSystem* physicSystem;
+	PhysicsDebugDraw* physicsDebugDraw;
 
 	sf::Clock clock;
 	float deltaTime;
+
+	//временно
+	GameObject* ship;
+	GameObject* floor;
 };
 
