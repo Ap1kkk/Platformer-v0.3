@@ -1,5 +1,8 @@
 #include "RenderSystem.h"
 
+std::unordered_map<EntityId, DrawableComponent*> RenderSystem::enabledDrawables = {};
+std::unordered_map<EntityId, DrawableComponent*> RenderSystem::disabledDrawables = {};
+
 RenderSystem::RenderSystem(Window* window) : window(window)
 {}
 
@@ -7,15 +10,6 @@ void RenderSystem::Draw()
 {
 	for (auto& drawable : enabledDrawables)
 	{
-		/*drawable.second->Draw(window);*/
+		drawable.second->Draw(window);
 	}
-}
-
-void RenderSystem::AddDrawable(Entity* entity)
-{
-	//auto id = entity->
-}
-
-void RenderSystem::DeleteDrawable(EntityId id)
-{
 }

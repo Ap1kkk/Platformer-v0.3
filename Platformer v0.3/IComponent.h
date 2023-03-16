@@ -7,33 +7,35 @@
 class IComponent
 {
 public:
-	IComponent() : componentId(componentIdCounter++) {}
+	IComponent() : componentId(componentIdCounter++) 
+	{}
 	virtual ~IComponent()
 	{
-		//Debug::LogWarning("Destructor", typeid(*this).name());
+		Debug::LogWarning("Deleted with id: " + std::to_string(componentId), typeid(*this).name());
 	}
 
-	//virtual void EarlyUpdate(float deltaTime) = 0;
-	//virtual void Update(float deltaTime) = 0;
-	//virtual void LateUpdate(float deltaTime) = 0;
-	virtual void EarlyUpdate() {}
-	virtual void Update() {}
-	virtual void LateUpdate() {}
+	virtual void EarlyUpdate(float deltaTime) {}
+	virtual void Update(float deltaTime) {}
+	virtual void LateUpdate(float deltaTime) {}
 
-	//virtual void Draw(Window* window) {}
+	virtual void Draw(Window* window) {}
+
+	virtual void OnDestroy() {}
+
+	void Destroy()
+	{
+		OnDestroy();
+		delete this;
+	}
 
 	inline const ComponentId GetComponentId() const { return componentId; }
 
-	inline void SetOwner(EntityId id) 
-	{
-		ownerId = id;
-	}
+	inline void SetOwner(EntityId id) {	ownerId = id; }
 	inline EntityId GetOwner() const { return ownerId; }
 
 protected:
 	ComponentId componentId;
 	EntityId ownerId;
-	//IEntity* ownerPtr;
 
 private:
 	static ComponentId componentIdCounter;

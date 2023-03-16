@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "box2d/box2d.h"
 #include "Debug.h"
 #include "DataTypes.h"
@@ -24,6 +26,9 @@ protected:
 	b2BodyDef bodyDef;
 	b2FixtureDef fixtureDef;
 
+	//TODO мб небезопасно хранить по значению
+	std::vector<b2FixtureDef> fixtureDefVector{};
+	std::vector<b2Fixture*> fixturesVector {};
+
 	EntityId bodyOwnerId;
 };
-

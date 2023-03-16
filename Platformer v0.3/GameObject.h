@@ -3,41 +3,54 @@
 #include "Entity.h"
 #include "Debug.h"
 #include "PhysicComponent.h"
+#include "RenderSystem.h"
 
 class GameObject : public Entity
 {
 public:
-	GameObject() : isDrawable(false), isPhysical(false)
+	GameObject() : isDrawable(false),isEnabledToDraw(false), isPhysical(false)
 	{
 		transform = AddComponent<TransformComponent>();
 		transform->SetPosition(0.f, 0.f);
+		//TODO переместить в наследников
 	}
 
-	~GameObject()
+	virtual ~GameObject()
 	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
+		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
 
-	void EarlyUpdate() override
+	//void EarlyUpdate(float deltaTime) override
+	//{
+
+	//}
+
+	//void Update(float deltaTime) override {}
+
+	//void LateUpdate(float deltaTime) override 
+	//{
+
+	//}
+
+	//Нужны вызывать если объект физический или если объект и физический и drawable
+	void SyncronizeDrawable() 
 	{
 		if (isPhysical)
 		{
 			transform->SetPosition(physicComponent->GetBodyPosition());
+			if (isDrawable)
+			{
+				drawableComponent->SetWorldPosition(transform->GetPosition());
+			}
+		}
+		else
+		{
+			Debug::LogWarning("Object is not physical, no need to call this method", typeid(*this).name());
 		}
 	}
 
-	void Update() override {}
-
-	void LateUpdate() override {}
-
-	//TODO после тестов сделать pure virtual
-	//virtual void Draw(Window* window) = 0;
-	void Draw(Window* window)
-	{
-		drawableComponent->Draw(window, transform->GetPosition());
-	}
-
 	//TODO добавить возможность включать и выключать отрисовку а также просчет физики
+
 	inline bool IsDrawable() { return isDrawable; }
 	inline bool IsPhysical() { return isPhysical; }
 
@@ -45,11 +58,53 @@ public:
 	///Двигать объект отдельно двумя способами через TransformComponent и PhysicComponent
 
 	//После вызова метода нужно добавить объекту текстуру
-	DrawableComponent* MakeDrawable()
+	DrawableComponent* MakeDrawable(bool isEnabledToDraw)
 	{
 		isDrawable = true;
+		this->isEnabledToDraw = isEnabledToDraw;
 		drawableComponent = AddComponent<DrawableComponent>();
+		RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
 		return drawableComponent;
+	}
+
+	void EnableToDraw()
+	{
+		if (isDrawable)
+		{
+			if (!isEnabledToDraw)
+			{
+				isEnabledToDraw = true;
+				RenderSystem::EnableDrawable(entityId);
+			}
+			else
+			{
+				Debug::LogWarning("Object is already enabled to draw");
+			}
+		}
+		else
+		{
+			Debug::LogWarning("Object with id: " + std::to_string(entityId) + " is not drawable");
+		}
+	}
+
+	void DisableToDraw()
+	{
+		if (isDrawable)
+		{
+			if (isEnabledToDraw)
+			{
+				isEnabledToDraw = false;
+				RenderSystem::DisableDrawable(entityId);
+			}
+			else
+			{
+				Debug::LogWarning("Object is already disabled to draw");
+			}
+		}
+		else
+		{
+			Debug::LogWarning("Object with id: " + std::to_string(entityId) + " is not drawable");
+		}
 	}
 
 	void SetTexture(const std::string& filename)
@@ -86,8 +141,9 @@ public:
 		}
 	}
 
-private:
+protected:
 	bool isDrawable;
+	bool isEnabledToDraw;
 	bool isPhysical;
 
 	TransformComponent* transform;

@@ -23,12 +23,19 @@ void Input::Update()
     thisFrameKeys.SetBit((int)Key::Down,
         (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) || (sf::Keyboard::isKeyPressed(sf::Keyboard::S)));
 
+    thisFrameKeys.SetBit((int)Key::Horizontal,
+        (thisFrameKeys.GetBit((int)Key::Left) || thisFrameKeys.GetBit((int)Key::Right)));
+
+    thisFrameKeys.SetBit((int)Key::Vertical,
+        (thisFrameKeys.GetBit((int)Key::Up) || thisFrameKeys.GetBit((int)Key::Down)));
+
     thisFrameKeys.SetBit((int)Key::Esc, sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));
 
     thisFrameKeys.SetBit((int)Key::LBracket, sf::Keyboard::isKeyPressed(sf::Keyboard::LBracket));
     thisFrameKeys.SetBit((int)Key::RBracket, sf::Keyboard::isKeyPressed(sf::Keyboard::RBracket));
 
     thisFrameKeys.SetBit((int)Key::E, sf::Keyboard::isKeyPressed(sf::Keyboard::E));
+    thisFrameKeys.SetBit((int)Key::Space, sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
 }
 
 sf::Vector2f Input::GetInputAxes()

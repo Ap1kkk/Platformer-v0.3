@@ -12,8 +12,8 @@ public:
 		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
 
-	void EarlyUpdate() override {}
-	void Update() override {}
-	void LateUpdate() override {}
-
+	void EarlyUpdate(float deltaTime) override {}
+	void Update(float deltaTime) override {}
+	void LateUpdate(float deltaTime) override {}
+	void Draw(Window* window) override {}
 };

@@ -13,10 +13,13 @@ public:
 		Right = 2,
 		Up = 3,
 		Down = 4,
-		Esc = 5,
-		LBracket = 6,
-		RBracket = 7,
-		E = 8
+		Horizontal = 5,
+		Vertical = 6,
+		Space = 7,
+		Esc = 8,
+		LBracket = 9,
+		RBracket = 10,
+		E = 11
 	};
 
 	static void Update();

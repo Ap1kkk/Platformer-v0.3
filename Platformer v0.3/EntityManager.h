@@ -29,6 +29,7 @@ public:
 		auto entity = new E;
 		EntityId id = entity->GetEntityId();
 		entities.insert(std::make_pair(id, static_cast<IEntity*>(entity)));
+		Debug::LogInfo("Entity with id: " + std::to_string(id) + " was created", typeid(EntityManager).name());
 		return entity;
 	}
 
@@ -40,7 +41,7 @@ public:
 			auto entity = (*itr).second;
 			delete entity;
 			entities.erase(itr);
-			Debug::LogWarning("Entity with id: " + std::to_string(entityId) + " was deleted.", typeid(EntityManager).name());
+			Debug::LogWarning("Entity with id: " + std::to_string(entityId) + " was deleted", typeid(EntityManager).name());
 		}
 	}
 	

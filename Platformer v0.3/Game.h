@@ -1,13 +1,19 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
+#include <box2d/box2d.h>
+#include <SFML/Graphics.hpp>
+
 #include "AssetAllocator.h"
 #include "Window.h"
 #include "EntityManager.h"
+#include "SceneManager.h"
 #include "PhysicSystem.h"
-#include "GameObject.h"
+#include "RenderSystem.h"
 #include "Input.h"
 #include "PhysicsDebugDraw.h"
+#include "SharedContext.h"
+#include "ObjectCollection.h"
+#include "FirstScene.h"
 #include "Debug.h"
 
 class Game
@@ -30,13 +36,13 @@ private:
 	AssetAllocator* assetAllocator;
 	EntityManager* entityManger;
 	PhysicSystem* physicSystem;
+	RenderSystem* renderSystem;
 	PhysicsDebugDraw* physicsDebugDraw;
+	SceneManager* sceneManager;
+
+	SharedContext sharedContext;
 
 	sf::Clock clock;
 	float deltaTime;
-
-	//временно
-	GameObject* ship;
-	GameObject* floor;
 };
 

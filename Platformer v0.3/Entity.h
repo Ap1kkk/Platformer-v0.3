@@ -17,7 +17,7 @@ public:
 	Entity() {}
 	virtual ~Entity() 
 	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
+		//Debug::LogWarning("Destructor", typeid(*this).name());
 		if (components.size() > 0)
 		{
 			for (auto& component : components)
@@ -27,12 +27,6 @@ public:
 			}
 		}
 	}
-
-	//void EarlyUpdate() override {}
-
-	//void Update() override {}
-
-	//void LateUpdate() override {}
 
 	template<class C>
 	C* AddComponent()
@@ -88,8 +82,10 @@ public:
 	
 	// TODO если дважды вызвать этот метод до будет выбрасываться исключение в list.h которое нельзя поймать 
 	// Поэтому я хз как это фиксить :)
-	void Destroy()
+	void Destroy() override
 	{
+		OnDestroy();
+
 		for (auto& component : components)
 		{
 			

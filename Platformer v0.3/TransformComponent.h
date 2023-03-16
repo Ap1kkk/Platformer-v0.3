@@ -6,10 +6,13 @@
 class TransformComponent : public Component
 {
 public:
-	TransformComponent() {}
+	TransformComponent() 
+	{
+		Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
+	}
 	~TransformComponent() 
 	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
+		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
 
 	void AddPosition(sf::Vector2f position)
@@ -39,6 +42,7 @@ public:
 	}
 
 	//TODO добавить rotation
+
 
 private:
 	sf::Vector2f position;

@@ -2,8 +2,11 @@
 
 #include <string>
 
+#include "box2d/box2d.h"
+
 typedef unsigned int EntityId;
 typedef unsigned int ComponentId;
+typedef unsigned int SceneId;
 
 typedef std::string ComponentType;
 

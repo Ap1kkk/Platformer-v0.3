@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 
-#include "box2d/box2d.h"
+#include <box2d/box2d.h>
 
 #include "IBody.h"
 #include "PhysicsDebugDraw.h"
@@ -13,6 +13,7 @@ public:
 	PhysicSystem(b2Vec2 gravity)
 	{
 		world->SetGravity(gravity);
+		world->SetAllowSleeping(false);
 		Debug::Log("Initialized", typeid(*this).name());
 	}
 	~PhysicSystem()

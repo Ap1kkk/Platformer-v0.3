@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Файлы заголовков\Components">
       <UniqueIdentifier>{5b1b2d43-e280-40d8-a741-de5614f6b289}</UniqueIdentifier>
     </Filter>
@@ -36,6 +32,21 @@
     </Filter>
     <Filter Include="Исходные файлы\Entities\Entity utils">
       <UniqueIdentifier>{52a91fac-e581-4c57-866c-9538fe8b39ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Scenes">
+      <UniqueIdentifier>{6b7c3f8b-9dae-4eb6-85fa-5316675a8379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Scenes\Scene utils">
+      <UniqueIdentifier>{459cb89e-0b89-472c-8af3-bbce313ec5e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Scenes">
+      <UniqueIdentifier>{bc24f03d-1df7-4130-a861-7ecbb3079592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Scenes\Scene utils">
+      <UniqueIdentifier>{acef1cbc-b46f-44c1-ad2c-cf4954515abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\SFML libraries">
+      <UniqueIdentifier>{65bda31b-e48a-4e42-8686-2c6dea51aa31}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +104,21 @@
     <ClCompile Include="PhysicComponent.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectCollection.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IScene.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstScene.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h">
@@ -143,9 +169,6 @@
     <ClInclude Include="RenderSystem.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -161,5 +184,61 @@
     <ClInclude Include="PhysicComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectCollection.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.h">
+      <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedContext.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstScene.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sfml-audio-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-audio-d-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-graphics-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-graphics-d-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-network-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-network-d-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-system-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-system-d-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-window-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-window-d-2.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
+    <None Include="openal32.dll">
+      <Filter>Файлы заголовков\SFML libraries</Filter>
+    </None>
   </ItemGroup>
 </Project>

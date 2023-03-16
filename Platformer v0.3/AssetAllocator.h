@@ -1,9 +1,11 @@
 #pragma once
-#include<SFML/Audio.hpp>
+
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
 #include <assert.h>
 #include <string>
-#include<map>
+#include <map>
 
 class AssetAllocator
 {

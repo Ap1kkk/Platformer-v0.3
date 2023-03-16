@@ -8,23 +8,33 @@
 class DrawableComponent : public Component
 {
 public:
-	DrawableComponent() : textureFilename("viking.png") 
+	//TODO сменить стандартную текстуру
+	DrawableComponent() : textureFilename("viking.png")
 	{
 		//auto owner = EntityManager::GetEntityById<GameObject>(ownerId);
 		//ownerTransform = owner->GetComponent<TransformComponent>();
+		Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 	}
-	~DrawableComponent() {}
-
-	void LateUpdate() override
+	~DrawableComponent()
 	{
-
+		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
 
-	void Draw(Window* window, sf::Vector2f& centerPosition)
+	//void Draw(Window* window, sf::Vector2f& centerPosition)
+	//{
+	//	SetWorldPosition(centerPosition);
+	//	window->Draw(sprite);
+	//}
+
+	void Draw(Window* window)
 	{
-		SetWorldPosition(centerPosition);
 		window->Draw(sprite);
 	}
+
+	//void EnableToDraw()
+	//{
+
+	//}
 
 	void SetTexture(const std::string& filename)
 	{
@@ -42,7 +52,8 @@ public:
 		);
 	}
 
-	sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
+	inline sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
+
 	
 private:
 	sf::Sprite sprite;

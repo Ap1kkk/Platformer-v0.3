@@ -17,6 +17,7 @@ public:
 		ComponentType type = typeid(C).name();
 		typeTable.insert(std::make_pair(id, type));
 		components.insert(std::make_pair(id, static_cast<IComponent*>(component)));
+		Debug::LogInfo("Component with id: " + std::to_string(id) + " was created", typeid(ComponentManager).name());
 		return component;
 	}
 
@@ -26,7 +27,8 @@ public:
 		if (itr != components.end())
 		{
 			auto component = (*itr).second;
-			delete component;
+			//delete component;
+			component->Destroy();
 			components.erase(itr);
 			Debug::LogWarning("Component with id: " + std::to_string(comonentId) + " was deleted", typeid(ComponentManager).name());
 		}

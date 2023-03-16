@@ -54,6 +54,21 @@ struct B2_API b2Filter
 	/// or always collide (positive). Zero means no collision group. Non-zero group
 	/// filtering always wins against the mask bits.
 	int16 groupIndex;
+
+	///Added by Ap1kkk for Platformer
+	bool operator == (const b2Filter& r)
+	{
+		return this->categoryBits == r.categoryBits &&
+			this->groupIndex == r.groupIndex &&
+			this->maskBits == r.maskBits;
+	}
+
+	///Added by Ap1kkk for Platformer
+	bool operator != (const b2Filter& r)
+	{
+		return !(*this == r);
+	}
+
 };
 
 /// A fixture definition is used to create a fixture. This class defines an
@@ -97,6 +112,25 @@ struct B2_API b2FixtureDef
 
 	/// Contact filtering data.
 	b2Filter filter;
+
+	///Added by Ap1kkk for Platformer
+	bool operator == (const b2FixtureDef& r)
+	{
+		return this->density == r.density &&
+			this->filter == r.filter &&
+			this->friction == r.friction &&
+			this->isSensor == r.isSensor &&
+			this->restitution == r.restitution &&
+			this->restitutionThreshold == r.restitutionThreshold &&
+			this->shape == r.shape &&
+			this->userData == r.userData;
+	}
+
+	///Added by Ap1kkk for Platformer
+	bool operator != (const b2FixtureDef& r)
+	{
+		return !(*this == r);
+	}
 };
 
 /// This proxy is used internally to connect fixtures to the broad-phase.

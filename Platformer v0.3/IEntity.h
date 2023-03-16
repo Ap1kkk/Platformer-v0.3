@@ -2,7 +2,6 @@
 
 #include "DataTypes.h"
 #include "Debug.h"
-//typedef unsigned int EntityTypeId;
 
 class IEntity
 {
@@ -11,20 +10,24 @@ public:
 	virtual ~IEntity()
 	{
 		//Debug::LogWarning("Destructor", typeid(*this).name());
+		Debug::LogWarning("Deleted with id: " + std::to_string(entityId), typeid(*this).name());
 	}
-	//virtual void EarlyUpdate(float deltaTime) = 0;
-	//virtual void Update(float deltaTime) = 0;
-	//virtual void LateUpdate(float deltaTime) = 0;
-	virtual void EarlyUpdate() = 0;
-	virtual void Update() = 0;
-	virtual void LateUpdate() = 0;
-	//virtual void Draw(Window* window) = 0;
+	virtual void EarlyUpdate(float deltaTime) {}
+	virtual void Update(float deltaTime) {}
+	virtual void LateUpdate(float deltaTime) {}
+
+	virtual void Draw(Window* window) {}
+
+	virtual void OnDestroy() {}
+
+	virtual void Destroy() = 0;
 
 	inline const EntityId GetEntityId() const { return entityId; }
 
 protected:
 	EntityId entityId;
 
+private:
 	static EntityId entityIdCounter;
 };
 
