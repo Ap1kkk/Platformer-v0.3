@@ -7,7 +7,7 @@
 
 struct SharedContext
 {
-	const Window* window;
+	Window* window;
 	const AssetAllocator* assetAllocator;
 	const EntityManager* entityManger;
 	const PhysicSystem* physicSystem;

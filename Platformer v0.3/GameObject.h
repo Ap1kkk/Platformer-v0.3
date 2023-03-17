@@ -12,25 +12,12 @@ public:
 	{
 		transform = AddComponent<TransformComponent>();
 		transform->SetPosition(0.f, 0.f);
-		//TODO переместить в наследников
 	}
 
 	virtual ~GameObject()
 	{
 		//Debug::LogWarning("Destructor", typeid(*this).name());
 	}
-
-	//void EarlyUpdate(float deltaTime) override
-	//{
-
-	//}
-
-	//void Update(float deltaTime) override {}
-
-	//void LateUpdate(float deltaTime) override 
-	//{
-
-	//}
 
 	//Нужны вызывать если объект физический или если объект и физический и drawable
 	void SyncronizeDrawable() 
@@ -49,13 +36,10 @@ public:
 		}
 	}
 
-	//TODO добавить возможность включать и выключать отрисовку а также просчет физики
+	//TODO добавить возможность включать и выключать просчет физики
 
 	inline bool IsDrawable() { return isDrawable; }
 	inline bool IsPhysical() { return isPhysical; }
-
-
-	///Двигать объект отдельно двумя способами через TransformComponent и PhysicComponent
 
 	//После вызова метода нужно добавить объекту текстуру
 	DrawableComponent* MakeDrawable(bool isEnabledToDraw)

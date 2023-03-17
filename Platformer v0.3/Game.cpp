@@ -4,6 +4,8 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 {
 	Debug::Log("Start initializing...", typeid(*this).name());
 
+	deltaTime = clock.restart().asSeconds();
+
 	assetAllocator = new AssetAllocator;
 	entityManger = new EntityManager;
 	physicSystem = new PhysicSystem(gravity);
@@ -13,11 +15,12 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	//-------------------Debug Draw-------------------------------
 	physicsDebugDraw = new PhysicsDebugDraw(&window);
 
-
 	physicSystem->SetDebugDraw(physicsDebugDraw);
 	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_aabbBit); //с отрисовкой площади
 	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
+
 	//-------------------Debug Draw-------------------------------
+
 
 	sharedContext.window = &window;
 	sharedContext.assetAllocator = assetAllocator;
@@ -25,7 +28,6 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.physicsDebugDraw = physicsDebugDraw;
 	sharedContext.renderSystem = renderSystem;
 
-	deltaTime = clock.restart().asSeconds();
 
 	//-------------------Создание сцен ----------------------------
 
@@ -35,6 +37,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sceneManager->Initialize(firstScene->GetSceneId());
 
 	//-------------------Создание сцен----------------------------
+
 
 	Debug::Log("Initialized", typeid(*this).name());
 }
@@ -66,10 +69,6 @@ void Game::Update()
 {
 	window.Update();
 	sceneManager->Update(deltaTime);
-	//if (Input::IsKeyPressed(Input::Key::Left))
-	//{
-	//	Debug::Log("Left");
-	//}
 }
 
 void Game::LateUpdate()

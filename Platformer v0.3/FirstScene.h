@@ -20,40 +20,12 @@ public:
 
 		//TODO сделать и убрать это в систему префабов
 
-
-		////----------ship--------------
-		//ship = sharedContext.entityManger->CreateEntity<GameObject>();
-		//ship->MakeDrawable(true);
-		//ship->SetTexture("ship.png");
-
-		//auto physicComponent = ship->MakePhysical();
-
-		//b2BodyDef bodyDef;
-		//bodyDef.type = b2_dynamicBody;
-		//bodyDef.position = b2Vec2(50, 20);
-		//physicComponent->SetBodyDef(bodyDef);
-		//physicComponent->InitializeBody();
-
-		//b2CircleShape circleShape;
-		//circleShape.m_p.Set(0, 0);
-		//circleShape.m_radius = 20.f;
-
-		//b2FixtureDef circleFixtureDef;
-
-		//circleFixtureDef.shape = &circleShape;
-		//circleFixtureDef.density = 1;
-
-		//physicComponent->AddFixtureDef(circleFixtureDef);
-
-		//ObjectCollection::AddObject(ship);
-		////----------ship--------------
-		
-
-
 		//----------player--------------
 		
 		player = sharedContext.entityManger->CreateEntity<Player>( );
+		//TODO заменить на вызов Start который будет делать коллекция и убрать эту строчку
 		player->Initialize();
+		player->SetWindow(sharedContext.window);
 		ObjectCollection::AddObject(player);
 		
 		//----------player--------------
@@ -70,7 +42,7 @@ public:
 
 		b2BodyDef bodyDef2;
 		bodyDef2.type = b2_staticBody;
-		bodyDef2.position = b2Vec2(300, 200);
+		bodyDef2.position = b2Vec2(0, 200);
 		physicComponent2->SetBodyDef(bodyDef2);
 		physicComponent2->InitializeBody();
 

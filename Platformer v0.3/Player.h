@@ -3,6 +3,7 @@
 #include "box2d/box2d.h"
 #include "GameObject.h"
 #include "Input.h"
+#include "Camera.h"
 
 class Player : public GameObject
 {
@@ -21,7 +22,7 @@ public:
 
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position = b2Vec2(50, 20);
+		bodyDef.position = b2Vec2(0, 20);
 		physicComponent->SetBodyDef(bodyDef);
 		physicComponent->InitializeBody();
 
@@ -38,6 +39,17 @@ public:
 
 		physicComponent->AddFixtureDef(boxFixtureDef);
 		body = physicComponent->GetBody();
+
+		camera = AddComponent<Camera>();
+
+		//TODO заменить на вызов Awake у компонента
+		camera->Initialize();
+	}
+
+	void SetWindow(Window* window)
+	{
+		this->window = window;
+		camera->SetWindow(window);
 	}
 
 	void Update(float deltaTime) override
@@ -50,16 +62,19 @@ public:
 		}
 		if (Input::IsKeyPressed(Input::Key::Space))
 		{
-			body->ApplyLinearImpulseToCenter(b2Vec2(0, -1000), true);
+			body->ApplyLinearImpulseToCenter(b2Vec2(0, -500), true);
 		}
 	}
 
 	void LateUpdate(float deltaTime) override
 	{
 		SyncronizeDrawable();
+		camera->LateUpdate(deltaTime);
 	}
 
 private:
 	b2Body* body;
+	Camera* camera;
+	Window* window;
 };
 

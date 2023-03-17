@@ -9,30 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Файлы заголовков\Components">
-      <UniqueIdentifier>{5b1b2d43-e280-40d8-a741-de5614f6b289}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Entities">
-      <UniqueIdentifier>{24621ca2-519d-4e51-bde3-ca42e63c9599}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Components\Component utils">
-      <UniqueIdentifier>{1b4494a8-dfa0-4956-ac37-0c763aae89f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Entities\Entity utils">
-      <UniqueIdentifier>{97275342-7306-4cd6-9730-2545ef023c98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Components">
-      <UniqueIdentifier>{48784c1e-3647-4ce1-ac43-e7e33312fa3a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Components\Component utils">
-      <UniqueIdentifier>{1be2e4c7-be17-4ae8-8e0e-49bac6896d1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Entities">
-      <UniqueIdentifier>{25e46926-06f4-42fa-9f04-521fe57929fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Entities\Entity utils">
-      <UniqueIdentifier>{52a91fac-e581-4c57-866c-9538fe8b39ba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Scenes">
       <UniqueIdentifier>{6b7c3f8b-9dae-4eb6-85fa-5316675a8379}</UniqueIdentifier>
     </Filter>
@@ -45,67 +21,79 @@
     <Filter Include="Исходные файлы\Scenes\Scene utils">
       <UniqueIdentifier>{acef1cbc-b46f-44c1-ad2c-cf4954515abf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\SFML libraries">
+    <Filter Include="Файлы заголовков\Engine">
+      <UniqueIdentifier>{a199cb4d-b2e2-4ace-b955-50bbb36d714d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GameObjects">
+      <UniqueIdentifier>{4ac8788b-b05f-41b5-9264-f6cfc5d5147f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Utils">
+      <UniqueIdentifier>{7510385b-d0c1-440c-b728-1d5a0abc59bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Utils\SFML libraries">
       <UniqueIdentifier>{65bda31b-e48a-4e42-8686-2c6dea51aa31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Base Components">
+      <UniqueIdentifier>{5b1b2d43-e280-40d8-a741-de5614f6b289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Base Components\Component utils">
+      <UniqueIdentifier>{1b4494a8-dfa0-4956-ac37-0c763aae89f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Base Entities">
+      <UniqueIdentifier>{24621ca2-519d-4e51-bde3-ca42e63c9599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Base Entities\Entity utils">
+      <UniqueIdentifier>{97275342-7306-4cd6-9730-2545ef023c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Components">
+      <UniqueIdentifier>{9bc83a7a-6480-45c3-a760-21e6d22501f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine">
+      <UniqueIdentifier>{e4770a5a-729a-4558-85a9-0aa64e6eaa7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Base Entities">
+      <UniqueIdentifier>{25e46926-06f4-42fa-9f04-521fe57929fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Base Entities\Entity utils">
+      <UniqueIdentifier>{52a91fac-e581-4c57-866c-9538fe8b39ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Base Components">
+      <UniqueIdentifier>{48784c1e-3647-4ce1-ac43-e7e33312fa3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Base Components\Component utils">
+      <UniqueIdentifier>{1be2e4c7-be17-4ae8-8e0e-49bac6896d1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameObjects">
+      <UniqueIdentifier>{c2825cca-2048-4d78-8ce6-1f97ee40b40c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Components">
+      <UniqueIdentifier>{9e221fec-fed4-4a57-b871-87729c2ce2f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Platformer v0.3.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetAllocator.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Debug.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicSystem.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
     <ClCompile Include="ComponentManager.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
     <ClCompile Include="IComponent.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
     <ClCompile Include="IEntity.cpp">
-      <Filter>Исходные файлы\Entities\Entity utils</Filter>
+      <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Исходные файлы\Entities\Entity utils</Filter>
+      <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
-      <Filter>Исходные файлы\Entities\Entity utils</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Bitmask.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
     </ClCompile>
     <ClCompile Include="IBody.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsDebugDraw.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
     <ClCompile Include="PhysicComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectCollection.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
     </ClCompile>
     <ClCompile Include="IScene.cpp">
       <Filter>Исходные файлы\Scenes\Scene utils</Filter>
@@ -116,76 +104,76 @@
     <ClCompile Include="FirstScene.cpp">
       <Filter>Исходные файлы\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="AssetAllocator.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmask.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectCollection.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsDebugDraw.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicSystem.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer v0.3.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssetAllocator.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicSystem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="DataTypes.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="GarbageCollector.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="ComponentManager.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="IComponent.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Файлы заголовков\Entities\Entity utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities\Entity utils</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
-      <Filter>Файлы заголовков\Entities\Entity utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities\Entity utils</Filter>
     </ClInclude>
     <ClInclude Include="IEntity.h">
-      <Filter>Файлы заголовков\Entities\Entity utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities\Entity utils</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Файлы заголовков\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Bitmask.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities</Filter>
     </ClInclude>
     <ClInclude Include="IBody.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsDebugDraw.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="PhysicComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectCollection.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
     </ClInclude>
     <ClInclude Include="IScene.h">
       <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
@@ -193,52 +181,91 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
     </ClInclude>
-    <ClInclude Include="SharedContext.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="DrawableComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
     </ClInclude>
     <ClInclude Include="FirstScene.h">
       <Filter>Файлы заголовков\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetAllocator.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmask.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTypes.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GarbageCollector.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectCollection.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsDebugDraw.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicSystem.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedContext.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-audio-d-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-graphics-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-graphics-d-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-network-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-network-d-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-system-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-system-d-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-window-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="sfml-window-d-2.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
     <None Include="openal32.dll">
-      <Filter>Файлы заголовков\SFML libraries</Filter>
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
     </None>
   </ItemGroup>
 </Project>

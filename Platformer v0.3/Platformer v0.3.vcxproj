@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="AssetAllocator.cpp" />
     <ClCompile Include="Bitmask.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h" />
     <ClInclude Include="Bitmask.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="DataTypes.h" />
