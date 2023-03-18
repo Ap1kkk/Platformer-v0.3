@@ -1,14 +1,24 @@
 #pragma once
 
 #include <unordered_map>
-#include "Component.h"
+#include "IComponent.h"
 #include "TransformComponent.h"
 #include "DrawableComponent.h"
 
+
+/// <summary>
+/// Static class which creates, destroys and finds Component by its id
+/// </summary>
 class ComponentManager
 {
 public:
 
+	/// <summary>
+	/// Creates the Component
+	/// Component must inherit from IComponent
+	/// </summary>
+	/// <typeparam name="C"></typeparam>
+	/// <returns>Pointer to created component</returns>
 	template<class C>
 	static C* const CreateComponent()
 	{
@@ -16,41 +26,24 @@ public:
 		ComponentId id = component->GetComponentId();
 		ComponentType type = typeid(C).name();
 		typeTable.insert(std::make_pair(id, type));
-		components.insert(std::make_pair(id, static_cast<IComponent*>(component)));
+		//components.insert(std::make_pair(id, static_cast<IComponent*>(component)));
+		components.insert(std::make_pair(id, component));
 		Debug::LogInfo("Component with id: " + std::to_string(id) + " was created", typeid(ComponentManager).name());
 		return component;
 	}
 
-	static void DestroyComponent(ComponentId comonentId)
-	{
-		auto itr = components.find(comonentId);
-		if (itr != components.end())
-		{
-			auto component = (*itr).second;
-			//delete component;
-			component->Destroy();
-			components.erase(itr);
-			Debug::LogWarning("Component with id: " + std::to_string(comonentId) + " was deleted", typeid(ComponentManager).name());
-		}
-		else
-		{
-			Debug::LogError("Component with id: " + std::to_string(comonentId) + " was not found", typeid(ComponentManager).name());
-		}
-	}
+	/// <summary>
+	/// Destoys the component and clears the memory taken by it
+	/// </summary>
+	/// <param name="comonentId">Id of destroying component</param>
+	static void DestroyComponent(ComponentId comonentId);
 
-	static ComponentType GetComponentTypeById(ComponentId comonentId)
-	{
-		auto itr = typeTable.find(comonentId);
-		if (itr != typeTable.end())
-		{
-			return (*itr).second;
-		}
-		else
-		{
-			Debug::LogWarning("Component with id: " + std::to_string(comonentId) + " was not found", typeid(ComponentManager).name());
-			return ComponentType();
-		}
-	}
+	/// <summary>
+	/// Searches and returns the type of the component
+	/// </summary>
+	/// <param name="comonentId">Id of searching component</param>
+	/// <returns>Type of component</returns>
+	static ComponentType GetComponentTypeById(ComponentId comonentId);
 
 private:
 	static std::unordered_map<ComponentId, IComponent*> components;

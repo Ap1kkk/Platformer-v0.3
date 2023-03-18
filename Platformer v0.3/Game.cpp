@@ -4,7 +4,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 {
 	Debug::Log("Start initializing...", typeid(*this).name());
 
-	deltaTime = clock.restart().asSeconds();
+	Time::Restart();
 
 	assetAllocator = new AssetAllocator;
 	entityManger = new EntityManager;
@@ -16,8 +16,8 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	physicsDebugDraw = new PhysicsDebugDraw(&window);
 
 	physicSystem->SetDebugDraw(physicsDebugDraw);
-	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_aabbBit); //с отрисовкой площади
-	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
+	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_aabbBit); //с отрисовкой площади
+	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit); 
 
 	//-------------------Debug Draw-------------------------------
 
@@ -61,19 +61,19 @@ void Game::ProcessInput()
 
 void Game::EarlyUpdate()
 {
-	physicSystem->Update(1.f / 60.f, 6, 2);
-	sceneManager->EarlyUpdate(deltaTime);
+	physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
+	sceneManager->EarlyUpdate();
 }
 
 void Game::Update()
 {
 	window.Update();
-	sceneManager->Update(deltaTime);
+	sceneManager->Update();
 }
 
 void Game::LateUpdate()
 {
-	sceneManager->LateUpdate(deltaTime);
+	sceneManager->LateUpdate();
 }
 
 void Game::Draw()
@@ -89,5 +89,5 @@ void Game::Draw()
 
 void Game::CalculateDeltaTime()
 {
-	deltaTime = clock.restart().asSeconds();
+	Time::Restart();
 }

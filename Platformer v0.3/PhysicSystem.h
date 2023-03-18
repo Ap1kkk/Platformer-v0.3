@@ -7,44 +7,26 @@
 #include "PhysicsDebugDraw.h"
 #include "Debug.h"
 
+/// <summary>
+/// Responsible for storing pointer to the world and some interaction with it
+/// </summary>
 class PhysicSystem
 {
 public:
-	PhysicSystem(b2Vec2 gravity)
-	{
-		world->SetGravity(gravity);
-		world->SetAllowSleeping(false);
-		Debug::Log("Initialized", typeid(*this).name());
-	}
-	~PhysicSystem()
-	{
-		delete world;
-	}
+	PhysicSystem(b2Vec2 gravity);
+	~PhysicSystem();
 
-	void Update(float timeStep, int velocityIterations, int positionIterations)
-	{
-		world->Step(timeStep, velocityIterations, positionIterations);
-	}
+	void Update(float timeStep, int velocityIterations, int positionIterations);
 
-	void DrawDebug() { world->DebugDraw(); }
+	void DrawDebug();
 
-	void SetDebugDraw(PhysicsDebugDraw* debugDraw)
-	{
-		world->SetDebugDraw(debugDraw);
-	}
+	void SetDebugDraw(PhysicsDebugDraw* debugDraw);
 
-	static b2Body* CreateBody(b2BodyDef* bodyDef, EntityId ownerId)
-	{
-		b2Body* body = world->CreateBody(bodyDef);
-		bodies.insert(std::make_pair(ownerId, body));
-		return body;
-	}
+	static b2Body* CreateBody(b2BodyDef* bodyDef, EntityId ownerId);
 
-	static void DestroyBody(b2Body* body)
-	{
-		world->DestroyBody(body);
-	}
+	static void DestroyBody(b2Body* body);
 
+	//TODO надо протестить
 	template<class C>
 	static void SetContactListener(C* instancePtr)
 	{

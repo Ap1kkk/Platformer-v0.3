@@ -5,46 +5,45 @@
 #include "IEntity.h"
 #include "Debug.h"
 
-#include <iostream>
 
+/// <summary>
+/// Responsibe for creatind, destroyig and searching existing objects
+/// </summary>
 class EntityManager
 {
 public:
-	EntityManager()
-	{
-		Debug::Log("Initialized", typeid(*this).name());
-	}
-	~EntityManager() 
-	{
-		for (auto& entity : entities)
-		{
-			delete entity.second;
-		}
+	EntityManager();
+	~EntityManager();
 
-	}
-
+	/// <summary>
+	/// Creates new object of specified type
+	/// </summary>
+	/// <typeparam name="E"></typeparam>
+	/// <param name="context">Object context which contains pointers to global objects</param>
+	/// <returns>Pointer to created object</returns>
 	template<class E>
-	static E* const CreateEntity()
+	static E* const CreateEntity(ObjectContext context)
 	{
 		auto entity = new E;
 		EntityId id = entity->GetEntityId();
 		entities.insert(std::make_pair(id, static_cast<IEntity*>(entity)));
+		entity->SetObjectContext(context);
 		Debug::LogInfo("Entity with id: " + std::to_string(id) + " was created", typeid(EntityManager).name());
 		return entity;
 	}
 
-	static void DestroyEntity(EntityId entityId)
-	{
-		auto itr = entities.find(entityId);
-		if (itr != entities.end())
-		{
-			auto entity = (*itr).second;
-			delete entity;
-			entities.erase(itr);
-			Debug::LogWarning("Entity with id: " + std::to_string(entityId) + " was deleted", typeid(EntityManager).name());
-		}
-	}
+	/// <summary>
+	/// Destroys object and clears memory after it
+	/// </summary>
+	/// <param name="entityId">Id of an object which is going to be destroyed</param>
+	static void DestroyEntity(EntityId entityId);
 	
+	/// <summary>
+	/// Searches object with specified id
+	/// </summary>
+	/// <typeparam name="C"></typeparam>
+	/// <param name="id"></param>
+	/// <returns>Poiter to an object if it is found otherwise nullptr</returns>
 	template<class C>
 	static C* GetEntityById(EntityId id)
 	{

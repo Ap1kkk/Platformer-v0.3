@@ -5,85 +5,43 @@
 #include "IEntity.h"
 #include "Debug.h"
 
+/// <summary>
+/// Static class responsible for storing and processing existing objects on scene
+/// </summary>
 class ObjectCollection
 {
 public:
 	ObjectCollection() {}
 
-	static void AddObject(IEntity* newObject)
-	{
-		EntityId entityId = newObject->GetEntityId();
-		auto itr = objects.find(entityId);
-		if (itr == objects.end())
-		{
-			objects.emplace(entityId, newObject);
-		}
-		else
-		{
-			Debug::LogWarning("Object with id: " + std::to_string(entityId) + " has already added", typeid(ObjectCollection).name());
-		}
-	}
+	static void AddObject(IEntity* newObject);
 
-	/// Удаляет объект из коллекции но не вызывает метод Destroy у объекта
-	static void DeleteObject(EntityId entityId)
-	{
-		auto itr = objects.find(entityId);
-		if (itr != objects.end())
-		{
-			objects.erase(itr);
-		}
-		else
-		{
-			Debug::LogWarning("Object with id: " + std::to_string(entityId) + " was not found", typeid(ObjectCollection).name());
-		}
-	}
+	/// <summary>
+	/// Delete an object from the storage
+	/// But does not call the Destroy method
+	/// </summary>
+	/// <param name="entityId"></param>
+	static void DeleteObject(EntityId entityId);
 
-	// Вызывает у всех хранящихся объектов метод Destroy
-	static void Clear()
-	{
-		if (objects.size() > 0)
-		{
-			auto itr = objects.end();
-			itr--;
-			while (itr != objects.end())
-			{
-				if (objects.size() > 1)
-				{
-					(itr--)->second->Destroy();
-				}
-				else
-				{
-					itr = objects.begin();
-					itr->second->Destroy();
-					break;
-				}
-			}
-		}
-	}
+	/// <summary>
+	/// Destroy all existing objects
+	/// </summary>
+	static void Clear();
 
-	static void EarlyUpdate(float deltaTime) 
-	{
-		for (auto& object : objects)
-		{
-			object.second->EarlyUpdate(deltaTime);
-		}
-	}
-	static void Update(float deltaTime) 
-	{
-		for (auto& object : objects)
-		{
-			object.second->Update(deltaTime);
-		}
-	}
-	static void LateUpdate(float deltaTime) 
-	{
-		for (auto& object : objects)
-		{
-			object.second->LateUpdate(deltaTime);
-		}
-	}
+	static void ProcessNotAwoken();
+
+	/// надо оптимизировать
+	static void ProcessNotAwokenComponents();
+
+	static void EarlyUpdate();
+	static void Update();
+	static void LateUpdate();
+
+	static void HasNotAwokenComponents(EntityId entityId);
 
 private:
 	static std::unordered_map<EntityId, IEntity*> objects;
+	static std::vector<IEntity*> notAwokenObjects;
+	static std::vector<IEntity*> withNotAwokenComponents;
+	static bool hasNotAwokenComponents;
 };
 

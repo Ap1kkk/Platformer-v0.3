@@ -133,20 +133,22 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Third Party\SFML\lib;$(SolutionDir)Third Party\SFML;$(SolutionDir)Third Party\Box2d\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetAllocator.cpp" />
     <ClCompile Include="Bitmask.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="DrawableComponent.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="IBody.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GarbageCollector.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -159,13 +161,14 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h" />
     <ClInclude Include="Bitmask.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="DataTypes.h" />
     <ClInclude Include="Debug.h" />
@@ -182,6 +185,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="ObjectCollection.h" />
+    <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="PhysicComponent.h" />
     <ClInclude Include="PhysicsDebugDraw.h" />
     <ClInclude Include="PhysicSystem.h" />
@@ -189,6 +193,7 @@
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SharedContext.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

@@ -22,10 +22,9 @@ public:
 
 		//----------player--------------
 		
-		player = sharedContext.entityManger->CreateEntity<Player>( );
-		//TODO заменить на вызов Start который будет делать коллекция и убрать эту строчку
-		player->Initialize();
-		player->SetWindow(sharedContext.window);
+		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
+
+		//TODO убрать и создавать объекты и компоненты с встроенным SharedContext
 		ObjectCollection::AddObject(player);
 		
 		//----------player--------------
@@ -34,7 +33,7 @@ public:
 
 		//----------floor--------------
 
-		floor = sharedContext.entityManger->CreateEntity<GameObject>();
+		floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
 		floor->MakeDrawable(true);
 		floor->SetTexture("floor.png");
 
@@ -63,14 +62,16 @@ public:
 		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 	}
 
-	void EarlyUpdate(float deltaTime) override 
+	void EarlyUpdate() override 
 	{
-		ObjectCollection::EarlyUpdate(deltaTime);
+		ObjectCollection::ProcessNotAwoken();
+		ObjectCollection::ProcessNotAwokenComponents();
+		ObjectCollection::EarlyUpdate();
 	}
 
-	void Update(float deltaTime) override 
+	void Update() override 
 	{
-		ObjectCollection::Update(deltaTime);
+		ObjectCollection::Update();
 
 		if (Input::IsKeyDown(Input::Key::Esc))
 		{
@@ -79,10 +80,9 @@ public:
 		}
 	}
 
-	void LateUpdate(float deltaTime) override 
+	void LateUpdate() override 
 	{
-		ObjectCollection::LateUpdate(deltaTime);
-		floor->SyncronizeDrawable();
+		ObjectCollection::LateUpdate();
 	}
 
 	//void Draw(Window* window) override 

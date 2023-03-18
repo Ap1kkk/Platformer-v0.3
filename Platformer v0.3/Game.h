@@ -3,6 +3,7 @@
 #include <box2d/box2d.h>
 #include <SFML/Graphics.hpp>
 
+#include "Time.h"
 #include "AssetAllocator.h"
 #include "Window.h"
 #include "EntityManager.h"
@@ -42,7 +43,5 @@ private:
 
 	SharedContext sharedContext;
 
-	sf::Clock clock;
-	float deltaTime;
 };
 

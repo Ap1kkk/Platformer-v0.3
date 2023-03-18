@@ -1,1 +1,86 @@
 #include "Entity.h"
+
+Entity::~Entity()
+{
+	if (components.size() > 0)
+	{
+		for (auto& component : components)
+		{
+			auto componentId = component.second->GetComponentId();
+			GarbageCollector::DestroyComponent(componentId);
+		}
+	}
+}
+
+void Entity::DeleteComponent(ComponentId id)
+{
+	auto itr = components.find(ComponentManager::GetComponentTypeById(id));
+	if (itr != components.end())
+	{
+		ComponentManager::DestroyComponent(id);
+		components.erase(itr);
+	}
+}
+
+void Entity::RecalculateComponentsOrder()
+{
+	std::sort(componentsOrder.begin(), componentsOrder.end(),
+		[](IComponent* a, IComponent* b)
+		{
+			ComponentLayer aLayer = a->GetLayer();
+			ComponentLayer bLayer = b->GetLayer();
+			return aLayer < bLayer;
+		});
+}
+
+void Entity::ProcessNotAwokenComponents()
+{
+	if (notAwokenComponents.size() > 0)
+	{
+		for (auto& component : notAwokenComponents)
+		{
+			component->Awake();
+		}
+	}
+}
+
+void Entity::ComponentsEarlyUpdate()
+{
+	for (auto& component : componentsOrder)
+	{
+		component->EarlyUpdate();
+	}
+}
+
+void Entity::ComponentsUpdate()
+{
+	for (auto& component : componentsOrder)
+	{
+		component->Update();
+	}
+}
+
+void Entity::ComponentsLateUpdate()
+{
+	for (auto& component : componentsOrder)
+	{
+		component->LateUpdate();
+	}
+}
+
+void Entity::Destroy()
+{
+	OnDestroy();
+
+	for (auto& component : components)
+	{
+
+		auto componentId = component.second->GetComponentId();
+		GarbageCollector::DestroyComponent(componentId);
+	}
+	components.clear();
+
+	GarbageCollector::DestroyEntity(this->entityId);
+}
+
+

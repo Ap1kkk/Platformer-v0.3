@@ -1,22 +1,31 @@
 #pragma once
 
+#include "Time.h"
 #include "DataTypes.h"
+#include "ObjectContext.h"
 #include "Debug.h"
 
+/// <summary>
+/// Interface for any game objects
+/// </summary>
 class IEntity
 {
 public:
 	IEntity() : entityId(entityIdCounter++) {}
-	virtual ~IEntity()
-	{
-		//Debug::LogWarning("Destructor", typeid(*this).name());
-		Debug::LogWarning("Deleted with id: " + std::to_string(entityId), typeid(*this).name());
-	}
-	virtual void EarlyUpdate(float deltaTime) {}
-	virtual void Update(float deltaTime) {}
-	virtual void LateUpdate(float deltaTime) {}
+	virtual ~IEntity();
 
+	virtual void Awake() {}
+
+	virtual void EarlyUpdate() {}
+	virtual void Update() {}
+	virtual void LateUpdate() {}
 	virtual void Draw(Window* window) {}
+
+	virtual void ProcessNotAwokenComponents() = 0;
+
+	virtual void ComponentsEarlyUpdate() = 0;
+	virtual void ComponentsUpdate() = 0;
+	virtual void ComponentsLateUpdate() = 0;
 
 	virtual void OnDestroy() {}
 
@@ -24,8 +33,11 @@ public:
 
 	inline const EntityId GetEntityId() const { return entityId; }
 
+	inline void SetObjectContext(ObjectContext context) { objectContext = context; }
+
 protected:
 	EntityId entityId;
+	ObjectContext objectContext;
 
 private:
 	static EntityId entityIdCounter;

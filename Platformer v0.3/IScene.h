@@ -10,7 +10,10 @@
 class IScene
 {
 public:
-	IScene(SharedContext sharedContext) : sceneId(sceneIdCounter++), sharedContext(sharedContext) {}
+	IScene(SharedContext sharedContext) : sceneId(sceneIdCounter++), sharedContext(sharedContext) 
+	{
+		objectContext.window = sharedContext.window;
+	}
 	virtual ~IScene() 
 	{
 		Debug::LogWarning("Scene with id: " + std::to_string(sceneId) + " destroyed");
@@ -18,9 +21,9 @@ public:
 
 	virtual void Initialize() = 0;
 
-	virtual void EarlyUpdate(float deltaTime) = 0;
-	virtual void Update(float deltaTime) = 0;
-	virtual void LateUpdate(float deltaTime) = 0;
+	virtual void EarlyUpdate() = 0;
+	virtual void Update() = 0;
+	virtual void LateUpdate() = 0;
 
 	// ¬ызываетс€ дл€ специальной отрисовки того, что не попало в систему рендера
 	virtual void Draw(Window* window) {}
@@ -48,6 +51,7 @@ public:
 protected:
 	SceneId sceneId;
 	SharedContext sharedContext;
+	ObjectContext objectContext;
 
 private:
 	static SceneId sceneIdCounter;

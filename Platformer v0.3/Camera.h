@@ -4,31 +4,16 @@
 #include "TransformComponent.h"
 #include "GameObject.h"
 #include "EntityManager.h"
-#include "Component.h"
+#include "IComponent.h"
 
-class Camera : public Component
+class Camera : public IComponent
 {
 public:
 	Camera() {}
 
-	void Initialize()
-	{
-		auto gameObject = EntityManager::GetEntityById<GameObject>(ownerId);
-		transform = gameObject->GetComponent<TransformComponent>();
-	}
+	void Awake() override;
 
-	void SetWindow(Window* window)
-	{
-		this->window = window;
-	}
-
-	void LateUpdate(float deltaTime)
-	{
-		sf::View view = window->GetView();
-		const sf::Vector2f& tragetPosition = transform->GetPosition();
-		view.setCenter(tragetPosition.x, tragetPosition.y);
-		window->SetView(view);
-	}
+	void LateUpdate() override;
 
 private:
 	Window* window;

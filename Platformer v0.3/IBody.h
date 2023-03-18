@@ -10,10 +10,7 @@ class IBody
 {
 public:
 	IBody() {}
-	virtual ~IBody()
-	{
-		//Debug::LogWarning("Destructor", typeid(*this).name());
-	}
+	virtual ~IBody() {}
 
 	inline void SetBodyOwner(EntityId id) { bodyOwnerId = id; }
 	inline EntityId GetBodyOwner() const { return bodyOwnerId; }

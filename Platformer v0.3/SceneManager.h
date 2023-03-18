@@ -9,20 +9,9 @@ class SceneManager
 {
 public:
 	SceneManager() {}
-	~SceneManager()
-	{
-		if (activeScene != nullptr)
-		{
-			activeScene->Destroy();
-		}
-	}
+	~SceneManager();
 
-	void Initialize(SceneId startSceneId)
-	{
-		auto startScene = GetSceneById(startSceneId);
-		activeScene = startScene;
-		startScene->Initialize();
-	}
+	void Initialize(SceneId startSceneId);
 
 	template<class S>
 	static S* const AddScene(SharedContext context)
@@ -41,91 +30,19 @@ public:
 		}
 	}
 
-	static void DeleteScene(SceneId sceneId)
-	{
-		auto itr = scenes.find(sceneId);
-		if (itr != scenes.end())
-		{
-			scenes.erase(itr);
-		}
-		else
-		{
-			Debug::LogWarning("Scene with SceneId: " + std::to_string(sceneId) + " was already deleted", typeid(SceneManager).name());
-		}
-	}
+	static void DeleteScene(SceneId sceneId);
 
 	static IScene* GetActiveScene() { return activeScene; }
 
-	static IScene* GetSceneById(SceneId sceneId)
-	{
-		auto itr = scenes.find(sceneId);
-		if (itr != scenes.end())
-		{
-			return itr->second;
-		}
-		else
-		{
-			Debug::LogError("Scene with SceneId: " + std::to_string(sceneId) + " was not found", typeid(SceneManager).name());
-		}
-	}
+	static IScene* GetSceneById(SceneId sceneId);
 
-	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId)
-	{
-		auto fromItr = scenes.find(fromSceneId);
-		auto toItr = scenes.find(toSceneId);
-		
-		if (fromItr != scenes.end() && toItr != scenes.end())
-		{
-			Debug::Log("Switching from scene (" + std::to_string(fromSceneId) + ") to scene (" + std::to_string(toSceneId) + ")", typeid(SceneManager).name());
-			auto previousScene = GetSceneById(fromSceneId);
-			auto nextScene = GetSceneById(toSceneId);
+	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId);
 
-			if (fromSceneId != toSceneId)
-			{
-				previousScene->Destroy();
-			}
-			else
-			{
-				previousScene->Reload();
-			}
-			nextScene->Initialize();
+	void EarlyUpdate();
+	void Update();
+	void LateUpdate();
 
-			activeScene = nextScene;
-			Debug::Log("Switched from scene (" + std::to_string(fromSceneId) + ") to scene (" + std::to_string(toSceneId) + ")", typeid(SceneManager).name());
-		}
-		else
-		{
-			Debug::LogError("Cannot switch scene", typeid(SceneManager).name());
-			if (fromItr == scenes.end())
-			{
-				Debug::LogError("Scene with SceneId: " + std::to_string(fromSceneId) + " was not found", typeid(SceneManager).name());
-			}
-			else
-			{
-				Debug::LogError("Scene with SceneId: " + std::to_string(toSceneId) + " was not found", typeid(SceneManager).name());
-			}
-		}
-	}
-
-	void EarlyUpdate(float deltaTime)
-	{
-		activeScene->EarlyUpdate(deltaTime);
-	}
-
-	void Update(float deltaTime)
-	{
-		activeScene->Update(deltaTime);
-	}
-
-	void LateUpdate(float deltaTime)
-	{
-		activeScene->LateUpdate(deltaTime);
-	}
-
-	void Draw(Window* window) 
-	{
-		activeScene->Draw(window);
-	}
+	void Draw(Window* window);
 
 private:
 	static std::unordered_map<SceneId, IScene*> scenes;

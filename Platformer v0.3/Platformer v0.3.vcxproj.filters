@@ -71,9 +71,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp">
-      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
-    </ClCompile>
     <ClCompile Include="ComponentManager.cpp">
       <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
@@ -88,9 +85,6 @@
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
       <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
-    </ClCompile>
-    <ClCompile Include="IBody.cpp">
-      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
     <ClCompile Include="PhysicComponent.cpp">
       <Filter>Исходные файлы\Engine\Base Components</Filter>
@@ -143,15 +137,24 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Исходные файлы\Engine\Base Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GarbageCollector.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h">
-      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
-    </ClInclude>
     <ClInclude Include="ComponentManager.h">
-      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
-    </ClInclude>
-    <ClInclude Include="IComponent.h">
       <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
@@ -231,6 +234,15 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectContext.h">
+      <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

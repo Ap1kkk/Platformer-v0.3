@@ -1,45 +1,25 @@
 #pragma once
 
-#include "Component.h"
+#include "IComponent.h"
 #include "Debug.h"
 
-class TransformComponent : public Component
+/// <summary>
+/// Contains position and rotation of an object
+/// Transforms synchronized with physic world
+/// </summary>
+class TransformComponent : public IComponent
 {
 public:
-	TransformComponent() 
-	{
-		Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
-	}
-	~TransformComponent() 
-	{
-		//Debug::LogWarning("Destructor", typeid(*this).name());
-	}
+	TransformComponent();
+	~TransformComponent() {}
 
-	void AddPosition(sf::Vector2f position)
-	{
-		this->position += position;
-	}
+	void AddPosition(sf::Vector2f position);
+	void AddPosition(float x, float y);
 
-	void AddPosition(float x, float y)
-	{
-		this->position.x += x;
-		this->position.y += y;
-	}
+	void SetPosition(sf::Vector2f position);
+	void SetPosition(float x, float y);
 
-	void SetPosition(sf::Vector2f position)
-	{
-		this->position = position;
-	}
-	void SetPosition(float x, float y)
-	{
-		this->position.x = x;
-		this->position.y = y;
-	}
-
-	sf::Vector2f& GetPosition()
-	{
-		return position;
-	}
+	sf::Vector2f& GetPosition();
 
 	//TODO добавить rotation
 

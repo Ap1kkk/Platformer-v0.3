@@ -1,56 +1,33 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-#include "Component.h"
+#include "IComponent.h"
 #include "AssetAllocator.h"
 #include "EntityManager.h"
+#include "TransformComponent.h"
 
-class DrawableComponent : public Component
+
+/// <summary>
+/// Responsible for drawing objects on the screen
+/// </summary>
+class DrawableComponent : public IComponent
 {
 public:
 	//TODO сменить стандартную текстуру
-	DrawableComponent() : textureFilename("viking.png")
-	{
-		//auto owner = EntityManager::GetEntityById<GameObject>(ownerId);
-		//ownerTransform = owner->GetComponent<TransformComponent>();
-		Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
-	}
-	~DrawableComponent()
-	{
-		//Debug::LogWarning("Destructor", typeid(*this).name());
-	}
+	DrawableComponent();
+	~DrawableComponent() {}
 
-	//void Draw(Window* window, sf::Vector2f& centerPosition)
-	//{
-	//	SetWorldPosition(centerPosition);
-	//	window->Draw(sprite);
-	//}
+	void Initialize(TransformComponent* transform);
 
-	void Draw(Window* window)
-	{
-		window->Draw(sprite);
-	}
+	void Draw(Window* window) override;
 
-	//void EnableToDraw()
-	//{
+	void SetTexture(const std::string& filename);
 
-	//}
-
-	void SetTexture(const std::string& filename)
-	{
-		sprite.setTexture(AssetAllocator::GetTexture(AssetAllocator::GetPath() + filename));
-		textureFilename = filename;
-	}
-
-	void SetWorldPosition(sf::Vector2f& centerPosition)
-	{
-		const sf::IntRect& spriteBounds = sprite.getTextureRect();
-		const sf::Vector2f& spriteScale = sprite.getScale();
-		sprite.setPosition(
-			centerPosition.x - ((abs(spriteBounds.width) * 0.5f) * spriteScale.x),
-			centerPosition.y - ((abs(spriteBounds.height) * 0.5f) * spriteScale.y)
-		);
-	}
+	/// <summary>
+	/// Set the sprite's world position to draw corectly
+	/// </summary>
+	/// <param name="centerPosition">Vector2f must contain sprite center point</param>
+	void SetWorldPosition(sf::Vector2f& centerPosition);
 
 	inline sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
 
@@ -59,5 +36,5 @@ private:
 	sf::Sprite sprite;
 	std::string textureFilename;
 
-	//TransformComponent* ownerTransform;
+	TransformComponent* ownerTransform;
 };
