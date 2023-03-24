@@ -33,6 +33,7 @@ public:
 	void DisableToDraw();
 
 	void SetTexture(const std::string& filename);
+	void SetTextureRect(const std::string& filename, sf::IntRect intRect);
 
 	PhysicComponent* MakePhysical();
 

@@ -11,6 +11,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	physicSystem = new PhysicSystem(gravity);
 	renderSystem = new RenderSystem(&window);
 	sceneManager = new SceneManager;
+	tileManager = new TileManager;
 
 	//-------------------Debug Draw-------------------------------
 	physicsDebugDraw = new PhysicsDebugDraw(&window);
@@ -27,6 +28,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.entityManger = entityManger;
 	sharedContext.physicsDebugDraw = physicsDebugDraw;
 	sharedContext.renderSystem = renderSystem;
+	sharedContext.tileManager = tileManager;
 
 
 	//-------------------Создание сцен ----------------------------
@@ -61,6 +63,12 @@ void Game::ProcessInput()
 
 void Game::EarlyUpdate()
 {
+	//Time::physicsTimeAccumulator += Time::DeltaTime();
+	//while (Time::physicsTimeAccumulator >= Time::FixedDeltaTime())
+	//{
+	//	physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
+	//	Time::physicsTimeAccumulator -= Time::FixedDeltaTime();
+	//}
 	physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
 	sceneManager->EarlyUpdate();
 }

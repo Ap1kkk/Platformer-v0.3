@@ -6,8 +6,6 @@
 
 #include "AssetAllocator.h"
 
-class Entity;
-
 class Window
 {
 public:

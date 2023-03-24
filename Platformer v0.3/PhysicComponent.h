@@ -23,6 +23,12 @@ public:
 	sf::Vector2f GetBodyPosition();
 	
 	/// <summary>
+	/// Represents physic body angle in radians
+	/// </summary>
+	/// <returns>Body's angle</returns>
+	float GetBodyAngle();
+
+	/// <summary>
 	/// Returns a pointer to a physic body of an object
 	/// </summary>
 	/// <returns></returns>
@@ -52,14 +58,13 @@ public:
 	//TODO доработать и узнать про динамическое изменение типа тела
 	void SetBodyType(b2BodyType type);
 
-	void EarlyUpdate() override;
-	void Update() override;
 	void LateUpdate() override;
 
 	void OnDestroy() override;
 
 private:
-	sf::Vector2f bodyPosition; 
+	sf::Vector2f bodyPosition;
+	float bodyAngle;
 	TransformComponent* ownerTransform;
 };
 

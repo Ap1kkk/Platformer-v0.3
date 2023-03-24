@@ -19,11 +19,16 @@ public:
 	void SetPosition(sf::Vector2f position);
 	void SetPosition(float x, float y);
 
+	void SetAngleInDeg(float angleInDeg);
+	void SetAngleInRad(float angleInRad);
+
+	float GetAngle() const;
 	sf::Vector2f& GetPosition();
 
 	//TODO добавить rotation
-
+	//TODO добавить scale
 
 private:
 	sf::Vector2f position;
+	float angle;
 };

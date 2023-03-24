@@ -3,6 +3,7 @@
 PhysicComponent::PhysicComponent()
 {
 	bodyDef.position.Set(0.f, 0.f);
+	SetLayer(0);
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 
@@ -11,6 +12,11 @@ sf::Vector2f PhysicComponent::GetBodyPosition()
 	b2Vec2 position = body->GetPosition();
 	bodyPosition = { position.x, position.y };
 	return bodyPosition;
+}
+
+float PhysicComponent::GetBodyAngle()
+{
+	return bodyAngle = body->GetAngle();
 }
 
 b2Body* PhysicComponent::GetBody()
@@ -67,19 +73,10 @@ void PhysicComponent::SetBodyType(b2BodyType type)
 	bodyDef.type = type;
 }
 
-void PhysicComponent::EarlyUpdate()
-{
-	ownerTransform->SetPosition(GetBodyPosition());
-}
-
-void PhysicComponent::Update()
-{
-	ownerTransform->SetPosition(GetBodyPosition());
-}
-
 void PhysicComponent::LateUpdate()
 {
 	ownerTransform->SetPosition(GetBodyPosition());
+	ownerTransform->SetAngleInRad(GetBodyAngle());
 }
 
 void PhysicComponent::OnDestroy()

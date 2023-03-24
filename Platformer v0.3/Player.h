@@ -1,9 +1,11 @@
 #pragma once
 
-#include "box2d/box2d.h"
+#include <box2d/box2d.h>
+
 #include "GameObject.h"
 #include "Input.h"
 #include "Camera.h"
+#include "PlayerMovement.h"
 
 class Player : public GameObject
 {
@@ -17,6 +19,7 @@ public:
 private:
 	b2Body* body;
 	Camera* camera;
+	PlayerMovement* playerMovement;
 	Window* window;
 };
 

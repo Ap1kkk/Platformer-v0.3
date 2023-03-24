@@ -20,9 +20,9 @@ public:
 	static std::string& GetPath();
 private:
 
-	std::map<std::string, sf::Texture> m_Textures;
-	std::map<std::string, sf::SoundBuffer> m_SoundBuffer;
-	std::map<std::string, sf::Font> m_Fonts;
+	std::map<std::string, sf::Texture> textures;
+	std::map<std::string, sf::SoundBuffer> soundBuffer;
+	std::map<std::string, sf::Font> fonts;
 
 	static std::string path;
 

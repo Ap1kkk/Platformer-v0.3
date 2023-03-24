@@ -29,33 +29,41 @@ public:
 		
 		//----------player--------------
 
+		auto tileSet = sharedContext.tileManager->CreateTileSet("Jungle Tiles.png", sf::Vector2i(32, 32));
 
+		for (int offset = 0; offset < 20 * 32; offset += 32)
+		{
+			sharedContext.tileManager->CreateTile(tileSet, 0, sf::Vector2f(-64 + offset, -20));
+		}
 
 		//----------floor--------------
 
-		floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
-		floor->MakeDrawable(true);
-		floor->SetTexture("floor.png");
+		for (int i = -100; i <= 200; i += 300)
+		{
+			floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
+			floor->MakeDrawable(true);
+			floor->SetTexture("floor.png");
 
-		auto physicComponent2 = floor->MakePhysical();
+			auto physicComponent2 = floor->MakePhysical();
 
-		b2BodyDef bodyDef2;
-		bodyDef2.type = b2_staticBody;
-		bodyDef2.position = b2Vec2(0, 200);
-		physicComponent2->SetBodyDef(bodyDef2);
-		physicComponent2->InitializeBody();
+			b2BodyDef bodyDef2;
+			bodyDef2.type = b2_staticBody;
+			bodyDef2.position = b2Vec2(0, i);
+			physicComponent2->SetBodyDef(bodyDef2);
+			physicComponent2->InitializeBody();
 
-		b2PolygonShape boxShape2;
-		auto floorSpriteHSize = floor->GetSpriteBoxHalfSize();
-		boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
+			b2PolygonShape boxShape2;
+			auto floorSpriteHSize = floor->GetSpriteBoxHalfSize();
+			boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
 
-		b2FixtureDef boxFixtureDef2;
-		boxFixtureDef2.shape = &boxShape2;
-		boxFixtureDef2.density = 0;
+			b2FixtureDef boxFixtureDef2;
+			boxFixtureDef2.shape = &boxShape2;
+			boxFixtureDef2.density = 0;
 
-		physicComponent2->AddFixtureDef(boxFixtureDef2);
+			physicComponent2->AddFixtureDef(boxFixtureDef2);
 
-		ObjectCollection::AddObject(floor);
+			ObjectCollection::AddObject(floor);
+		}
 
 		//----------floor--------------
 

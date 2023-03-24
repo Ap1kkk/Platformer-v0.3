@@ -22,12 +22,15 @@ public:
 	void Draw(Window* window) override;
 
 	void SetTexture(const std::string& filename);
+	void SetTextureRect(const std::string& filename, sf::IntRect intRect);
 
 	/// <summary>
 	/// Set the sprite's world position to draw corectly
 	/// </summary>
 	/// <param name="centerPosition">Vector2f must contain sprite center point</param>
 	void SetWorldPosition(sf::Vector2f& centerPosition);
+
+	void SetRotation(float angleInDeg);
 
 	inline sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
 

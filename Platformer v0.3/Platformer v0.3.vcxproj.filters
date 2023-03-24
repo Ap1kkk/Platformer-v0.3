@@ -69,6 +69,12 @@
     <Filter Include="Исходные файлы\Components">
       <UniqueIdentifier>{9e221fec-fed4-4a57-b871-87729c2ce2f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Engine\Tile">
+      <UniqueIdentifier>{0bb02602-215a-4b85-a9bd-6253c377fd6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Tile">
+      <UniqueIdentifier>{6d80b1f9-c37e-466c-bc70-fcdc244885ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentManager.cpp">
@@ -122,9 +128,6 @@
     <ClCompile Include="PhysicSystem.cpp">
       <Filter>Исходные файлы\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Platformer v0.3.cpp">
-      <Filter>Исходные файлы\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
       <Filter>Исходные файлы\Engine</Filter>
     </ClCompile>
@@ -140,9 +143,6 @@
     <ClCompile Include="Time.cpp">
       <Filter>Исходные файлы\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="DrawableComponent.cpp">
-      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
-    </ClCompile>
     <ClCompile Include="TransformComponent.cpp">
       <Filter>Исходные файлы\Engine\Base Components</Filter>
     </ClCompile>
@@ -151,6 +151,21 @@
     </ClCompile>
     <ClCompile Include="GarbageCollector.cpp">
       <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer v0.3.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TileSet.cpp">
+      <Filter>Исходные файлы\Engine\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Исходные файлы\Engine\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="TileManager.cpp">
+      <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +258,21 @@
     </ClInclude>
     <ClInclude Include="ObjectContext.h">
       <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ITileManager.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileManager.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileSet.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovement.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

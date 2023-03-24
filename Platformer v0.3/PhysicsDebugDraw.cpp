@@ -29,7 +29,7 @@ void PhysicsDebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCoun
     for (int32 i = 0; i < vertexCount; i++)
     {
         b2Vec2 vertex = vertices[i];
-        sf::Vector2f vertexSFML = { vertex.x * RATIO, vertex.y * RATIO };
+        sf::Vector2f vertexSFML = { vertex.x, vertex.y};
         polygon.setPoint(i, vertexSFML);
     }
     polygon.setOutlineThickness(DEBUG_OUTLINE_THICKNESS);

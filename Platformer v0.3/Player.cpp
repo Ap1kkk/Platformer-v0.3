@@ -18,44 +18,28 @@ void Player::Awake()
 	physicComponent->SetBodyDef(bodyDef);
 	physicComponent->InitializeBody();
 
-	b2CircleShape circleShape;
-	circleShape.m_p.Set(0, 0);
-	circleShape.m_radius = 15.f;
-	//b2PolygonShape boxShape;
-	//b2Vec2 size = GetSpriteBoxHalfSize();
-	//boxShape.SetAsBox(size.x, size.y);
+	//b2CircleShape circleShape;
+	//circleShape.m_p.Set(0, 0);
+	//circleShape.m_radius = 15.f;
+	b2PolygonShape boxShape;
+	b2Vec2 size = GetSpriteBoxHalfSize();
+	boxShape.SetAsBox(size.x, size.y);
 
 	b2FixtureDef boxFixtureDef;
-	boxFixtureDef.shape = &circleShape;
+	boxFixtureDef.shape = &boxShape;
 	boxFixtureDef.density = 1;
 
 	physicComponent->AddFixtureDef(boxFixtureDef);
 	body = physicComponent->GetBody();
-
+	//body->SetFixedRotation(true);
 	camera = AddComponent<Camera>();
+	playerMovement = AddComponent<PlayerMovement>();
+	playerMovement->SetBody(body);
+
+
 }
 
 void Player::Update()
 {
-	auto input = Input::GetInputAxes();
-	if (Input::IsKeyPressed(Input::Key::Horizontal))
-	{
-		auto vel = body->GetLinearVelocity();
-		float deltaVel = 5 - abs(vel.x);
-		vel = b2Vec2(input.x * Time::FixedDeltaTime() * deltaVel, 0);
-		body->ApplyLinearImpulseToCenter(vel, true);
-	}
-	if (Input::IsKeyDown(Input::Key::Space))
-	{
-		auto vel = body->GetLinearVelocity();
-		float deltaVel = 20 - abs(vel.x);
-		vel += b2Vec2(0, -deltaVel);
-		body->SetLinearVelocity(vel);
-	}
-	if (Input::IsKeyPressed(Input::Key::E))
-	{
-		auto vel = body->GetLinearVelocity();
-		vel += b2Vec2(0, -20);
-		body->SetLinearVelocity(vel);
-	}
+
 }

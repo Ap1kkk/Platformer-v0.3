@@ -14,17 +14,17 @@ AssetAllocator::AssetAllocator()
 
 sf::Texture& AssetAllocator::GetTexture(std::string const& filename)
 {
-	auto& texMap = sInstance->m_Textures;
+	auto& textureMap = sInstance->textures;
 
-	auto pairFound = texMap.find(filename);
+	auto pairFound = textureMap.find(filename);
 
-	if (pairFound != texMap.end())
+	if (pairFound != textureMap.end())
 	{
 		return pairFound->second;
 	}
 	else
 	{
-		auto& texture = texMap[filename];
+		auto& texture = textureMap[filename];
 		texture.loadFromFile(filename);
 		return texture;
 	}
@@ -32,7 +32,7 @@ sf::Texture& AssetAllocator::GetTexture(std::string const& filename)
 
 sf::Texture* AssetAllocator::GetTexturePtr(std::string const& filename)
 {
-	auto& texMap = sInstance->m_Textures;
+	auto& texMap = sInstance->textures;
 
 	auto pairFound = texMap.find(filename);
 

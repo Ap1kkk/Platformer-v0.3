@@ -4,6 +4,7 @@
 #include "EntityManager.h"
 #include "PhysicSystem.h"
 #include "RenderSystem.h"
+#include "TileManager.h"
 
 struct SharedContext
 {
@@ -13,4 +14,5 @@ struct SharedContext
 	const PhysicSystem* physicSystem;
 	const PhysicsDebugDraw* physicsDebugDraw;
 	const RenderSystem* renderSystem;
+	TileManager* tileManager;
 };

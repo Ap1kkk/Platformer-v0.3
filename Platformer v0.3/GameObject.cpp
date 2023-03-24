@@ -68,6 +68,18 @@ void GameObject::SetTexture(const std::string& filename)
 	}
 }
 
+void GameObject::SetTextureRect(const std::string& filename, sf::IntRect intRect)
+{
+	if (isDrawable)
+	{
+		drawableComponent->SetTextureRect(filename, intRect);
+	}
+	else
+	{
+		Debug::LogWarning("Can't attach texture to not drawable object");
+	}
+}
+
 PhysicComponent* GameObject::MakePhysical()
 {
 	isPhysical = true;
