@@ -36,7 +36,9 @@ void Player::Awake()
 	playerMovement = AddComponent<PlayerMovement>();
 	playerMovement->SetBody(body);
 
-
+	jumpSensor = AddComponent<JumpSensor>();
+	jumpSensor->SetPhysicComponent(physicComponent);
+	jumpSensor->SetOffset(sf::Vector2f(0, 15));
 }
 
 void Player::Update()

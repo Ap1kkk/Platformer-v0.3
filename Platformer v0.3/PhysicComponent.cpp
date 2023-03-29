@@ -39,7 +39,8 @@ void PhysicComponent::SetBodyDef(b2BodyDef newBodyDef)
 	bodyDef = newBodyDef;
 }
 
-void PhysicComponent::AddFixtureDef(b2FixtureDef newFixtureDef)
+//TODO переработать
+b2Fixture* PhysicComponent::AddFixtureDef(b2FixtureDef& newFixtureDef)
 {
 	bool isExists = false;
 	for (auto itr = fixtureDefVector.begin(); itr != fixtureDefVector.end(); ++itr)
@@ -56,6 +57,7 @@ void PhysicComponent::AddFixtureDef(b2FixtureDef newFixtureDef)
 		auto itr = fixtureDefVector.emplace_back(newFixtureDef);
 		auto fixture = body->CreateFixture(&itr);
 		fixturesVector.emplace_back(fixture);
+		return fixture;
 	}
 	else
 	{

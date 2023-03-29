@@ -46,14 +46,44 @@ public:
 
 	void SetBodyDef(b2BodyDef newBodyDef);
 
-	//TODO доработать
-	void AddFixtureDef(b2FixtureDef newFixtureDef);
+	//TODO переработать
+	b2Fixture* AddFixtureDef(b2FixtureDef& newFixtureDef);
 
 	/// <summary>
 	/// Make the box2d system destroy a body fixture
 	/// </summary>
 	/// <param name="exitingFixture"></param>
 	void DeleteFixtureDef(b2Fixture* exitingFixture);
+
+	b2Body* AddSensor(SensorId sensorId, b2BodyDef* sensorBodyDef)
+	{
+		auto itr = sensors.find(sensorId);
+		if (itr == sensors.end())
+		{
+			auto sensorBody = PhysicSystem::CreateBody(sensorBodyDef, ownerId);
+			sensors.emplace(sensorId, sensorBody);
+			return sensorBody;
+
+		}
+		else
+		{
+			Debug::LogWarning("Sensor with id: " + std::to_string(sensorId) + " already attached", typeid(*this).name());
+		}
+	}
+	void RemoveSensor(SensorId sensorId)
+	{
+		auto itr = sensors.find(sensorId);
+		if (itr != sensors.end())
+		{
+			PhysicSystem::DestroyBody(itr->second);
+			sensors.erase(itr);
+		}
+		else
+		{
+			Debug::LogWarning("Can't remove sensor with id: " + std::to_string(sensorId) + "\nSensor not found", typeid(*this).name());
+		}
+	}
+
 
 	//TODO доработать и узнать про динамическое изменение типа тела
 	void SetBodyType(b2BodyType type);
@@ -66,5 +96,7 @@ private:
 	sf::Vector2f bodyPosition;
 	float bodyAngle;
 	TransformComponent* ownerTransform;
+
+	std::unordered_map<SensorId, b2Body*> sensors;
 };
 

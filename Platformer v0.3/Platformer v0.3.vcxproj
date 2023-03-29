@@ -153,6 +153,8 @@
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="ISensor.cpp" />
+    <ClCompile Include="JumpSensor.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
     <ClCompile Include="PhysicsDebugDraw.cpp" />
@@ -187,7 +189,9 @@
     <ClInclude Include="IEntity.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="ISensor.h" />
     <ClInclude Include="ITileManager.h" />
+    <ClInclude Include="JumpSensor.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="PhysicComponent.h" />

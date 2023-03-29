@@ -167,6 +167,12 @@
     <ClCompile Include="TileManager.cpp">
       <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
+    <ClCompile Include="JumpSensor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ISensor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -272,6 +278,12 @@
       <Filter>Файлы заголовков\Engine\Tile</Filter>
     </ClInclude>
     <ClInclude Include="PlayerMovement.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpSensor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ISensor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
