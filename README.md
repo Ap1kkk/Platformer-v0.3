@@ -1,4 +1,3 @@
 # Platformer-v0.3
 
-ah shit
-here we go again
+ah shit\nhere we go again
