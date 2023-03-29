@@ -18,7 +18,7 @@ void Player::Awake()
 	physicComponent->SetBodyDef(bodyDef);
 	physicComponent->InitializeBody();
 
-	//b2CircleShape circleShape;
+	//b2CircleShape circleShape;  
 	//circleShape.m_p.Set(0, 0);
 	//circleShape.m_radius = 15.f;
 	b2PolygonShape boxShape;
@@ -28,14 +28,15 @@ void Player::Awake()
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;
 	boxFixtureDef.density = 1;
+ 
 
-	physicComponent->AddFixtureDef(boxFixtureDef);
+	physicComponent->AddFixture(boxFixtureDef);
 	body = physicComponent->GetBody();
 	//body->SetFixedRotation(true);
 	camera = AddComponent<Camera>();
 	playerMovement = AddComponent<PlayerMovement>();
 	playerMovement->SetBody(body);
-
+	 
 	jumpSensor = AddComponent<JumpSensor>();
 	jumpSensor->SetPhysicComponent(physicComponent);
 	jumpSensor->SetOffset(sf::Vector2f(0, 15));

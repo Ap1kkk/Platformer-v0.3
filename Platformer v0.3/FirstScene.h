@@ -31,10 +31,10 @@ public:
 
 		auto tileSet = sharedContext.tileManager->CreateTileSet("Jungle Tiles.png", sf::Vector2i(32, 32));
 
-		for (int offset = 0; offset < 20 * 32; offset += 32)
-		{
-			sharedContext.tileManager->CreateTile(tileSet, 0, sf::Vector2f(-64 + offset, -20));
-		}
+		//for (int offset = 0; offset < 20 * 32; offset += 32)
+		//{
+		//	sharedContext.tileManager->CreateTile(tileSet, 0, sf::Vector2f(-64 + offset, -20));
+		//}
 
 		//----------floor--------------
 
@@ -60,7 +60,7 @@ public:
 			boxFixtureDef2.shape = &boxShape2;
 			boxFixtureDef2.density = 0;
 
-			physicComponent2->AddFixtureDef(boxFixtureDef2);
+			physicComponent2->AddFixture(boxFixtureDef2);
 
 			ObjectCollection::AddObject(floor);
 		}

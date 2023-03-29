@@ -149,12 +149,14 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GarbageCollector.cpp" />
+    <ClCompile Include="IBody.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="ISensor.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
+    <ClCompile Include="JumpSensorListener.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
     <ClCompile Include="PhysicsDebugDraw.cpp" />
@@ -192,6 +194,7 @@
     <ClInclude Include="ISensor.h" />
     <ClInclude Include="ITileManager.h" />
     <ClInclude Include="JumpSensor.h" />
+    <ClInclude Include="JumpSensorListener.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="PhysicComponent.h" />

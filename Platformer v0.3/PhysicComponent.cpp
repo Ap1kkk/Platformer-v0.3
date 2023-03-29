@@ -1,5 +1,7 @@
 #include "PhysicComponent.h"
 
+FixtureId PhysicComponent::staticFixtureIdCounter = 0;
+
 PhysicComponent::PhysicComponent()
 {
 	bodyDef.position.Set(0.f, 0.f);
@@ -39,35 +41,30 @@ void PhysicComponent::SetBodyDef(b2BodyDef newBodyDef)
 	bodyDef = newBodyDef;
 }
 
-//TODO переработать
-b2Fixture* PhysicComponent::AddFixtureDef(b2FixtureDef& newFixtureDef)
+//TODO на доработке
+Fixture* PhysicComponent::AddFixture(const b2FixtureDef& newFixtureDef)
 {
-	bool isExists = false;
-	for (auto itr = fixtureDefVector.begin(); itr != fixtureDefVector.end(); ++itr)
-	{
-		if (newFixtureDef == *itr)
-		{
-			isExists = true;
-			break;
-		}
-	}
+	auto fixture = new Fixture(body->CreateFixture(&newFixtureDef));
+	auto newFixtureId = fixture->GetFixtureId();
+	fixtures.emplace(std::make_pair(newFixtureId, fixture));
 
-	if (!isExists)
+	Debug::LogInfo("Added fixture with id: " + std::to_string(newFixtureId), typeid(*this).name());
+
+	return fixture;
+}
+
+void PhysicComponent::DeleteFixture(FixtureId fixtureId)
+{
+	auto itr = fixtures.find(fixtureId);
+	if (itr != fixtures.end())
 	{
-		auto itr = fixtureDefVector.emplace_back(newFixtureDef);
-		auto fixture = body->CreateFixture(&itr);
-		fixturesVector.emplace_back(fixture);
-		return fixture;
+		body->DestroyFixture(itr->second);
+		Debug::LogWarning("Deleted fixture with id: " + std::to_string(fixtureId), typeid(*this).name());
 	}
 	else
 	{
-		Debug::LogWarning("The same fixture already exists!", typeid(*this).name());
+		Debug::LogWarning("Can't delete fixture\nFixture with id: " + std::to_string(fixtureId) + " not found", typeid(*this).name());
 	}
-}
-
-void PhysicComponent::DeleteFixtureDef(b2Fixture* exitingFixture)
-{
-	body->DestroyFixture(exitingFixture);
 }
 
 void PhysicComponent::SetBodyType(b2BodyType type)

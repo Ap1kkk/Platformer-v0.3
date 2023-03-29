@@ -11,6 +11,7 @@ typedef unsigned int SceneId;
 typedef unsigned int TileId;
 typedef unsigned int TileSetId;
 typedef unsigned int SensorId;
+typedef unsigned int FixtureId;
 
 typedef std::string ComponentType;
 typedef std::string Filename;

@@ -47,35 +47,31 @@ public:
 	void SetBodyDef(b2BodyDef newBodyDef);
 
 	//TODO переработать
-	b2Fixture* AddFixtureDef(b2FixtureDef& newFixtureDef);
+	Fixture* AddFixture(const b2FixtureDef& newFixtureDef);
 
 	/// <summary>
 	/// Make the box2d system destroy a body fixture
 	/// </summary>
 	/// <param name="exitingFixture"></param>
-	void DeleteFixtureDef(b2Fixture* exitingFixture);
+	void DeleteFixture(FixtureId fixtureId);
 
-	b2Body* AddSensor(SensorId sensorId, b2BodyDef* sensorBodyDef)
+	Sensor* AddSensor(const b2FixtureDef& newFixtureDef)
 	{
-		auto itr = sensors.find(sensorId);
-		if (itr == sensors.end())
-		{
-			auto sensorBody = PhysicSystem::CreateBody(sensorBodyDef, ownerId);
-			sensors.emplace(sensorId, sensorBody);
-			return sensorBody;
+		auto sensor = new Sensor(body->CreateFixture(&newFixtureDef));
+		auto newSensorId = sensor->GetSensorId();
+		sensors.emplace(std::make_pair(newSensorId, sensor));
 
-		}
-		else
-		{
-			Debug::LogWarning("Sensor with id: " + std::to_string(sensorId) + " already attached", typeid(*this).name());
-		}
+		Debug::LogInfo("Added fixture with id: " + std::to_string(newSensorId), typeid(*this).name());
+
+		return sensor;
 	}
+
 	void RemoveSensor(SensorId sensorId)
 	{
 		auto itr = sensors.find(sensorId);
 		if (itr != sensors.end())
 		{
-			PhysicSystem::DestroyBody(itr->second);
+			body->DestroyFixture(itr->second);
 			sensors.erase(itr);
 		}
 		else
@@ -97,6 +93,8 @@ private:
 	float bodyAngle;
 	TransformComponent* ownerTransform;
 
-	std::unordered_map<SensorId, b2Body*> sensors;
+	std::unordered_map<SensorId, Sensor*> sensors;
+
+	static FixtureId staticFixtureIdCounter;
 };
 
