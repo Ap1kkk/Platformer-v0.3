@@ -1,9 +1,13 @@
 #pragma once
 
+#include <string>
+
 #include "IComponent.h"
+#include "ISensor.h"
 
 #include "PhysicComponent.h"
-#include "ISensor.h"
+
+#include "GameObject.h"
 
 
 
@@ -18,21 +22,66 @@ public:
 		{
 			if (contact && contact->IsTouching())
 			{
-				auto firstPtr = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-				//JumpSensor* A = reinterpret_cast<JumpSensor*>(firstPtr);
+				auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
+				auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
-				auto secondPtr = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
-				//JumpSensor* B = reinterpret_cast<JumpSensor*>(secondPtr);
+				if (fixtureA->IsSensor() || fixtureB->IsSensor())
+				{
+					auto entity1 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureA->GetBody()));
+					auto entity2 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureB->GetBody()));
 
-				JumpSensor* other = reinterpret_cast<JumpSensor*>(firstPtr);
+					if (entity1 != nullptr && entity2 != nullptr)
+					{
+						JumpSensor* sensor = entity1->GetComponent<JumpSensor>();
+						JumpSensor* other = entity2->GetComponent<JumpSensor>();
 
-				//Debug::LogInfo("1");
+						if (sensor != nullptr)
+						{
+							sensor->EnableToJump();
+							Debug::Log("enabled " + std::to_string(sensor->IsEnabledToJump()));
+						}
+						else if (other != nullptr)
+						{
+							other->EnableToJump();
+							Debug::Log("enabled " + std::to_string(other->IsEnabledToJump()));
+						}
+					}
+				}
 			}
 		}
 
 		void EndContact(b2Contact* contact) override
 		{
+			if (contact)
+			{
+				auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
+				auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
+				if (fixtureA->IsSensor() || fixtureB->IsSensor())
+				{
+					auto entity1 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureA->GetBody()));
+					auto entity2 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureB->GetBody()));
+
+					if (entity1 != nullptr && entity2 != nullptr)
+					{
+						JumpSensor* sensor = entity1->GetComponent<JumpSensor>();
+						JumpSensor* other = entity2->GetComponent<JumpSensor>();
+
+						if (sensor != nullptr)
+						{
+							sensor->DisableToJump();
+							Debug::Log("disabled " + std::to_string(sensor->IsEnabledToJump()));
+
+						}
+						else if (other != nullptr)
+						{
+							other->DisableToJump();
+							Debug::Log("disabled " + std::to_string(other->IsEnabledToJump()));
+
+						}
+					}
+				}
+			}
 		}
 	};
 
@@ -56,30 +105,24 @@ public:
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
 		//TODO добавить маску слоев коллизий
-		boxFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 		
 		sensor = physicComponent->AddSensor(boxFixtureDef);
 		auto listener = new JumpSensorListener;
 
 		PhysicSystem::SetContactListener<JumpSensorListener>(listener);
-		//auto userData = reinterpret_cast<JumpSensor*>(fixture->GetUserData().pointer);
-		
 	}
 
-	void Something()
-	{
-		Debug::Log("Something");
-	}
-
-	void Update() override
-	{
-		
-	}
+	bool IsEnabledToJump() const { return isEnabledToJump; }
 
 private:
+	void EnableToJump() { isEnabledToJump = true; }
+	void DisableToJump() { isEnabledToJump = false; }
+
 	b2Body* body;
 	b2Vec2 ownerBodyOffset;
 	Sensor* sensor;
 	PhysicComponent* physicComponent;
+
+	bool isEnabledToJump;
 };
 

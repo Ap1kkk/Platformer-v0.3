@@ -19,7 +19,8 @@ public:
 		Esc = 8,
 		LBracket = 9,
 		RBracket = 10,
-		E = 11
+		E = 11,
+		LShift = 12,
 	};
 
 	static void Update();

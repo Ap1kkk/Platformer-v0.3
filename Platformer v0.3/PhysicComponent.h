@@ -47,7 +47,7 @@ public:
 	void SetBodyDef(b2BodyDef newBodyDef);
 
 	//TODO переработать
-	Fixture* AddFixture(const b2FixtureDef& newFixtureDef);
+	Fixture* AddFixture(b2FixtureDef& newFixtureDef);
 
 	/// <summary>
 	/// Make the box2d system destroy a body fixture

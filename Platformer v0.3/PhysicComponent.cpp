@@ -42,10 +42,11 @@ void PhysicComponent::SetBodyDef(b2BodyDef newBodyDef)
 }
 
 //TODO на доработке
-Fixture* PhysicComponent::AddFixture(const b2FixtureDef& newFixtureDef)
+Fixture* PhysicComponent::AddFixture(b2FixtureDef& newFixtureDef)
 {
 	auto fixture = new Fixture(body->CreateFixture(&newFixtureDef));
 	auto newFixtureId = fixture->GetFixtureId();
+
 	fixtures.emplace(std::make_pair(newFixtureId, fixture));
 
 	Debug::LogInfo("Added fixture with id: " + std::to_string(newFixtureId), typeid(*this).name());

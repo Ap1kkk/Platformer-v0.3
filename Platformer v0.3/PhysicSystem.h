@@ -26,6 +26,18 @@ public:
 
 	static void DestroyBody(b2Body* body);
 
+	static EntityId GetBodyOwnerId(b2Body* body)
+	{
+		for (auto itr = bodies.begin(); itr != bodies.end(); ++itr)
+		{
+			if (body == itr->second)
+			{
+				return itr->first;
+			}
+		}
+		Debug::LogWarning("Body owner Id not found");
+	}
+
 	//TODO надо протестить
 	template<class C>
 	static void SetContactListener(C* instancePtr)

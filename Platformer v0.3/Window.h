@@ -4,8 +4,6 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "AssetAllocator.h"
-
 class Window
 {
 public:

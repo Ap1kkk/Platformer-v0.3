@@ -9,10 +9,13 @@
 class Fixture : public b2Fixture
 {
 public:
-	Fixture(b2Fixture* owningFixture) : owningFixture(owningFixture), fixtureId(staticIdCounter++) {}
+	Fixture(b2Fixture* owningFixture) : owningFixture(owningFixture), fixtureId(staticIdCounter++) 
+	{}
 
 	FixtureId GetFixtureId() const { return fixtureId; }
 	b2Fixture* GetOwningFixture() const { return owningFixture; }
+
+	//static FixtureId GetStaticIdCounter() { return staticIdCounter; }
 
 private:
 	b2Fixture* owningFixture;

@@ -36,6 +36,7 @@ void Input::Update()
 
     thisFrameKeys.SetBit((int)Key::E, sf::Keyboard::isKeyPressed(sf::Keyboard::E));
     thisFrameKeys.SetBit((int)Key::Space, sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
+    thisFrameKeys.SetBit((int)Key::LShift, sf::Keyboard::isKeyPressed(sf::Keyboard::LShift));
 }
 
 sf::Vector2f Input::GetInputAxes()

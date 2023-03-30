@@ -17,6 +17,7 @@ public:
 	DrawableComponent();
 	~DrawableComponent() {}
 
+	//TODO переделать в Awake
 	void Initialize(TransformComponent* transform);
 
 	void Draw(Window* window) override;

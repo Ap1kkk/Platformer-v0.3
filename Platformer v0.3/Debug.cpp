@@ -69,6 +69,11 @@ void Debug::Log(const sf::Vector2f vector)
 	std::cout << "LOG: (" << vector.x << " ; " << vector.y << ")\n";
 }
 
+void Debug::Log(const b2Vec2 vector)
+{
+	std::cout << "LOG: (" << vector.x << " ; " << vector.y << ")\n";
+}
+
 void Debug::LogInfo(const std::string& msg)
 {
 	SetConsoleTextAttribute(handle, (int)ConsoleColor::CYAN);

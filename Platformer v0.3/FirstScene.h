@@ -13,6 +13,7 @@ public:
 	FirstScene(SharedContext context) : IScene(context) {}
 	~FirstScene() {}
 
+	//TODO поменять на awake
 	void Initialize() override 
 	{
 		Debug::Log("Start initializing...", typeid(*this).name());
@@ -30,11 +31,11 @@ public:
 		//----------player--------------
 
 		auto tileSet = sharedContext.tileManager->CreateTileSet("Jungle Tiles.png", sf::Vector2i(32, 32));
-
-		//for (int offset = 0; offset < 20 * 32; offset += 32)
-		//{
-		//	sharedContext.tileManager->CreateTile(tileSet, 0, sf::Vector2f(-64 + offset, -20));
-		//}
+		
+		for (int offset = 0; offset < 20 * 32; offset += 32)
+		{
+			sharedContext.tileManager->CreateTile(tileSet, offset % 20, sf::Vector2f(-64 + offset, -20));
+		}
 
 		//----------floor--------------
 

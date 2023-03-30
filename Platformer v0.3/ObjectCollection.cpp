@@ -110,6 +110,7 @@ void ObjectCollection::LateUpdate()
 
 void ObjectCollection::HasNotAwokenComponents(EntityId entityId)
 {
+	//TODO доработать
 	{
 		hasNotAwokenComponents = true;
 		auto itr = objects.find(entityId);

@@ -34,12 +34,15 @@ void Player::Awake()
 	body = physicComponent->GetBody();
 	//body->SetFixedRotation(true);
 	camera = AddComponent<Camera>();
-	playerMovement = AddComponent<PlayerMovement>();
-	playerMovement->SetBody(body);
 	 
 	jumpSensor = AddComponent<JumpSensor>();
 	jumpSensor->SetPhysicComponent(physicComponent);
 	jumpSensor->SetOffset(sf::Vector2f(0, 15));
+
+	playerMovement = AddComponent<PlayerMovement>();
+	playerMovement->SetBody(body);
+	playerMovement->SetJumpSensor(jumpSensor);
+
 }
 
 void Player::Update()

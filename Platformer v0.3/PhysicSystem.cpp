@@ -39,5 +39,7 @@ b2Body* PhysicSystem::CreateBody(b2BodyDef* bodyDef, EntityId ownerId)
 
 void PhysicSystem::DestroyBody(b2Body* body)
 {
+	auto id = GetBodyOwnerId(body);
+	bodies.erase(id);
 	world->DestroyBody(body);
 }

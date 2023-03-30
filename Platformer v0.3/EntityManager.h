@@ -59,6 +59,21 @@ public:
 		}
 	}
 
+	template<class C>
+	static C* GetComponentByEntityId(EntityId id)
+	{
+		auto itr = entities.find(id);
+		if (itr != entities.end())
+		{			
+			return static_cast<C*>((*itr).second);
+		}
+		else
+		{
+			Debug::LogWarning("Entity with id: " + std::to_string(id) + " not found");
+			return nullptr;
+		}
+	}
+
 private:
 	static std::unordered_map<EntityId, IEntity*> entities;
 };
