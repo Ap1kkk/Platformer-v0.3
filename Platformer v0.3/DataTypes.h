@@ -7,6 +7,7 @@
 typedef unsigned int EntityId;
 typedef unsigned int ComponentId;
 typedef unsigned int ComponentLayer;
+typedef unsigned int DrawLayer;
 typedef unsigned int SceneId;
 typedef unsigned int TileId;
 typedef unsigned int TileSetId;

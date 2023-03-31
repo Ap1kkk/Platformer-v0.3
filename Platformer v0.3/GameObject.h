@@ -27,7 +27,7 @@ public:
 	/// </summary>
 	/// <param name="isEnabledToDraw"></param>
 	/// <returns>Ponter to added DrawableComponent</returns>
-	DrawableComponent* MakeDrawable(bool isEnabledToDraw);
+	DrawableComponent* MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer);
 
 	void EnableToDraw();
 	void DisableToDraw();

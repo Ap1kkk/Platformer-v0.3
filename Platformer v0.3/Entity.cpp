@@ -27,8 +27,8 @@ void Entity::RecalculateComponentsOrder()
 	std::sort(componentsOrder.begin(), componentsOrder.end(),
 		[](IComponent* a, IComponent* b)
 		{
-			ComponentLayer aLayer = a->GetLayer();
-			ComponentLayer bLayer = b->GetLayer();
+			ComponentLayer aLayer = a->GetComponentLayer();
+			ComponentLayer bLayer = b->GetComponentLayer();
 			return aLayer < bLayer;
 		});
 }

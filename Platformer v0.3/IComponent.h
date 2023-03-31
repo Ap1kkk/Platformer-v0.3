@@ -37,11 +37,11 @@ public:
 
 	inline const ComponentId GetComponentId() const { return componentId; }
 
-	inline void SetOwner(EntityId id) {	ownerId = id; }
-	inline EntityId GetOwner() const { return ownerId; }
+	inline void SetOwnerId(EntityId id) {	ownerId = id; }
+	inline EntityId GetOwnerId() const { return ownerId; }
 
-	inline void SetLayer(ComponentLayer layer) { componentLayer = layer; }
-	inline ComponentLayer GetLayer() const { return componentLayer; }
+	inline void SetComponentLayer(ComponentLayer layer) { componentLayer = layer; }
+	inline ComponentLayer GetComponentLayer() const { return componentLayer; }
 
 	inline void SetObjectContext(ObjectContext context) { objectContext = context; }
 

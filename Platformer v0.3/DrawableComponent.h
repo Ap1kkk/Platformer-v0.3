@@ -35,10 +35,14 @@ public:
 
 	inline sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
 
+	inline void SetDrawLayer(DrawLayer layer) { drawLayer = layer; }
+	inline DrawLayer GetDrawLayer() const { return drawLayer; }
 	
 private:
 	sf::Sprite sprite;
 	std::string textureFilename;
 
 	TransformComponent* ownerTransform;
+
+	DrawLayer drawLayer;
 };

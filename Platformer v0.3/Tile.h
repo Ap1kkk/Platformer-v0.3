@@ -19,6 +19,8 @@ struct TileData
 	sf::Vector2i size;
 	Filename textureFilename;
 
+	DrawLayer drawLayer;
+
 	bool isEnabled = true;
 	//TODO добавить слой отрисовки
 };

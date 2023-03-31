@@ -7,7 +7,7 @@ Player::Player()
 
 void Player::Awake()
 {
-	MakeDrawable(true);
+	MakeDrawable(true, drawLayer);
 	SetTexture("ship.png");
 
 	MakePhysical();

@@ -15,7 +15,11 @@ using TilesDataMap = std::map<TileId, TileData>;
 class TileSet
 {
 public:
-	TileSet(Filename textureName, sf::Vector2i tileSize) : tileSetFilename(textureName), tileSize(tileSize), tileSetId(staticTileSetId++)
+	TileSet(Filename textureName, sf::Vector2i tileSize, DrawLayer tilesDrawLayer) :
+																						tileSetFilename(textureName),
+																						tileSize(tileSize),
+																						tileSetId(staticTileSetId++),
+																						tilesDrawLayer(tilesDrawLayer)
 	{
 		ReadTileSet();
 	}
@@ -35,6 +39,7 @@ public:
 				tileData.textureFilename = tileSetFilename;
 				tileData.leftTopCornerPosition = sf::Vector2i(width, height);
 				tileData.centerPosition = sf::Vector2f(0, 0);
+				tileData.drawLayer = tilesDrawLayer;
 
 				tilesData.emplace(tileData.id, tileData);
 			}
@@ -71,6 +76,7 @@ private:
 	TilesDataMap tilesData;
 
 	TileSetId tileSetId;
+	DrawLayer tilesDrawLayer;
 
 	static TileId staticTileId;
 	static TileSetId staticTileSetId;

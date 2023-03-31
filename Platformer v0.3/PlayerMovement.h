@@ -12,13 +12,14 @@ class PlayerMovement : public IComponent
 public:
 	PlayerMovement() 
 	{ 
-		SetLayer(3); 
+		SetComponentLayer(3); 
 		velocity = normalVelocity;
 	}
 
 	void SetBody(b2Body* body)
 	{
 		this->body = body;
+		body->SetFixedRotation(isFixedRotation);
 	}
 	
 	void SetJumpSensor(JumpSensor* jumpSensor)
@@ -29,6 +30,8 @@ public:
 	void Update() override
 	{
 		auto input = Input::GetInputAxes();
+
+		//Horizontal movement
 		if (Input::IsKeyPressed(Input::Key::Horizontal))
 		{
 			auto vel = body->GetLinearVelocity();
@@ -36,6 +39,8 @@ public:
 			vel = b2Vec2(input.x * Time::FixedDeltaTime() * deltaVel, vel.y);
 			body->SetLinearVelocity(vel);
 		}
+
+		//Sprint
 		if (Input::IsKeyDown(Input::Key::LShift))
 		{
 			velocity = sprintVelocity;
@@ -44,13 +49,32 @@ public:
 		{
 			velocity = normalVelocity;
 		}
+
+
+		// Jump
 		if (Input::IsKeyDown(Input::Key::Space) && jumpSensor->IsEnabledToJump())
 		{
+			body->SetGravityScale(preJumpGravityScale);
+
 			auto vel = body->GetLinearVelocity();
 			float deltaVel = jumpSpeed - abs(vel.y);
 			vel += b2Vec2(0, -deltaVel);
 			body->SetLinearVelocity(vel);
-			Debug::Log(body->GetLinearVelocity());
+		}
+		if (Input::IsKeyPressed(Input::Key::Space) )
+		{
+			jumpTime += Time::DeltaTime();
+
+			if (jumpTime > jumpMaxTime)
+			{
+				body->SetGravityScale(normalGravityScale);
+			}
+		}
+		if (Input::IsKeyUp(Input::Key::Space) )
+		{
+
+			body->SetGravityScale(normalGravityScale);
+			jumpTime = 0.f;
 		}
 	}
 
@@ -59,8 +83,16 @@ private:
 	JumpSensor* jumpSensor;
 
 	float velocity;
-	float sprintVelocity = 150.f;
-	float normalVelocity = 50.f;
+	float sprintVelocity = 550.f;
+	float normalVelocity = 300.f;
 
-	float jumpSpeed = 100.f;
+	float jumpTime = 0.f;
+	float jumpMaxTime = 0.5f;
+
+	float preJumpGravityScale = 0.1f;
+	float normalGravityScale = 0.6f;
+
+	float jumpSpeed = 20.f;
+
+	bool isFixedRotation = true;
 };

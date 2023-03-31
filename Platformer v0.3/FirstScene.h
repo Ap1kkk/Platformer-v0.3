@@ -30,7 +30,7 @@ public:
 		
 		//----------player--------------
 
-		auto tileSet = sharedContext.tileManager->CreateTileSet("Jungle Tiles.png", sf::Vector2i(32, 32));
+		auto tileSet = sharedContext.tileManager->CreateTileSet("Jungle Tiles.png", sf::Vector2i(32, 32), 50);
 		
 		for (int offset = 0; offset < 20 * 32; offset += 32)
 		{
@@ -42,7 +42,7 @@ public:
 		for (int i = -100; i <= 200; i += 300)
 		{
 			floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
-			floor->MakeDrawable(true);
+			floor->MakeDrawable(true, floorDrawLayer);
 			floor->SetTexture("floor.png");
 
 			auto physicComponent2 = floor->MakePhysical();
@@ -108,5 +108,7 @@ private:
 	GameObject* ship;
 	GameObject* floor;
 	Player* player;
+
+	DrawLayer floorDrawLayer = 100;
 };
 

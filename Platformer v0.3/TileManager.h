@@ -20,12 +20,12 @@ class TileManager : public ITileManager
 public:
 	TileManager() {}
 
-	static TileSet* CreateTileSet(Filename textureName, sf::Vector2i tileSize)
+	static TileSet* CreateTileSet(Filename textureName, sf::Vector2i tileSize, DrawLayer tilesDrawLayer)
 	{
 		auto itr = tileSetTable.find(textureName);
 		if (itr == tileSetTable.end())
 		{
-			TileSet* tileSet = new TileSet(textureName, tileSize);
+			TileSet* tileSet = new TileSet(textureName, tileSize, tilesDrawLayer);
 			auto tileSetId = tileSet->GetTileSetId();
 			tileSetTable.emplace(std::make_pair(textureName, tileSetId));
 			tileSets.emplace(std::make_pair(tileSetId, tileSet));

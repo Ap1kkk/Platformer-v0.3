@@ -2,7 +2,7 @@
 
 TransformComponent::TransformComponent()
 {
-	SetLayer(1);
+	SetComponentLayer(1);
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 

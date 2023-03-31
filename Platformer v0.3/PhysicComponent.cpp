@@ -5,7 +5,7 @@ FixtureId PhysicComponent::staticFixtureIdCounter = 0;
 PhysicComponent::PhysicComponent()
 {
 	bodyDef.position.Set(0.f, 0.f);
-	SetLayer(0);
+	SetComponentLayer(0);
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 

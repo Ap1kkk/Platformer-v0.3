@@ -6,12 +6,13 @@ GameObject::GameObject() : isDrawable(false), isEnabledToDraw(false), isPhysical
 	transform->SetPosition(0.f, 0.f);
 }
 
-DrawableComponent* GameObject::MakeDrawable(bool isEnabledToDraw)
+DrawableComponent* GameObject::MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer)
 {
 	isDrawable = true;
 	this->isEnabledToDraw = isEnabledToDraw;
 	drawableComponent = AddComponent<DrawableComponent>();
 	drawableComponent->Initialize(transform);
+	drawableComponent->SetDrawLayer(drawLayer);
 	RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
 	return drawableComponent;
 }

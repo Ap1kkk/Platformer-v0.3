@@ -75,6 +75,12 @@
     <Filter Include="Исходные файлы\Engine\Tile">
       <UniqueIdentifier>{6d80b1f9-c37e-466c-bc70-fcdc244885ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Components\Jump">
+      <UniqueIdentifier>{091c5e7a-9667-4a3d-8a0b-cfe64589b8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Components\Jump">
+      <UniqueIdentifier>{0a73bf2f-9cd1-416b-8f51-8d339c3d4668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentManager.cpp">
@@ -167,17 +173,17 @@
     <ClCompile Include="TileManager.cpp">
       <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="JumpSensor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ISensor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="IBody.cpp">
       <Filter>Исходные файлы\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="ISensor.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpSensor.cpp">
+      <Filter>Исходные файлы\Components\Jump</Filter>
+    </ClCompile>
     <ClCompile Include="JumpSensorListener.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Components\Jump</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -283,17 +289,17 @@
     <ClInclude Include="TileSet.h">
       <Filter>Файлы заголовков\Engine\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMovement.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="JumpSensor.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ISensor.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Components\Jump</Filter>
     </ClInclude>
     <ClInclude Include="JumpSensorListener.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Components\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="ISensor.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovement.h">
+      <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

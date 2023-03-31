@@ -2,7 +2,7 @@
 
 DrawableComponent::DrawableComponent() : textureFilename("viking.png")
 {
-	SetLayer(100);
+	SetComponentLayer(100);
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 

@@ -23,5 +23,7 @@ private:
 	PlayerMovement* playerMovement;
 	JumpSensor* jumpSensor;
 	Window* window;
+
+	DrawLayer drawLayer = 100;
 };
 

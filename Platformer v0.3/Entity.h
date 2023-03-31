@@ -35,7 +35,7 @@ public:
 		if (itr == components.end())
 		{
 			auto component = ComponentManager::CreateComponent<C>();
-			component->SetOwner(entityId);
+			component->SetOwnerId(entityId);
 			component->SetObjectContext(objectContext);
 			components.insert(std::make_pair(compType, static_cast<IComponent*>(component)));
 			componentsOrder.emplace_back(component);
