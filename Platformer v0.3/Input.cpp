@@ -12,16 +12,16 @@ void Input::Update()
     inputAxes.y = vertical;
 
     thisFrameKeys.SetBit((int)Key::Left,
-        (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) || (sf::Keyboard::isKeyPressed(sf::Keyboard::A)));
+        (Keyboard::isKeyPressed(Keyboard::Left)) || (Keyboard::isKeyPressed(Keyboard::A)));
 
     thisFrameKeys.SetBit((int)Key::Right,
-        (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) || (sf::Keyboard::isKeyPressed(sf::Keyboard::D)));
+        (Keyboard::isKeyPressed(Keyboard::Right)) || (Keyboard::isKeyPressed(Keyboard::D)));
 
     thisFrameKeys.SetBit((int)Key::Up,
-        (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) || (sf::Keyboard::isKeyPressed(sf::Keyboard::W)));
+        (Keyboard::isKeyPressed(Keyboard::Up)) || (Keyboard::isKeyPressed(Keyboard::W)));
 
     thisFrameKeys.SetBit((int)Key::Down,
-        (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) || (sf::Keyboard::isKeyPressed(sf::Keyboard::S)));
+        (Keyboard::isKeyPressed(Keyboard::Down)) || (Keyboard::isKeyPressed(Keyboard::S)));
 
     thisFrameKeys.SetBit((int)Key::Horizontal,
         (thisFrameKeys.GetBit((int)Key::Left) || thisFrameKeys.GetBit((int)Key::Right)));
@@ -29,14 +29,42 @@ void Input::Update()
     thisFrameKeys.SetBit((int)Key::Vertical,
         (thisFrameKeys.GetBit((int)Key::Up) || thisFrameKeys.GetBit((int)Key::Down)));
 
-    thisFrameKeys.SetBit((int)Key::Esc, sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));
+    thisFrameKeys.SetBit((int)Key::Esc, Keyboard::isKeyPressed(Keyboard::Escape));
 
-    thisFrameKeys.SetBit((int)Key::LBracket, sf::Keyboard::isKeyPressed(sf::Keyboard::LBracket));
-    thisFrameKeys.SetBit((int)Key::RBracket, sf::Keyboard::isKeyPressed(sf::Keyboard::RBracket));
+    thisFrameKeys.SetBit((int)Key::LBracket, Keyboard::isKeyPressed(Keyboard::LBracket));
+    thisFrameKeys.SetBit((int)Key::RBracket, Keyboard::isKeyPressed(Keyboard::RBracket));
 
-    thisFrameKeys.SetBit((int)Key::E, sf::Keyboard::isKeyPressed(sf::Keyboard::E));
-    thisFrameKeys.SetBit((int)Key::Space, sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
-    thisFrameKeys.SetBit((int)Key::LShift, sf::Keyboard::isKeyPressed(sf::Keyboard::LShift));
+    thisFrameKeys.SetBit((int)Key::Space, Keyboard::isKeyPressed(Keyboard::Space));
+    thisFrameKeys.SetBit((int)Key::LShift, Keyboard::isKeyPressed(Keyboard::LShift));
+    thisFrameKeys.SetBit((int)Key::RShift, Keyboard::isKeyPressed(Keyboard::RShift));
+
+    thisFrameKeys.SetBit((int)Key::Q, Keyboard::isKeyPressed(Keyboard::Q));
+    thisFrameKeys.SetBit((int)Key::W, Keyboard::isKeyPressed(Keyboard::W));
+    thisFrameKeys.SetBit((int)Key::E, Keyboard::isKeyPressed(Keyboard::E));
+    thisFrameKeys.SetBit((int)Key::R, Keyboard::isKeyPressed(Keyboard::R));
+    thisFrameKeys.SetBit((int)Key::T, Keyboard::isKeyPressed(Keyboard::T));
+    thisFrameKeys.SetBit((int)Key::Y, Keyboard::isKeyPressed(Keyboard::Y));
+    thisFrameKeys.SetBit((int)Key::U, Keyboard::isKeyPressed(Keyboard::U));
+    thisFrameKeys.SetBit((int)Key::I, Keyboard::isKeyPressed(Keyboard::I));
+    thisFrameKeys.SetBit((int)Key::O, Keyboard::isKeyPressed(Keyboard::O));
+    thisFrameKeys.SetBit((int)Key::P, Keyboard::isKeyPressed(Keyboard::P));
+    thisFrameKeys.SetBit((int)Key::A, Keyboard::isKeyPressed(Keyboard::A));
+    thisFrameKeys.SetBit((int)Key::S, Keyboard::isKeyPressed(Keyboard::S));
+    thisFrameKeys.SetBit((int)Key::D, Keyboard::isKeyPressed(Keyboard::D));
+    thisFrameKeys.SetBit((int)Key::F, Keyboard::isKeyPressed(Keyboard::F));
+    thisFrameKeys.SetBit((int)Key::G, Keyboard::isKeyPressed(Keyboard::G));
+    thisFrameKeys.SetBit((int)Key::H, Keyboard::isKeyPressed(Keyboard::H));
+    thisFrameKeys.SetBit((int)Key::J, Keyboard::isKeyPressed(Keyboard::J));
+    thisFrameKeys.SetBit((int)Key::K, Keyboard::isKeyPressed(Keyboard::K));
+    thisFrameKeys.SetBit((int)Key::L, Keyboard::isKeyPressed(Keyboard::L));
+    thisFrameKeys.SetBit((int)Key::Z, Keyboard::isKeyPressed(Keyboard::Z));
+    thisFrameKeys.SetBit((int)Key::X, Keyboard::isKeyPressed(Keyboard::X));
+    thisFrameKeys.SetBit((int)Key::C, Keyboard::isKeyPressed(Keyboard::C));
+    thisFrameKeys.SetBit((int)Key::V, Keyboard::isKeyPressed(Keyboard::V));
+    thisFrameKeys.SetBit((int)Key::B, Keyboard::isKeyPressed(Keyboard::B));
+    thisFrameKeys.SetBit((int)Key::N, Keyboard::isKeyPressed(Keyboard::N));
+    thisFrameKeys.SetBit((int)Key::M, Keyboard::isKeyPressed(Keyboard::M));
+
 }
 
 sf::Vector2f Input::GetInputAxes()

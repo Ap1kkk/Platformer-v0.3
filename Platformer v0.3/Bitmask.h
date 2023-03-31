@@ -8,7 +8,7 @@ public:
 	Bitmask();
 
 	void SetMask(Bitmask& other);
-	uint32_t GetMask() const;
+	uint64_t GetMask() const;
 
 	bool GetBit(int pos) const;
 	void SetBit(int pos, bool on);
@@ -19,5 +19,5 @@ public:
 	void Clear();
 
 private:
-	uint32_t bits;
+	uint64_t bits;
 };

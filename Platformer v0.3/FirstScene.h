@@ -82,7 +82,7 @@ public:
 	{
 		ObjectCollection::Update();
 
-		if (Input::IsKeyDown(Input::Key::Esc))
+		if (Input::IsKeyDown(Input::Key::R))
 		{
 			SceneManager::SwitchScene(sceneId, sceneId);
 			//Debug::Log("Left");

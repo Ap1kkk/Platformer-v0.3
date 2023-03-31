@@ -6,7 +6,6 @@
 #include "EntityManager.h"
 #include "TransformComponent.h"
 
-
 /// <summary>
 /// Responsible for drawing objects on the screen
 /// </summary>

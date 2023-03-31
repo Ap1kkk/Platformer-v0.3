@@ -14,10 +14,15 @@ Entity::~Entity()
 
 void Entity::DeleteComponent(ComponentId id)
 {
-	auto itr = components.find(ComponentManager::GetComponentTypeById(id));
+	auto componentType = ComponentManager::GetComponentTypeById(id);
+	auto itr = components.find(componentType);
 	if (itr != components.end())
 	{
 		ComponentManager::DestroyComponent(id);
+		//if (componentType == typeid(DrawableComponent).name())
+		//{
+
+		//}
 		components.erase(itr);
 	}
 }

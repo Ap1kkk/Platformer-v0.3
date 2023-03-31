@@ -90,7 +90,7 @@ private:
 	float jumpMaxTime = 0.5f;
 
 	float preJumpGravityScale = 0.1f;
-	float normalGravityScale = 0.6f;
+	float normalGravityScale = 0.4f;
 
 	float jumpSpeed = 20.f;
 

@@ -1,6 +1,6 @@
 #include "RenderSystem.h"
 
-std::vector<DrawableComponent*> RenderSystem::drawVector = {};
+std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> RenderSystem::drawMap = {};
 std::unordered_map<EntityId, DrawableComponent*> RenderSystem::enabledDrawables = {};
 std::unordered_map<EntityId, DrawableComponent*> RenderSystem::disabledDrawables = {};
 
@@ -9,9 +9,9 @@ RenderSystem::RenderSystem(Window* window) : window(window)
 
 void RenderSystem::Draw()
 {
-	for (auto& drawable : drawVector)
+	for (auto& drawable : drawMap)
 	{
-		drawable->Draw(window);
+		drawable.second.second->Draw(window);
 	}
 }
 
@@ -29,7 +29,7 @@ void RenderSystem::AddDrawable(EntityId entityId, DrawableComponent* drawable, b
 		if (isEnabled)
 		{
 			enabledDrawables.emplace(entityId, drawable);
-			AddToDrawVector(drawable);
+			AddToDrawMap(entityId, drawable);
 		}
 		else
 		{
@@ -48,7 +48,7 @@ void RenderSystem::DeleteDrawable(EntityId entityId)
 		if (itr1 != enabledDrawables.end())
 		{
 			enabledDrawables.erase(itr1);
-			DeleteInDrawVector(entityId);
+			DeleteFromDrawMap(entityId);
 		}
 		else
 		{
@@ -70,7 +70,7 @@ void RenderSystem::EnableDrawable(EntityId entityId)
 		auto drawable = disabledDrawables.at(entityId);
 		disabledDrawables.erase(itr);
 		enabledDrawables.emplace(entityId, drawable);
-		AddToDrawVector(drawable);
+		AddToDrawMap(entityId, drawable);
 
 		Debug::LogInfo("Drawable with EntityId: " + std::to_string(entityId) + " was enabled", typeid(RenderSystem).name());
 	}
@@ -87,7 +87,7 @@ void RenderSystem::DisableDrawable(EntityId entityId)
 	{
 		auto drawable = enabledDrawables.at(entityId);
 		enabledDrawables.erase(itr);
-		DeleteInDrawVector(entityId);
+		DeleteFromDrawMap(entityId);
 		disabledDrawables.emplace(entityId, drawable);
 
 		Debug::LogInfo("Drawable with EntityId: " + std::to_string(entityId) + " was disabled", typeid(RenderSystem).name());

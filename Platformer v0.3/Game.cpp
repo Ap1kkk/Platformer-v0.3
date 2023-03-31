@@ -98,4 +98,5 @@ void Game::Draw()
 void Game::CalculateDeltaTime()
 {
 	Time::Restart();
+	//SceneManager::SwitchScene(0, 0);
 }

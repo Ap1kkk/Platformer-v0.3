@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <map>
 #include <vector>
 
 #include "Window.h"
@@ -29,36 +30,25 @@ public:
 
 private:
 
-	static void SortDrawVector()
+	static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable)
 	{
-		std::sort(drawVector.begin(), drawVector.end(),
-			[](DrawableComponent* a, DrawableComponent* b)
-			{
-				DrawLayer aLayer = a->GetDrawLayer();
-				DrawLayer bLayer = b->GetDrawLayer();
-				return aLayer < bLayer;
-			});
+		drawMap.emplace(std::make_pair(drawable->GetDrawLayer(), std::make_pair(entityId, drawable)));
 	}
 
-	static void AddToDrawVector(DrawableComponent* drawable)
+	static void DeleteFromDrawMap(EntityId entityId)
 	{
-		drawVector.push_back(drawable);
-		SortDrawVector();
-	}
-
-	static void DeleteInDrawVector(EntityId ownerId)
-	{
-		for (auto itr = drawVector.begin(); itr != drawVector.end(); ++itr)
+		for (auto itr = drawMap.begin(); itr != drawMap.end(); ++itr)
 		{
-			if ((*itr)->GetOwnerId() == ownerId)
+			if (itr->second.first == entityId)
 			{
-				drawVector.erase(itr);
+				drawMap.erase(itr);
 				break;
 			}
 		}
 	}
 
-	static std::vector<DrawableComponent*> drawVector;
+	static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawMap;
+
 	static std::unordered_map<EntityId, DrawableComponent*> enabledDrawables;
 	static std::unordered_map<EntityId, DrawableComponent*> disabledDrawables;
 
