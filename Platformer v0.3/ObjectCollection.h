@@ -40,6 +40,7 @@ public:
 
 private:
 	static std::unordered_map<EntityId, IEntity*> objects;
+	//TODO надо переделать по multimap
 	static std::vector<IEntity*> notAwokenObjects;
 	static std::vector<IEntity*> withNotAwokenComponents;
 	static bool hasNotAwokenComponents;

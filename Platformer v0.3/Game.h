@@ -16,6 +16,10 @@
 #include "SharedContext.h"
 #include "ObjectCollection.h"
 #include "FirstScene.h"
+
+#include "GameStateMachine.h"
+#include "CreatedGameState.h"
+
 #include "Debug.h"
 
 class Game
@@ -23,6 +27,8 @@ class Game
 public:
 	Game(b2Vec2 gravity);
 	~Game();
+
+	void Initialize();
 
 	void ProcessInput();
 	void EarlyUpdate();
@@ -42,8 +48,8 @@ private:
 	PhysicsDebugDraw* physicsDebugDraw;
 	SceneManager* sceneManager;
 	TileManager* tileManager;
+	GameStateMachine* gameStateMachine;
 
 	SharedContext sharedContext;
-
 };
 

@@ -27,3 +27,11 @@ typedef std::string Filename;
 
 //formula to convert radians to degrees = (radians * (pi/180))
 #define RADTODEG (180.f / b2_pi)
+
+enum class GameStateType
+{
+	Created = 0,
+	Initialized,
+	Runned,
+	Paused,
+};

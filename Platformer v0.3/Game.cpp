@@ -12,6 +12,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	renderSystem = new RenderSystem(&window);
 	sceneManager = new SceneManager;
 	tileManager = new TileManager;
+	gameStateMachine = new GameStateMachine();
 
 	//-------------------Debug Draw-------------------------------
 	physicsDebugDraw = new PhysicsDebugDraw(&window);
@@ -29,6 +30,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.physicsDebugDraw = physicsDebugDraw;
 	sharedContext.renderSystem = renderSystem;
 	sharedContext.tileManager = tileManager;
+	sharedContext.gameStateMachine = gameStateMachine;
 
 
 	//-------------------—оздание сцен ----------------------------
@@ -54,6 +56,15 @@ Game::~Game()
 	delete sceneManager;
 
 	Debug::LogWarning("Game destroyed"); 
+}
+
+void Game::Initialize()
+{
+	//TODO сюда добавить логику инициализации состо€ний
+	gameStateMachine->AddState<CreatedGameState>(sharedContext);
+	//TODO инициализировать все состо€ни€
+
+	gameStateMachine->Create();
 }
 
 void Game::ProcessInput()

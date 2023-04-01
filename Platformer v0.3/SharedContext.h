@@ -5,6 +5,7 @@
 #include "PhysicSystem.h"
 #include "RenderSystem.h"
 #include "TileManager.h"
+#include "IGameStateMachine.h"
 
 struct SharedContext
 {
@@ -15,4 +16,7 @@ struct SharedContext
 	const PhysicsDebugDraw* physicsDebugDraw;
 	const RenderSystem* renderSystem;
 	TileManager* tileManager;
+	IGameStateMachine* gameStateMachine;
+
+	//TODO добавить менеджера загрузки сохранений
 };
