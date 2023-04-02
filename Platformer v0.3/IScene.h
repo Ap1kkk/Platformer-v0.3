@@ -20,10 +20,14 @@ public:
 	}
 
 	virtual void Initialize() = 0;
-
+	
+	virtual void ProcessNotAwoken() = 0;
+	virtual void CaptureEvents() = 0;
 	virtual void EarlyUpdate() = 0;
 	virtual void Update() = 0;
 	virtual void LateUpdate() = 0;
+
+	virtual void UpdateUI() = 0;
 
 	// ¬ызываетс€ дл€ специальной отрисовки того, что не попало в систему рендера
 	virtual void Draw(Window* window) {}

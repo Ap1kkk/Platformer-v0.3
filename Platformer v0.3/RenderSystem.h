@@ -28,6 +28,9 @@ public:
 	static void EnableDrawable(EntityId entityId);
 	static void DisableDrawable(EntityId entityId);
 
+	static void MoveActiveToPauseBuffer();
+	static void RetrieveActiveFromPauseBuffer();
+
 private:
 
 	static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable)
@@ -48,9 +51,12 @@ private:
 	}
 
 	static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawMap;
+	//TODO совместить все в один буфер
+	static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawPauseBuffer;
 
 	static std::unordered_map<EntityId, DrawableComponent*> enabledDrawables;
 	static std::unordered_map<EntityId, DrawableComponent*> disabledDrawables;
+	static std::unordered_map<EntityId, DrawableComponent*> pauseBuffer;
 
 	Window* window;
 };

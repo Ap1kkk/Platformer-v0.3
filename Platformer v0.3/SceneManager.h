@@ -3,15 +3,16 @@
 #include <unordered_map>
 
 #include "IScene.h"
+#include "ISceneManager.h"
 #include "Debug.h"
 
-class SceneManager
+class SceneManager : public ISceneManager
 {
 public:
 	SceneManager() {}
 	~SceneManager();
 
-	void Initialize(SceneId startSceneId);
+	void Initialize(SceneId startSceneId) override;
 
 	template<class S>
 	static S* const AddScene(SharedContext context)
@@ -38,11 +39,14 @@ public:
 
 	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId);
 
-	void EarlyUpdate();
-	void Update();
-	void LateUpdate();
+	void ProcessNotAwoken() override;
+	void CaptureEvents() override;
+	void EarlyUpdate() override;
+	void Update() override;
+	void LateUpdate() override;
+	void UpdateUI() override;
 
-	void Draw(Window* window);
+	void Draw(Window* window) override;
 
 private:
 	static std::unordered_map<SceneId, IScene*> scenes;

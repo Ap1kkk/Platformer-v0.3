@@ -25,7 +25,7 @@ public:
 		
 		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
 
-		//TODO убрать и создавать объекты и компоненты с встроенным SharedContext
+
 		ObjectCollection::AddObject(player);
 		
 		//----------player--------------
@@ -71,27 +71,53 @@ public:
 		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 	}
 
-	void EarlyUpdate() override 
+	void ProcessNotAwoken() override
 	{
 		ObjectCollection::ProcessNotAwoken();
 		ObjectCollection::ProcessNotAwokenComponents();
+		//TODO Добавить метод для пробуждения UI
+	}
+
+	void CaptureEvents() override
+	{
+		if (Input::IsKeyDown(Input::Key::R))
+		{
+			SceneManager::SwitchScene(sceneId, sceneId);
+			//Debug::Log("Left");
+		}
+
+		if (Input::IsKeyDown(Input::Key::Esc))
+		{
+			if (sharedContext.gameStateMachine->IsPaused())
+			{
+				sharedContext.gameStateMachine->Contintue();
+			}
+			else
+			{
+				sharedContext.gameStateMachine->Pause();
+			}
+			//Debug::Log("Left");
+		}
+	}
+
+	void EarlyUpdate() override 
+	{
 		ObjectCollection::EarlyUpdate();
 	}
 
 	void Update() override 
 	{
 		ObjectCollection::Update();
-
-		if (Input::IsKeyDown(Input::Key::R))
-		{
-			SceneManager::SwitchScene(sceneId, sceneId);
-			//Debug::Log("Left");
-		}
 	}
 
 	void LateUpdate() override 
 	{
 		ObjectCollection::LateUpdate();
+	}
+
+	void UpdateUI() override
+	{
+		//TODO добавить обновление UI коллекции
 	}
 
 	//void Draw(Window* window) override 

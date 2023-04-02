@@ -1,8 +1,12 @@
 #include "RenderSystem.h"
 
 std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> RenderSystem::drawMap = {};
+std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> RenderSystem::drawPauseBuffer = {};
+
 std::unordered_map<EntityId, DrawableComponent*> RenderSystem::enabledDrawables = {};
 std::unordered_map<EntityId, DrawableComponent*> RenderSystem::disabledDrawables = {};
+
+std::unordered_map<EntityId, DrawableComponent*> RenderSystem::pauseBuffer = {};
 
 RenderSystem::RenderSystem(Window* window) : window(window)
 {}
@@ -96,4 +100,34 @@ void RenderSystem::DisableDrawable(EntityId entityId)
 	{
 		Debug::LogWarning("Can't disable drawable with EntityId( " + std::to_string(entityId) + " ) : drawable not found", typeid(RenderSystem).name());
 	}
+}
+
+void RenderSystem::MoveActiveToPauseBuffer()
+{
+	for (auto& drawPair : drawMap)
+	{
+		drawPauseBuffer.emplace(drawPair);
+	}
+	drawMap.clear();
+
+	for (auto& drawable : enabledDrawables)
+	{
+		pauseBuffer.emplace(drawable);
+	}
+	enabledDrawables.clear();
+}
+
+void RenderSystem::RetrieveActiveFromPauseBuffer()
+{
+	for (auto& drawPair : drawPauseBuffer)
+	{
+		drawMap.emplace(drawPair);
+	}
+	drawPauseBuffer.clear();
+
+	for (auto& drawable : pauseBuffer)
+	{
+		enabledDrawables.emplace(drawable);
+	}
+	pauseBuffer.clear();
 }

@@ -14,11 +14,15 @@ public:
 
 	void EnterState() override
 	{
+		//TODO перенести логику создания всех сцен
 		Debug::Log("Entered Initialized state");
+
 	}
 	void Update() override
 	{
 		Debug::Log("Updating Initialized state");
+		
+		sharedContext.gameStateMachine->Run();
 	}
 	void LeaveState() override
 	{

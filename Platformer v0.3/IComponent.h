@@ -21,6 +21,7 @@ public:
 	virtual void EarlyUpdate() {}
 	virtual void Update() {}
 	virtual void LateUpdate() {}
+	virtual void UpdateUI() {}
 
 	virtual void Draw(Window* window) {}
 

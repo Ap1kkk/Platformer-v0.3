@@ -7,11 +7,11 @@
 #include "SharedContext.h"
 #include "Debug.h"
 
-//TODO Добавить наследование от интерфейса, чтобы можно было вызывать из сцен или объектов
+
 class GameStateMachine : public IGameStateMachine
 {
 public:
-	GameStateMachine() {}
+	GameStateMachine() : isPaused(false) {}
 
 	void Create() override
 	{
@@ -27,14 +27,26 @@ public:
 	}
 	void Pause() override
 	{
+		isPaused = true;
 		TransitToState(GameStateType::Paused);
 	}
 	void Contintue() override
 	{
+		isPaused = false;
 		TransitToState(GameStateType::Runned);
 	}
+	void ExitGame() override
+	{
+		TransitToState(GameStateType::Exited);
+	}
 
-	//TODO добавить зависисмости
+	void Update() override
+	{
+		currentState->Update();
+	}
+
+	bool IsPaused() override { return isPaused; }
+
 	template<class S>
 	S* AddState(SharedContext context)
 	{
@@ -69,7 +81,7 @@ private:
 		{
 			currentState = itr->second;
 			currentState->EnterState();
-			currentState->Update();
+			//currentState->Update();
 		}
 		else
 		{
@@ -81,4 +93,5 @@ private:
 	std::map<GameStateType, GameState*> states;
 
 	GameState* currentState;
+	bool isPaused;
 };

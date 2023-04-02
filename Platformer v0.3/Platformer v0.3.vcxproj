@@ -146,6 +146,7 @@
     <ClCompile Include="DrawableComponent.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="ExitedGameState.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -158,23 +159,27 @@
     <ClCompile Include="InitializedGameState.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="ISceneManager.cpp" />
     <ClCompile Include="ISensor.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
     <ClCompile Include="JumpSensorListener.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
+    <ClCompile Include="PausedGameState.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
     <ClCompile Include="PhysicsDebugDraw.cpp" />
     <ClCompile Include="PhysicSystem.cpp" />
     <ClCompile Include="Platformer v0.3.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
+    <ClCompile Include="RunnedGameState.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
-    <ClCompile Include="UICollection.cpp" />
+    <ClCompile Include="TransformUIComponent.cpp" />
+    <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +193,7 @@
     <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="ExitedGameState.h" />
     <ClInclude Include="FirstScene.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -201,18 +207,21 @@
     <ClInclude Include="InitializedGameState.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="ISensor.h" />
     <ClInclude Include="ITileManager.h" />
     <ClInclude Include="JumpSensor.h" />
     <ClInclude Include="JumpSensorListener.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
+    <ClInclude Include="PausedGameState.h" />
     <ClInclude Include="PhysicComponent.h" />
     <ClInclude Include="PhysicsDebugDraw.h" />
     <ClInclude Include="PhysicSystem.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="RenderSystem.h" />
+    <ClInclude Include="RunnedGameState.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="Tile.h" />
@@ -220,7 +229,8 @@
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TransformComponent.h" />
-    <ClInclude Include="UICollection.h" />
+    <ClInclude Include="TransformUIComponent.h" />
+    <ClInclude Include="UIObject.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

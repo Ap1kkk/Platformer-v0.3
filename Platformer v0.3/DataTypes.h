@@ -34,4 +34,5 @@ enum class GameStateType
 	Initialized,
 	Runned,
 	Paused,
+	Exited
 };

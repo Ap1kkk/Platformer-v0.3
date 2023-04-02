@@ -6,6 +6,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 
 	Time::Restart();
 
+	objectCollection = new ObjectCollection;
 	assetAllocator = new AssetAllocator;
 	entityManger = new EntityManager;
 	physicSystem = new PhysicSystem(gravity);
@@ -25,16 +26,19 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 
 
 	sharedContext.window = &window;
+	sharedContext.objectCollection = objectCollection;
 	sharedContext.assetAllocator = assetAllocator;
 	sharedContext.entityManger = entityManger;
 	sharedContext.physicsDebugDraw = physicsDebugDraw;
 	sharedContext.renderSystem = renderSystem;
 	sharedContext.tileManager = tileManager;
+	sharedContext.sceneManager = sceneManager;
 	sharedContext.gameStateMachine = gameStateMachine;
 
 
 	//-------------------Создание сцен ----------------------------
 
+	//TODO перенести в 
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	//auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
 
@@ -62,9 +66,22 @@ void Game::Initialize()
 {
 	//TODO сюда добавить логику инициализации состояний
 	gameStateMachine->AddState<CreatedGameState>(sharedContext);
+	gameStateMachine->AddState<InitializedGameState>(sharedContext);
+	gameStateMachine->AddState<RunnedGameState>(sharedContext);
+	gameStateMachine->AddState<PausedGameState>(sharedContext);
+
 	//TODO инициализировать все состояния
 
 	gameStateMachine->Create();
+}
+
+void Game::ProcessGameLoop()
+{
+	ProcessInput();
+	window.Update();
+	gameStateMachine->Update();
+	Draw();
+	CalculateDeltaTime();
 }
 
 void Game::ProcessInput()
@@ -74,12 +91,6 @@ void Game::ProcessInput()
 
 void Game::EarlyUpdate()
 {
-	//Time::physicsTimeAccumulator += Time::DeltaTime();
-	//while (Time::physicsTimeAccumulator >= Time::FixedDeltaTime())
-	//{
-	//	physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
-	//	Time::physicsTimeAccumulator -= Time::FixedDeltaTime();
-	//}
 	physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
 	sceneManager->EarlyUpdate();
 }
@@ -93,6 +104,11 @@ void Game::Update()
 void Game::LateUpdate()
 {
 	sceneManager->LateUpdate();
+}
+
+void Game::UpdateUI()
+{
+	sceneManager->UpdateUI();
 }
 
 void Game::Draw()
@@ -109,5 +125,4 @@ void Game::Draw()
 void Game::CalculateDeltaTime()
 {
 	Time::Restart();
-	//SceneManager::SwitchScene(0, 0);
 }

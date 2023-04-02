@@ -82,6 +82,16 @@ void SceneManager::SwitchScene(SceneId fromSceneId, SceneId toSceneId)
 	}
 }
 
+void SceneManager::ProcessNotAwoken()
+{
+	activeScene->ProcessNotAwoken();
+}
+
+void SceneManager::CaptureEvents()
+{
+	activeScene->CaptureEvents();
+}
+
 void SceneManager::EarlyUpdate()
 {
 	activeScene->EarlyUpdate();
@@ -95,6 +105,11 @@ void SceneManager::Update()
 void SceneManager::LateUpdate()
 {
 	activeScene->LateUpdate();
+}
+
+void SceneManager::UpdateUI()
+{
+	activeScene->UpdateUI();
 }
 
 void SceneManager::Draw(Window* window)

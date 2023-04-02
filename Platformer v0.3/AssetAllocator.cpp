@@ -48,15 +48,39 @@ sf::Texture* AssetAllocator::GetTexturePtr(std::string const& filename)
 	}
 }
 
-//sf::SoundBuffer& AssetAllocator::GetSoundBuffer(std::string const& filename)
-//{
-//	// TODO: вставьте здесь оператор return
-//}
-//
-//sf::Font& AssetAllocator::GetFont(std::string const& filename)
-//{
-//	// TODO: вставьте здесь оператор return
-//}
+sf::SoundBuffer& AssetAllocator::GetSoundBuffer(std::string const& filename)
+{
+	auto& soundMap = sInstance->soundBuffer;
+	auto pairFound = soundMap.find(filename);
+
+	if (pairFound != soundMap.end())
+	{
+		return pairFound->second;
+	}
+	else
+	{
+		auto& sound = sInstance->soundBuffer[filename];
+		sound.loadFromFile(filename);
+		return sound;
+	}
+}
+
+sf::Font& AssetAllocator::GetFont(std::string const& filename)
+{
+	auto& fontMap = sInstance->fonts;
+	auto pairFound = fontMap.find(filename);
+
+	if (pairFound != fontMap.end())
+	{
+		return pairFound->second;
+	}
+	else
+	{
+		auto& font = sInstance->fonts[filename];
+		font.loadFromFile(filename);
+		return font;
+	}
+}
 
 std::string& AssetAllocator::GetPath()
 {

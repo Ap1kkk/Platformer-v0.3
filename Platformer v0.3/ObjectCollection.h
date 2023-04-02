@@ -14,6 +14,7 @@ public:
 	ObjectCollection() {}
 
 	static void AddObject(IEntity* newObject);
+	static void AddUiObject(IEntity* newObject);
 
 	/// <summary>
 	/// Delete an object from the storage
@@ -36,13 +37,27 @@ public:
 	static void Update();
 	static void LateUpdate();
 
+	static void UpdateUI();
+
 	static void HasNotAwokenComponents(EntityId entityId);
 
+	static void MoveAllToPauseBuffer();
+	static void RetrieveAllFromPauseBuffer();
+
+
 private:
-	static std::unordered_map<EntityId, IEntity*> objects;
+	static std::unordered_map<EntityId, IEntity*> allObjects;
+	static std::unordered_map<EntityId, IEntity*> pausedObjects;
+	static std::unordered_map<EntityId, IEntity*> unpausedObjects;
+
+	static std::unordered_map<EntityId, IEntity*> uiObjects;
+	static std::unordered_map<EntityId, IEntity*> uiObjectsBuffer;
+
 	//TODO надо переделать по multimap
 	static std::vector<IEntity*> notAwokenObjects;
 	static std::vector<IEntity*> withNotAwokenComponents;
 	static bool hasNotAwokenComponents;
+
+	static bool isEnabledToUpdate;
 };
 

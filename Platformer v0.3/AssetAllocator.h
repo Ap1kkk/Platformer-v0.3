@@ -15,8 +15,8 @@ public:
 
 	static sf::Texture& GetTexture(std::string const& filename);
 	static sf::Texture* GetTexturePtr(std::string const& filename);
-	//static sf::SoundBuffer& GetSoundBuffer(std::string const& filename);
-	//static sf::Font& GetFont(std::string const& filename);
+	static sf::SoundBuffer& GetSoundBuffer(std::string const& filename);
+	static sf::Font& GetFont(std::string const& filename);
 	static std::string& GetPath();
 private:
 

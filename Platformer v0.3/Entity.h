@@ -92,6 +92,7 @@ public:
 	void ComponentsEarlyUpdate() override;
 	void ComponentsUpdate() override;
 	void ComponentsLateUpdate() override;
+	void ComponentsUpdateUI() override;
 
 	/// <summary>
 	/// Destroys an object and clears the memory after it

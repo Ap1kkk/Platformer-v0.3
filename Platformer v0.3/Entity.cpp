@@ -73,6 +73,14 @@ void Entity::ComponentsLateUpdate()
 	}
 }
 
+void Entity::ComponentsUpdateUI()
+{
+	for (auto& component : componentsOrder)
+	{
+		component->UpdateUI();
+	}
+}
+
 void Entity::Destroy()
 {
 	OnDestroy();

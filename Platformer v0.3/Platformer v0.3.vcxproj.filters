@@ -81,6 +81,9 @@
     <Filter Include="Исходные файлы\Components\Jump">
       <UniqueIdentifier>{0a73bf2f-9cd1-416b-8f51-8d339c3d4668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Engine\GameStates">
+      <UniqueIdentifier>{90bc5e76-3cd9-40a5-ac55-4e5868d1e8d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentManager.cpp">
@@ -188,9 +191,6 @@
     <ClCompile Include="GameStateMachine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="UICollection.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="CreatedGameState.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -198,6 +198,24 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="InitializedGameState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RunnedGameState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ISceneManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PausedGameState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitedGameState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformUIComponent.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -316,22 +334,37 @@
     <ClInclude Include="PlayerMovement.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStateMachine.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="UICollection.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="ISceneManager.h">
+      <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
     </ClInclude>
     <ClInclude Include="CreatedGameState.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="IGameStateMachine.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PausedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="InitializedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RunnedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformUIComponent.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

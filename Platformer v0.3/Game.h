@@ -19,6 +19,9 @@
 
 #include "GameStateMachine.h"
 #include "CreatedGameState.h"
+#include "InitializedGameState.h"
+#include "RunnedGameState.h"
+#include "PausedGameState.h"
 
 #include "Debug.h"
 
@@ -30,10 +33,13 @@ public:
 
 	void Initialize();
 
+	void ProcessGameLoop();
+
 	void ProcessInput();
 	void EarlyUpdate();
 	void Update();
 	void LateUpdate();
+	void UpdateUI();
 	void Draw();
 	void CalculateDeltaTime();
 
@@ -41,6 +47,7 @@ public:
 
 private:
 	Window window;
+	ObjectCollection* objectCollection;
 	AssetAllocator* assetAllocator;
 	EntityManager* entityManger;
 	PhysicSystem* physicSystem;

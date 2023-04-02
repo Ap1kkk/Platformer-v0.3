@@ -21,11 +21,14 @@ public:
 	virtual void LateUpdate() {}
 	virtual void Draw(Window* window) {}
 
+	virtual void UpdateUI() {}
+
 	virtual void ProcessNotAwokenComponents() = 0;
 
 	virtual void ComponentsEarlyUpdate() = 0;
 	virtual void ComponentsUpdate() = 0;
 	virtual void ComponentsLateUpdate() = 0;
+	virtual void ComponentsUpdateUI() = 0;
 
 	virtual void OnDestroy() {}
 
