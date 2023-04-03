@@ -100,8 +100,12 @@ public:
 	/// </summary>
 	void Destroy() override;
 
+protected:
+	void CorrectUIPosition(sf::Vector2u viewCenter);
+
 private:
 	std::unordered_map<ComponentType, IComponent*> components;
+	//TODO заменить на miltimap
 	std::vector<IComponent*> componentsOrder;
 	std::vector<IComponent*> notAwokenComponents;
 };

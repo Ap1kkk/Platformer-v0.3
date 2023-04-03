@@ -29,6 +29,6 @@ public:
 	//TODO добавить scale
 
 private:
-	sf::Vector2f position;
-	float angle;
+	sf::Vector2f position = { 0.f, 0.f };
+	float angle = 0.f;
 };

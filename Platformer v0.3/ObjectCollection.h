@@ -28,6 +28,8 @@ public:
 	/// </summary>
 	static void Clear();
 
+	static void ClearNotBuffured();
+
 	static void ProcessNotAwoken();
 
 	/// надо оптимизировать

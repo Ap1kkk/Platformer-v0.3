@@ -22,6 +22,7 @@ public:
 	virtual void Draw(Window* window) {}
 
 	virtual void UpdateUI() {}
+	virtual void UpdateViewCenter() {}
 
 	virtual void ProcessNotAwokenComponents() = 0;
 

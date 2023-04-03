@@ -2,12 +2,13 @@
 
 std::unordered_map<SceneId, IScene*> SceneManager::scenes = {};
 IScene* SceneManager::activeScene = nullptr;
+IScene* SceneManager::pauseScene = nullptr;
 
 SceneManager::~SceneManager()
 {
 	if (activeScene != nullptr)
 	{
-		activeScene->Destroy();
+		activeScene->Destroy(true, false);
 	}
 }
 
@@ -18,11 +19,18 @@ void SceneManager::Initialize(SceneId startSceneId)
 	startScene->Initialize();
 }
 
+void SceneManager::SetPauseScene(SceneId pauseSceneId)
+{
+	auto scene = GetSceneById(pauseSceneId);
+	pauseScene = scene;
+}
+
 void SceneManager::DeleteScene(SceneId sceneId)
 {
 	auto itr = scenes.find(sceneId);
 	if (itr != scenes.end())
 	{
+		itr->second->Destroy(true, false);
 		scenes.erase(itr);
 	}
 	else
@@ -57,7 +65,7 @@ void SceneManager::SwitchScene(SceneId fromSceneId, SceneId toSceneId)
 
 		if (fromSceneId != toSceneId)
 		{
-			previousScene->Destroy();
+			previousScene->Destroy(true, false);
 		}
 		else
 		{
@@ -79,6 +87,22 @@ void SceneManager::SwitchScene(SceneId fromSceneId, SceneId toSceneId)
 		{
 			Debug::LogError("Scene with SceneId: " + std::to_string(toSceneId) + " was not found", typeid(SceneManager).name());
 		}
+	}
+}
+
+void SceneManager::ShowPauseScene()
+{
+	if (pauseScene != nullptr)
+	{
+		pauseScene->Initialize();
+	}
+}
+
+void SceneManager::HidePauseScene()
+{
+	if (pauseScene != nullptr)
+	{
+		pauseScene->Destroy(false, true);
 	}
 }
 
@@ -110,6 +134,19 @@ void SceneManager::LateUpdate()
 void SceneManager::UpdateUI()
 {
 	activeScene->UpdateUI();
+}
+
+void SceneManager::UpdatePauseScene()
+{
+	if (pauseScene != nullptr)
+	{
+		pauseScene->ProcessNotAwoken();
+		pauseScene->CaptureEvents();
+		pauseScene->EarlyUpdate();
+		pauseScene->Update();
+		pauseScene->LateUpdate();
+		pauseScene->UpdateUI();
+	}
 }
 
 void SceneManager::Draw(Window* window)

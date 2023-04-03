@@ -96,4 +96,9 @@ void Entity::Destroy()
 	GarbageCollector::DestroyEntity(this->entityId);
 }
 
+void Entity::CorrectUIPosition(sf::Vector2u viewCenter)
+{
+	//TODO обновлять позиции спрайтов
+}
+
 

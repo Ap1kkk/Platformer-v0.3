@@ -218,6 +218,9 @@
     <ClCompile Include="TransformUIComponent.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -366,6 +369,9 @@
     </ClInclude>
     <ClInclude Include="TransformUIComponent.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScene.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

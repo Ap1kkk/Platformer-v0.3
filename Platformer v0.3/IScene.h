@@ -4,7 +4,6 @@
 #include "Window.h"
 #include "SharedContext.h"
 #include "ObjectCollection.h"
-//#include "GarbageCollector.h"
 #include "Debug.h"
 
 class IScene
@@ -43,11 +42,21 @@ public:
 		ObjectCollection::Clear();
 	}
 
-	void Destroy()
+	void Destroy(bool shouldClearMemory, bool clearNotBufferedOnly)
 	{
 		OnDestroy();
-		ObjectCollection::Clear();
-		delete this;
+		if (clearNotBufferedOnly)
+		{
+			ObjectCollection::ClearNotBuffured();
+		}
+		else
+		{
+			ObjectCollection::Clear();
+		}
+		if (shouldClearMemory)
+		{
+			delete this;
+		}
 	}
 
 	inline const SceneId GetSceneId() const { return sceneId; }

@@ -39,10 +39,10 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	//-------------------Создание сцен ----------------------------
 
 	//TODO перенести в 
-	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
-	//auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
+	//auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
+	////auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
 
-	sceneManager->Initialize(firstScene->GetSceneId());
+	//sceneManager->Initialize(firstScene->GetSceneId());
 
 	//-------------------Создание сцен----------------------------
 

@@ -14,6 +14,8 @@ public:
 
 	void Initialize(SceneId startSceneId) override;
 
+	void SetPauseScene(SceneId pauseSceneId) override;
+
 	template<class S>
 	static S* const AddScene(SharedContext context)
 	{
@@ -39,6 +41,9 @@ public:
 
 	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId);
 
+	void ShowPauseScene() override;
+	void HidePauseScene() override;
+
 	void ProcessNotAwoken() override;
 	void CaptureEvents() override;
 	void EarlyUpdate() override;
@@ -46,10 +51,13 @@ public:
 	void LateUpdate() override;
 	void UpdateUI() override;
 
+	void UpdatePauseScene() override;
+
 	void Draw(Window* window) override;
 
 private:
 	static std::unordered_map<SceneId, IScene*> scenes;
 	static IScene* activeScene;
+	static IScene* pauseScene;
 };
 

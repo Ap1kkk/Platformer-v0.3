@@ -18,18 +18,26 @@ public:
 		sharedContext.objectCollection->MoveAllToPauseBuffer();
 		sharedContext.renderSystem->MoveActiveToPauseBuffer();
 		sharedContext.physicsDebugDraw->SetFlags(0);
+
+		sharedContext.sceneManager->ShowPauseScene();
 	}
 	void Update() override
 	{
 		//Debug::Log("Updating Paused state");
-		sharedContext.sceneManager->ProcessNotAwoken();
-		sharedContext.sceneManager->CaptureEvents();
-		sharedContext.sceneManager->UpdateUI();
+		//sharedContext.sceneManager->ProcessNotAwoken();
+		//sharedContext.sceneManager->CaptureEvents();
+		//sharedContext.sceneManager->UpdateUI();
+		
+		sharedContext.sceneManager->UpdatePauseScene();
+
 
 	}
 	void LeaveState() override
 	{
 		Debug::Log("Leaving Paused state");
+
+		sharedContext.sceneManager->HidePauseScene();
+
 		sharedContext.objectCollection->RetrieveAllFromPauseBuffer();
 		sharedContext.renderSystem->RetrieveActiveFromPauseBuffer();
 		sharedContext.physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);

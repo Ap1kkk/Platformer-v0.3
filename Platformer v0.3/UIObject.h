@@ -21,11 +21,19 @@ public:
 	{
 		drawableComponent->SetTextureRect(filename, intRect);
 	}
+	
+	void UpdateViewCenter() override
+	{
+		viewCenter = objectContext.window->GetCentre();
 
+		CorrectUIPosition(viewCenter);
+	}
 	//TODO считать позицию относительно центра VIew
+
+
 
 protected:
 	DrawableComponent* drawableComponent;
-	sf::Vector2f viewCenre;
+	sf::Vector2u viewCenter;
 };
 

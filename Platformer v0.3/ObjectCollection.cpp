@@ -103,6 +103,54 @@ void ObjectCollection::Clear()
 			}
 		}
 	}
+
+	//// не работает, ошибка памяти
+	//for (auto& object : allObjects)
+	//{
+	//	object.second->Destroy();
+	//}
+	//allObjects.clear();
+}
+
+void ObjectCollection::ClearNotBuffured()
+{
+	if (unpausedObjects.size() > 0)
+	{
+		auto itr = unpausedObjects.end();
+		itr--;
+		while (itr != unpausedObjects.end())
+		{
+			if (unpausedObjects.size() > 1)
+			{
+				(itr--)->second->Destroy();
+			}
+			else
+			{
+				itr = unpausedObjects.begin();
+				itr->second->Destroy();
+				break;
+			}
+		}
+	}
+
+	if (uiObjects.size() > 0)
+	{
+		auto itr = uiObjects.end();
+		itr--;
+		while (itr != uiObjects.end())
+		{
+			if (uiObjects.size() > 1)
+			{
+				(itr--)->second->Destroy();
+			}
+			else
+			{
+				itr = uiObjects.begin();
+				itr->second->Destroy();
+				break;
+			}
+		}
+	}
 }
 
 void ObjectCollection::ProcessNotAwoken()
@@ -135,8 +183,8 @@ void ObjectCollection::EarlyUpdate()
 {
 	for (auto& object : unpausedObjects)
 	{
-		object.second->EarlyUpdate();
 		object.second->ComponentsEarlyUpdate();
+		object.second->EarlyUpdate();
 	}
 }
 
@@ -144,8 +192,8 @@ void ObjectCollection::Update()
 {
 	for (auto& object : unpausedObjects)
 	{
-		object.second->Update();
 		object.second->ComponentsUpdate();
+		object.second->Update();
 	}
 }
 
@@ -153,8 +201,8 @@ void ObjectCollection::LateUpdate()
 {
 	for (auto& object : unpausedObjects)
 	{
-		object.second->LateUpdate();
 		object.second->ComponentsLateUpdate();
+		object.second->LateUpdate();
 	}
 
 }
@@ -163,6 +211,8 @@ void ObjectCollection::UpdateUI()
 {
 	for (auto& object : uiObjects)
 	{
+		object.second->ComponentsUpdateUI();
+		object.second->UpdateViewCenter();
 		object.second->UpdateUI();
 	}
 }

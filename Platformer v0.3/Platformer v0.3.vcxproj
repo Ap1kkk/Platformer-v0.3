@@ -165,6 +165,7 @@
     <ClCompile Include="JumpSensorListener.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
+    <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
     <ClCompile Include="PhysicsDebugDraw.cpp" />
     <ClCompile Include="PhysicSystem.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="PausedGameState.h" />
+    <ClInclude Include="PauseScene.h" />
     <ClInclude Include="PhysicComponent.h" />
     <ClInclude Include="PhysicsDebugDraw.h" />
     <ClInclude Include="PhysicSystem.h" />
