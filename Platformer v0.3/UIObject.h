@@ -44,6 +44,7 @@ public:
 	void SetPosition(sf::Vector2f position)
 	{
 		this->position = position;
+		transformUI->SetPosition(position);
 	}
 
 protected:

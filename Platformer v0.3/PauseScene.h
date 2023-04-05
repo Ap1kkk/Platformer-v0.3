@@ -21,12 +21,15 @@ public:
 	{
 		Debug::Log("Start initializing...", typeid(*this).name());
 
-		floor = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
-		floor->Initialize(true);
-		floor->SetTexture("floor.png");
-		floor->SetPosition(sf::Vector2f(0, -100));
+		for (int i = 400; i > -400; i -= 100)
+		{
+			floor = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
+			floor->Initialize(true);
+			floor->SetTexture("ship.png");
+			floor->SetPosition(sf::Vector2f(0, i));
 
-		ObjectCollection::AddUiObject(floor);
+			ObjectCollection::AddUiObject(floor);
+		}
 
 		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 	}
