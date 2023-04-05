@@ -1,29 +1,30 @@
 #pragma once
 
-#include "IComponent.h"
+//#include "IComponent.h"
+#include "ITransform.h"
 #include "Debug.h"
 
 /// <summary>
 /// Contains position and rotation of an object
 /// Transforms synchronized with physic world
 /// </summary>
-class TransformComponent : public IComponent
+class TransformComponent : public ITransform
 {
 public:
 	TransformComponent();
 	~TransformComponent() {}
 
-	void AddPosition(sf::Vector2f position);
-	void AddPosition(float x, float y);
+	void AddPosition(sf::Vector2f position) override;
+	void AddPosition(float x, float y) override;
 
-	void SetPosition(sf::Vector2f position);
-	void SetPosition(float x, float y);
+	void SetPosition(sf::Vector2f position) override;
+	void SetPosition(float x, float y) override;
 
-	void SetAngleInDeg(float angleInDeg);
-	void SetAngleInRad(float angleInRad);
+	void SetAngleInDeg(float angleInDeg) override;
+	void SetAngleInRad(float angleInRad) override;
 
-	float GetAngle() const;
-	sf::Vector2f& GetPosition();
+	float GetAngle() const override;
+	sf::Vector2f& GetPosition() override;
 
 	//TODO добавить rotation
 	//TODO добавить scale

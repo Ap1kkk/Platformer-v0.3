@@ -6,7 +6,7 @@ DrawableComponent::DrawableComponent() : textureFilename("viking.png")
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 
-void DrawableComponent::Initialize(TransformComponent* transform)
+void DrawableComponent::Initialize(ITransform* transform)
 {
 	ownerTransform = transform;
 }

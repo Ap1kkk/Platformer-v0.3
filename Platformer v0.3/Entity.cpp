@@ -46,6 +46,7 @@ void Entity::ProcessNotAwokenComponents()
 		{
 			component->Awake();
 		}
+		notAwokenComponents.clear();
 	}
 }
 
@@ -94,11 +95,6 @@ void Entity::Destroy()
 	components.clear();
 
 	GarbageCollector::DestroyEntity(this->entityId);
-}
-
-void Entity::CorrectUIPosition(sf::Vector2u viewCenter)
-{
-	//TODO обновлять позиции спрайтов
 }
 
 

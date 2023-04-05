@@ -6,6 +6,7 @@
 #include "ObjectCollection.h"
 
 #include "GameObject.h"
+#include "UIObject.h"
 #include "Input.h"
 
 #include "Debug.h"
@@ -20,11 +21,12 @@ public:
 	{
 		Debug::Log("Start initializing...", typeid(*this).name());
 
-		floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
-		floor->MakeDrawable(true, floorDrawLayer);
+		floor = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
+		floor->Initialize(true);
 		floor->SetTexture("floor.png");
+		floor->SetPosition(sf::Vector2f(0, -100));
 
-		ObjectCollection::AddObject(floor);
+		ObjectCollection::AddUiObject(floor);
 
 		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 	}
@@ -73,7 +75,7 @@ public:
 	}
 
 private:
-	GameObject* floor;
+	UIObject* floor;
 	DrawLayer floorDrawLayer = 100;
 
 };

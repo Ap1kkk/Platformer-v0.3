@@ -211,9 +211,9 @@ void ObjectCollection::UpdateUI()
 {
 	for (auto& object : uiObjects)
 	{
-		object.second->ComponentsUpdateUI();
 		object.second->UpdateViewCenter();
 		object.second->UpdateUI();
+		object.second->ComponentsUpdateUI();
 	}
 }
 
@@ -241,6 +241,13 @@ void ObjectCollection::MoveAllToPauseBuffer()
 		//object.first, object.second
 	}
 	unpausedObjects.clear();
+
+	for (auto& object : uiObjects)
+	{
+		uiObjectsBuffer.emplace(object);
+	}
+	uiObjects.clear();
+
 	Debug::LogInfo("All objects moved to pause buffer", typeid(ObjectCollection).name());
 }
 
@@ -252,5 +259,12 @@ void ObjectCollection::RetrieveAllFromPauseBuffer()
 		//object.first, object.second
 	}
 	pausedObjects.clear();
+
+	for (auto& object : uiObjectsBuffer)
+	{
+		uiObjects.emplace(object);
+	}
+	uiObjectsBuffer.clear();
+
 	Debug::LogInfo("All objects removed from pause buffer", typeid(ObjectCollection).name());
 }

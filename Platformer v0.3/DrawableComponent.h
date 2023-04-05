@@ -4,7 +4,8 @@
 #include "IComponent.h"
 #include "AssetAllocator.h"
 #include "EntityManager.h"
-#include "TransformComponent.h"
+//#include "TransformComponent.h"
+#include "ITransform.h"
 
 /// <summary>
 /// Responsible for drawing objects on the screen
@@ -17,7 +18,7 @@ public:
 	~DrawableComponent() {}
 
 	//TODO переделать в Awake
-	void Initialize(TransformComponent* transform);
+	void Initialize(ITransform* transform);
 
 	void Draw(Window* window) override;
 
@@ -41,7 +42,8 @@ private:
 	sf::Sprite sprite;
 	std::string textureFilename;
 
-	TransformComponent* ownerTransform;
+	//TransformComponent* ownerTransform;
+	ITransform* ownerTransform;
 
 	DrawLayer drawLayer;
 };

@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "DrawableComponent.h"
+#include "TransformUIComponent.h"
 #include "Window.h"
 
 class UIObject : public Entity
@@ -9,31 +10,49 @@ class UIObject : public Entity
 public:
 	UIObject()
 	{
+	
+	}
+
+	void Initialize(bool isEnabledToDraw)
+	{
+		transformUI = AddComponent<TransformUIComponent>();
+
+		transformUI->SetPosition(position);
+
+		this->isEnabledToDraw = isEnabledToDraw;
 		drawableComponent = AddComponent<DrawableComponent>();
+		drawableComponent->Initialize(transformUI);
+		drawableComponent->SetDrawLayer(drawLayer);
+		RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
+	}
+
+	void Awake() override
+	{
+
 	}
 
 	void SetTexture(const std::string& filename)
 	{
-		drawableComponent->SetTexture(filename);
+		drawableComponent->SetTexture(filename); 
 	}
 
 	void SetTextureRect(const std::string& filename, sf::IntRect intRect)
 	{
 		drawableComponent->SetTextureRect(filename, intRect);
 	}
-	
-	void UpdateViewCenter() override
+
+	void SetPosition(sf::Vector2f position)
 	{
-		viewCenter = objectContext.window->GetCentre();
-
-		CorrectUIPosition(viewCenter);
+		this->position = position;
 	}
-	//TODO считать позицию относительно центра VIew
-
-
 
 protected:
 	DrawableComponent* drawableComponent;
-	sf::Vector2u viewCenter;
+	TransformUIComponent* transformUI;
+
+	bool isEnabledToDraw = true;
+	DrawLayer drawLayer = 200;
+
+	sf::Vector2f position;
 };
 

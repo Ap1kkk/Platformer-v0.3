@@ -161,6 +161,7 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="ISceneManager.cpp" />
     <ClCompile Include="ISensor.cpp" />
+    <ClCompile Include="ITransform.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
     <ClCompile Include="JumpSensorListener.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="ISensor.h" />
     <ClInclude Include="ITileManager.h" />
+    <ClInclude Include="ITransform.h" />
     <ClInclude Include="JumpSensor.h" />
     <ClInclude Include="JumpSensorListener.h" />
     <ClInclude Include="ObjectCollection.h" />
