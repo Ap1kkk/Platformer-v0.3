@@ -37,12 +37,12 @@ public:
 
 						if (sensor != nullptr)
 						{
-							sensor->EnableToJump();
+							sensor->EnterCollision();
 							Debug::Log("enabled " + std::to_string(sensor->IsEnabledToJump()));
 						}
 						else if (other != nullptr)
 						{
-							other->EnableToJump();
+							other->EnterCollision();
 							Debug::Log("enabled " + std::to_string(other->IsEnabledToJump()));
 						}
 					}
@@ -69,13 +69,13 @@ public:
 
 						if (sensor != nullptr)
 						{
-							sensor->DisableToJump();
+							sensor->LeaveCollision();
 							Debug::Log("disabled " + std::to_string(sensor->IsEnabledToJump()));
 
 						}
 						else if (other != nullptr)
 						{
-							other->DisableToJump();
+							other->LeaveCollision();
 							Debug::Log("disabled " + std::to_string(other->IsEnabledToJump()));
 
 						}
@@ -112,11 +112,13 @@ public:
 		PhysicSystem::SetContactListener<JumpSensorListener>(listener);
 	}
 
-	bool IsEnabledToJump() const { return isEnabledToJump; }
+	bool IsEnabledToJump() const { return intersectsCount; }
 
 private:
-	void EnableToJump() { isEnabledToJump = true; }
-	void DisableToJump() { isEnabledToJump = false; }
+	void EnterCollision() { ++intersectsCount; }
+	void LeaveCollision() { --intersectsCount; }
+
+	unsigned int intersectsCount = 0;
 
 	b2Body* body;
 	b2Vec2 ownerBodyOffset;

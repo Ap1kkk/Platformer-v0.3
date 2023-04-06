@@ -163,7 +163,7 @@
     <ClCompile Include="ISensor.cpp" />
     <ClCompile Include="ITransform.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
-    <ClCompile Include="JumpSensorListener.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
     <ClCompile Include="PauseScene.cpp" />
@@ -215,7 +215,7 @@
     <ClInclude Include="ITileManager.h" />
     <ClInclude Include="ITransform.h" />
     <ClInclude Include="JumpSensor.h" />
-    <ClInclude Include="JumpSensorListener.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="PausedGameState.h" />

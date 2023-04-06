@@ -2,7 +2,8 @@
 
 #include <string>
 
-#include "box2d/box2d.h"
+#include <box2d/box2d.h>
+//#include <SFML/Graphics.hpp>
 
 typedef unsigned int EntityId;
 typedef unsigned int ComponentId;
@@ -41,3 +42,9 @@ enum class GameStateType
 	Paused,
 	Exited
 };
+
+//
+//sf::Vector2i CorrectMouseCoordinates(const sf::Vector2i& mouseCoordinates)
+//{
+//	return sf::Vector2i(mouseCoordinates.x - WINDOW_WIDTH, mouseCoordinates.y - WINDOW_HEIGHT);
+//}

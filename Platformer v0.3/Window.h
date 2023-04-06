@@ -21,6 +21,8 @@ public:
 	const sf::View& GetView() const;
 	void SetView(const sf::View& view);
 
+	const sf::RenderWindow& GetWindow() const { return window; }
+
 	bool IsOpen();
 
 private:

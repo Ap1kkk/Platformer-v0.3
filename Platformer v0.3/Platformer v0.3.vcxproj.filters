@@ -185,9 +185,6 @@
     <ClCompile Include="JumpSensor.cpp">
       <Filter>Исходные файлы\Components\Jump</Filter>
     </ClCompile>
-    <ClCompile Include="JumpSensorListener.cpp">
-      <Filter>Исходные файлы\Components\Jump</Filter>
-    </ClCompile>
     <ClCompile Include="GameStateMachine.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -225,6 +222,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="UIButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -334,9 +334,6 @@
     <ClInclude Include="JumpSensor.h">
       <Filter>Файлы заголовков\Components\Jump</Filter>
     </ClInclude>
-    <ClInclude Include="JumpSensorListener.h">
-      <Filter>Файлы заголовков\Components\Jump</Filter>
-    </ClInclude>
     <ClInclude Include="ISensor.h">
       <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
@@ -383,6 +380,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="UIButton.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

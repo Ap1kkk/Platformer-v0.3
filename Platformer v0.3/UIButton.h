@@ -19,11 +19,22 @@ public:
 
 	void CaptureMousePosition()
 	{
-		//auto mousePosition = sf::Mouse::getPosition();
+		//auto mousePosition = CorrectMouseCoordinates(sf::Mouse::getPosition(objectContext.window->GetWindow()));
+		auto mousePosition = sf::Mouse::getPosition(objectContext.window->GetWindow());
+
+		mousePosition.x -= WINDOW_WIDTH / 2;
+		mousePosition.y -= WINDOW_HEIGHT / 2;
+
+	
 		if (spriteBounds.contains(mousePosition.x, mousePosition.y))
 		{
 			Debug::Log("Intersection");
 		}
+		//Debug::Log("===");
+		Debug::Log(sf::Vector2f(mousePosition));
+		//Debug::Log(sf::Vector2f(spriteBounds.left, spriteBounds.top));
+		//Debug::Log("===");
+
 	}
 
 	void UpdateUI() override

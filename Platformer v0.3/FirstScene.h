@@ -42,29 +42,32 @@ public:
 
 		for (int i = -100; i <= 200; i += 300)
 		{
-			floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
-			floor->MakeDrawable(true, floorDrawLayer);
-			floor->SetTexture("floor.png");
+			for (int j = -320 * 3; j < 320 * 3; j += 320 * 2)
+			{
+				floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
+				floor->MakeDrawable(true, floorDrawLayer);
+				floor->SetTexture("floor.png");
 
-			auto physicComponent2 = floor->MakePhysical();
+				auto physicComponent2 = floor->MakePhysical();
 
-			b2BodyDef bodyDef2;
-			bodyDef2.type = b2_staticBody;
-			bodyDef2.position = b2Vec2(0, i);
-			physicComponent2->SetBodyDef(bodyDef2);
-			physicComponent2->InitializeBody();
+				b2BodyDef bodyDef2;
+				bodyDef2.type = b2_staticBody;
+				bodyDef2.position = b2Vec2(j, i);
+				physicComponent2->SetBodyDef(bodyDef2);
+				physicComponent2->InitializeBody();
 
-			b2PolygonShape boxShape2;
-			auto floorSpriteHSize = floor->GetSpriteBoxHalfSize();
-			boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
+				b2PolygonShape boxShape2;
+				auto floorSpriteHSize = floor->GetSpriteBoxHalfSize();
+				boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
 
-			b2FixtureDef boxFixtureDef2;
-			boxFixtureDef2.shape = &boxShape2;
-			boxFixtureDef2.density = 0;
+				b2FixtureDef boxFixtureDef2;
+				boxFixtureDef2.shape = &boxShape2;
+				boxFixtureDef2.density = 0;
 
-			physicComponent2->AddFixture(boxFixtureDef2);
+				physicComponent2->AddFixture(boxFixtureDef2);
 
-			ObjectCollection::AddObject(floor);
+				ObjectCollection::AddObject(floor);
+			}
 		}
 
 		//----------floor--------------

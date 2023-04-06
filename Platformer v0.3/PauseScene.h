@@ -79,7 +79,7 @@ public:
 
 	void UpdateUI() override
 	{
-		//TODO добавить обновление UI коллекции
+		ObjectCollection::UpdateUI();
 	}
 
 private:
