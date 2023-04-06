@@ -186,11 +186,21 @@ void ObjectCollection::EarlyUpdate()
 		object.second->ComponentsEarlyUpdate();
 		object.second->EarlyUpdate();
 	}
+	for (auto& object : uiObjects)
+	{
+		object.second->ComponentsEarlyUpdate();
+		object.second->EarlyUpdate();
+	}
 }
 
 void ObjectCollection::Update()
 {
 	for (auto& object : unpausedObjects)
+	{
+		object.second->ComponentsUpdate();
+		object.second->Update();
+	}
+	for (auto& object : uiObjects)
 	{
 		object.second->ComponentsUpdate();
 		object.second->Update();
@@ -204,7 +214,11 @@ void ObjectCollection::LateUpdate()
 		object.second->ComponentsLateUpdate();
 		object.second->LateUpdate();
 	}
-
+	for (auto& object : uiObjects)
+	{
+		object.second->ComponentsLateUpdate();
+		object.second->LateUpdate();
+	}
 }
 
 void ObjectCollection::UpdateUI()

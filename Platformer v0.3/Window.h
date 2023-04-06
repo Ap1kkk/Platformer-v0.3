@@ -3,6 +3,7 @@
 #include <string>
 
 #include "SFML/Graphics.hpp"
+#include "DataTypes.h"
 
 class Window
 {

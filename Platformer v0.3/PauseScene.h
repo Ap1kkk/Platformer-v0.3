@@ -6,7 +6,7 @@
 #include "ObjectCollection.h"
 
 #include "GameObject.h"
-#include "UIObject.h"
+#include "UIButton.h"
 #include "Input.h"
 
 #include "Debug.h"
@@ -21,15 +21,20 @@ public:
 	{
 		Debug::Log("Start initializing...", typeid(*this).name());
 
-		for (int i = 400; i > -400; i -= 100)
-		{
-			floor = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
-			floor->Initialize(true);
-			floor->SetTexture("ship.png");
-			floor->SetPosition(sf::Vector2f(0, i));
+		//for (int i = 400; i > -400; i -= 100)
+		//{
+		//	floor = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
+		//	floor->Initialize(true);
+		//	floor->SetTexture("ship.png");
+		//	floor->SetPosition(sf::Vector2f(0, i));
 
-			ObjectCollection::AddUiObject(floor);
-		}
+		//	ObjectCollection::AddUiObject(floor);
+		//}
+
+		button = sharedContext.entityManger->CreateEntity<UIButton>(objectContext);
+		button->SetPosition(0.f, 0.f);
+
+		ObjectCollection::AddUiObject(button);
 
 		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 	}
@@ -78,8 +83,6 @@ public:
 	}
 
 private:
-	UIObject* floor;
-	DrawLayer floorDrawLayer = 100;
-
+	UIButton* button;
 };
 

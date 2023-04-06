@@ -10,15 +10,17 @@ class UIObject : public Entity
 public:
 	UIObject()
 	{
-	
+		Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
+
 	}
 
-	void Initialize(bool isEnabledToDraw)
+	void Initialize(bool isEnabledToDraw, DrawLayer drawLayer)
 	{
 		transformUI = AddComponent<TransformUIComponent>();
 
 		transformUI->SetPosition(position);
 
+		this->drawLayer = drawLayer;
 		this->isEnabledToDraw = isEnabledToDraw;
 		drawableComponent = AddComponent<DrawableComponent>();
 		drawableComponent->Initialize(transformUI);
@@ -41,7 +43,7 @@ public:
 		drawableComponent->SetTextureRect(filename, intRect);
 	}
 
-	void SetPosition(sf::Vector2f position)
+	void SetUIPosition(sf::Vector2f position)
 	{
 		this->position = position;
 		transformUI->SetPosition(position);
@@ -52,7 +54,7 @@ protected:
 	TransformUIComponent* transformUI;
 
 	bool isEnabledToDraw = true;
-	DrawLayer drawLayer = 200;
+	DrawLayer drawLayer;
 
 	sf::Vector2f position;
 };

@@ -17,6 +17,11 @@ typedef unsigned int FixtureId;
 typedef std::string ComponentType;
 typedef std::string Filename;
 
+#define WINDOW_WIDTH 1024
+#define WINDOW_HEIGHT 768
+
+#define FIXED_DELTA_TIME 1.f / 45.f;
+
 // 1 meter (box2d) is more or less 64 pixels (sfml)
 #define RATIO 30.0f
 #define PIXELS_PER_METER RATIO

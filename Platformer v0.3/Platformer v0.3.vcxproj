@@ -181,6 +181,7 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="TransformUIComponent.cpp" />
+    <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -234,6 +235,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="TransformUIComponent.h" />
+    <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIObject.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

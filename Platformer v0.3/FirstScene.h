@@ -3,7 +3,7 @@
 #include "IScene.h"
 #include "Debug.h"
 #include "GameObject.h"
-#include "UIObject.h"
+#include "UIButton.h"
 #include "SceneManager.h"
 #include "Input.h"
 #include "Player.h"
@@ -68,15 +68,11 @@ public:
 		}
 
 		//----------floor--------------
+		
+		//uiButton = sharedContext.entityManger->CreateEntity<UIButton>(objectContext);
+		//uiButton->SetPosition(0.f, -300.f);
 
-		uiTest = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
-		uiTest->Initialize(true);
-		uiTest->SetTexture("floor.png");
-		uiTest->SetPosition(sf::Vector2f(0, 0));
-		//auto transform = uiTest->GetComponent<TransformUIComponent>();
-		//transform->SetPosition(0, 0);
-
-		ObjectCollection::AddUiObject(uiTest);
+		//ObjectCollection::AddUiObject(uiButton);
 
 		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 	}
@@ -143,7 +139,7 @@ public:
 private:
 	GameObject* ship;
 	GameObject* floor;
-	UIObject* uiTest;
+	UIButton* uiButton;
 	Player* player;
 
 	DrawLayer floorDrawLayer = 100;
