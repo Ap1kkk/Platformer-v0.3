@@ -138,12 +138,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetAllocator.cpp" />
+    <ClCompile Include="AttackSensor.cpp" />
     <ClCompile Include="Bitmask.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="CreatedGameState.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DrawableComponent.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="ExitedGameState.cpp" />
@@ -184,9 +186,11 @@
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WorldContactListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h" />
+    <ClInclude Include="AttackSensor.h" />
     <ClInclude Include="Bitmask.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ComponentManager.h" />
@@ -194,6 +198,7 @@
     <ClInclude Include="DataTypes.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DrawableComponent.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="ExitedGameState.h" />
@@ -238,6 +243,7 @@
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIObject.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WorldContactListener.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />

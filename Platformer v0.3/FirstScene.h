@@ -7,6 +7,7 @@
 #include "SceneManager.h"
 #include "Input.h"
 #include "Player.h"
+#include "Enemy.h"
 
 class FirstScene : public IScene
 {
@@ -25,8 +26,6 @@ public:
 		//----------player--------------
 		
 		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
-
-
 		ObjectCollection::AddObject(player);
 		
 		//----------player--------------
@@ -37,6 +36,15 @@ public:
 		{
 			sharedContext.tileManager->CreateTile(tileSet, offset % 20, sf::Vector2f(-64 + offset, -20));
 		}
+
+		//----------enemy--------------
+		
+		enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
+		ObjectCollection::AddObject(enemy);
+
+		//----------enemy--------------
+
+
 
 		//----------floor--------------
 
@@ -63,6 +71,7 @@ public:
 				b2FixtureDef boxFixtureDef2;
 				boxFixtureDef2.shape = &boxShape2;
 				boxFixtureDef2.density = 0;
+				boxFixtureDef2.filter.categoryBits = (uint16)CollisionLayers::Ground;
 
 				physicComponent2->AddFixture(boxFixtureDef2);
 
@@ -144,6 +153,7 @@ private:
 	GameObject* floor;
 	UIButton* uiButton;
 	Player* player;
+	Enemy* enemy;
 
 	DrawLayer floorDrawLayer = 100;
 };

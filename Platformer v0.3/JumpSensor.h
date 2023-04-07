@@ -20,12 +20,14 @@ public:
 	{
 		void BeginContact(b2Contact* contact) override
 		{
-			if (contact && contact->IsTouching())
+			if (contact )
 			{
 				auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
 				auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
-				if (fixtureA->IsSensor() || fixtureB->IsSensor())
+				switch (fixtureA->GetFilterData().categoryBits | fixtureB->GetFilterData().categoryBits) 
+				{
+				case (uint16)CollisionLayers::Ground | (uint16)CollisionLayers::Sensor:
 				{
 					auto entity1 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureA->GetBody()));
 					auto entity2 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureB->GetBody()));
@@ -39,13 +41,21 @@ public:
 						{
 							sensor->EnterCollision();
 							Debug::Log("enabled " + std::to_string(sensor->IsEnabledToJump()));
+
 						}
 						else if (other != nullptr)
 						{
 							other->EnterCollision();
 							Debug::Log("enabled " + std::to_string(other->IsEnabledToJump()));
+
 						}
-					}
+					} 
+				}
+					break;
+
+				case (uint16)CollisionLayers::Player | (uint16)CollisionLayers::Sensor:
+					Debug::Log("Contacted");
+					break;
 				}
 			}
 		}
@@ -57,8 +67,9 @@ public:
 				auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
 				auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
-				if (fixtureA->IsSensor() || fixtureB->IsSensor())
+				switch (fixtureA->GetFilterData().categoryBits | fixtureB->GetFilterData().categoryBits)
 				{
+				case (uint16)CollisionLayers::Ground | (uint16)CollisionLayers::Sensor:
 					auto entity1 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureA->GetBody()));
 					auto entity2 = EntityManager::GetEntityById<GameObject>(PhysicSystem::GetBodyOwnerId(fixtureB->GetBody()));
 
@@ -70,13 +81,13 @@ public:
 						if (sensor != nullptr)
 						{
 							sensor->LeaveCollision();
-							Debug::Log("disabled " + std::to_string(sensor->IsEnabledToJump()));
+							Debug::Log("enabled " + std::to_string(sensor->IsEnabledToJump()));
 
 						}
 						else if (other != nullptr)
 						{
 							other->LeaveCollision();
-							Debug::Log("disabled " + std::to_string(other->IsEnabledToJump()));
+							Debug::Log("enabled " + std::to_string(other->IsEnabledToJump()));
 
 						}
 					}
@@ -104,15 +115,23 @@ public:
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
+		boxFixtureDef.filter.categoryBits = (uint16)CollisionLayers::Sensor;
+		boxFixtureDef.filter.maskBits = (uint16)CollisionLayers::Ground | (uint16)CollisionLayers::Default | (uint16)CollisionLayers::Enemy;
+		
 		//TODO добавить маску слоев коллизий
 		
 		sensor = physicComponent->AddSensor(boxFixtureDef);
-		auto listener = new JumpSensorListener;
+		jumpListener = new JumpSensorListener;
 
-		PhysicSystem::SetContactListener<JumpSensorListener>(listener);
+		PhysicSystem::SetContactListener<JumpSensorListener>(jumpListener);
 	}
 
 	bool IsEnabledToJump() const { return intersectsCount; }
+	
+	void OnDestroy() override
+	{
+		delete jumpListener;
+	}
 
 private:
 	void EnterCollision() { ++intersectsCount; }
@@ -123,6 +142,7 @@ private:
 	b2Body* body;
 	b2Vec2 ownerBodyOffset;
 	Sensor* sensor;
+	JumpSensorListener* jumpListener;
 	PhysicComponent* physicComponent;
 
 	bool isEnabledToJump;

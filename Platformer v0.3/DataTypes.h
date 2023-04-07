@@ -20,6 +20,8 @@ typedef std::string Filename;
 
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 768
+//#define WINDOW_WIDTH 1920
+//#define WINDOW_HEIGHT 1080
 
 #define FIXED_DELTA_TIME 1.f / 45.f;
 
@@ -43,8 +45,12 @@ enum class GameStateType
 	Exited
 };
 
-//
-//sf::Vector2i CorrectMouseCoordinates(const sf::Vector2i& mouseCoordinates)
-//{
-//	return sf::Vector2i(mouseCoordinates.x - WINDOW_WIDTH, mouseCoordinates.y - WINDOW_HEIGHT);
-//}
+enum class CollisionLayers
+{
+	Default		= 0x0001,
+	Ground		= 0x0002,
+	Player		= 0x0004,
+	Enemy		= 0x0008,
+	Projectile	= 0x0010,
+	Sensor		= 0x0012,
+};
