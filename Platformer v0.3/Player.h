@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Camera.h"
 #include "PlayerMovement.h"
+#include "AttackSensor.h"
 #include "JumpSensor.h"
 
 class Player : public GameObject
@@ -21,6 +22,7 @@ private:
 	b2Body* body;
 	Camera* camera;
 	PlayerMovement* playerMovement;
+	AttackSensor* attackSensor;
 	JumpSensor* jumpSensor;
 	Window* window;
 

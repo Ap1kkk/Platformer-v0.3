@@ -38,20 +38,13 @@ public:
 		boxFixtureDef.density = 1;
 		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Enemy));
 
-
 		physicComponent->AddFixture(boxFixtureDef);
 		body = physicComponent->GetBody();
-
-		attackSensor = AddComponent<AttackSensor>();
-		attackSensor->SetPhysicComponent(physicComponent);
-		attackSensor->SetOffset(sf::Vector2f(-15.f, 0.f));
 
 	}
 
 private:
 	b2Body* body;
-
-	AttackSensor* attackSensor;
 
 	DrawLayer drawLayer = 100;
 

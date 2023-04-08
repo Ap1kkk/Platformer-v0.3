@@ -4,8 +4,10 @@
 #include "ISensor.h"
 
 #include "PhysicComponent.h"
+#include "WorldContactListener.h"
+#include "Bitmask.h"
 
-#include "GameObject.h"
+#include "Debug.h"
 
 class AttackSensor : public IComponent, public ISensor
 {
@@ -31,26 +33,45 @@ public:
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
-		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Sensor));
-		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Player));
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensor));
+		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
 
 		sensor = physicComponent->AddSensor(boxFixtureDef);
-		//attackListener = new AttackSensorListener;
 
-		//PhysicSystem::SetContactListener<AttackSensorListener>(attackListener);
+		collisionMask.SetBit((uint16)CollisionLayers::Enemy);
+		collisionMask.SetBit((uint16)CollisionLayers::AttackSensor);
+
+		Debug::Log("attack mask");
+		Debug::Log(collisionMask.GetMask());
+		WorldContactListener::AddHandler(collisionMask, this);
+	}
+
+	void OnCollisionEnter(b2Contact* contact) override
+	{
+		if (contact)
+		{
+			Debug::Log("Entered attack sensor");
+		}
+	}
+	void OnCollisionExit(b2Contact* contact) override
+	{
+		if (contact)
+		{
+			Debug::Log("Leaved attack sensor");
+		}
 	}
 
 	void OnDestroy() override
 	{
-		//delete attackListener;
+		WorldContactListener::DeleteComponentHandler(componentId);
 	}
 
 private:
 	b2Body* body;
 	b2Vec2 ownerBodyOffset;
 	Sensor* sensor;
-	//AttackSensorListener* attackListener;
 	PhysicComponent* physicComponent;
+	Bitmask collisionMask;
 
 	bool isEnabledToJump;
 };

@@ -20,6 +20,7 @@ public:
 		auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
 		uint16 collisionMask = fixtureA->GetFilterData().categoryBits | fixtureB->GetFilterData().categoryBits;
+		//Debug::Log(collisionMask);
 
 		for (auto& pair : entityHandlers)
 		{
@@ -31,6 +32,11 @@ public:
 
 		for (auto& pair : componentHandlers)
 		{
+			//Debug::Log("Comparing..");
+			//Debug::Log(collisionMask);
+			//Debug::Log(pair.first.GetMask());
+			//Debug::Log("...");
+
 			if (collisionMask == pair.first.GetMask16())
 			{
 				pair.second.second->OnCollisionEnter(contact);
@@ -44,6 +50,7 @@ public:
 		auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
 		uint16 collisionMask = fixtureA->GetFilterData().categoryBits | fixtureB->GetFilterData().categoryBits;
+		//Debug::Log(collisionMask);
 
 		for (auto& pair : entityHandlers)
 		{
