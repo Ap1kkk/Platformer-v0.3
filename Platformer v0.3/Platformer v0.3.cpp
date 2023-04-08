@@ -10,12 +10,6 @@ int main()
 
 	while (game.IsRunning())
 	{
-		//game.ProcessInput();
-		//game.EarlyUpdate();
-		//game.Update();
-		//game.LateUpdate();
-		//game.Draw();
-		//game.CalculateDeltaTime();
 		game.ProcessGameLoop();
 	}
 }

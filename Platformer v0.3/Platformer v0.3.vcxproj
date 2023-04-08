@@ -139,8 +139,10 @@
   <ItemGroup>
     <ClCompile Include="AssetAllocator.cpp" />
     <ClCompile Include="AttackSensor.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bitmask.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Chunk.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="CreatedGameState.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="ISensor.cpp" />
     <ClCompile Include="ITransform.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
+    <ClCompile Include="MainChunk.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
@@ -175,6 +178,7 @@
     <ClCompile Include="Platformer v0.3.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
+    <ClCompile Include="RoadSprite.cpp" />
     <ClCompile Include="RunnedGameState.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -191,8 +195,10 @@
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h" />
     <ClInclude Include="AttackSensor.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Bitmask.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Chunk.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="CreatedGameState.h" />
     <ClInclude Include="DataTypes.h" />
@@ -220,6 +226,7 @@
     <ClInclude Include="ITileManager.h" />
     <ClInclude Include="ITransform.h" />
     <ClInclude Include="JumpSensor.h" />
+    <ClInclude Include="MainChunk.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
@@ -231,6 +238,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="RenderSystem.h" />
+    <ClInclude Include="RoadSprite.h" />
     <ClInclude Include="RunnedGameState.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SharedContext.h" />

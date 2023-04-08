@@ -32,8 +32,8 @@ public:
 	void EnableToDraw();
 	void DisableToDraw();
 
-	void SetTexture(const std::string& filename);
-	void SetTextureRect(const std::string& filename, sf::IntRect intRect);
+	virtual void SetTexture(const Filename& filename);
+	virtual void SetTextureRect(const Filename& filename, const sf::IntRect& intRect);
 
 	PhysicComponent* MakePhysical();
 
@@ -43,10 +43,15 @@ public:
 	/// <returns></returns>
 	b2Vec2 GetSpriteBoxHalfSize();
 
+	void SetSpawnPosition(const sf::Vector2f& spawnPosition);
+	void SetSpawnPosition(const float x, const float y);
+
 protected:
 	bool isDrawable;
 	bool isEnabledToDraw;
 	bool isPhysical;
+
+	sf::Vector2f spawnPosition;
 
 	TransformComponent* transform;
 	DrawableComponent* drawableComponent;

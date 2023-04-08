@@ -15,8 +15,7 @@ public:
 	Player();
 
 	void Awake() override;
-
-	void Update() override;
+ 
 
 private:
 	b2Body* body;

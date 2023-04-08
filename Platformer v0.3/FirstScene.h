@@ -8,6 +8,8 @@
 #include "Input.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "RoadSprite.h"
+#include "MainChunk.h"
 
 class FirstScene : public IScene
 {
@@ -26,6 +28,7 @@ public:
 		//----------player--------------
 		
 		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
+		player->SetSpawnPosition(0.f, 20.f);
 		ObjectCollection::AddObject(player);
 		
 		//----------player--------------
@@ -48,36 +51,19 @@ public:
 
 		//----------floor--------------
 
-		for (int i = -100; i <= 200; i += 300)
-		{
-			for (int j = -320 * 3; j < 320 * 3; j += 320 * 2)
-			{
-				floor = sharedContext.entityManger->CreateEntity<GameObject>(objectContext);
-				floor->MakeDrawable(true, floorDrawLayer);
-				floor->SetTexture("floor.png");
+		mainChunk = new MainChunk(sharedContext, objectContext);
+		mainChunk->Spawn(sf::Vector2f(0.f, 0.f));
 
-				auto physicComponent2 = floor->MakePhysical();
-
-				b2BodyDef bodyDef2;
-				bodyDef2.type = b2_staticBody;
-				bodyDef2.position = b2Vec2(j, i);
-				physicComponent2->SetBodyDef(bodyDef2);
-				physicComponent2->InitializeBody();
-
-				b2PolygonShape boxShape2;
-				auto floorSpriteHSize = floor->GetSpriteBoxHalfSize();
-				boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
-
-				b2FixtureDef boxFixtureDef2;
-				boxFixtureDef2.shape = &boxShape2;
-				boxFixtureDef2.density = 0;
-				boxFixtureDef2.filter.categoryBits = (1 << ((uint16)CollisionLayers::Ground));
-
-				physicComponent2->AddFixture(boxFixtureDef2);
-
-				ObjectCollection::AddObject(floor);
-			}
-		}
+		//for (int y = -100; y <= 200; y += 300)
+		//{
+		//	for (int x = -320 * 3; x < 320 * 3; x += 320 * 2)
+		//	{
+		//		road = sharedContext.entityManger->CreateEntity<RoadSprite>(objectContext);
+		//		road->SetSpawnPosition(x, y);
+		//		road->SetTexture("floor.png");
+		//		ObjectCollection::AddObject(road);
+		//	}
+		//}
 
 		//----------floor--------------
 		
@@ -150,10 +136,12 @@ public:
 
 private:
 	GameObject* ship;
-	GameObject* floor;
+	RoadSprite* road;
 	UIButton* uiButton;
 	Player* player;
 	Enemy* enemy;
+
+	MainChunk* mainChunk;
 
 	DrawLayer floorDrawLayer = 100;
 };

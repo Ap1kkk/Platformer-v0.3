@@ -57,7 +57,7 @@ void GameObject::DisableToDraw()
 	}
 }
 
-void GameObject::SetTexture(const std::string& filename)
+void GameObject::SetTexture(const Filename& filename)
 {
 	if (isDrawable)
 	{
@@ -69,7 +69,7 @@ void GameObject::SetTexture(const std::string& filename)
 	}
 }
 
-void GameObject::SetTextureRect(const std::string& filename, sf::IntRect intRect)
+void GameObject::SetTextureRect(const Filename& filename, const sf::IntRect& intRect)
 {
 	if (isDrawable)
 	{
@@ -100,4 +100,17 @@ b2Vec2 GameObject::GetSpriteBoxHalfSize()
 	{
 		Debug::LogWarning("Can't get sprite size because object must me drawable and physical");
 	}
+}
+
+void GameObject::SetSpawnPosition(const sf::Vector2f& spawnPosition)
+{
+	this->spawnPosition = spawnPosition;
+}
+
+void GameObject::SetSpawnPosition(const float x, const float y)
+{
+	spawnPosition.x = x;
+	spawnPosition.y = y;
+
+	Debug::Log(spawnPosition);
 }

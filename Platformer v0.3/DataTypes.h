@@ -8,20 +8,21 @@
 typedef unsigned int EntityId;
 typedef unsigned int ComponentId;
 typedef unsigned int ComponentLayer;
-typedef unsigned int DrawLayer;
+typedef int DrawLayer;
 typedef unsigned int SceneId;
 typedef unsigned int TileId;
 typedef unsigned int TileSetId;
 typedef unsigned int SensorId;
 typedef unsigned int FixtureId;
+typedef unsigned int ChunkId;
 
 typedef std::string ComponentType;
 typedef std::string Filename;
 
-#define WINDOW_WIDTH 1024
-#define WINDOW_HEIGHT 768
-//#define WINDOW_WIDTH 1920
-//#define WINDOW_HEIGHT 1080
+//#define WINDOW_WIDTH 1024
+//#define WINDOW_HEIGHT 768
+#define WINDOW_WIDTH 1920
+#define WINDOW_HEIGHT 1080
 
 #define FIXED_DELTA_TIME 1.f / 45.f;
 

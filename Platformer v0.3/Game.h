@@ -36,6 +36,9 @@ public:
 
 	void ProcessGameLoop();
 
+	bool IsRunning() { return window.IsOpen(); }
+
+private:
 	void ProcessInput();
 	void EarlyUpdate();
 	void Update();
@@ -44,9 +47,6 @@ public:
 	void Draw();
 	void CalculateDeltaTime();
 
-	bool IsRunning() { return window.IsOpen(); }
-
-private:
 	Window window;
 	ObjectCollection* objectCollection;
 	AssetAllocator* assetAllocator;

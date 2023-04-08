@@ -14,13 +14,10 @@ void Player::Awake()
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position = b2Vec2(0, 20);
+	bodyDef.position = b2Vec2(spawnPosition.x, spawnPosition.y);
 	physicComponent->SetBodyDef(bodyDef);
 	physicComponent->InitializeBody();
 
-	//b2CircleShape circleShape;  
-	//circleShape.m_p.Set(0, 0);
-	//circleShape.m_radius = 15.f;
 	b2PolygonShape boxShape;
 	b2Vec2 size = GetSpriteBoxHalfSize();
 	boxShape.SetAsBox(size.x, size.y);
@@ -46,9 +43,4 @@ void Player::Awake()
 	attackSensor = AddComponent<AttackSensor>();
 	attackSensor->SetPhysicComponent(physicComponent);
 	attackSensor->SetOffset(sf::Vector2f(-15.f, 0.f));
-}
-
-void Player::Update()
-{
-
 }
