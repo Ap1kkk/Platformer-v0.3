@@ -20,6 +20,15 @@ public:
 
 	void Clear();
 
+	bool operator < (const Bitmask& right) const
+	{
+		return this->bits < right.bits;
+	}
+	bool operator > (const Bitmask& right) const
+	{
+		return this->bits > right.bits;
+	}
+
 private:
 	uint64_t bits;
 };

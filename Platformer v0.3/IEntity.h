@@ -31,6 +31,9 @@ public:
 	virtual void ComponentsLateUpdate() = 0;
 	virtual void ComponentsUpdateUI() = 0;
 
+	virtual void OnCollisionEnter(b2Contact* contact) {}
+	virtual void OnCollisionExit(b2Contact* contact) {}
+
 	virtual void OnDestroy() {}
 
 	virtual void Destroy() = 0;

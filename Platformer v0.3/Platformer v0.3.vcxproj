@@ -186,7 +186,6 @@
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="WorldContactListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetAllocator.h" />

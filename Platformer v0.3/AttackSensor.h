@@ -42,14 +42,14 @@ public:
 
 	void OnDestroy() override
 	{
-		delete attackListener;
+		//delete attackListener;
 	}
 
 private:
 	b2Body* body;
 	b2Vec2 ownerBodyOffset;
 	Sensor* sensor;
-	AttackSensorListener* attackListener;
+	//AttackSensorListener* attackListener;
 	PhysicComponent* physicComponent;
 
 	bool isEnabledToJump;

@@ -74,6 +74,11 @@ void Debug::Log(const b2Vec2 vector)
 	std::cout << "LOG: (" << vector.x << " ; " << vector.y << ")\n";
 }
 
+void Debug::Log(const uint16 bitmask)
+{
+	std::cout << "LOG: " << bitmask << "\n";
+}
+
 void Debug::LogInfo(const std::string& msg)
 {
 	SetConsoleTextAttribute(handle, (int)ConsoleColor::CYAN);

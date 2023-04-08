@@ -48,6 +48,7 @@ public:
 	static void Log(const std::string& msg, const std::string& from);
 	static void Log(const sf::Vector2f vector);
 	static void Log(const b2Vec2 vector);
+	static void Log(const uint16 bitmask);
 	static void LogInfo(const std::string& msg);
 	static void LogInfo(const std::string& msg, const std::string& from);
 	static void LogWarning(const std::string& msg);

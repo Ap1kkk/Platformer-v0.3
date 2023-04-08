@@ -25,6 +25,9 @@ public:
 
 	virtual void Draw(Window* window) {}
 
+	virtual void OnCollisionEnter(b2Contact* contact) {}
+	virtual void OnCollisionExit(b2Contact* contact) {}
+
 	/// <summary>
 	/// Called before destroying component
 	/// </summary>

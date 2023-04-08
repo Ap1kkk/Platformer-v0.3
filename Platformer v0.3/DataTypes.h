@@ -53,4 +53,5 @@ enum class CollisionLayers
 	Enemy		= 0x0008,
 	Projectile	= 0x0010,
 	Sensor		= 0x0012,
+	JumpSensor	= 0x0014,
 };
