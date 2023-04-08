@@ -47,11 +47,11 @@ enum class GameStateType
 
 enum class CollisionLayers
 {
-	Default		= 0x0001,
-	Ground		= 0x0002,
-	Player		= 0x0004,
-	Enemy		= 0x0008,
-	Projectile	= 0x0010,
-	Sensor		= 0x0012,
-	JumpSensor	= 0x0014,
+	Default		= 1,
+	Ground		= 2,
+	Player		= 3,
+	Enemy		= 4,
+	Projectile	= 5,
+	Sensor		= 6,
+	JumpSensor	= 7,
 };

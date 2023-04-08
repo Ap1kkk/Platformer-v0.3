@@ -71,7 +71,7 @@ public:
 				b2FixtureDef boxFixtureDef2;
 				boxFixtureDef2.shape = &boxShape2;
 				boxFixtureDef2.density = 0;
-				boxFixtureDef2.filter.categoryBits = (uint16)CollisionLayers::Ground;
+				boxFixtureDef2.filter.categoryBits = (1 << ((uint16)CollisionLayers::Ground));
 
 				physicComponent2->AddFixture(boxFixtureDef2);
 

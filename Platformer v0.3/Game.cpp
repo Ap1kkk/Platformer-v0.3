@@ -14,13 +14,16 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sceneManager = new SceneManager;
 	tileManager = new TileManager;
 	gameStateMachine = new GameStateMachine();
+	worldContactListener = new WorldContactListener();
 
 	//-------------------Debug Draw-------------------------------
 	physicsDebugDraw = new PhysicsDebugDraw(&window);
 
+	physicSystem->SetContactListener<WorldContactListener>(worldContactListener);
+
 	physicSystem->SetDebugDraw(physicsDebugDraw);
 	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_aabbBit); //с отрисовкой площади
-	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit); 
+	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
 
 	//-------------------Debug Draw-------------------------------
 
@@ -34,6 +37,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.tileManager = tileManager;
 	sharedContext.sceneManager = sceneManager;
 	sharedContext.gameStateMachine = gameStateMachine;
+	sharedContext.worldContactListener = worldContactListener;
 
 
 	//-------------------Создание сцен ----------------------------

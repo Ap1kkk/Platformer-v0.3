@@ -31,8 +31,8 @@ public:
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
-		boxFixtureDef.filter.categoryBits = (uint16)CollisionLayers::Sensor;
-		boxFixtureDef.filter.maskBits = (uint16)CollisionLayers::Player;
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Sensor));
+		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Player));
 
 		sensor = physicComponent->AddSensor(boxFixtureDef);
 		//attackListener = new AttackSensorListener;

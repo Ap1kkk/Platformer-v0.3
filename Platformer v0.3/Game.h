@@ -15,6 +15,7 @@
 #include "PhysicsDebugDraw.h"
 #include "SharedContext.h"
 #include "ObjectCollection.h"
+#include "WorldContactListener.h"
 #include "FirstScene.h"
 
 #include "GameStateMachine.h"
@@ -56,6 +57,7 @@ private:
 	SceneManager* sceneManager;
 	TileManager* tileManager;
 	GameStateMachine* gameStateMachine;
+	WorldContactListener* worldContactListener;
 
 	SharedContext sharedContext;
 };

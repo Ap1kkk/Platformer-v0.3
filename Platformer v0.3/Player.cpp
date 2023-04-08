@@ -28,7 +28,7 @@ void Player::Awake()
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;
 	boxFixtureDef.density = 1;
-	boxFixtureDef.filter.categoryBits = (uint16)CollisionLayers::Player;
+	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Player));
 
 	physicComponent->AddFixture(boxFixtureDef);
 	body = physicComponent->GetBody();

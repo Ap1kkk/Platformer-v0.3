@@ -8,6 +8,7 @@
 #include "TileManager.h"
 #include "ISceneManager.h"
 #include "IGameStateMachine.h"
+#include "WorldContactListener.h"
 
 struct SharedContext
 {
@@ -21,6 +22,7 @@ struct SharedContext
 	TileManager* tileManager;
 	ISceneManager* sceneManager;
 	IGameStateMachine* gameStateMachine;
+	WorldContactListener* worldContactListener;
 
 	//TODO добавить менеджера загрузки сохранений
 };
