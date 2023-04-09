@@ -8,34 +8,11 @@
 class RunnedGameState : public GameState
 {
 public:
-	RunnedGameState(SharedContext context) : sharedContext(context)
-	{
-		SetStateType(GameStateType::Runned);
-	}
+	RunnedGameState(SharedContext context);
 
-	void EnterState() override
-	{
-		//TODO перенести логику создания всех сцен
-		Debug::Log("Entered Runned state");
-
-	}
-	void Update() override
-	{
-		//Debug::Log("Updating Runned state");
-		sharedContext.sceneManager->ProcessNotAwoken();
-		sharedContext.sceneManager->CaptureEvents();
-
-		sharedContext.physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
-
-		sharedContext.sceneManager->EarlyUpdate();
-		sharedContext.sceneManager->Update();
-		sharedContext.sceneManager->LateUpdate();
-		sharedContext.sceneManager->UpdateUI();
-	}
-	void LeaveState() override
-	{
-		Debug::Log("Leaving Runned state");
-	}
+	void EnterState() override;
+	void Update() override;
+	void LeaveState() override;
 
 private:
 	SharedContext sharedContext;

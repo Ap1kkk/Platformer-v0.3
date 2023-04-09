@@ -12,23 +12,12 @@
 class MainChunk : public Chunk
 {
 public:
-	MainChunk(SharedContext sharedContext, ObjectContext objectContext) : Chunk(sharedContext, objectContext)
-	{
+	MainChunk(SharedContext sharedContext, ObjectContext objectContext);
 
-	}
-
-	void Spawn(sf::Vector2f chunkPosition) override
-	{
-		background = sharedContext.entityManger->CreateEntity<Background>(objectContext);
-		background->SetPosition(chunkPosition);
-		background->SetBackgroundTexture(backgroundFilename);
-		ObjectCollection::AddObject(background);
-
-	}
+	void Spawn(sf::Vector2f chunkPosition) override;
 
 	void Destroy() override
 	{
-
 	}
 
 private:

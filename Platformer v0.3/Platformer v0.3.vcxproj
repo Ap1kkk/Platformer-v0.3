@@ -177,6 +177,7 @@
     <ClCompile Include="PhysicSystem.cpp" />
     <ClCompile Include="Platformer v0.3.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="RoadSprite.cpp" />
     <ClCompile Include="RunnedGameState.cpp" />

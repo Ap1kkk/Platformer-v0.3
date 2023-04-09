@@ -9,14 +9,8 @@
 class IScene
 {
 public:
-	IScene(SharedContext sharedContext) : sceneId(sceneIdCounter++), sharedContext(sharedContext) 
-	{
-		objectContext.window = sharedContext.window;
-	}
-	virtual ~IScene() 
-	{
-		Debug::LogWarning("Scene with id: " + std::to_string(sceneId) + " destroyed");
-	}
+	IScene(SharedContext sharedContext);
+	virtual ~IScene();
 
 	virtual void Initialize() = 0;
 	
@@ -36,28 +30,9 @@ public:
 	// Вызывается перед перезагрузкой сцены
 	virtual void OnReload() {}
 
-	virtual void Reload()
-	{
-		OnReload();
-		ObjectCollection::Clear();
-	}
+	virtual void Reload();
 
-	void Destroy(bool shouldClearMemory, bool clearNotBufferedOnly)
-	{
-		OnDestroy();
-		if (clearNotBufferedOnly)
-		{
-			ObjectCollection::ClearNotBuffured();
-		}
-		else
-		{
-			ObjectCollection::Clear();
-		}
-		if (shouldClearMemory)
-		{
-			delete this;
-		}
-	}
+	void Destroy(bool shouldClearMemory, bool clearNotBufferedOnly);
 
 	inline const SceneId GetSceneId() const { return sceneId; }
 

@@ -13,37 +13,14 @@ class GameStateMachine : public IGameStateMachine
 public:
 	GameStateMachine() : isPaused(false) {}
 
-	void Create() override
-	{
-		RunState(GameStateType::Created);
-	}
-	void Initialize() override
-	{
-		TransitToState(GameStateType::Initialized);
-	}
-	void Run() override
-	{
-		TransitToState(GameStateType::Runned);
-	}
-	void Pause() override
-	{
-		isPaused = true;
-		TransitToState(GameStateType::Paused);
-	}
-	void Contintue() override
-	{
-		isPaused = false;
-		TransitToState(GameStateType::Runned);
-	}
-	void ExitGame() override
-	{
-		TransitToState(GameStateType::Exited);
-	}
+	void Create() override;
+	void Initialize() override;
+	void Run() override;
+	void Pause() override;
+	void Contintue() override;
+	void ExitGame() override;
 
-	void Update() override
-	{
-		currentState->Update();
-	}
+	void Update() override;
 
 	bool IsPaused() override { return isPaused; }
 
@@ -68,26 +45,9 @@ public:
 
 private:
 
-	void TransitToState(GameStateType nextState)
-	{
-		currentState->LeaveState();
-		RunState(nextState);
-	}
+	void TransitToState(GameStateType nextState);
 
-	void RunState(GameStateType type)
-	{
-		auto itr = states.find(type);
-		if (itr != states.end())
-		{
-			currentState = itr->second;
-			currentState->EnterState();
-			//currentState->Update();
-		}
-		else
-		{
-			Debug::LogError("Can't run state\nState with type:" + std::to_string((int)type) + " not found", typeid(GameStateMachine).name());
-		}
-	}
+	void RunState(GameStateType type);
 
 	// контейнер всех созданных состояний
 	std::map<GameStateType, GameState*> states;

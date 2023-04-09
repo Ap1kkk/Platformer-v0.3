@@ -1,1 +1,37 @@
 #include "Enemy.h"
+
+Enemy::Enemy()
+{
+	Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
+}
+
+void Enemy::Awake()
+{
+	MakeDrawable(true, drawLayer);
+	SetTexture(enemyTexture);
+
+	MakePhysical();
+
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position = b2Vec2(-100, 20);
+	bodyDef.fixedRotation = true;
+	physicComponent->SetBodyDef(bodyDef);
+	physicComponent->InitializeBody();
+
+	//b2CircleShape circleShape;  
+	//circleShape.m_p.Set(0, 0);
+	//circleShape.m_radius = 15.f;
+	b2PolygonShape boxShape;
+	b2Vec2 size = GetSpriteBoxHalfSize();
+	boxShape.SetAsBox(size.x, size.y);
+
+	b2FixtureDef boxFixtureDef;
+	boxFixtureDef.shape = &boxShape;
+	boxFixtureDef.density = 1;
+	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Enemy));
+
+	physicComponent->AddFixture(boxFixtureDef);
+	body = physicComponent->GetBody();
+
+}

@@ -14,57 +14,16 @@ class AttackSensor : public IComponent, public ISensor
 public:
 	AttackSensor() {}
 
-	void SetPhysicComponent(PhysicComponent* physicComponent)
-	{
-		this->physicComponent = physicComponent;
-	}
+	void SetPhysicComponent(PhysicComponent* physicComponent);
 
-	void SetOffset(sf::Vector2f offset)
-	{
-		ownerBodyOffset = { offset.x, offset.y };
-	}
+	void SetOffset(sf::Vector2f offset);
 
-	void Awake() override
-	{
-		b2PolygonShape boxShape;
-		b2Vec2 size = { 20, 50 };
-		boxShape.SetAsBox(size.x, size.y, ownerBodyOffset, 0);
+	void Awake() override;
 
-		b2FixtureDef boxFixtureDef;
-		boxFixtureDef.shape = &boxShape;
-		boxFixtureDef.isSensor = true;
-		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensor));
-		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
+	void OnCollisionEnter(b2Contact* contact) override;
+	void OnCollisionExit(b2Contact* contact) override;
 
-		sensor = physicComponent->AddSensor(boxFixtureDef);
-
-		collisionMask.SetBit((uint16)CollisionLayers::Enemy);
-		collisionMask.SetBit((uint16)CollisionLayers::AttackSensor);
-
-		Debug::Log("attack mask");
-		Debug::Log(collisionMask.GetMask());
-		WorldContactListener::AddHandler(collisionMask, this);
-	}
-
-	void OnCollisionEnter(b2Contact* contact) override
-	{
-		if (contact)
-		{
-			Debug::Log("Entered attack sensor");
-		}
-	}
-	void OnCollisionExit(b2Contact* contact) override
-	{
-		if (contact)
-		{
-			Debug::Log("Leaved attack sensor");
-		}
-	}
-
-	void OnDestroy() override
-	{
-		WorldContactListener::DeleteComponentHandler(componentId);
-	}
+	void OnDestroy() override;
 
 private:
 	b2Body* body;

@@ -26,7 +26,6 @@ public:
 	float GetAngle() const override;
 	sf::Vector2f& GetPosition() override;
 
-	//TODO добавить rotation
 	//TODO добавить scale
 
 private:

@@ -7,62 +7,21 @@
 class TransformUIComponent : public ITransform
 {
 public:
-	TransformUIComponent() 
-	{
-		SetComponentLayer(1);
-		Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
-	}
+	TransformUIComponent();
 
-	//void Awake() override
-	//{
-	//	window = objectContext.window;
-	//}
+	void UpdateUI() override;
 
-	void UpdateUI() override
-	{
-		auto view = objectContext.window->GetView();
-		viewCenter = view.getCenter();
-		//viewCenter = window->GetCentre();
-		position = { viewCenter.x + initialPosition.x, viewCenter.y + initialPosition.y };
-	}
+	void AddPosition(sf::Vector2f position) override;
+	void AddPosition(float x, float y) override;
 
-	void AddPosition(sf::Vector2f position) override
-	{
-		this->initialPosition += position;
-	}
-	void AddPosition(float x, float y) override
-	{
-		this->initialPosition.x += x;
-		this->initialPosition.y += y;
-	}
+	void SetPosition(sf::Vector2f position) override;
+	void SetPosition(float x, float y) override;
 
-	void SetPosition(sf::Vector2f position) override
-	{
-		this->initialPosition = position;
-	}
-	void SetPosition(float x, float y) override
-	{
-		this->initialPosition.x = x;
-		this->initialPosition.y = y;
-	}
+	void SetAngleInDeg(float angleInDeg) override;
+	void SetAngleInRad(float angleInRad) override;
 
-	void SetAngleInDeg(float angleInDeg) override
-	{
-		angle = angleInDeg;
-	}
-	void SetAngleInRad(float angleInRad) override
-	{
-		angle = RADTODEG * angleInRad;
-	}
-
-	float GetAngle() const override
-	{
-		return angle;
-	}
-	sf::Vector2f& GetPosition() override
-	{
-		return position;
-	}
+	float GetAngle() const override;
+	sf::Vector2f& GetPosition() override;
 
 private:
 	Window* window;

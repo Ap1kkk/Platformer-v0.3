@@ -9,10 +9,7 @@
 class Chunk
 {
 public:
-	Chunk(SharedContext sharedContext, ObjectContext objectContext) : sharedContext(sharedContext), objectContext(objectContext), chunkId(staticIdCounter++)
-	{
-
-	}
+	Chunk(SharedContext sharedContext, ObjectContext objectContext);
 
 	virtual ~Chunk() {}
 

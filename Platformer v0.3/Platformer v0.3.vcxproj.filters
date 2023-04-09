@@ -84,6 +84,15 @@
     <Filter Include="Файлы заголовков\Engine\GameStates">
       <UniqueIdentifier>{90bc5e76-3cd9-40a5-ac55-4e5868d1e8d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Chunks">
+      <UniqueIdentifier>{3a5195f4-bd3c-45b3-9b5b-aece873a8633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Chunks">
+      <UniqueIdentifier>{ddd93670-c8ab-4114-9786-e5b0b7394f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameStates">
+      <UniqueIdentifier>{40b71849-e756-46ce-a14c-136ee1a84a96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentManager.cpp">
@@ -105,9 +114,6 @@
       <Filter>Исходные файлы\Engine\Base Components</Filter>
     </ClCompile>
     <ClCompile Include="IScene.cpp">
-      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
       <Filter>Исходные файлы\Scenes\Scene utils</Filter>
     </ClCompile>
     <ClCompile Include="FirstScene.cpp">
@@ -185,79 +191,85 @@
     <ClCompile Include="JumpSensor.cpp">
       <Filter>Исходные файлы\Components\Jump</Filter>
     </ClCompile>
-    <ClCompile Include="GameStateMachine.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CreatedGameState.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="IGameStateMachine.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="InitializedGameState.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="RunnedGameState.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ISceneManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="PausedGameState.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ExitedGameState.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="UIObject.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformUIComponent.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="PauseScene.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ITransform.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="UIButton.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Mouse.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackSensor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldContactListener.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Chunk.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MainChunk.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="RoadSprite.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Background.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="SmallObstacle.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="TestChunk1.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
     <ClCompile Include="TestChunk2.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
     <ClCompile Include="TestChunk3.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
+    </ClCompile>
+    <ClCompile Include="MainChunk.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
+    </ClCompile>
+    <ClCompile Include="Chunk.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackSensor.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ITransform.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
+    </ClCompile>
+    <ClCompile Include="RoadSprite.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldContactListener.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformUIComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallObstacle.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="IGameStateMachine.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="InitializedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PausedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RunnedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ISceneManager.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovement.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -400,56 +412,56 @@
     <ClInclude Include="RunnedGameState.h">
       <Filter>Файлы заголовков\Engine\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="UIObject.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformUIComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="PauseScene.h">
       <Filter>Файлы заголовков\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="ITransform.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="UIButton.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Mouse.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Файлы заголовков\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="AttackSensor.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldContactListener.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Chunk.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MainChunk.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="RoadSprite.h">
       <Filter>Файлы заголовков\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="AttackSensor.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ITransform.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="SmallObstacle.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldContactListener.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformUIComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Chunk.h">
+      <Filter>Файлы заголовков\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="MainChunk.h">
+      <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
     <ClInclude Include="TestChunk1.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
     <ClInclude Include="TestChunk2.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
     <ClInclude Include="TestChunk3.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

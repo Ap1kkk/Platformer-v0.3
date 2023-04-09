@@ -8,46 +8,15 @@
 class UIObject : public Entity
 {
 public:
-	UIObject()
-	{
-		Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
+	UIObject();
 
-	}
+	void Initialize(bool isEnabledToDraw, DrawLayer drawLayer);
 
-	void Initialize(bool isEnabledToDraw, DrawLayer drawLayer)
-	{
-		transformUI = AddComponent<TransformUIComponent>();
+	void SetTexture(const std::string& filename);
 
-		transformUI->SetPosition(position);
+	void SetTextureRect(const std::string& filename, sf::IntRect intRect);
 
-		this->drawLayer = drawLayer;
-		this->isEnabledToDraw = isEnabledToDraw;
-		drawableComponent = AddComponent<DrawableComponent>();
-		drawableComponent->Initialize(transformUI);
-		drawableComponent->SetDrawLayer(drawLayer);
-		RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
-	}
-
-	void Awake() override
-	{
-
-	}
-
-	void SetTexture(const std::string& filename)
-	{
-		drawableComponent->SetTexture(filename); 
-	}
-
-	void SetTextureRect(const std::string& filename, sf::IntRect intRect)
-	{
-		drawableComponent->SetTextureRect(filename, intRect);
-	}
-
-	void SetUIPosition(sf::Vector2f position)
-	{
-		this->position = position;
-		transformUI->SetPosition(position);
-	}
+	void SetUIPosition(sf::Vector2f position);
 
 protected:
 	DrawableComponent* drawableComponent;

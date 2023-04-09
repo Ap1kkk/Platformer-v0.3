@@ -131,3 +131,20 @@ void RenderSystem::RetrieveActiveFromPauseBuffer()
 	}
 	pauseBuffer.clear();
 }
+
+void RenderSystem::AddToDrawMap(EntityId entityId, DrawableComponent* drawable)
+{
+	drawMap.emplace(std::make_pair(drawable->GetDrawLayer(), std::make_pair(entityId, drawable)));
+}
+
+void RenderSystem::DeleteFromDrawMap(EntityId entityId)
+{
+	for (auto itr = drawMap.begin(); itr != drawMap.end(); ++itr)
+	{
+		if (itr->second.first == entityId)
+		{
+			drawMap.erase(itr);
+			break;
+		}
+	}
+}

@@ -12,23 +12,9 @@
 class TestChunk1 : public Chunk
 {
 public:
-	TestChunk1(SharedContext sharedContext, ObjectContext objectContext) : Chunk(sharedContext, objectContext)
-	{
+	TestChunk1(SharedContext sharedContext, ObjectContext objectContext);
 
-	}
-
-	void Spawn(sf::Vector2f chunkPosition) override
-	{
-		background = sharedContext.entityManger->CreateEntity<Background>(objectContext);
-		background->SetPosition(chunkPosition);
-		ObjectCollection::AddObject(background);
-
-		smallObstacle1 = sharedContext.entityManger->CreateEntity<SmallObstacle>(objectContext);
-		smallObstacle1->SetPosition(chunkPosition + smallObstacle1Offset);
-		smallObstacle1->SetObstacleTexture(smallObstacle1Texture);
-		ObjectCollection::AddObject(smallObstacle1);
-
-	}
+	void Spawn(sf::Vector2f chunkPosition) override;
 
 	void Destroy() override
 	{

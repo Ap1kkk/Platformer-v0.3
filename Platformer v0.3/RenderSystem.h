@@ -33,22 +33,9 @@ public:
 
 private:
 
-	static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable)
-	{
-		drawMap.emplace(std::make_pair(drawable->GetDrawLayer(), std::make_pair(entityId, drawable)));
-	}
+	static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable);
 
-	static void DeleteFromDrawMap(EntityId entityId)
-	{
-		for (auto itr = drawMap.begin(); itr != drawMap.end(); ++itr)
-		{
-			if (itr->second.first == entityId)
-			{
-				drawMap.erase(itr);
-				break;
-			}
-		}
-	}
+	static void DeleteFromDrawMap(EntityId entityId);
 
 	static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawMap;
 	//TODO совместить все в один буфер

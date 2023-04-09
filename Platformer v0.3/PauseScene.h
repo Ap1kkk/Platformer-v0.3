@@ -17,70 +17,17 @@ public:
 	PauseScene(SharedContext context) : IScene(context) {}
 	~PauseScene() {}
 
-	void Initialize() override
-	{
-		Debug::Log("Start initializing...", typeid(*this).name());
+	void Initialize() override;
 
-		//for (int i = 400; i > -400; i -= 100)
-		//{
-		//	floor = sharedContext.entityManger->CreateEntity<UIObject>(objectContext);
-		//	floor->Initialize(true);
-		//	floor->SetTexture("ship.png");
-		//	floor->SetPosition(sf::Vector2f(0, i));
+	void ProcessNotAwoken() override;
 
-		//	ObjectCollection::AddUiObject(floor);
-		//}
+	void CaptureEvents() override;
 
-		button = sharedContext.entityManger->CreateEntity<UIButton>(objectContext);
-		button->SetPosition(0.f, 0.f);
+	void EarlyUpdate() override;
+	void Update() override;
+	void LateUpdate() override;
 
-		ObjectCollection::AddUiObject(button);
-
-		Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
-	}
-
-	void ProcessNotAwoken() override
-	{
-		ObjectCollection::ProcessNotAwoken();
-		ObjectCollection::ProcessNotAwokenComponents();
-		//TODO Добавить метод для пробуждения UI
-	}
-
-	void CaptureEvents() override
-	{
-		if (Input::IsKeyDown(Input::Key::Esc))
-		{
-			if (sharedContext.gameStateMachine->IsPaused())
-			{
-				sharedContext.gameStateMachine->Contintue();
-			}
-			else
-			{
-				sharedContext.gameStateMachine->Pause();
-			}
-			//Debug::Log("Left");
-		}
-	}
-
-	void EarlyUpdate() override
-	{
-		ObjectCollection::EarlyUpdate();
-	}
-
-	void Update() override
-	{
-		ObjectCollection::Update();
-	}
-
-	void LateUpdate() override
-	{
-		ObjectCollection::LateUpdate();
-	}
-
-	void UpdateUI() override
-	{
-		ObjectCollection::UpdateUI();
-	}
+	void UpdateUI() override;
 
 private:
 	UIButton* button;

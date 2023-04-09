@@ -12,36 +12,12 @@
 class InitializedGameState : public GameState
 {
 public:
-	InitializedGameState(SharedContext context) : sharedContext(context)
-	{
-		SetStateType(GameStateType::Initialized);
-	}
+	InitializedGameState(SharedContext context);
 
-	void EnterState() override
-	{
-		//TODO перенести логику создания всех сцен
-		Debug::Log("Entered Initialized state");
+	void EnterState() override;
 
-		auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
-		auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);
-		//auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
-
-		sharedContext.sceneManager->Initialize(firstScene->GetSceneId());
-		sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());
-		//SceneManager::AddScene<>
-
-	}
-
-	void Update() override
-	{
-		Debug::Log("Updating Initialized state");
-		
-		sharedContext.gameStateMachine->Run();
-	}
-	void LeaveState() override
-	{
-		Debug::Log("Leaving Initialized state");
-	}
+	void Update() override;
+	void LeaveState() override;
 
 private:
 	SharedContext sharedContext;

@@ -43,3 +43,15 @@ void PhysicSystem::DestroyBody(b2Body* body)
 	bodies.erase(id);
 	world->DestroyBody(body);
 }
+
+EntityId PhysicSystem::GetBodyOwnerId(b2Body* body)
+{
+	for (auto itr = bodies.begin(); itr != bodies.end(); ++itr)
+	{
+		if (body == itr->second)
+		{
+			return itr->first;
+		}
+	}
+	Debug::LogWarning("Body owner Id not found");
+}

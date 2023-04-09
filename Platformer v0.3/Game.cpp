@@ -40,17 +40,6 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.worldContactListener = worldContactListener;
 
 
-	//-------------------Создание сцен ----------------------------
-
-	//TODO перенести в 
-	//auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
-	////auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
-
-	//sceneManager->Initialize(firstScene->GetSceneId());
-
-	//-------------------Создание сцен----------------------------
-
-
 	Debug::Log("Initialized", typeid(*this).name());
 }
 

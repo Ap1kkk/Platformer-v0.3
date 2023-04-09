@@ -7,24 +7,11 @@
 class ExitedGameState : public GameState
 {
 public:
-	ExitedGameState(SharedContext context) : sharedContext(context)
-	{
-		SetStateType(GameStateType::Exited);
-	}
+	ExitedGameState(SharedContext context);
 
-	void EnterState() override
-	{
-		Debug::Log("Entered Paused state");
-		//TODO логика сохранения прогресса игры и очистка памяти
-	}
-	void Update() override
-	{
-
-	}
-	void LeaveState() override
-	{
-		Debug::Log("Leaving Paused state");
-	}
+	void EnterState() override;
+	void Update() override;
+	void LeaveState() override;
 
 private:
 	SharedContext sharedContext;

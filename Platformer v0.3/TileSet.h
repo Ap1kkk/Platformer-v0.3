@@ -15,54 +15,13 @@ using TilesDataMap = std::map<TileId, TileData>;
 class TileSet
 {
 public:
-	TileSet(Filename textureName, sf::Vector2i tileSize, DrawLayer tilesDrawLayer) :
-																						tileSetFilename(textureName),
-																						tileSize(tileSize),
-																						tileSetId(staticTileSetId++),
-																						tilesDrawLayer(tilesDrawLayer)
-	{
-		ReadTileSet();
-	}
+	TileSet(Filename textureName, sf::Vector2i tileSize, DrawLayer tilesDrawLayer);
 
-	void ReadTileSet()
-	{
-		tileSetTexture = AssetAllocator::GetTexture(AssetAllocator::GetPath() + tileSetFilename);
-		tileSetSize = tileSetTexture.getSize();
+	void ReadTileSet();
 
-		for (unsigned int height = 0; height < tileSetSize.y; height += tileSize.y + 1)
-		{
-			for (unsigned int width = 0; width < tileSetSize.x; width += tileSize.x + 1)
-			{
-				TileData tileData;
-				tileData.id = staticTileId++;
-				tileData.size = tileSize;
-				tileData.textureFilename = tileSetFilename;
-				tileData.leftTopCornerPosition = sf::Vector2i(width, height);
-				tileData.centerPosition = sf::Vector2f(0, 0);
-				tileData.drawLayer = tilesDrawLayer;
+	TilesDataMap GetTilesData() const;
 
-				tilesData.emplace(tileData.id, tileData);
-			}
-		}
-	}
-
-	TilesDataMap GetTilesData() const
-	{
-		return tilesData;
-	}
-
-	TileData GetTileData(TileId tileId) const 
-	{
-		auto itr = tilesData.find(tileId);
-		if (itr != tilesData.end())
-		{
-			return itr->second;
-		}
-		else
-		{
-			Debug::LogWarning("Tile with id:" + std::to_string(itr->first) + " not found", typeid(*this).name());
-		}
-	}
+	TileData GetTileData(TileId tileId) const;
 
 	TileSetId GetTileSetId() const { return tileSetId; }
 
