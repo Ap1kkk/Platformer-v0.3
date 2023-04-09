@@ -8,7 +8,7 @@ Player::Player()
 void Player::Awake()
 {
 	MakeDrawable(true, drawLayer);
-	SetTexture("ship.png");
+	SetTexture(playerTexture);
 
 	MakePhysical();
 
@@ -24,7 +24,8 @@ void Player::Awake()
 
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;
-	boxFixtureDef.density = 1;
+	boxFixtureDef.density = 1.f;
+	boxFixtureDef.friction = 1.f;
 	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Player));
 
 	physicComponent->AddFixture(boxFixtureDef);

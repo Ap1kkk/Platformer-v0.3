@@ -36,7 +36,7 @@ public:
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
 		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::JumpSensor));
-		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Ground)) | (1 << ((uint16)CollisionLayers::Default)) | (1 << ((uint16)CollisionLayers::Enemy));
+		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Ground)) | (1 << ((uint16)CollisionLayers::Default)) | (1 << ((uint16)CollisionLayers::Enemy)) | (1 << ((uint16)CollisionLayers::SmallObstacle));
 		
 		Debug::Log(boxFixtureDef.filter.categoryBits);
 		Debug::Log(boxFixtureDef.filter.maskBits);
@@ -47,6 +47,7 @@ public:
 
 		collisionMask.SetBit((uint16)CollisionLayers::Ground);
 		collisionMask.SetBit((uint16)CollisionLayers::JumpSensor);
+		collisionMask.SetBit((uint16)CollisionLayers::SmallObstacle);
 		WorldContactListener::AddHandler(collisionMask, this);
 	}
 

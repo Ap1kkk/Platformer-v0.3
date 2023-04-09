@@ -50,6 +50,7 @@ enum class CollisionLayers
 {
 	Default = 1,
 	Ground,
+	SmallObstacle,
 	Player,
 	Enemy,
 	Projectile,

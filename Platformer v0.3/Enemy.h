@@ -16,7 +16,7 @@ public:
 	void Awake() override
 	{
 		MakeDrawable(true, drawLayer);
-		SetTexture("ship.png");
+		SetTexture(enemyTexture);
 
 		MakePhysical();
 
@@ -46,6 +46,8 @@ public:
 
 private:
 	b2Body* body;
+
+	Filename enemyTexture = "hero.png";
 
 	DrawLayer drawLayer = 100;
 

@@ -28,7 +28,7 @@ public:
 
 		b2PolygonShape boxShape2;
 		auto floorSpriteHSize = GetSpriteBoxHalfSize();
-		boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
+		boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y / 8, colliderOffset, 0.f);
 
 		b2FixtureDef boxFixtureDef2;
 		boxFixtureDef2.shape = &boxShape2;
@@ -44,7 +44,10 @@ public:
 	}
 
 private:
-	DrawLayer drawLayer = 100;
-	Filename textureFilename = "floor.png";
+	DrawLayer drawLayer = 50;
+
+	b2Vec2 colliderOffset = {0.f, 500.f};
+
+	Filename textureFilename = "road.png";
 };
 

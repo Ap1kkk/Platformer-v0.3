@@ -181,6 +181,10 @@
     <ClCompile Include="RoadSprite.cpp" />
     <ClCompile Include="RunnedGameState.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SmallObstacle.cpp" />
+    <ClCompile Include="TestChunk1.cpp" />
+    <ClCompile Include="TestChunk2.cpp" />
+    <ClCompile Include="TestChunk3.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="TileSet.cpp" />
@@ -242,6 +246,10 @@
     <ClInclude Include="RunnedGameState.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SharedContext.h" />
+    <ClInclude Include="SmallObstacle.h" />
+    <ClInclude Include="TestChunk1.h" />
+    <ClInclude Include="TestChunk2.h" />
+    <ClInclude Include="TestChunk3.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="TileSet.h" />

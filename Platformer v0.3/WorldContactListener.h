@@ -24,7 +24,7 @@ public:
 
 		for (auto& pair : entityHandlers)
 		{
-			if (collisionMask == pair.first.GetMask16())
+			if ((collisionMask | pair.first.GetMask16()) == pair.first.GetMask16())
 			{
 				pair.second.second->OnCollisionEnter(contact);
 			}
@@ -36,9 +36,11 @@ public:
 			//Debug::Log(collisionMask);
 			//Debug::Log(pair.first.GetMask());
 			//Debug::Log("...");
+			//Debug::Log((collisionMask | pair.first.GetMask16()));
 
-			if (collisionMask == pair.first.GetMask16())
+			if ((collisionMask | pair.first.GetMask16()) == pair.first.GetMask16())
 			{
+				//Debug::Log((collisionMask | pair.first.GetMask16()));
 				pair.second.second->OnCollisionEnter(contact);
 			}
 		}
@@ -54,7 +56,7 @@ public:
 
 		for (auto& pair : entityHandlers)
 		{
-			if (collisionMask == pair.first.GetMask16())
+			if ((collisionMask | pair.first.GetMask16()) == pair.first.GetMask16())
 			{
 				pair.second.second->OnCollisionExit(contact);
 			}
@@ -62,7 +64,7 @@ public:
 
 		for (auto& pair : componentHandlers)
 		{
-			if (collisionMask == pair.first.GetMask())
+			if ((collisionMask | pair.first.GetMask16()) == pair.first.GetMask16())
 			{
 				pair.second.second->OnCollisionExit(contact);
 			}

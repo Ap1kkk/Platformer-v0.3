@@ -7,6 +7,7 @@
 
 #include "RoadSprite.h"
 #include "Background.h"
+#include "SmallObstacle.h"
 
 class MainChunk : public Chunk
 {
@@ -18,21 +19,10 @@ public:
 
 	void Spawn(sf::Vector2f chunkPosition) override
 	{
-		//for (int y = -100; y <= 200; y += 300)
-		//{
-		//	for (int x = -320 * 3; x < 320 * 3; x += 320 * 2)
-		//	{
-		road = sharedContext.entityManger->CreateEntity<RoadSprite>(objectContext);
-		road->SetSpawnPosition(chunkPosition.x, chunkPosition.y + 100.f);
-		road->SetTexture("floor.png");
-		ObjectCollection::AddObject(road);
-
 		background = sharedContext.entityManger->CreateEntity<Background>(objectContext);
 		background->SetPosition(chunkPosition);
+		background->SetBackgroundTexture(backgroundFilename);
 		ObjectCollection::AddObject(background);
-		//	}
-		//}
-
 
 	}
 
@@ -44,5 +34,7 @@ public:
 private:
 	RoadSprite* road;
 	Background* background;
+
+	Filename backgroundFilename = "Krill_House.png";
 };
 

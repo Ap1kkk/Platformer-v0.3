@@ -1,12 +1,11 @@
 #pragma once
 
 #include "GameObject.h"
-#include "DataTypes.h"
 
-class Background : public GameObject
+class SmallObstacle : public GameObject
 {
 public:
-	Background()
+	SmallObstacle()
 	{
 		Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
 	}
@@ -27,11 +26,12 @@ public:
 
 		b2PolygonShape boxShape;
 		b2Vec2 size = GetSpriteBoxHalfSize();
-		boxShape.SetAsBox(size.x, colliderHeight, colliderOffset, 0.f);
+		boxShape.SetAsBox(size.x, size.y);
+		//boxShape.SetAsBox(size.x, 20.f, colliderOffset, 0.f);
 
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
-		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Ground));
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::SmallObstacle));
 
 		physicComponent->AddFixture(boxFixtureDef);
 	}
@@ -42,16 +42,14 @@ public:
 		SetSpawnPosition(position);
 	}
 
-	void SetBackgroundTexture(Filename textureFilename)
+	void SetObstacleTexture(Filename textureFilename)
 	{
 		this->textureFilename = textureFilename;
 	}
 
 private:
-	DrawLayer drawLayer = -100;
-	Filename textureFilename = "forest.png";
-
-	float colliderHeight = 40.f;
-	b2Vec2 colliderOffset = {0.f, 400.f};
+	DrawLayer drawLayer = -50;
+	Filename textureFilename = "ship.png";
+	b2Vec2 colliderOffset = { 0.f, 0.f };
 };
 

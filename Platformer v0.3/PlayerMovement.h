@@ -83,8 +83,8 @@ private:
 	JumpSensor* jumpSensor;
 
 	float velocity;
-	float sprintVelocity = 550.f;
-	float normalVelocity = 300.f;
+	float sprintVelocity = 1000.f;
+	float normalVelocity = 500.f;
 
 	float jumpTime = 0.f;
 	float jumpMaxTime = 0.5f;
@@ -92,7 +92,7 @@ private:
 	float preJumpGravityScale = 0.1f;
 	float normalGravityScale = 0.4f;
 
-	float jumpSpeed = 20.f;
+	float jumpSpeed = 30.f;
 
 	bool isFixedRotation = true;
 };

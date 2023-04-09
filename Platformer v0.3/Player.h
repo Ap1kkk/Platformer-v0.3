@@ -25,6 +25,8 @@ private:
 	JumpSensor* jumpSensor;
 	Window* window;
 
+	Filename playerTexture = "hero.png";
+
 	DrawLayer drawLayer = 100;
 };
 

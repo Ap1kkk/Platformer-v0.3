@@ -4,7 +4,6 @@
 #include "IComponent.h"
 #include "AssetAllocator.h"
 #include "EntityManager.h"
-//#include "TransformComponent.h"
 #include "ITransform.h"
 
 /// <summary>
