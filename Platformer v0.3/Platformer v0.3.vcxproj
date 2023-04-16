@@ -150,6 +150,8 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="ExitedGameState.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -159,6 +161,8 @@
     <ClCompile Include="IBody.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="IEvent.cpp" />
+    <ClCompile Include="IEventSystem.cpp" />
     <ClCompile Include="IGameStateMachine.cpp" />
     <ClCompile Include="InitializedGameState.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -170,6 +174,8 @@
     <ClCompile Include="MainChunk.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
+    <ClCompile Include="OnDestroyEvent.cpp" />
+    <ClCompile Include="OnDestroyHandler.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
     <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
@@ -212,6 +218,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="EventData.h" />
+    <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="EventSystem.h" />
     <ClInclude Include="ExitedGameState.h" />
     <ClInclude Include="FirstScene.h" />
     <ClInclude Include="Game.h" />
@@ -222,6 +231,8 @@
     <ClInclude Include="IBody.h" />
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="IEntity.h" />
+    <ClInclude Include="IEvent.h" />
+    <ClInclude Include="IEventSystem.h" />
     <ClInclude Include="IGameStateMachine.h" />
     <ClInclude Include="InitializedGameState.h" />
     <ClInclude Include="Input.h" />
@@ -235,6 +246,8 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
+    <ClInclude Include="OnDestroyEvent.h" />
+    <ClInclude Include="OnDestroyHandler.h" />
     <ClInclude Include="PausedGameState.h" />
     <ClInclude Include="PauseScene.h" />
     <ClInclude Include="PhysicComponent.h" />

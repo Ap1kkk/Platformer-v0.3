@@ -6,4 +6,3 @@ Chunk::Chunk(SharedContext sharedContext, ObjectContext objectContext) : sharedC
 {
 
 }
-}

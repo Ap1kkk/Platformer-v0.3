@@ -7,6 +7,9 @@
 #include "FirstScene.h"
 #include "PauseScene.h"
 
+#include "OnDestroyEvent.h"
+#include "EventSystem.h"
+
 #include "Debug.h"
 
 class InitializedGameState : public GameState

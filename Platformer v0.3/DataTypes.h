@@ -17,6 +17,7 @@ typedef unsigned int FixtureId;
 typedef unsigned int ChunkId;
 
 typedef std::string ComponentType;
+typedef std::string EventType;
 typedef std::string Filename;
 
 //#define WINDOW_WIDTH 1024

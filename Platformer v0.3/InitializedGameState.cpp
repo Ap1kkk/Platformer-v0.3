@@ -10,6 +10,12 @@ void InitializedGameState::EnterState()
 	//TODO перенести логику создания всех сцен
 	Debug::Log("Entered Initialized state");
 
+	auto eventSystem = new EventSystem;
+
+	IEvent::SetEventSystem(eventSystem);
+
+	OnDestroyEvent* event = new OnDestroyEvent;
+
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);
 	//auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
