@@ -151,6 +151,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="ExitedGameState.cpp" />
     <ClCompile Include="FirstScene.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="IEvent.cpp" />
+    <ClCompile Include="IEventListener.cpp" />
     <ClCompile Include="IEventSystem.cpp" />
     <ClCompile Include="IGameStateMachine.cpp" />
     <ClCompile Include="InitializedGameState.cpp" />
@@ -220,6 +222,7 @@
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EventData.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="EventListener.h" />
     <ClInclude Include="EventSystem.h" />
     <ClInclude Include="ExitedGameState.h" />
     <ClInclude Include="FirstScene.h" />
@@ -232,6 +235,7 @@
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="IEntity.h" />
     <ClInclude Include="IEvent.h" />
+    <ClInclude Include="IEventListener.h" />
     <ClInclude Include="IEventSystem.h" />
     <ClInclude Include="IGameStateMachine.h" />
     <ClInclude Include="InitializedGameState.h" />

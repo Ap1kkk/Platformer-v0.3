@@ -12,9 +12,18 @@ void InitializedGameState::EnterState()
 
 	auto eventSystem = new EventSystem;
 
+	auto listener = new EventListener;
+
 	IEvent::SetEventSystem(eventSystem);
+	EventListener::SetEventSystem(eventSystem);
 
 	OnDestroyEvent* event = new OnDestroyEvent;
+
+	EventData data(OnDestroyEvent::GetType());
+
+	event->Invoke(data);
+
+	//eventSystem->HandleEvent(data);
 
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);

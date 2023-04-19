@@ -5,7 +5,7 @@
 class EventHandler
 {
 public:
-	EventHandler(const EventType& eventType) : eventType(eventType)
+	EventHandler(const EventType& eventType) : eventType(eventType), handlerId(staticIdCounter++)
 	{
 
 	}
@@ -14,11 +14,17 @@ public:
 
 	}
 
-	virtual void HandleEvent(const EventData& eventData) = 0;
+	//virtual void HandleEvent(const EventData& eventData) = 0;
 
 	const EventType& GetEventType() const { return eventType; }
+	const HandlerId& GetHandlerId() const { return handlerId; }
+
+protected:
+	HandlerId handlerId;
 
 private:
 	EventType eventType;
+
+	static HandlerId staticIdCounter;
 };
 

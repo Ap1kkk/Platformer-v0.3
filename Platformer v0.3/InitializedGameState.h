@@ -8,7 +8,9 @@
 #include "PauseScene.h"
 
 #include "OnDestroyEvent.h"
+#include "OnDestroyHandler.h"
 #include "EventSystem.h"
+#include "EventListener.h"
 
 #include "Debug.h"
 

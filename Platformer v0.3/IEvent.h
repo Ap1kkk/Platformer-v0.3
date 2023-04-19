@@ -14,13 +14,14 @@ public:
 	{
 
 	}
+	virtual ~IEvent() {}
 
 	static const EventData& Invoke(const EventData& eventData)
 	{
 		eventSystemPtr->HandleEvent(eventData);
+		return eventData;
 	}
 
-	//TODO выставить в состоянии инициализации
 	static void SetEventSystem(IEventSystem* eventSystem)
 	{
 		eventSystemPtr = eventSystem;
