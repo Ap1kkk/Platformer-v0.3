@@ -12,6 +12,9 @@
 #include "ObjectCollection.h"
 #include "GarbageCollector.h"
 
+#include "OnEntityDestroyedEvent.h"
+#include "OnComponentDestroyedEvent.h"
+
 /// <summary>
 /// Represents main functionality of an object and contains its attached components
 /// </summary>

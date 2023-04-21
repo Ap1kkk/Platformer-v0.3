@@ -16,10 +16,9 @@ public:
 	}
 	virtual ~IEvent() {}
 
-	static const EventData& Invoke(const EventData& eventData)
+	static void Invoke(const EventData& eventData)
 	{
 		eventSystemPtr->HandleEvent(eventData);
-		return eventData;
 	}
 
 	static void SetEventSystem(IEventSystem* eventSystem)

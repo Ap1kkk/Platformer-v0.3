@@ -7,6 +7,7 @@
 #include "AssetAllocator.h"
 #include "Window.h"
 #include "EntityManager.h"
+#include "ComponentManager.h"
 #include "TileManager.h"
 #include "SceneManager.h"
 #include "PhysicSystem.h"
@@ -51,6 +52,7 @@ private:
 	ObjectCollection* objectCollection;
 	AssetAllocator* assetAllocator;
 	EntityManager* entityManger;
+	ComponentManager* componentManager;
 	PhysicSystem* physicSystem;
 	RenderSystem* renderSystem;
 	PhysicsDebugDraw* physicsDebugDraw;
@@ -58,6 +60,7 @@ private:
 	TileManager* tileManager;
 	GameStateMachine* gameStateMachine;
 	WorldContactListener* worldContactListener;
+	EventSystem* eventSystem;
 
 	SharedContext sharedContext;
 };

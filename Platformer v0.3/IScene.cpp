@@ -5,6 +5,7 @@ SceneId IScene::sceneIdCounter = 0;
 IScene::IScene(SharedContext sharedContext) : sceneId(sceneIdCounter++), sharedContext(sharedContext)
 {
 	objectContext.window = sharedContext.window;
+	objectContext.eventSystem = sharedContext.eventSystem;
 }
 
 IScene::~IScene()

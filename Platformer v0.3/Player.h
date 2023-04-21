@@ -9,13 +9,21 @@
 #include "AttackSensor.h"
 #include "JumpSensor.h"
 
+#include "EventListener.h"
+#include "OnEntityDestroyedEvent.h"
+
 class Player : public GameObject
+	//, public EventListener
 {
 public:
 	Player();
 
 	void Awake() override;
  
+	//void OnEventHappened(const EventData& data) override
+	//{
+	//	Debug::Log("OnEventHappened");
+	//}
 
 private:
 	b2Body* body;

@@ -150,7 +150,6 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
-    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="ExitedGameState.cpp" />
@@ -164,7 +163,6 @@
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="IEvent.cpp" />
     <ClCompile Include="IEventListener.cpp" />
-    <ClCompile Include="IEventSystem.cpp" />
     <ClCompile Include="IGameStateMachine.cpp" />
     <ClCompile Include="InitializedGameState.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -176,8 +174,8 @@
     <ClCompile Include="MainChunk.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
+    <ClCompile Include="OnComponentDestroyedEvent.cpp" />
     <ClCompile Include="OnDestroyEvent.cpp" />
-    <ClCompile Include="OnDestroyHandler.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
     <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
@@ -221,7 +219,6 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EventData.h" />
-    <ClInclude Include="EventHandler.h" />
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="EventSystem.h" />
     <ClInclude Include="ExitedGameState.h" />
@@ -250,8 +247,8 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
-    <ClInclude Include="OnDestroyEvent.h" />
-    <ClInclude Include="OnDestroyHandler.h" />
+    <ClInclude Include="OnComponentDestroyedEvent.h" />
+    <ClInclude Include="OnEntityDestroyedEvent.h" />
     <ClInclude Include="PausedGameState.h" />
     <ClInclude Include="PauseScene.h" />
     <ClInclude Include="PhysicComponent.h" />

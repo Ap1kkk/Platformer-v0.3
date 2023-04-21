@@ -5,13 +5,30 @@
 #include "IEntity.h"
 #include "Debug.h"
 
+#include "EventListener.h"
+#include "OnEntityDestroyedEvent.h"
+
 /// <summary>
 /// Static class responsible for storing and processing existing objects on scene
 /// </summary>
-class ObjectCollection
+class ObjectCollection : public EventListener
 {
 public:
 	ObjectCollection() {}
+
+	void SubscribeOnEvents()
+	{
+		SubscribeOnEvent<OnEntityDestroyedEvent>();
+	}
+
+	void OnEventHappened(const EventData& data)
+	{
+		if (data.eventType == OnEntityDestroyedEvent::GetType())
+		{
+			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
+			DeleteObject(data.id);
+		}
+	}
 
 	static void AddObject(IEntity* newObject);
 	static void AddUiObject(IEntity* newObject);

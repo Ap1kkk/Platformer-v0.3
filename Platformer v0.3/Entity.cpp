@@ -84,17 +84,30 @@ void Entity::ComponentsUpdateUI()
 
 void Entity::Destroy()
 {
+	EventData entityData(OnEntityDestroyedEvent::GetType());
+	entityData.id = entityId;
+
+
+
 	OnDestroy();
 
 	for (auto& component : components)
 	{
+		component.second->Destroy();
+		//auto componentId = component.second->GetComponentId();
 
-		auto componentId = component.second->GetComponentId();
-		GarbageCollector::DestroyComponent(componentId);
+		//EventData componentData(OnComponentDestroyedEvent::GetType());
+		//componentData.id = componentId;
+
+		//GarbageCollector::DestroyComponent(componentId);
+
+		//OnComponentDestroyedEvent::Invoke(componentData);
+
 	}
 	components.clear();
 
-	GarbageCollector::DestroyEntity(this->entityId);
+	//GarbageCollector::DestroyEntity(this->entityId);
+	OnEntityDestroyedEvent::Invoke(entityData);
 }
 
 

@@ -6,9 +6,13 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 
 	Time::Restart();
 
+	eventSystem = new EventSystem;
+
+
 	objectCollection = new ObjectCollection;
 	assetAllocator = new AssetAllocator;
 	entityManger = new EntityManager;
+	componentManager = new ComponentManager;
 	physicSystem = new PhysicSystem(gravity);
 	renderSystem = new RenderSystem(&window);
 	sceneManager = new SceneManager;
@@ -32,12 +36,14 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.objectCollection = objectCollection;
 	sharedContext.assetAllocator = assetAllocator;
 	sharedContext.entityManger = entityManger;
+	sharedContext.componentManager = componentManager;
 	sharedContext.physicsDebugDraw = physicsDebugDraw;
 	sharedContext.renderSystem = renderSystem;
 	sharedContext.tileManager = tileManager;
 	sharedContext.sceneManager = sceneManager;
 	sharedContext.gameStateMachine = gameStateMachine;
 	sharedContext.worldContactListener = worldContactListener;
+	sharedContext.eventSystem = eventSystem;
 
 
 	Debug::Log("Initialized", typeid(*this).name());
@@ -51,6 +57,11 @@ Game::~Game()
 	delete physicSystem;
 	delete renderSystem;
 	delete sceneManager;
+	delete tileManager;
+	delete gameStateMachine;
+	delete worldContactListener;
+
+	delete eventSystem;
 
 	Debug::LogWarning("Game destroyed"); 
 }

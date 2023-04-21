@@ -6,6 +6,8 @@
 #include "ObjectContext.h"
 #include "Debug.h"
 
+#include "OnComponentDestroyedEvent.h"
+
 class IComponent
 {
 public:
@@ -35,7 +37,11 @@ public:
 
 	void Destroy()
 	{
+		EventData data(OnComponentDestroyedEvent::GetType());
+		data.id = componentId;
+
 		OnDestroy();
+		OnComponentDestroyedEvent::Invoke(data);
 		delete this;
 	}
 

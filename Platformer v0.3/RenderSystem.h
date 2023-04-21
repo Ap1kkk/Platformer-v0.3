@@ -7,16 +7,24 @@
 #include "Window.h"
 #include "DrawableComponent.h"
 
+#include "EventListener.h"
+#include "OnEntityDestroyedEvent.h"
+
 /// <summary>
 /// Responsible for rendering objects to the window
 /// </summary>
-class RenderSystem
+class RenderSystem : public EventListener
 {
 public:
 	RenderSystem(Window* window);
 	~RenderSystem()
 	{
 		//TODO добавить логику для очистки всех списков
+	}
+
+	void SubscribeOnEvents()
+	{
+		SubscribeOnEvent<OnEntityDestroyedEvent>();
 	}
 
 	void Draw();
@@ -30,6 +38,15 @@ public:
 
 	static void MoveActiveToPauseBuffer();
 	static void RetrieveActiveFromPauseBuffer();
+
+	void OnEventHappened(const EventData& data) override
+	{
+		if (data.eventType == OnEntityDestroyedEvent::GetType())
+		{
+			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
+			DeleteDrawable(data.id);
+		}
+	}
 
 private:
 

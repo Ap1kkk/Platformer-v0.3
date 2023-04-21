@@ -3,6 +3,7 @@
 Player::Player()
 {
 	Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
+
 }
 
 void Player::Awake()

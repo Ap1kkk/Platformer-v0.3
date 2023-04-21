@@ -10,7 +10,7 @@ void ComponentManager::DestroyComponent(ComponentId comonentId)
 	if (itr != components.end())
 	{
 		auto component = (*itr).second;
-		component->Destroy();
+		//component->Destroy();
 		components.erase(itr);
 		Debug::LogWarning("Component with id: " + std::to_string(comonentId) + " was deleted", typeid(ComponentManager).name());
 	}

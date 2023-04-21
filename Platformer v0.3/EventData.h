@@ -3,11 +3,18 @@
 #include <stdint.h>
 #include "DataTypes.h"
 
+struct UserEventData
+{
+
+};
+
 struct EventData
 {
-	EventData(EventType eventType) : eventType(eventType), owner_ptr(0)
+	EventData(EventType eventType) : eventType(eventType)
 	{}
 
-	uintptr_t owner_ptr;
+	unsigned int id;
 	EventType eventType;
+
+	UserEventData userData;
 };

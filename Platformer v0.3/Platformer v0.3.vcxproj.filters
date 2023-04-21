@@ -93,6 +93,18 @@
     <Filter Include="Исходные файлы\GameStates">
       <UniqueIdentifier>{40b71849-e756-46ce-a14c-136ee1a84a96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Engine\EventSystem">
+      <UniqueIdentifier>{ccb06484-5715-423b-aafa-a3b12b9ad605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\EventSystem">
+      <UniqueIdentifier>{05ee7ebd-96c8-4d8e-9bc7-d398fa16ff07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Events">
+      <UniqueIdentifier>{b9b27c6d-81df-4ed8-bfdf-6373c8cad0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Events">
+      <UniqueIdentifier>{82178936-d4c0-4cbe-9123-003cb60e1911}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentManager.cpp">
@@ -272,29 +284,23 @@
     <ClCompile Include="PlayerMovement.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
+    <ClCompile Include="EventListener.cpp">
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
+    </ClCompile>
     <ClCompile Include="EventSystem.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="IEventSystem.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandler.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
     </ClCompile>
     <ClCompile Include="IEvent.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="OnDestroyEvent.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="OnDestroyHandler.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="EventListener.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
     </ClCompile>
     <ClCompile Include="IEventListener.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="OnDestroyEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="OnComponentDestroyedEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -487,32 +493,29 @@
     <ClInclude Include="Mouse.h">
       <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="EventSystem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="IEventSystem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="EventData.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="IEvent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="OnDestroyEvent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="OnDestroyHandler.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
     </ClInclude>
     <ClInclude Include="EventListener.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IEvent.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
     </ClInclude>
     <ClInclude Include="IEventListener.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventSystem.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="OnEntityDestroyedEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnComponentDestroyedEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

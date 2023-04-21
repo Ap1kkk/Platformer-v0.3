@@ -1,3 +1,3 @@
-#include "OnDestroyEvent.h"
+#include "OnEntityDestroyedEvent.h"
 
-EventType OnDestroyEvent::eventType = "";
+EventType OnEntityDestroyedEvent::eventType = typeid(OnEntityDestroyedEvent).name();

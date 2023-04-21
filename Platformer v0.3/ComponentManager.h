@@ -5,11 +5,13 @@
 #include "TransformComponent.h"
 #include "DrawableComponent.h"
 
+#include "EventListener.h"
+#include "OnComponentDestroyedEvent.h"
 
 /// <summary>
 /// Static class which creates, destroys and finds Component by its id
 /// </summary>
-class ComponentManager
+class ComponentManager : public EventListener
 {
 public:
 
@@ -44,6 +46,20 @@ public:
 	/// <param name="comonentId">Id of searching component</param>
 	/// <returns>Type of component</returns>
 	static ComponentType GetComponentTypeById(ComponentId comonentId);
+
+	void SubscribeOnEvents()
+	{
+		SubscribeOnEvent<OnComponentDestroyedEvent>();
+	}
+
+	void OnEventHappened(const EventData& data)
+	{
+		if (data.eventType == OnComponentDestroyedEvent::GetType())
+		{
+			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
+			DestroyComponent(data.id);
+		}
+	}
 
 private:
 	static std::unordered_map<ComponentId, IComponent*> components;

@@ -5,15 +5,31 @@
 #include "IEntity.h"
 #include "Debug.h"
 
+#include "EventListener.h"
+#include "OnEntityDestroyedEvent.h"
 
 /// <summary>
 /// Responsibe for creatind, destroyig and searching existing objects
 /// </summary>
-class EntityManager
+class EntityManager : public EventListener
 {
 public:
 	EntityManager();
 	~EntityManager();
+
+	void SubscribeOnEvents()
+	{
+		SubscribeOnEvent<OnEntityDestroyedEvent>();
+	}
+
+	void OnEventHappened(const EventData& data)
+	{
+		if (data.eventType == OnEntityDestroyedEvent::GetType())
+		{
+			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
+			DestroyEntity(data.id);
+		}
+	}
 
 	/// <summary>
 	/// Creates new object of specified type

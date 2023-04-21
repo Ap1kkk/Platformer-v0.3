@@ -10,20 +10,14 @@ void InitializedGameState::EnterState()
 	//TODO перенести логику создания всех сцен
 	Debug::Log("Entered Initialized state");
 
-	auto eventSystem = new EventSystem;
+	IEvent::SetEventSystem(sharedContext.eventSystem);
+	EventListener::SetEventSystem(sharedContext.eventSystem);
 
-	auto listener = new EventListener;
-
-	IEvent::SetEventSystem(eventSystem);
-	EventListener::SetEventSystem(eventSystem);
-
-	OnDestroyEvent* event = new OnDestroyEvent;
-
-	EventData data(OnDestroyEvent::GetType());
-
-	event->Invoke(data);
-
-	//eventSystem->HandleEvent(data);
+	//TODO подписка систем на события
+	sharedContext.renderSystem->SubscribeOnEvents();
+	sharedContext.objectCollection->SubscribeOnEvents();
+	sharedContext.componentManager->SubscribeOnEvents();
+	sharedContext.entityManger->SubscribeOnEvents();
 
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);
@@ -33,6 +27,7 @@ void InitializedGameState::EnterState()
 	sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());
 	//SceneManager::AddScene<>
 
+	OnEntityDestroyedEvent event;
 }
 
 void InitializedGameState::Update()

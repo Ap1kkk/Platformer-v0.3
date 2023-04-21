@@ -1,15 +1,9 @@
 #pragma once
 
-#include "EventData.h"
 #include "EventSystem.h"
-
-#include "IEntity.h"
-#include "IComponent.h"
 
 #include "IEventListener.h"
 #include "IEventSystem.h"
-
-#include "OnDestroyEvent.h"
 
 #include "Debug.h"
 
@@ -18,20 +12,20 @@ class EventListener : public IEventListener
 public:
 
 	template<class T>
-	void SubscribeOnEvent(IEntity* entity)
+	void SubscribeOnEvent()
 	{
-		eventSystem->AddEventListener(T::GetType(), entity);
+		eventSystem->AddEventListener(T::GetType(), this->listenerId, this);
 	}
 	template<class T>
-	void UnsubscribeFromEvent(IEntity* entity)
+	void UnsubscribeFromEvent()
 	{
-		eventSystem->RemoveEventListener(T::GetType(), entity);
+		eventSystem->RemoveEventListener(T::GetType(), this->listenerId, this);
 	}
 
-	void OnEventHappened(const EventData& eventData) override
-	{
-		Debug::Log("On event happened in listener");
-	}
+	//void OnEventHappened(const EventData& eventData) override
+	//{
+	//	Debug::Log("On event happened in listener");
+	//}
 
 	static void SetEventSystem(IEventSystem* eventSystemPtr) 
 	{

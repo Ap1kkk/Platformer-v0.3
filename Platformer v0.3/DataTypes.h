@@ -15,16 +15,16 @@ typedef unsigned int TileSetId;
 typedef unsigned int SensorId;
 typedef unsigned int FixtureId;
 typedef unsigned int ChunkId;
-typedef unsigned int HandlerId;
+typedef unsigned int ListenerId;
 
 typedef std::string ComponentType;
 typedef std::string EventType;
 typedef std::string Filename;
 
-//#define WINDOW_WIDTH 1024
-//#define WINDOW_HEIGHT 768
-#define WINDOW_WIDTH 1920
-#define WINDOW_HEIGHT 1080
+#define WINDOW_WIDTH 1024
+#define WINDOW_HEIGHT 768
+//#define WINDOW_WIDTH 1920
+//#define WINDOW_HEIGHT 1080
 
 #define FIXED_DELTA_TIME 1.f / 45.f;
 
