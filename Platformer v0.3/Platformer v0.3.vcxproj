@@ -158,6 +158,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="GarbageCollector.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="IBody.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IEntity.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="OnComponentDestroyedEvent.cpp" />
     <ClCompile Include="OnDestroyEvent.cpp" />
+    <ClCompile Include="OnTestEvent.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
     <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
@@ -198,6 +200,8 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="TransformUIComponent.cpp" />
+    <ClCompile Include="TunnelBackground.cpp" />
+    <ClCompile Include="TunnelCollidersData.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -228,6 +232,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="GarbageCollector.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="IBody.h" />
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="IEntity.h" />
@@ -249,6 +254,7 @@
     <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="OnComponentDestroyedEvent.h" />
     <ClInclude Include="OnEntityDestroyedEvent.h" />
+    <ClInclude Include="OnTestEvent.h" />
     <ClInclude Include="PausedGameState.h" />
     <ClInclude Include="PauseScene.h" />
     <ClInclude Include="PhysicComponent.h" />
@@ -271,6 +277,8 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="TransformUIComponent.h" />
+    <ClInclude Include="TunnelBackground.h" />
+    <ClInclude Include="TunnelCollidersData.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIObject.h" />
     <ClInclude Include="Window.h" />

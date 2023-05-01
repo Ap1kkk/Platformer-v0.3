@@ -5,7 +5,7 @@
 class OnEntityDestroyedEvent : public IEvent
 {
 public:
-	OnEntityDestroyedEvent() : IEvent(typeid(OnEntityDestroyedEvent).name()) 
+	OnEntityDestroyedEvent()
 	{
 		eventType = typeid(OnEntityDestroyedEvent).name();
 	}

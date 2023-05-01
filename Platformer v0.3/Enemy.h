@@ -5,6 +5,9 @@
 #include "GameObject.h"
 #include "AttackSensor.h"
 
+#include "EventListener.h"
+#include "OnTestEvent.h"
+
 class Enemy : public GameObject
 {
 public:

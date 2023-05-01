@@ -87,22 +87,11 @@ void Entity::Destroy()
 	EventData entityData(OnEntityDestroyedEvent::GetType());
 	entityData.id = entityId;
 
-
-
 	OnDestroy();
 
 	for (auto& component : components)
 	{
 		component.second->Destroy();
-		//auto componentId = component.second->GetComponentId();
-
-		//EventData componentData(OnComponentDestroyedEvent::GetType());
-		//componentData.id = componentId;
-
-		//GarbageCollector::DestroyComponent(componentId);
-
-		//OnComponentDestroyedEvent::Invoke(componentData);
-
 	}
 	components.clear();
 

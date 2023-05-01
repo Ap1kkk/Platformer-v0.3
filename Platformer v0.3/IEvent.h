@@ -10,7 +10,7 @@
 class IEvent
 {
 public:
-	IEvent(const EventType& eventType) : eventType(eventType)
+	IEvent()
 	{
 
 	}
@@ -27,7 +27,6 @@ public:
 	}
 
 private:
-	EventType eventType;
 	static IEventSystem* eventSystemPtr;
 };
 

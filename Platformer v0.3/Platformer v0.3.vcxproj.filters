@@ -302,6 +302,18 @@
     <ClCompile Include="OnComponentDestroyedEvent.cpp">
       <Filter>Исходные файлы\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OnTestEvent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelBackground.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelCollidersData.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -516,6 +528,18 @@
     </ClInclude>
     <ClInclude Include="OnComponentDestroyedEvent.h">
       <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="OnTestEvent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelBackground.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelCollidersData.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

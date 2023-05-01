@@ -5,8 +5,7 @@
 #include "SharedContext.h"
 #include "ObjectContext.h"
 
-#include "RoadSprite.h"
-#include "Background.h"
+#include "TunnelBackground.h"
 #include "SmallObstacle.h"
 
 class TestChunk1 : public Chunk
@@ -14,7 +13,16 @@ class TestChunk1 : public Chunk
 public:
 	TestChunk1(SharedContext sharedContext, ObjectContext objectContext);
 
-	void Spawn(sf::Vector2f chunkPosition) override;
+	void Spawn(sf::Vector2f chunkPosition) override
+	{
+		background = sharedContext.entityManger->CreateEntity<TunnelBackground>(objectContext);
+		
+		TunnelCollidersData data;
+
+		background->SetTunnelNumber(TUNNEL_CHUNK_NUMBER);
+		background->SetPosition(chunkPosition);
+		ObjectCollection::AddObject(background);
+	}
 
 	void Destroy() override
 	{
@@ -22,13 +30,13 @@ public:
 	}
 
 private:
-	RoadSprite* road;
-	Background* background;
+	TunnelBackground* background;
 
-	SmallObstacle* smallObstacle1;
+	TunnelCollidersData collidersData;
+	//SmallObstacle* smallObstacle1;
 
-	Filename smallObstacle1Texture = "car2.png";
+	//Filename smallObstacle1Texture = "car2.png";
 
-	sf::Vector2f smallObstacle1Offset = { 500.f, 220.f + 100 };
+	//sf::Vector2f smallObstacle1Offset = { 500.f, 220.f + 100 };
 };
 

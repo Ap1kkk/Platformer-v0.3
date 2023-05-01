@@ -10,7 +10,6 @@
 #include "JumpSensor.h"
 
 #include "EventListener.h"
-#include "OnEntityDestroyedEvent.h"
 
 class Player : public GameObject
 	//, public EventListener

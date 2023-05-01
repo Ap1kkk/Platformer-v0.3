@@ -11,6 +11,8 @@ class EventListener : public IEventListener
 {
 public:
 
+	virtual ~EventListener() {}
+
 	template<class T>
 	void SubscribeOnEvent()
 	{
@@ -21,11 +23,6 @@ public:
 	{
 		eventSystem->RemoveEventListener(T::GetType(), this->listenerId, this);
 	}
-
-	//void OnEventHappened(const EventData& eventData) override
-	//{
-	//	Debug::Log("On event happened in listener");
-	//}
 
 	static void SetEventSystem(IEventSystem* eventSystemPtr) 
 	{

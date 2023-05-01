@@ -32,7 +32,8 @@ private:
 	float preJumpGravityScale = 0.1f;
 	float normalGravityScale = 0.4f;
 
-	float jumpSpeed = 30.f;
+	//float jumpSpeed = 30.f;
+	float jumpSpeed = 50.f;
 
 	bool isFixedRotation = true;
 };

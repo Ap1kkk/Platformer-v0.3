@@ -16,6 +16,7 @@ public:
 
 private:
 	DrawLayer drawLayer = -100;
+	//Filename textureFilename = "tunnel_textures/background/tunnel_background_1.png";
 	Filename textureFilename = "forest.png";
 
 	float colliderHeight = 40.f;

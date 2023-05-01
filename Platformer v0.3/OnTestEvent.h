@@ -2,12 +2,12 @@
 
 #include "IEvent.h"
 
-class OnComponentDestroyedEvent : public IEvent
+class OnTestEvent : public IEvent
 {
 public:
-	OnComponentDestroyedEvent()
+	OnTestEvent()
 	{
-		eventType = typeid(OnComponentDestroyedEvent).name();
+		eventType = typeid(OnTestEvent).name();
 	}
 
 	static const EventType& GetType()
