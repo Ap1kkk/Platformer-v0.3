@@ -78,10 +78,6 @@ void AttackSensor::OnCollisionExit(b2Contact* contact)
 		auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
 		auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
 
-		if (fixtureB == NULL)
-		{
-			int i;
-		}
 		//Debug::Log(fixtureA->GetUserData().pointer);
 		//Debug::Log(fixtureB->GetUserData().pointer);
 
