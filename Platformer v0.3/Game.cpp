@@ -85,6 +85,7 @@ void Game::ProcessGameLoop()
 	window.Update();
 	gameStateMachine->Update();
 	Draw();
+	EventSystem::ClearDestroyBuffer();
 	CalculateDeltaTime();
 }
 

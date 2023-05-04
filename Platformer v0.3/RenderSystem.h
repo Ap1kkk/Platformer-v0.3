@@ -39,7 +39,7 @@ public:
 	static void MoveActiveToPauseBuffer();
 	static void RetrieveActiveFromPauseBuffer();
 
-	void OnEventHappened(const EventData& data) override
+	void OnEventHappened(EventData& data) override
 	{
 		if (data.eventType == OnEntityDestroyedEvent::GetType())
 		{

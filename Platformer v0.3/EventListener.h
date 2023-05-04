@@ -11,7 +11,10 @@ class EventListener : public IEventListener
 {
 public:
 
-	virtual ~EventListener() {}
+	virtual ~EventListener() 
+	{
+		Debug::LogWarning("Destructor", typeid(*this).name());
+	}
 
 	template<class T>
 	void SubscribeOnEvent()
@@ -21,7 +24,7 @@ public:
 	template<class T>
 	void UnsubscribeFromEvent()
 	{
-		eventSystem->RemoveEventListener(T::GetType(), this->listenerId, this);
+		eventSystem->RemoveEventListener(T::GetType(), this->listenerId);
 	}
 
 	static void SetEventSystem(IEventSystem* eventSystemPtr) 

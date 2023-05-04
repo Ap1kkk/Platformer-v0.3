@@ -38,6 +38,9 @@ void Input::Update()
     thisFrameKeys.SetBit((int)Key::LShift, Keyboard::isKeyPressed(Keyboard::LShift));
     thisFrameKeys.SetBit((int)Key::RShift, Keyboard::isKeyPressed(Keyboard::RShift));
 
+    thisFrameKeys.SetBit((int)Key::LMouseButton, sf::Mouse::isButtonPressed(sf::Mouse::Left));
+    thisFrameKeys.SetBit((int)Key::RMouseButton, sf::Mouse::isButtonPressed(sf::Mouse::Right));
+
     thisFrameKeys.SetBit((int)Key::Q, Keyboard::isKeyPressed(Keyboard::Q));
     thisFrameKeys.SetBit((int)Key::W, Keyboard::isKeyPressed(Keyboard::W));
     thisFrameKeys.SetBit((int)Key::E, Keyboard::isKeyPressed(Keyboard::E));

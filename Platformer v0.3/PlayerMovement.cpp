@@ -24,6 +24,8 @@ void PlayerMovement::Update()
 	//Horizontal movement
 	if (Input::IsKeyPressed(Input::Key::Horizontal))
 	{
+		CheckDirectionSwap(input);
+
 		auto vel = body->GetLinearVelocity();
 		float deltaVel = velocity - abs(vel.x);
 		vel = b2Vec2(input.x * Time::FixedDeltaTime() * deltaVel, vel.y);
@@ -66,4 +68,6 @@ void PlayerMovement::Update()
 		body->SetGravityScale(normalGravityScale);
 		jumpTime = 0.f;
 	}
+
+	//lastFrameDirection = input;
 }

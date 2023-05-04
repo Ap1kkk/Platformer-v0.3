@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy()
+Enemy::Enemy() : Damageble(entityId)
 {
 	Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
 }
@@ -31,7 +31,16 @@ void Enemy::Awake()
 	boxFixtureDef.density = 1;
 	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Enemy));
 
-	physicComponent->AddFixture(boxFixtureDef);
+
+
+	auto fixture = physicComponent->AddFixture(boxFixtureDef);
+
+	userData = new FixtureUserData;
+	userData->damageble = this;
+	fixture->SetUserData(userData);
+
 	body = physicComponent->GetBody();
+
+	health = AddComponent<Health>();
 
 }

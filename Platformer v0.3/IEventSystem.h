@@ -7,7 +7,7 @@
 class IEventSystem
 {
 public:
-	virtual void HandleEvent(const EventData& eventData) = 0;
+	virtual void HandleEvent(EventData& eventData) = 0;
 	
 	//TODO поменять entityId на собственный id listener'a
 	virtual void AddEventListener(EventType eventType, EntityId entityId, IEventListener* listener) = 0;

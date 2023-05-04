@@ -52,7 +52,7 @@ public:
 		SubscribeOnEvent<OnComponentDestroyedEvent>();
 	}
 
-	void OnEventHappened(const EventData& data)
+	void OnEventHappened(EventData& data) override
 	{
 		if (data.eventType == OnComponentDestroyedEvent::GetType())
 		{

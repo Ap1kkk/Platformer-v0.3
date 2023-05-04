@@ -9,7 +9,17 @@
 
 #include "Debug.h"
 
-class AttackSensor : public IComponent, public ISensor
+#include "Input.h"
+
+#include "Damageble.h"
+
+#include "EventListener.h"
+#include "OnPlayerTurnedFaceEvent.h"
+#include "PlayerTurnedFaceData.h"
+
+#include "FixtureManager.h"
+
+class AttackSensor : public IComponent, public ISensor, public EventListener
 {
 public:
 	AttackSensor() {}
@@ -20,10 +30,27 @@ public:
 
 	void Awake() override;
 
+	void Update()
+	{
+		if (Input::IsKeyDown(Input::Key::LMouseButton))
+		{
+			Debug::Log("lmb click");
+		}
+	}
+
 	void OnCollisionEnter(b2Contact* contact) override;
 	void OnCollisionExit(b2Contact* contact) override;
 
 	void OnDestroy() override;
+
+	void OnEventHappened(EventData& eventData) override
+	{
+		if (eventData.eventType == OnPlayerTurnedFaceEvent::GetType())
+		{
+			PlayerTurnedFaceData* data = static_cast<PlayerTurnedFaceData*>(eventData.userData);
+			Debug::Log(std::to_string((short)data->direction));
+		}
+	}
 
 private:
 	b2Body* body;
@@ -33,5 +60,6 @@ private:
 	Bitmask collisionMask;
 
 	bool isEnabledToJump;
+	FixtureUserData* userData;
 };
 

@@ -21,7 +21,7 @@ public:
 		SubscribeOnEvent<OnEntityDestroyedEvent>();
 	}
 
-	void OnEventHappened(const EventData& data)
+	void OnEventHappened(EventData& data) override
 	{
 		if (data.eventType == OnEntityDestroyedEvent::GetType())
 		{

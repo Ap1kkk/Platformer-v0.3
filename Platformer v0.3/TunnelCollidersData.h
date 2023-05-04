@@ -196,6 +196,19 @@ private:
 			collidersMap.emplace(std::make_pair(4, colliders));
 		}
 		///--------- 4 туннель ---------
+
+		///--------- 5 туннель ---------
+		{
+			CollidersDataVector colliders;
+
+			{
+
+			}
+
+			collidersMap.emplace(std::make_pair(5, colliders));
+		}
+		///--------- 5 туннель ---------
+
 	}
 
 	static std::map<short, CollidersDataVector> collidersMap;

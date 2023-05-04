@@ -50,7 +50,7 @@ enum class GameStateType
 
 enum class CollisionLayers
 {
-	Default = 1,
+	Default = 0,
 	Ground,
 	SmallObstacle,
 	Player,
@@ -58,5 +58,6 @@ enum class CollisionLayers
 	Projectile,
 	Sensor,
 	JumpSensor,
-	AttackSensor 
+	AttackSensorLeft,
+	AttackSensorRight,
 };

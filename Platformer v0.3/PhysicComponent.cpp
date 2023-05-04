@@ -1,7 +1,5 @@
 #include "PhysicComponent.h"
 
-FixtureId PhysicComponent::staticFixtureIdCounter = 0;
-
 PhysicComponent::PhysicComponent()
 {
 	bodyDef.position.Set(0.f, 0.f);
@@ -44,7 +42,12 @@ void PhysicComponent::SetBodyDef(b2BodyDef newBodyDef)
 //TODO на доработке
 Fixture* PhysicComponent::AddFixture(b2FixtureDef& newFixtureDef)
 {
-	auto fixture = new Fixture(body->CreateFixture(&newFixtureDef));
+	//auto fix = new b2FixtureDef;
+	//fix->userData.pointer = 100;
+
+	//newFixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(fix);
+	//auto fixture = new Fixture(body->CreateFixture(&newFixtureDef), ownerId);
+	auto fixture = FixtureManager::CreateFixture(newFixtureDef, body, ownerId);
 	auto newFixtureId = fixture->GetFixtureId();
 
 	fixtures.emplace(std::make_pair(newFixtureId, fixture));
@@ -59,12 +62,14 @@ void PhysicComponent::DeleteFixture(FixtureId fixtureId)
 	auto itr = fixtures.find(fixtureId);
 	if (itr != fixtures.end())
 	{
-		body->DestroyFixture(itr->second);
+		//TODO опасно, может работать не правильно
+		//body->DestroyFixture(itr->second);
+		FixtureManager::DestroyFixture(fixtureId, body);
 		Debug::LogWarning("Deleted fixture with id: " + std::to_string(fixtureId), typeid(*this).name());
 	}
 	else
 	{
-		Debug::LogWarning("Can't delete fixture\nFixture with id: " + std::to_string(fixtureId) + " not found", typeid(*this).name());
+		Debug::LogError("Can't delete fixture\nFixture with id: " + std::to_string(fixtureId) + " not found", typeid(*this).name());
 	}
 }
 
@@ -81,5 +86,17 @@ void PhysicComponent::LateUpdate()
 
 void PhysicComponent::OnDestroy()
 {
+	for (auto& pair : fixtures)
+	{
+		FixtureManager::DestroyFixture(pair.first, body);
+	}
+	fixtures.clear();
+
+	for (auto& pair : sensors)
+	{
+		FixtureManager::DestroySensor(pair.second, body);
+	}
+	sensors.clear();
+
 	PhysicSystem::DestroyBody(this->body);
 }

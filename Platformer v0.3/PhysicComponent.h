@@ -6,6 +6,7 @@
 #include "TransformComponent.h"
 #include "Debug.h"
 
+#include "FixtureManager.h"
 /// <summary>
 /// Responsible for physics part of an object
 /// Contains physic body of an object
@@ -55,13 +56,13 @@ public:
 	/// <param name="exitingFixture"></param>
 	void DeleteFixture(FixtureId fixtureId);
 
-	Sensor* AddSensor(const b2FixtureDef& newFixtureDef)
+	Sensor* AddSensor(b2FixtureDef& newFixtureDef)
 	{
-		auto sensor = new Sensor(body->CreateFixture(&newFixtureDef));
+		auto sensor = FixtureManager::CreateSensor(newFixtureDef, body, ownerId);
 		auto newSensorId = sensor->GetSensorId();
 		sensors.emplace(std::make_pair(newSensorId, sensor));
 
-		Debug::LogInfo("Added fixture with id: " + std::to_string(newSensorId), typeid(*this).name());
+		Debug::LogInfo("Added sensor with SensorId: " + std::to_string(newSensorId), typeid(*this).name());
 
 		return sensor;
 	}
@@ -71,12 +72,12 @@ public:
 		auto itr = sensors.find(sensorId);
 		if (itr != sensors.end())
 		{
-			body->DestroyFixture(itr->second);
+			FixtureManager::DestroySensor(itr->second, body);
 			sensors.erase(itr);
 		}
 		else
 		{
-			Debug::LogWarning("Can't remove sensor with id: " + std::to_string(sensorId) + "\nSensor not found", typeid(*this).name());
+			Debug::LogWarning("Can't remove sensor with SensorId: " + std::to_string(sensorId) + "\nSensor not found", typeid(*this).name());
 		}
 	}
 
@@ -94,7 +95,5 @@ private:
 	TransformComponent* ownerTransform;
 
 	std::unordered_map<SensorId, Sensor*> sensors;
-
-	static FixtureId staticFixtureIdCounter;
 };
 

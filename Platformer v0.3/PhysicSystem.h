@@ -7,6 +7,8 @@
 #include "PhysicsDebugDraw.h"
 #include "Debug.h"
 
+#include "FixtureManager.h"
+
 /// <summary>
 /// Responsible for storing pointer to the world and some interaction with it
 /// </summary>
@@ -35,9 +37,19 @@ public:
 		world->SetContactListener(instancePtr);
 	}
 
+	static void ClearDestroyBuffer()
+	{
+		for (auto& body : destroyBuffer)
+		{
+			world->DestroyBody(body);
+		}
+		destroyBuffer.clear();
+	}
+
 private:
 	static std::unordered_map<EntityId, b2Body*> bodies;
 	//static std::unordered_map<EntityId, IConctactListener> contactListeners; 
+	static std::vector<b2Body*> destroyBuffer;
 
 	static b2World* world;
 };

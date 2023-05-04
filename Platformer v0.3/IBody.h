@@ -6,35 +6,64 @@
 #include "Debug.h"
 #include "DataTypes.h"
 
+#include "IEntity.h"
+#include "IComponent.h"
+#include "Damageble.h"
+
+struct FixtureUserData
+{
+	IComponent* componentPtr;
+	IEntity* entityPtr;
+	Damageble* damageble;
+};
+
 class Fixture : public b2Fixture
 {
 public:
-	Fixture(b2Fixture* owningFixture) : owningFixture(owningFixture), fixtureId(staticIdCounter++) 
+	Fixture(EntityId ownerId) : ownerId(ownerId), fixtureId(staticIdCounter++)
 	{}
+	virtual ~Fixture()
+	{
+		delete userData;
+	}
 
 	FixtureId GetFixtureId() const { return fixtureId; }
+	EntityId GetOwnerId() const { return ownerId; }
 	b2Fixture* GetOwningFixture() const { return owningFixture; }
 
-	//static FixtureId GetStaticIdCounter() { return staticIdCounter; }
+	void SetOwningFixture(b2Fixture* owningFixture)
+	{
+		this->owningFixture = owningFixture;
+	}
+
+	void SetUserData(FixtureUserData* userData)
+	{
+		this->userData = userData;
+	}
+
+	FixtureUserData* GetUserData() const
+	{
+		return userData;
+	}
 
 private:
 	b2Fixture* owningFixture;
 
+	FixtureUserData* userData;
+
+	EntityId ownerId;
 	FixtureId fixtureId;
 	static FixtureId staticIdCounter;
 };
 
-class Sensor : public b2Fixture
+class Sensor : public Fixture
 {
 public:
-	Sensor(b2Fixture* owningFixture) : owningFixture(owningFixture), sensorId(staticIdCounter++) {}
+	Sensor(EntityId ownerId) : Fixture(ownerId), sensorId(staticIdCounter++) {}
 
 	SensorId GetSensorId() const { return sensorId; }
-	b2Fixture* GetOwningFixture() const { return owningFixture; }
 
 private:
-	b2Fixture* owningFixture;
-
 	SensorId sensorId;
 	static SensorId staticIdCounter;
 };
@@ -54,12 +83,8 @@ public:
 protected:
 	b2Body* body;
 	b2BodyDef bodyDef;
-	//b2FixtureDef fixtureDef;
 
-	//TODO мб небезопасно хранить по значению
-	//std::vector<b2FixtureDef> fixtureDefVector {};
-	std::unordered_map<FixtureId, Fixture*> fixtures{};
-	//std::vector<b2Fixture*> fixturesVector {};
+	std::unordered_map<FixtureId, Fixture*> fixtures {};
 
 	EntityId bodyOwnerId;
 };

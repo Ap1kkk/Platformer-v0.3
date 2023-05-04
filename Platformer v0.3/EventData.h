@@ -5,7 +5,7 @@
 
 struct UserEventData
 {
-
+	int i;
 };
 
 struct EventData
@@ -16,6 +16,5 @@ struct EventData
 	unsigned int id;
 	EventType eventType;
 
-	//TODO сделать указателем
-	UserEventData userData;
+	UserEventData* userData;
 };

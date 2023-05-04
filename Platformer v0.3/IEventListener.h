@@ -14,7 +14,7 @@ public:
 
 	}
 
-	virtual void OnEventHappened(const EventData& eventData) = 0;
+	virtual void OnEventHappened(EventData& eventData) = 0;
 
 protected:
 	ListenerId listenerId;

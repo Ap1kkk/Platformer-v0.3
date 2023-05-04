@@ -1,6 +1,8 @@
 #include "PhysicSystem.h"
 
 std::unordered_map<EntityId, b2Body*> PhysicSystem::bodies = {};
+std::vector<b2Body*> PhysicSystem::destroyBuffer = {};
+
 b2World* PhysicSystem::world = new b2World(b2Vec2(0, -10));
 
 PhysicSystem::PhysicSystem(b2Vec2 gravity)
@@ -18,6 +20,8 @@ PhysicSystem::~PhysicSystem()
 void PhysicSystem::Update(float timeStep, int velocityIterations, int positionIterations)
 {
 	world->Step(timeStep, velocityIterations, positionIterations);
+	FixtureManager::ClearDestroyBuffer();
+	ClearDestroyBuffer();
 }
 
 void PhysicSystem::DrawDebug()
@@ -41,7 +45,8 @@ void PhysicSystem::DestroyBody(b2Body* body)
 {
 	auto id = GetBodyOwnerId(body);
 	bodies.erase(id);
-	world->DestroyBody(body);
+	//world->DestroyBody(body);
+	destroyBuffer.push_back(body);
 }
 
 EntityId PhysicSystem::GetBodyOwnerId(b2Body* body)
