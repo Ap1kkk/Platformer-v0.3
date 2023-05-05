@@ -43,7 +43,7 @@ public:
 	inline void SetObjectContext(ObjectContext context) { objectContext = context; }
 
 protected:
-	EntityId entityId;
+	const EntityId entityId;
 	ObjectContext objectContext;
 
 private:

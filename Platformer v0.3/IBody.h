@@ -51,8 +51,8 @@ private:
 
 	FixtureUserData* userData;
 
-	EntityId ownerId;
-	FixtureId fixtureId;
+	const EntityId ownerId;
+	const FixtureId fixtureId;
 	static FixtureId staticIdCounter;
 };
 
@@ -64,7 +64,7 @@ public:
 	SensorId GetSensorId() const { return sensorId; }
 
 private:
-	SensorId sensorId;
+	const SensorId sensorId;
 	static SensorId staticIdCounter;
 };
 

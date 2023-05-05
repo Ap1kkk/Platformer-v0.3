@@ -568,6 +568,9 @@
     <ClInclude Include="Damageble.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="OnEntityDiedData.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-2.dll">

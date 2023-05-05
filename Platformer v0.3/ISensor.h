@@ -10,7 +10,7 @@ public:
 	SensorId GetSensorId() const { return sensorId; }
 
 protected:
-	SensorId sensorId;
+	const SensorId sensorId;
 
 private:
 	static SensorId staticIdCounter;

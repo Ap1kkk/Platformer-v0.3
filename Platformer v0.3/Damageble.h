@@ -2,6 +2,7 @@
 
 #include "EventListener.h"
 #include "OnEntityDiedEvent.h"
+#include "OnEntityDiedData.h"
 
 struct DamageData
 {
@@ -9,10 +10,6 @@ struct DamageData
 	unsigned int value;
 };
 
-struct OnEntityDiedData : public UserEventData
-{
-	EntityId entityId;
-};
 
 class Damageble : public EventListener
 {
@@ -41,7 +38,9 @@ public:
 
 	virtual void OnEntityDied() = 0;
 
+	const EntityId GetDamagebleOwnerId() { return ownerId; }
+
 private:
-	EntityId ownerId;
+	const EntityId ownerId;
 };
 

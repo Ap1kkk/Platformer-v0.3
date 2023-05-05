@@ -7,27 +7,47 @@ void AttackSensor::SetPhysicComponent(PhysicComponent* physicComponent)
 
 void AttackSensor::SetOffset(sf::Vector2f offset)
 {
-	ownerBodyOffset = { offset.x, offset.y };
+	ownerBodyOffsetLeft = { offset.x, offset.y };
+	ownerBodyOffsetRight = { -offset.x, offset.y };
 }
 
 void AttackSensor::Awake()
 {
-	b2PolygonShape boxShape;
-	b2Vec2 size = { 20, 50 };
-	boxShape.SetAsBox(size.x, size.y, ownerBodyOffset, 0);
+	{
+		b2PolygonShape boxShape;
+		b2Vec2 size = { 20, 50 };
+		boxShape.SetAsBox(size.x, size.y, ownerBodyOffsetLeft, 0);
 
-	b2FixtureDef boxFixtureDef;
-	boxFixtureDef.shape = &boxShape;
-	boxFixtureDef.isSensor = true;
-	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensorLeft));
-	boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
+		b2FixtureDef boxFixtureDef;
+		boxFixtureDef.shape = &boxShape;
+		boxFixtureDef.isSensor = true;
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensorLeft));
+		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
 
-	sensor = physicComponent->AddSensor(boxFixtureDef);
+		sensorLeft = physicComponent->AddSensor(boxFixtureDef);
 
-	userData = new FixtureUserData;
-	userData->componentPtr = this;
-	sensor->SetUserData(userData);
+		userData = new FixtureUserData;
+		userData->componentPtr = this;
+		sensorLeft->SetUserData(userData);
+	}
 
+	{
+		b2PolygonShape boxShape;
+		b2Vec2 size = { 20, 50 };
+		boxShape.SetAsBox(size.x, size.y, ownerBodyOffsetRight, 0);
+
+		b2FixtureDef boxFixtureDef;
+		boxFixtureDef.shape = &boxShape;
+		boxFixtureDef.isSensor = true;
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensorLeft));
+		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
+
+		sensorRight = physicComponent->AddSensor(boxFixtureDef);
+
+		userData = new FixtureUserData;
+		userData->componentPtr = this;
+		sensorRight->SetUserData(userData);
+	}
 
 	collisionMask.SetBit((uint16)CollisionLayers::Enemy);
 	collisionMask.SetBit((uint16)CollisionLayers::AttackSensorLeft);
@@ -37,7 +57,7 @@ void AttackSensor::Awake()
 	WorldContactListener::AddHandler(collisionMask, this);
 
 	SubscribeOnEvent<OnPlayerTurnedFaceEvent>();
-
+	SubscribeOnEvent<OnEntityDiedEvent>();
 }
 
 void AttackSensor::OnCollisionEnter(b2Contact* contact)
@@ -46,26 +66,20 @@ void AttackSensor::OnCollisionEnter(b2Contact* contact)
 	{
 		Debug::Log("Entered attack sensor");
 
-		auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
-		auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
-
-		//Debug::Log(fixtureA->GetUserData().pointer);
-		//Debug::Log(fixtureB->GetUserData().pointer);
-
 		auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
 		auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
 
 		auto sensor = static_cast<AttackSensor*>(fix1->GetUserData()->componentPtr);
 		auto enemy = static_cast<Damageble*>(fix2->GetUserData()->damageble);
 
-		Debug::Log(sensor->GetComponentId());
-
-		auto damageData = new DamageData;
-		damageData->value = 50;
-
-		enemy->TakeDamage(damageData);
-		delete damageData;
-		//Debug::Log(fix2->GetUserData()->test);
+		if (fix1->GetFixtureId() == sensorLeft->GetFixtureId())
+		{
+			AddToAttackBufferLeft(enemy->GetDamagebleOwnerId(), enemy);
+		}
+		else
+		{
+			AddToAttackBufferRight(enemy->GetDamagebleOwnerId(), enemy);
+		}
 	}
 }
 
@@ -75,12 +89,6 @@ void AttackSensor::OnCollisionExit(b2Contact* contact)
 	{
 		Debug::Log("Leaved attack sensor");
 
-		auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
-		auto fixtureB = static_cast<Fixture*>(contact->GetFixtureB());
-
-		//Debug::Log(fixtureA->GetUserData().pointer);
-		//Debug::Log(fixtureB->GetUserData().pointer);
-
 		auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
 		auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
 
@@ -89,7 +97,14 @@ void AttackSensor::OnCollisionExit(b2Contact* contact)
 			auto sensor = static_cast<AttackSensor*>(fix1->GetUserData()->componentPtr);
 			auto enemy = static_cast<Damageble*>(fix2->GetUserData()->damageble);
 
-			Debug::Log(sensor->GetComponentId());
+			if (fix1->GetFixtureId() == sensorLeft->GetFixtureId())
+			{
+				RemoveFromAttackBufferLeft(enemy->GetDamagebleOwnerId());
+			}
+			else
+			{
+				RemoveFromAttackBufferRight(enemy->GetDamagebleOwnerId());
+			}
 		}
 	}
 }
@@ -97,5 +112,6 @@ void AttackSensor::OnCollisionExit(b2Contact* contact)
 void AttackSensor::OnDestroy()
 {
 	UnsubscribeFromEvent<OnPlayerTurnedFaceEvent>();
+	UnsubscribeFromEvent<OnEntityDiedEvent>();
 	WorldContactListener::DeleteComponentHandler(componentId);
 }

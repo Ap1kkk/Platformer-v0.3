@@ -36,7 +36,7 @@ void Player::Awake()
 	 
 	jumpSensor = AddComponent<JumpSensor>();
 	jumpSensor->SetPhysicComponent(physicComponent);
-	jumpSensor->SetOffset(sf::Vector2f(0, 15));
+	jumpSensor->SetOffset(sf::Vector2f(0, 20));
 
 	playerMovement = AddComponent<PlayerMovement>();
 	playerMovement->SetBody(body);
@@ -44,5 +44,5 @@ void Player::Awake()
 
 	attackSensor = AddComponent<AttackSensor>();
 	attackSensor->SetPhysicComponent(physicComponent);
-	attackSensor->SetOffset(sf::Vector2f(-15.f, 0.f));
+	attackSensor->SetOffset(sf::Vector2f(-21.f, 0.f));
 }

@@ -260,6 +260,7 @@
     <ClInclude Include="ObjectContext.h" />
     <ClInclude Include="OnComponentDestroyedEvent.h" />
     <ClInclude Include="OnEntityDestroyedEvent.h" />
+    <ClInclude Include="OnEntityDiedData.h" />
     <ClInclude Include="OnEntityDiedEvent.h" />
     <ClInclude Include="OnPlayerTurnedFaceEvent.h" />
     <ClInclude Include="OnTestEvent.h" />

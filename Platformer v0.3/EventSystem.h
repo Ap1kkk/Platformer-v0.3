@@ -12,7 +12,7 @@ public:
 
 	void HandleEvent(EventData& eventData) override
 	{
-		Debug::Log("Handle event from event system");
+		Debug::Log("Handle " + eventData.eventType + " from event system");
 
 		auto handler = handlers.find(eventData.eventType);
 		if (handler != handlers.end())

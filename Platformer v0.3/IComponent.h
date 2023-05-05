@@ -56,7 +56,7 @@ public:
 	inline void SetObjectContext(ObjectContext context) { objectContext = context; }
 
 protected:
-	ComponentId componentId;
+	const ComponentId componentId;
 	ComponentLayer componentLayer;
 	EntityId ownerId;
 	ObjectContext objectContext;
