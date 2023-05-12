@@ -12,7 +12,8 @@ public:
 
 	void HandleEvent(EventData& eventData) override
 	{
-		Debug::Log("Handle " + eventData.eventType + " from event system");
+		
+		Debug::Log("Handle " + std::to_string((int)eventData.eventType) + " from event system");
 
 		auto handler = handlers.find(eventData.eventType);
 		if (handler != handlers.end())
@@ -40,12 +41,12 @@ public:
 
 		if (isExists)
 		{
-			Debug::LogError("Can't add event listener\nListener to event type: " + eventType + " is already added with ListenerId:" + std::to_string(listenerId));
+			Debug::LogError("Can't add event listener\nListener to event type: " + std::to_string((int)eventType) + " is already added with ListenerId:" + std::to_string(listenerId));
 		}
 		else
 		{
 			handlers.emplace(std::make_pair(eventType, std::make_pair(listenerId, listener)));
-			Debug::LogInfo("Event listener with type: " + eventType + " added with ListenerId: " + std::to_string(listenerId));
+			Debug::LogInfo("Event listener with type: " + std::to_string((int)eventType) + " added with ListenerId: " + std::to_string(listenerId));
 		}
 	}
 
@@ -58,7 +59,7 @@ public:
 			if (listenerId == itr->second.first)
 			{
 				isExists = true;
-				Debug::LogInfo("Event listener with type: " + eventType + " removed with ListenerId: " + std::to_string(listenerId));
+				Debug::LogInfo("Event listener with type: " + std::to_string((int)eventType) + " removed with ListenerId: " + std::to_string(listenerId));
 				//handlers.erase(itr);
 				destroyItrBuffer.push_back(itr);
 				break;
@@ -67,7 +68,7 @@ public:
 
 		if (!isExists)
 		{
-			Debug::LogError("Can't add event listener\nListener to event type: " + eventType + " is already added with ListenerId:" + std::to_string(listenerId));
+			Debug::LogError("Can't add event listener\nListener to event type: " + std::to_string((int)eventType) + " is already added with ListenerId:" + std::to_string(listenerId));
 		}
 	}
 

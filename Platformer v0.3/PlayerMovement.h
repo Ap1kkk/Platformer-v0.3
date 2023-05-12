@@ -7,7 +7,6 @@
 #include "TransformComponent.h"
 #include "JumpSensor.h"
 
-#include "OnPlayerTurnedFaceEvent.h"
 #include "PlayerTurnedFaceData.h"
 
 class PlayerMovement : public IComponent
@@ -26,7 +25,7 @@ public:
 
 		if (direction.x != (float)lastDirection && direction.x != 0.f)
 		{
-			EventData data(OnPlayerTurnedFaceEvent::GetType());
+			EventData data(EventType::OnPlayerTurnedFaceEvent);
 
 			PlayerTurnedFaceData* userData = new PlayerTurnedFaceData;
 
@@ -41,7 +40,7 @@ public:
 			lastDirection = userData->direction;
 
 			data.userData = userData;
-			OnPlayerTurnedFaceEvent::Invoke(data);
+			Event::Invoke(data);
 
 			delete userData;
 		}

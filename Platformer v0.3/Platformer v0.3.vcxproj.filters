@@ -293,16 +293,7 @@
     <ClCompile Include="IEventListener.cpp">
       <Filter>Исходные файлы\Engine\EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="OnDestroyEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="OnComponentDestroyedEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Health.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="OnTestEvent.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="TunnelBackground.cpp">
@@ -311,17 +302,11 @@
     <ClCompile Include="TunnelCollidersData.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="OnPlayerTurnedFaceEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
     <ClCompile Include="IBody.cpp">
       <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
     <ClCompile Include="FixtureManager.cpp">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="OnEntityDiedEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
     </ClCompile>
     <ClCompile Include="Damageble.cpp">
       <Filter>Исходные файлы</Filter>
@@ -332,15 +317,6 @@
     <ClCompile Include="LevelSwitcherSensor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="OnLevelSwitchEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="OnEntityDisabledEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="OnEntityEnabledEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
     <ClCompile Include="ILevelSwitcher.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -349,12 +325,6 @@
     </ClCompile>
     <ClCompile Include="DrawableTextComponent.cpp">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="OnComponentDisabledEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="OnComponentEnabledEvent.cpp">
-      <Filter>Исходные файлы\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -565,16 +535,7 @@
     <ClInclude Include="IEventSystem.h">
       <Filter>Файлы заголовков\Engine\EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="OnEntityDestroyedEvent.h">
-      <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="OnComponentDestroyedEvent.h">
-      <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
     <ClInclude Include="Health.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="OnTestEvent.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="TunnelBackground.h">
@@ -583,17 +544,8 @@
     <ClInclude Include="TunnelCollidersData.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="OnPlayerTurnedFaceEvent.h">
-      <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerTurnedFaceData.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="FixtureManager.h">
       <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="OnEntityDiedEvent.h">
-      <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
     <ClInclude Include="Damageble.h">
       <Filter>Файлы заголовков</Filter>
@@ -604,19 +556,10 @@
     <ClInclude Include="LevelSwitcherSensor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="OnLevelSwitchEvent.h">
-      <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
     <ClInclude Include="OnEntityDiedData.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
     <ClInclude Include="OnLevelSwitchData.h">
-      <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="OnEntityDisabledEvent.h">
-      <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="OnEntityEnabledEvent.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
     <ClInclude Include="ILevelSwitcher.h">
@@ -628,10 +571,13 @@
     <ClInclude Include="DrawableTextComponent.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="OnComponentDisabledEvent.h">
+    <ClInclude Include="PlayerTurnedFaceData.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
-    <ClInclude Include="OnComponentEnabledEvent.h">
+    <ClInclude Include="OnComponentUserData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTypes.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
   </ItemGroup>

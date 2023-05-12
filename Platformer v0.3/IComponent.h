@@ -6,14 +6,12 @@
 #include "ObjectContext.h"
 #include "Debug.h"
 
-#include "OnComponentDestroyedEvent.h"
-#include "OnComponentEnabledEvent.h"
-#include "OnComponentDisabledEvent.h"
+#include "OnComponentUserData.h"
 
 class IComponent
 {
 public:
-	IComponent() : componentId(componentIdCounter++) 
+	IComponent() : componentId(componentIdCounter++), isEnabled(true)
 	{}
 	virtual ~IComponent()
 	{
@@ -24,22 +22,35 @@ public:
 
 	void Enable() 
 	{
+		isEnabled = true;
 		OnEnable();
 
-		EventData data(OnComponentEnabledEvent::GetType());
-		data.id = componentId;
+		EventData data(EventType::OnComponentEnabledEvent);
+		auto userData = new ComponentUserData;
+		userData->component = this;
 
-		OnComponentEnabledEvent::Invoke(data);
+		data.id = ownerId;
+		data.userData = userData;
+
+		Event::Invoke(data);
 	}
 	void Disable() 
 	{
+		isEnabled = false;
 		OnDisable();
 
-		EventData data(OnComponentDisabledEvent::GetType());
-		data.id = componentId;
+		EventData data(EventType::OnComponentDisabledEvent);
 
-		OnComponentDisabledEvent::Invoke(data);
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
+		data.id = ownerId;
+		data.userData = userData;
+
+		Event::Invoke(data);
 	}
+
+	bool IsEnabled() const { return isEnabled; }
 
 	virtual void EarlyUpdate() {}
 	virtual void Update() {}
@@ -61,11 +72,11 @@ public:
 
 	void Destroy()
 	{
-		EventData data(OnComponentDestroyedEvent::GetType());
+		EventData data(EventType::OnComponentDestroyedEvent);
 		data.id = componentId;
 
 		OnDestroy();
-		OnComponentDestroyedEvent::Invoke(data);
+		Event::Invoke(data);
 		delete this;
 	}
 
@@ -80,6 +91,7 @@ public:
 	inline void SetObjectContext(ObjectContext context) { objectContext = context; }
 
 protected:
+	bool isEnabled;
 	const ComponentId componentId;
 	ComponentLayer componentLayer;
 	EntityId ownerId;

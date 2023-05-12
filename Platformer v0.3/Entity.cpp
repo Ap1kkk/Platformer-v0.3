@@ -2,7 +2,7 @@
 
 Entity::~Entity()
 {
-	UnsubscribeFromEvent<OnComponentEnabledEvent>();
+	UnsubscribeFromEvent(EventType::OnComponentEnabledEvent);
 
 	if (components.size() > 0)
 	{
@@ -13,9 +13,11 @@ Entity::~Entity()
 		}
 	}
 
+	for (auto& map : enabledComponents)
+	{
+		delete map.second;
+	}
 }
-
-//void Entity::DeleteComponent(ComponentId id)
 
 void Entity::RecalculateComponentsOrder()
 {
@@ -30,6 +32,7 @@ void Entity::RecalculateComponentsOrder()
 
 void Entity::ProcessNotAwokenComponents()
 {
+	//TODO вызывать после события
 	if (notAwokenComponents.size() > 0)
 	{
 		for (auto& component : notAwokenComponents)
@@ -42,39 +45,71 @@ void Entity::ProcessNotAwokenComponents()
 
 void Entity::ComponentsEarlyUpdate()
 {
-	for (auto& component : componentsOrder)
+	//for (auto& component : componentsOrder)
+	//{
+	//	component->EarlyUpdate();
+	//}
+
+	for (auto& componentsMap : enabledComponents)
 	{
-		component->EarlyUpdate();
+		for (auto& pair : *componentsMap.second)
+		{
+			pair.second->EarlyUpdate();
+		}
 	}
 }
 
 void Entity::ComponentsUpdate()
 {
-	for (auto& component : componentsOrder)
+	//for (auto& component : componentsOrder)
+	//{
+	//	component->Update();
+	//}
+
+	for (auto& componentsMap : enabledComponents)
 	{
-		component->Update();
+		for (auto& pair : *componentsMap.second)
+		{
+			pair.second->Update();
+		}
 	}
 }
 
 void Entity::ComponentsLateUpdate()
 {
-	for (auto& component : componentsOrder)
+	//for (auto& component : componentsOrder)
+	//{
+	//	component->LateUpdate();
+	//}
+
+	for (auto& componentsMap : enabledComponents)
 	{
-		component->LateUpdate();
+		for (auto& pair : *componentsMap.second)
+		{
+			pair.second->LateUpdate();
+		}
 	}
 }
 
 void Entity::ComponentsUpdateUI()
 {
-	for (auto& component : componentsOrder)
+	//for (auto& component : componentsOrder)
+	//{
+	//	component->UpdateUI();
+	//}
+
+	for (auto& componentsMap : enabledComponents)
 	{
-		component->UpdateUI();
+		for (auto& pair : *componentsMap.second)
+		{
+			pair.second->UpdateUI();
+		}
 	}
 }
 
 void Entity::Destroy()
 {
-	EventData entityData(OnEntityDestroyedEvent::GetType());
+	EventData entityData(EventType::OnEntityDestroyedEvent);
 	entityData.id = entityId;
 
 	OnDestroy();
@@ -86,7 +121,7 @@ void Entity::Destroy()
 	components.clear();
 
 	//GarbageCollector::DestroyEntity(this->entityId);
-	OnEntityDestroyedEvent::Invoke(entityData);
+	Event::Invoke(entityData);
 }
 
 

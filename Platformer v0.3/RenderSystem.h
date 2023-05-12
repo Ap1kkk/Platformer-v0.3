@@ -5,13 +5,10 @@
 #include <vector>
 
 #include "Window.h"
-//#include "DrawableComponent.h"
 #include "DrawableSpriteComponent.h"
 #include "DrawableTextComponent.h"
 
 #include "EventListener.h"
-
-#include "OnEntityDestroyedEvent.h"
 
 /// <summary>
 /// Responsible for rendering objects to the window
@@ -31,12 +28,16 @@ public:
 
 	void SubscribeOnEvents()
 	{
-		SubscribeOnEvent<OnEntityDestroyedEvent>();
+		SubscribeOnEvent(EventType::OnEntityDestroyedEvent);
+
+		SubscribeOnEvent(EventType::OnSpriteDrawableEnabled); 
+		SubscribeOnEvent(EventType::OnSpriteDrawableDisabled); 
+		SubscribeOnEvent(EventType::OnTextDrawableEnabled); 
+		SubscribeOnEvent(EventType::OnTextDrawableDisabled);
 	}
 
 	void Draw();
 
-	//static void AddDrawable(EntityId entityId, DrawableComponent* drawable, bool isEnabled);
 	static void AddDrawable(EntityId entityId, DrawableSpriteComponent* drawable, bool isEnabled);
 	static void AddDrawable(EntityId entityId, DrawableTextComponent* drawable, bool isEnabled);
 
@@ -50,12 +51,12 @@ public:
 
 	void OnEventHappened(EventData& data) override
 	{
-		if (data.eventType == OnEntityDestroyedEvent::GetType())
+		if (data.eventType == EventType::OnEntityDestroyedEvent)
 		{
 			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
 			DeleteDrawable(data.id);
 		}
-		
+		//TODO добавить обработку и новые методы включения и выключения отдельных методов
 	}
 
 private:
@@ -110,6 +111,8 @@ private:
 	//static std::unordered_map<EntityId, DrawableComponent*> disabledDrawables;
 	//static std::unordered_map<EntityId, DrawableComponent*> pauseBuffer;
 
+
+	//TODO переработать и разделить на отдельные контейнеры
 	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> enabledDrawablesNew;
 	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> disabledDrawablesNew;
 	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> pauseBufferNew;

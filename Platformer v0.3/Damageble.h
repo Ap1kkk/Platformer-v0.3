@@ -1,7 +1,6 @@
 #pragma once
 
 #include "EventListener.h"
-#include "OnEntityDiedEvent.h"
 #include "OnEntityDiedData.h"
 
 struct DamageData
@@ -16,18 +15,18 @@ class Damageble : public EventListener
 public:
 	Damageble(EntityId ownerId) : ownerId(ownerId)
 	{
-		SubscribeOnEvent<OnEntityDiedEvent>();
+		SubscribeOnEvent(EventType::OnEntityDiedEvent);
 	}
 	virtual ~Damageble() 
 	{
-		UnsubscribeFromEvent<OnEntityDiedEvent>();
+		UnsubscribeFromEvent(EventType::OnEntityDiedEvent);
 	}
 
 	virtual void TakeDamage(DamageData* damageData) = 0;
 
 	void OnEventHappened(EventData& eventData)
 	{
-		if (eventData.eventType == OnEntityDiedEvent::GetType())
+		if (eventData.eventType == EventType::OnEntityDiedEvent)
 		{
 			auto damageData = static_cast<OnEntityDiedData*>(eventData.userData);
 			Debug::Log("Died");

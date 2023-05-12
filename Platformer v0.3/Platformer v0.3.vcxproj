@@ -44,6 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -70,6 +71,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ManagedAssembly>false</ManagedAssembly>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -106,6 +110,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Third Party\SFML\include;$(SolutionDir)Third Party\Box2d\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -182,16 +187,6 @@
     <ClCompile Include="MainChunk.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
-    <ClCompile Include="OnComponentDestroyedEvent.cpp" />
-    <ClCompile Include="OnComponentDisabledEvent.cpp" />
-    <ClCompile Include="OnComponentEnabledEvent.cpp" />
-    <ClCompile Include="OnDestroyEvent.cpp" />
-    <ClCompile Include="OnEntityDiedEvent.cpp" />
-    <ClCompile Include="OnEntityDisabledEvent.cpp" />
-    <ClCompile Include="OnEntityEnabledEvent.cpp" />
-    <ClCompile Include="OnLevelSwitchEvent.cpp" />
-    <ClCompile Include="OnPlayerTurnedFaceEvent.cpp" />
-    <ClCompile Include="OnTestEvent.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
     <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="PhysicComponent.cpp" />
@@ -242,6 +237,7 @@
     <ClInclude Include="EventData.h" />
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="EventSystem.h" />
+    <ClInclude Include="EventTypes.h" />
     <ClInclude Include="ExitedGameState.h" />
     <ClInclude Include="FirstScene.h" />
     <ClInclude Include="FixtureManager.h" />
@@ -273,18 +269,9 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />
-    <ClInclude Include="OnComponentDestroyedEvent.h" />
-    <ClInclude Include="OnComponentDisabledEvent.h" />
-    <ClInclude Include="OnComponentEnabledEvent.h" />
-    <ClInclude Include="OnEntityDestroyedEvent.h" />
+    <ClInclude Include="OnComponentUserData.h" />
     <ClInclude Include="OnEntityDiedData.h" />
-    <ClInclude Include="OnEntityDiedEvent.h" />
     <ClInclude Include="OnLevelSwitchData.h" />
-    <ClInclude Include="OnEntityDisabledEvent.h" />
-    <ClInclude Include="OnEntityEnabledEvent.h" />
-    <ClInclude Include="OnLevelSwitchEvent.h" />
-    <ClInclude Include="OnPlayerTurnedFaceEvent.h" />
-    <ClInclude Include="OnTestEvent.h" />
     <ClInclude Include="PausedGameState.h" />
     <ClInclude Include="PauseScene.h" />
     <ClInclude Include="PhysicComponent.h" />

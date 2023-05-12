@@ -11,7 +11,6 @@
 
 #include "ILevelSwitcher.h"
 
-#include "OnLevelSwitchEvent.h"
 #include "OnLevelSwitchData.h"
 
 class LevelSwitcherSensor : public IComponent, public ISensor
@@ -75,13 +74,13 @@ public:
 
 	void SwitchToLevel(GameLevels level)
 	{
-		EventData eventData(OnLevelSwitchEvent::GetType());
+		EventData eventData(EventType::OnLevelSwitchEvent);
 
 		auto userData = new OnLevelSwitchData;
 		userData->level = level;
 		eventData.userData = userData;
 
-		OnLevelSwitchEvent::Invoke(eventData);
+		Event::Invoke(eventData);
 
 		delete userData;
 	}

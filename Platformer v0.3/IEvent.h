@@ -7,14 +7,14 @@
 
 #include "IEventSystem.h"
 
-class IEvent
+class Event
 {
 public:
-	IEvent()
+	Event()
 	{
 
 	}
-	virtual ~IEvent() {}
+	virtual ~Event() {}
 
 	static void Invoke(EventData& eventData)
 	{

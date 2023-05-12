@@ -10,7 +10,7 @@ void InitializedGameState::EnterState()
 	//TODO перенести логику создания всех сцен
 	Debug::Log("Entered Initialized state");
 
-	IEvent::SetEventSystem(sharedContext.eventSystem);
+	Event::SetEventSystem(sharedContext.eventSystem);
 	EventListener::SetEventSystem(sharedContext.eventSystem);
 
 	//TODO подписка систем на события
@@ -27,7 +27,6 @@ void InitializedGameState::EnterState()
 	sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());
 	//SceneManager::AddScene<>
 
-	OnEntityDestroyedEvent event;
 }
 
 void InitializedGameState::Update()

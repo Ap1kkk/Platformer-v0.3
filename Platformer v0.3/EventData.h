@@ -1,7 +1,10 @@
 #pragma once
 
 #include <stdint.h>
+
 #include "DataTypes.h"
+#include "EventTypes.h"
+
 
 struct UserEventData
 {

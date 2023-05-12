@@ -14,10 +14,8 @@
 #include "Damageble.h"
 
 #include "EventListener.h"
-#include "OnPlayerTurnedFaceEvent.h"
-#include "PlayerTurnedFaceData.h"
 
-#include "OnEntityDiedEvent.h"
+#include "PlayerTurnedFaceData.h"
 #include "OnEntityDiedData.h"
 
 //#include "FixtureManager.h" 
@@ -82,13 +80,13 @@ public:
 
 	void OnEventHappened(EventData& eventData) override
 	{
-		if (eventData.eventType == OnPlayerTurnedFaceEvent::GetType())
+		if (eventData.eventType == EventType::OnPlayerTurnedFaceEvent)
 		{
 			auto data = static_cast<PlayerTurnedFaceData*>(eventData.userData);
 			Debug::Log(std::to_string((short)data->direction));
 			actualDirection = data->direction;
 		}
-		if (eventData.eventType == OnEntityDiedEvent::GetType())
+		if (eventData.eventType == EventType::OnEntityDiedEvent)
 		{
 			auto data = static_cast<OnEntityDiedData*>(eventData.userData);
 			

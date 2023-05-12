@@ -1,3 +1,3 @@
 #include "IEvent.h"
 
-IEventSystem* IEvent::eventSystemPtr = nullptr;
+IEventSystem* Event::eventSystemPtr = nullptr;

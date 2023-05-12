@@ -6,8 +6,6 @@
 
 #include "Damageble.h"
 
-#include "OnEntityDiedEvent.h"
-
 
 const unsigned int START_HEALTH = 100;
 
@@ -43,13 +41,13 @@ private:
 
 		if (!IsAlive())
 		{
-			EventData eventData(OnEntityDiedEvent::GetType());
+			EventData eventData(EventType::OnEntityDiedEvent);
 
 			auto userData = new OnEntityDiedData;
 			userData->entityId = ownerId;
 			eventData.userData = userData;
 
-			OnEntityDiedEvent::Invoke(eventData);
+			Event::Invoke(eventData);
 
 			delete userData;
 		}

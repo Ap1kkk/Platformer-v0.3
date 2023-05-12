@@ -1,6 +1,6 @@
 #pragma once
 
-#include "OnEntityDiedEvent.h"
+#include "DataTypes.h"
 
 struct OnEntityDiedData : public UserEventData
 {

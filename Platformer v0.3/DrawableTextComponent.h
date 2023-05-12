@@ -42,6 +42,21 @@ public:
 		positionOffset = offset;
 	}
 
+	void OnEnable() override
+	{
+		EventData data(EventType::OnTextDrawableEnabled);
+		data.id = componentId;
+
+		Event::Invoke(data);
+	}
+
+	void OnDisable() override
+	{
+		EventData data(EventType::OnTextDrawableDisabled);
+		data.id = componentId;
+
+		Event::Invoke(data);
+	}
 
 private:
 	sf::Text text;

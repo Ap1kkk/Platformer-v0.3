@@ -56,8 +56,9 @@ void AttackSensor::Awake()
 	//Debug::Log(collisionMask.GetMask());
 	WorldContactListener::AddHandler(collisionMask, this);
 
-	SubscribeOnEvent<OnPlayerTurnedFaceEvent>();
-	SubscribeOnEvent<OnEntityDiedEvent>();
+
+	SubscribeOnEvent(EventType::OnPlayerTurnedFaceEvent);
+	SubscribeOnEvent(EventType::OnEntityDiedEvent);
 }
 
 void AttackSensor::OnCollisionEnter(b2Contact* contact)
@@ -111,7 +112,7 @@ void AttackSensor::OnCollisionExit(b2Contact* contact)
 
 void AttackSensor::OnDestroy()
 {
-	UnsubscribeFromEvent<OnPlayerTurnedFaceEvent>();
-	UnsubscribeFromEvent<OnEntityDiedEvent>();
+	UnsubscribeFromEvent(EventType::OnPlayerTurnedFaceEvent);
+	UnsubscribeFromEvent(EventType::OnEntityDiedEvent);
 	WorldContactListener::DeleteComponentHandler(componentId);
 }

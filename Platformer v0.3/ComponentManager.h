@@ -5,7 +5,6 @@
 #include "TransformComponent.h"
 
 #include "EventListener.h"
-#include "OnComponentDestroyedEvent.h"
 
 /// <summary>
 /// Static class which creates, destroys and finds Component by its id
@@ -46,14 +45,27 @@ public:
 	/// <returns>Type of component</returns>
 	static ComponentType GetComponentTypeById(ComponentId comonentId);
 
+	static IComponent* GetComponentById(ComponentId componentId)
+	{
+		auto itr = components.find(componentId);
+		if (itr != components.end())
+		{
+			return itr->second;
+		}
+		else
+		{
+			return nullptr;
+		}
+	}
+
 	void SubscribeOnEvents()
 	{
-		SubscribeOnEvent<OnComponentDestroyedEvent>();
+		SubscribeOnEvent(EventType::OnComponentDestroyedEvent);
 	}
 
 	void OnEventHappened(EventData& data) override
 	{
-		if (data.eventType == OnComponentDestroyedEvent::GetType())
+		if (data.eventType == EventType::OnComponentDestroyedEvent)
 		{
 			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
 			DestroyComponent(data.id);
@@ -61,6 +73,8 @@ public:
 	}
 
 private:
+
+	//TODO совместить в один и как second хранить пару
 	static std::unordered_map<ComponentId, IComponent*> components;
 	static std::unordered_map<ComponentId, ComponentType> typeTable;
 };

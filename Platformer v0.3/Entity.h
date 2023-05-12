@@ -12,13 +12,7 @@
 #include "ObjectCollection.h"
 #include "GarbageCollector.h"
 
-#include "OnEntityDestroyedEvent.h"
-#include "OnComponentDestroyedEvent.h"
-
-#include "OnEntityEnabledEvent.h"
-#include "OnEntityDisabledEvent.h"
-#include "OnComponentEnabledEvent.h"
-#include "OnComponentDisabledEvent.h"
+#include "OnComponentUserData.h"
 
 #include "EventListener.h"
 
@@ -30,15 +24,29 @@ class Entity : public IEntity, public EventListener
 public:
 	Entity() 
 	{
-		SubscribeOnEvent<OnComponentEnabledEvent>();
+		SubscribeOnEvent(EventType::OnComponentEnabledEvent);
 	}
 	virtual ~Entity();
 
 	void OnEventHappened(EventData& eventData) override
 	{
-		if (eventData.eventType == OnComponentEnabledEvent::GetType())
+		if (eventData.eventType == EventType::OnComponentEnabledEvent)
 		{
-			Debug::Log("-------------Enabled");
+			if (eventData.id == entityId)
+			{
+				auto userData = static_cast<ComponentUserData*>(eventData.userData);
+				auto component = userData->component;
+				EnableComponent(component);
+			}
+		}
+		if (eventData.eventType == EventType::OnComponentDisabledEvent)
+		{
+			if (eventData.id == entityId)
+			{
+				auto userData = static_cast<ComponentUserData*>(eventData.userData);
+				auto component = userData->component;
+				DisableComponent(component);
+			}
 		}
 	}
 
@@ -61,7 +69,12 @@ public:
 			component->SetObjectContext(objectContext);
 			components.insert(std::make_pair(compType, static_cast<IComponent*>(component)));
 			componentsOrder.emplace_back(component);
+
+
 			//enabledComponents.emplace(std::make_pair(component->GetComponentLayer(), component));
+			AddToEnabledComponents(component);
+
+
 			notAwokenComponents.emplace_back(component);
 			RecalculateComponentsOrder();
 			//TODO заменить на событие
@@ -105,16 +118,33 @@ public:
 	//TODO проверить на работоспособность
 	void DeleteComponent(ComponentId id)
 	{
-		auto componentType = ComponentManager::GetComponentTypeById(id);
-		auto itr = components.find(componentType);
-		if (itr != components.end())
+		//auto componentType = ComponentManager::GetComponentTypeById(id);
+		//auto itr = components.find(componentType);
+		//if (itr != components.end())
+		//{
+		//	//TODO убирать из всех списков
+		//	ComponentManager::DestroyComponent(id);
+		//	components.erase(itr);
+		//}
+
+		//новый вариант
+
+		auto component = ComponentManager::GetComponentById(id);
+		if (component != nullptr)
 		{
+			if (component->IsEnabled())
+			{
+				RemoveFromEnabledComponents(component);
+			}
+			else
+			{
+				RemoveFromDisabledComponents(component);
+			}
 			ComponentManager::DestroyComponent(id);
-			components.erase(itr);
 		}
 	}
 
-
+	//TODO убрать 
 	// ¬ызывать при изменении сло€ выполнени€ у компонента
 	void RecalculateComponentsOrder();
 
@@ -135,39 +165,176 @@ public:
 	{
 		OnEnable();
 
-		for (auto& component : components)
+		for (auto& pair : enabledComponentsBuffer)
 		{
-			component.second->Enable();
+			for (auto& component : *pair.second)
+			{
+				component.second->Enable();
+			}
 		}
+		RetrieveAllComponentsFromBuffer();
 
-		EventData data(OnEntityEnabledEvent::GetType());
+		EventData data(EventType::OnEntityEnabledEvent);
 		data.id = entityId;
 
-		OnEntityEnabledEvent::Invoke(data);
+		Event::Invoke(data);
 	}
 	void Disable() override
 	{
 		OnDisable();
 
-		for (auto& component : components)
+		for (auto& pair : enabledComponents)
 		{
-			component.second->Disable();
+			for (auto& component : *pair.second)
+			{
+				component.second->Disable();
+			}
 		}
+		BufferEnabledComponents();
 
-		EventData data(OnEntityDisabledEvent::GetType());
+		EventData data(EventType::OnEntityDisabledEvent);
 		data.id = entityId;
 
-		OnEntityDisabledEvent::Invoke(data);
+		Event::Invoke(data);
 	}
 
 private:
-	std::unordered_map<ComponentType, IComponent*> components;
-	//TODO заменить на miltimap
 
-	std::multimap<ComponentLayer, IComponent*> enabledComponents;
+	void AddToEnabledComponents(IComponent* component)
+	{
+		ComponentLayer componentLayer = component->GetComponentLayer();
+		ComponentId componentId = component->GetComponentId();
+		auto componentsMap = enabledComponents.find(componentLayer);
+		if (componentsMap != enabledComponents.end())
+		{
+			auto itr = componentsMap->second->find(componentId);
+			if (itr != componentsMap->second->end())
+			{
+				Debug::LogWarning("Component with ComponentId: " + std::to_string(componentId) + " is already Enabled");
+			}
+			else
+			{
+				componentsMap->second->emplace(std::make_pair(componentId, component));
+			}
+		}
+		else
+		{
+			auto newMap = new std::map<ComponentId, IComponent*>;
+			newMap->emplace(componentId, component);
+			enabledComponents.emplace(componentLayer, newMap);
+		}
+	}
+
+	void AddToDisabledComponents(IComponent* component)
+	{
+		auto componentId = component->GetComponentId();
+		auto itr = disabledComponents.find(componentId);
+		if (itr != disabledComponents.end())
+		{
+			Debug::LogWarning("Component with ComponentId : " + std::to_string(componentId) + " is already Disabled");
+		}
+		else
+		{
+			disabledComponents.emplace(componentId, component);
+		}
+	}
+
+	void RemoveFromEnabledComponents(IComponent* component)
+	{
+		ComponentLayer componentLayer = component->GetComponentLayer();
+		ComponentId componentId = component->GetComponentId();
+
+		auto componentsMap = enabledComponents.find(componentLayer);
+		if (componentsMap != enabledComponents.end())
+		{
+			auto itr = componentsMap->second->find(componentId);
+			if (itr != componentsMap->second->end())
+			{
+				componentsMap->second->erase(itr);
+				//if (componentsMap->second->empty())
+				//{
+				//	delete componentsMap->second;
+				//	enabledComponents.erase(componentsMap);
+				//}
+			}
+			else
+			{
+				Debug::LogWarning("Component with ComponentId: " + std::to_string(componentId) + " is not Enabled");
+			}
+		}
+		else
+		{
+			Debug::LogWarning("Component with ComponentId: " + std::to_string(componentId) + " is not Enabled");
+		}
+	}
+
+	void RemoveFromDisabledComponents(IComponent* component)
+	{
+		ComponentId componentId = component->GetComponentId();
+		auto itr = disabledComponents.find(componentId);
+		if (itr != disabledComponents.end())
+		{
+			disabledComponents.erase(itr);
+		}
+		else
+		{
+			Debug::LogWarning("Component with ComponentId: " + std::to_string(componentId) + " is not Disabled");
+		}
+	}
+
+	void EnableComponent(IComponent* component)
+	{
+		if (component->IsEnabled())
+		{
+			Debug::LogWarning("Component with ComponentId: " + std::to_string(component->GetComponentId()) + " is already Enabled");
+		}
+		else
+		{
+			RemoveFromDisabledComponents(component);
+			AddToEnabledComponents(component);
+		}
+	}
+
+	void DisableComponent(IComponent* component)
+	{
+		if (component->IsEnabled())
+		{
+			RemoveFromEnabledComponents(component);
+			AddToDisabledComponents(component);
+		}
+		else
+		{
+			Debug::LogWarning("Component with ComponentId : " + std::to_string(component->GetComponentId()) + " is already Disabled");
+		}
+
+	}
+
+	void BufferEnabledComponents()
+	{
+		for (auto& pair : enabledComponents)
+		{
+			enabledComponentsBuffer.emplace(pair);
+		}
+		enabledComponents.clear();
+	}
+
+	void RetrieveAllComponentsFromBuffer()
+	{
+		for (auto& pair : enabledComponentsBuffer)
+		{
+			enabledComponents.emplace(pair);
+		}
+		enabledComponentsBuffer.clear();
+	}
+
+	std::unordered_map<ComponentType, IComponent*> components;
+
+	std::map<ComponentLayer, std::map<ComponentId, IComponent*>*> enabledComponents;
+	//TODO перемещать туда все включенные компоненты
+	std::map<ComponentLayer, std::map<ComponentId, IComponent*>*> enabledComponentsBuffer;
 
 	std::vector<IComponent*> componentsOrder;
 	std::vector<IComponent*> notAwokenComponents;
 
-	std::vector<IComponent*> disabledComponents;
+	std::map<ComponentId, IComponent*> disabledComponents;
 };

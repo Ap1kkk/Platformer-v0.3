@@ -6,7 +6,6 @@
 #include "Debug.h"
 
 #include "EventListener.h"
-#include "OnEntityDestroyedEvent.h"
 
 /// <summary>
 /// Responsibe for creatind, destroyig and searching existing objects
@@ -19,12 +18,12 @@ public:
 
 	void SubscribeOnEvents()
 	{
-		SubscribeOnEvent<OnEntityDestroyedEvent>();
+		SubscribeOnEvent(EventType::OnEntityDestroyedEvent);
 	}
 
 	void OnEventHappened(EventData& data) override
 	{
-		if (data.eventType == OnEntityDestroyedEvent::GetType())
+		if (data.eventType == EventType::OnEntityDestroyedEvent)
 		{
 			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
 			DestroyEntity(data.id);

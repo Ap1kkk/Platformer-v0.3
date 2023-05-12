@@ -9,8 +9,6 @@
 #include "AttackSensor.h"
 #include "JumpSensor.h"
 
-#include "EventListener.h"
-
 class Player : public GameObject
 	//, public EventListener
 {
@@ -19,10 +17,11 @@ public:
 
 	void Awake() override;
  
-	//void OnEventHappened(const EventData& data) override
+	//void OnEventHappened(EventData& data) override
 	//{
 	//	Debug::Log("OnEventHappened");
 	//}
+
 
 private:
 	b2Body* body;

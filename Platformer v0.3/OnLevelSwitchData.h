@@ -1,6 +1,7 @@
 #pragma once
 
-#include "OnLevelSwitchEvent.h"
+#include "DataTypes.h"
+
 
 struct OnLevelSwitchData : public UserEventData
 {

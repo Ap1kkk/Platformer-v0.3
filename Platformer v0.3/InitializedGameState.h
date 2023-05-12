@@ -7,9 +7,9 @@
 #include "FirstScene.h"
 #include "PauseScene.h"
 
-#include "OnEntityDestroyedEvent.h"
 #include "EventSystem.h"
 #include "EventListener.h"
+#include "IEvent.h"
 
 #include "Debug.h"
 

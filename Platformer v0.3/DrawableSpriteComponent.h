@@ -45,6 +45,22 @@ public:
 	inline sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
 
 
+	void OnEnable() override
+	{
+		EventData data(EventType::OnSpriteDrawableEnabled);
+		data.id = componentId;
+
+		Event::Invoke(data);
+	}
+
+	void OnDisable() override
+	{
+		EventData data(EventType::OnSpriteDrawableDisabled);
+		data.id = componentId;
+
+		Event::Invoke(data);
+	}
+
 private:
 	sf::Sprite sprite;
 	std::string textureFilename;
