@@ -23,7 +23,31 @@ public:
 	static void DeleteEntityHandler(EntityId entityId);
 	static void DeleteComponentHandler(ComponentId componentId);
 
+	static void ClearRemovables()
+	{
+		if (!entityHandlersRemovables.empty())
+		{
+			for (auto& itr : entityHandlersRemovables)
+			{
+				entityHandlers.erase(itr);
+			}
+			entityHandlersRemovables.clear();
+		}
+
+		if (!componentHandlersRemovables.empty())
+		{
+			for (auto& itr : componentHandlersRemovables)
+			{
+				componentHandlers.erase(itr);
+			}
+			componentHandlersRemovables.clear();
+		}
+	}
+
 private:
 	static std::multimap<Bitmask, std::pair<EntityId, IEntity*>> entityHandlers;
 	static std::multimap<Bitmask, std::pair<ComponentId, IComponent*>> componentHandlers;
+
+	static std::vector<std::multimap<Bitmask, std::pair<EntityId, IEntity*>>::iterator> entityHandlersRemovables;
+	static std::vector<std::multimap<Bitmask, std::pair<ComponentId, IComponent*>>::iterator> componentHandlersRemovables;
 };

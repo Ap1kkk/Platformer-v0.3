@@ -13,20 +13,26 @@ void UIObject::Initialize(bool isEnabledToDraw, DrawLayer drawLayer)
 
 	this->drawLayer = drawLayer;
 	this->isEnabledToDraw = isEnabledToDraw;
-	drawableComponent = AddComponent<DrawableComponent>();
-	drawableComponent->Initialize(transformUI);
-	drawableComponent->SetDrawLayer(drawLayer);
-	RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
+
+	drawableSpriteComponent = AddComponent<DrawableSpriteComponent>();
+	drawableSpriteComponent->Initialize(transformUI);
+	drawableSpriteComponent->SetDrawLayer(drawLayer);
+	RenderSystem::AddDrawable(entityId, drawableSpriteComponent, isEnabledToDraw);
+
+	drawableTextComponent = AddComponent<DrawableTextComponent>();
+	drawableTextComponent->Initialize(transformUI);
+	drawableTextComponent->SetDrawLayer(drawLayer);
+	RenderSystem::AddDrawable(entityId, drawableTextComponent, isEnabledToDraw);
 }
 
 void UIObject::SetTexture(const std::string& filename)
 {
-	drawableComponent->SetTexture(filename);
+	drawableSpriteComponent->SetTexture(filename);
 }
 
 void UIObject::SetTextureRect(const std::string& filename, sf::IntRect intRect)
 {
-	drawableComponent->SetTextureRect(filename, intRect);
+	drawableSpriteComponent->SetTextureRect(filename, intRect);
 }
 
 void UIObject::SetUIPosition(sf::Vector2f position)

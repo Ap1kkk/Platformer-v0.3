@@ -5,6 +5,9 @@
 #include "PhysicComponent.h"
 #include "RenderSystem.h"
 
+#include "DrawableSpriteComponent.h"
+#include "DrawableTextComponent.h"
+
 class GameObject : public Entity
 {
 public:
@@ -27,7 +30,31 @@ public:
 	/// </summary>
 	/// <param name="isEnabledToDraw"></param>
 	/// <returns>Ponter to added DrawableComponent</returns>
-	DrawableComponent* MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer);
+	//DrawableComponent* MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer);
+
+	DrawableSpriteComponent* AddSpriteComponent(bool isEnabledToDraw, DrawLayer drawLayer) 
+	{
+		isDrawable = true;
+		this->isEnabledToDraw = isEnabledToDraw;
+
+		drawableSpriteComponent = AddComponent<DrawableSpriteComponent>();
+		drawableSpriteComponent->Initialize(transform);
+		drawableSpriteComponent->SetDrawLayer(drawLayer);
+		RenderSystem::AddDrawable(entityId, drawableSpriteComponent, isEnabledToDraw);
+		return drawableSpriteComponent;
+	}
+
+	DrawableTextComponent* AddTextComponent(bool isEnabledToDraw, DrawLayer drawLayer)
+	{
+		isDrawable = true;
+		this->isEnabledToDraw = isEnabledToDraw;
+
+		drawableTextComponent = AddComponent<DrawableTextComponent>();
+		drawableTextComponent->Initialize(transform);
+		drawableTextComponent->SetDrawLayer(drawLayer);
+		RenderSystem::AddDrawable(entityId, drawableTextComponent, isEnabledToDraw);
+		return drawableTextComponent;
+	}
 
 	void EnableToDraw();
 	void DisableToDraw();
@@ -54,7 +81,9 @@ protected:
 	sf::Vector2f spawnPosition;
 
 	TransformComponent* transform;
-	DrawableComponent* drawableComponent;
+	//DrawableComponent* drawableComponent;
 	PhysicComponent* physicComponent;
 
+	DrawableSpriteComponent* drawableSpriteComponent;
+	DrawableTextComponent* drawableTextComponent;
 };

@@ -9,6 +9,8 @@
 #include "Background.h"
 #include "SmallObstacle.h"
 
+#include "LevelSwitcher.h"
+
 class MainChunk : public Chunk
 {
 public:
@@ -23,6 +25,8 @@ public:
 private:
 	RoadSprite* road;
 	Background* background;
+
+	LevelSwitcher* levelSwitcher;
 
 	Filename backgroundFilename = "Krill_House.png";
 };

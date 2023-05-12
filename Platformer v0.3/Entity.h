@@ -15,14 +15,33 @@
 #include "OnEntityDestroyedEvent.h"
 #include "OnComponentDestroyedEvent.h"
 
+#include "OnEntityEnabledEvent.h"
+#include "OnEntityDisabledEvent.h"
+#include "OnComponentEnabledEvent.h"
+#include "OnComponentDisabledEvent.h"
+
+#include "EventListener.h"
+
 /// <summary>
 /// Represents main functionality of an object and contains its attached components
 /// </summary>
-class Entity : public IEntity
+class Entity : public IEntity, public EventListener
 {
 public:
-	Entity() {}
+	Entity() 
+	{
+		SubscribeOnEvent<OnComponentEnabledEvent>();
+	}
 	virtual ~Entity();
+
+	void OnEventHappened(EventData& eventData) override
+	{
+		if (eventData.eventType == OnComponentEnabledEvent::GetType())
+		{
+			Debug::Log("-------------Enabled");
+		}
+	}
+
 
 	/// <summary>
 	/// Creates and attaches component of specified type to an object
@@ -42,8 +61,10 @@ public:
 			component->SetObjectContext(objectContext);
 			components.insert(std::make_pair(compType, static_cast<IComponent*>(component)));
 			componentsOrder.emplace_back(component);
+			//enabledComponents.emplace(std::make_pair(component->GetComponentLayer(), component));
 			notAwokenComponents.emplace_back(component);
 			RecalculateComponentsOrder();
+			//TODO заменить на событие
 			ObjectCollection::HasNotAwokenComponents(entityId);
 			return component;
 		}
@@ -81,11 +102,18 @@ public:
 		}
 	}
 	
-	/// <summary>
-	/// Destroys attached component
-	/// </summary>
-	/// <param name="id"></param>
-	void DeleteComponent(ComponentId id);
+	//TODO проверить на работоспособность
+	void DeleteComponent(ComponentId id)
+	{
+		auto componentType = ComponentManager::GetComponentTypeById(id);
+		auto itr = components.find(componentType);
+		if (itr != components.end())
+		{
+			ComponentManager::DestroyComponent(id);
+			components.erase(itr);
+		}
+	}
+
 
 	// ¬ызывать при изменении сло€ выполнени€ у компонента
 	void RecalculateComponentsOrder();
@@ -103,9 +131,43 @@ public:
 	/// </summary>
 	void Destroy() override;
 
+	void Enable() override
+	{
+		OnEnable();
+
+		for (auto& component : components)
+		{
+			component.second->Enable();
+		}
+
+		EventData data(OnEntityEnabledEvent::GetType());
+		data.id = entityId;
+
+		OnEntityEnabledEvent::Invoke(data);
+	}
+	void Disable() override
+	{
+		OnDisable();
+
+		for (auto& component : components)
+		{
+			component.second->Disable();
+		}
+
+		EventData data(OnEntityDisabledEvent::GetType());
+		data.id = entityId;
+
+		OnEntityDisabledEvent::Invoke(data);
+	}
+
 private:
 	std::unordered_map<ComponentType, IComponent*> components;
 	//TODO заменить на miltimap
+
+	std::multimap<ComponentLayer, IComponent*> enabledComponents;
+
 	std::vector<IComponent*> componentsOrder;
 	std::vector<IComponent*> notAwokenComponents;
+
+	std::vector<IComponent*> disabledComponents;
 };

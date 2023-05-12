@@ -7,7 +7,7 @@ Background::Background()
 
 void Background::Awake()
 {
-	MakeDrawable(true, drawLayer);
+	AddSpriteComponent(true, drawLayer);
 	SetTexture(textureFilename);
 
 	auto physicComponent = MakePhysical();

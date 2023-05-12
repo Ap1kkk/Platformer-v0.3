@@ -4,6 +4,8 @@
 #include "UIObject.h"
 #include "Debug.h"
 
+#include "Input.h"
+
 class UIButton : public UIObject
 {
 public:
@@ -19,6 +21,15 @@ public:
 	void SetPosition(float x, float y);
 	
 	void SetDrawLayer(DrawLayer drawlayer);
+
+	virtual void OnButtonHover()
+	{
+		
+	}
+	virtual void OnButtonClick()
+	{
+		Debug::Log("Click");
+	}
 
 private:
 	DrawLayer drawLayer = 200;

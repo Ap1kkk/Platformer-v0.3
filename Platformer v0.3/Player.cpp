@@ -8,7 +8,7 @@ Player::Player()
 
 void Player::Awake()
 {
-	MakeDrawable(true, drawLayer);
+	AddSpriteComponent(true, drawLayer);
 	SetTexture(playerTexture);
 
 	MakePhysical();

@@ -7,7 +7,7 @@ RoadSprite::RoadSprite()
 
 void RoadSprite::Awake()
 {
-	MakeDrawable(true, drawLayer);
+	AddSpriteComponent(true, drawLayer);
 	GameObject::SetTexture(textureFilename);
 
 	MakePhysical();

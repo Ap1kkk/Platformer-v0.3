@@ -9,6 +9,8 @@ public:
 	virtual void Initialize(SceneId startSceneId) = 0;
 	virtual void SetPauseScene(SceneId pauseSceneId) = 0;
 
+	virtual void SwitchToScene(SceneId newScene) = 0;
+
 	virtual void ProcessNotAwoken() = 0;
 	virtual void CaptureEvents() = 0;
 	virtual void EarlyUpdate() = 0;

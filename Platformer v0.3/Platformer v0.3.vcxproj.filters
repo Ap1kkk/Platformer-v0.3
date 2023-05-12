@@ -326,6 +326,36 @@
     <ClCompile Include="Damageble.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="LevelSwitcher.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcherSensor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OnLevelSwitchEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="OnEntityDisabledEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="OnEntityEnabledEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="ILevelSwitcher.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableSpriteComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableTextComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OnComponentDisabledEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="OnComponentEnabledEvent.cpp">
+      <Filter>Исходные файлы\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -568,8 +598,41 @@
     <ClInclude Include="Damageble.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="OnEntityDiedData.h">
+    <ClInclude Include="LevelSwitcher.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcherSensor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="OnLevelSwitchEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnEntityDiedData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnLevelSwitchData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnEntityDisabledEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnEntityEnabledEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="ILevelSwitcher.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableSpriteComponent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableTextComponent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="OnComponentDisabledEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnComponentEnabledEvent.h">
+      <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

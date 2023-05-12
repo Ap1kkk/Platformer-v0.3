@@ -20,7 +20,7 @@
 #include "OnEntityDiedEvent.h"
 #include "OnEntityDiedData.h"
 
-#include "FixtureManager.h"
+//#include "FixtureManager.h" 
 
 class AttackSensor : public IComponent, public ISensor, public EventListener
 {

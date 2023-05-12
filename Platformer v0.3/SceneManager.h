@@ -41,6 +41,11 @@ public:
 
 	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId);
 
+	void SwitchToScene(SceneId newSceneId) override
+	{
+		SwitchScene(activeScene->GetSceneId(), newSceneId);
+	}
+
 	void ShowPauseScene() override;
 	void HidePauseScene() override;
 

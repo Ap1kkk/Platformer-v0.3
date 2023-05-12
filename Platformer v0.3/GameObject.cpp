@@ -6,16 +6,17 @@ GameObject::GameObject() : isDrawable(false), isEnabledToDraw(false), isPhysical
 	transform->SetPosition(0.f, 0.f);
 }
 
-DrawableComponent* GameObject::MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer)
-{
-	isDrawable = true;
-	this->isEnabledToDraw = isEnabledToDraw;
-	drawableComponent = AddComponent<DrawableComponent>();
-	drawableComponent->Initialize(transform);
-	drawableComponent->SetDrawLayer(drawLayer);
-	RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
-	return drawableComponent;
-}
+//DrawableComponent* GameObject::MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer)
+//{
+//	isDrawable = true;
+//	this->isEnabledToDraw = isEnabledToDraw;
+//	////TODO пересмотреть
+//	//drawableComponent = AddComponent<DrawableComponent>();
+//	//drawableComponent->Initialize(transform);
+//	//drawableComponent->SetDrawLayer(drawLayer);
+//	//RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
+//	return drawableComponent;
+//}
 
 void GameObject::EnableToDraw()
 {
@@ -61,7 +62,7 @@ void GameObject::SetTexture(const Filename& filename)
 {
 	if (isDrawable)
 	{
-		drawableComponent->SetTexture(filename);
+		drawableSpriteComponent->SetTexture(filename);
 	}
 	else
 	{
@@ -73,7 +74,7 @@ void GameObject::SetTextureRect(const Filename& filename, const sf::IntRect& int
 {
 	if (isDrawable)
 	{
-		drawableComponent->SetTextureRect(filename, intRect);
+		drawableSpriteComponent->SetTextureRect(filename, intRect);
 	}
 	else
 	{
@@ -93,7 +94,7 @@ b2Vec2 GameObject::GetSpriteBoxHalfSize()
 {
 	if (isDrawable && isPhysical)
 	{
-		auto spriteRect = drawableComponent->GetSpriteBounds();
+		auto spriteRect = drawableSpriteComponent->GetSpriteBounds();
 		return b2Vec2(spriteRect.width / 2, spriteRect.height / 2);
 	}
 	else

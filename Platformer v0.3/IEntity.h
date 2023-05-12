@@ -5,6 +5,7 @@
 #include "ObjectContext.h"
 #include "Debug.h"
 
+
 /// <summary>
 /// Interface for any game objects
 /// </summary>
@@ -15,6 +16,9 @@ public:
 	virtual ~IEntity();
 
 	virtual void Awake() {}
+
+	virtual void Enable() = 0;
+	virtual void Disable() = 0;
 
 	virtual void EarlyUpdate() {}
 	virtual void Update() {}
@@ -35,6 +39,9 @@ public:
 	virtual void OnCollisionExit(b2Contact* contact) {}
 
 	virtual void OnDestroy() {}
+
+	virtual void OnEnable() {}
+	virtual void OnDisable() {}
 
 	virtual void Destroy() = 0;
 

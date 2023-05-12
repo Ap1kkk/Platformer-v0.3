@@ -12,4 +12,8 @@ void MainChunk::Spawn(sf::Vector2f chunkPosition)
 	background->SetBackgroundTexture(backgroundFilename);
 	ObjectCollection::AddObject(background);
 
+	levelSwitcher = sharedContext.entityManger->CreateEntity<LevelSwitcher>(objectContext);
+	levelSwitcher->SetPosition(sf::Vector2f(100.f, 0.f));
+	levelSwitcher->SetLevelTotransit(GameLevels::SecondLevel);
+	ObjectCollection::AddObject(levelSwitcher);
 }

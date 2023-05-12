@@ -14,7 +14,7 @@ void Tile::OnDestroy()
 
 void Tile::ProcessTileData()
 {
-	MakeDrawable(tileData.isEnabled, tileData.drawLayer);
+	AddSpriteComponent(tileData.isEnabled, tileData.drawLayer);
 	sf::IntRect tileBounds = { tileData.leftTopCornerPosition, tileData.size };
 	SetTextureRect(tileData.textureFilename, tileBounds);
 }

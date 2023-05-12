@@ -58,6 +58,16 @@ enum class CollisionLayers
 	Projectile,
 	Sensor,
 	JumpSensor,
-	AttackSensorLeft,
-	AttackSensorRight,
+	AttackSensor,
+	LevelSwitcher
+};
+
+enum class GameLevels
+{
+	MainLevel = 0,
+	ShopLevel,
+	FirstLevel,
+	SecondLevel,
+	ThirdLevel,
+	FourthLevel
 };

@@ -4,28 +4,30 @@ void UIButton::Awake()
 {
 	Initialize(true, drawLayer);
 	SetTexture("floor.png");
+	//sf::Font font;
+	//font = AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/calibri.ttf");
+	drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/calibri.ttf"));
+	drawableTextComponent->SetText("213455");
+	drawableTextComponent->SetPositionOffset(sf::Vector2f(0.f, -20.f));
 	SetUIPosition(position);
-	spriteBounds = drawableComponent->GetSpriteBounds();
+	spriteBounds = drawableSpriteComponent->GetSpriteBounds();
 }
 
 void UIButton::CaptureMousePosition()
 {
-	//auto mousePosition = CorrectMouseCoordinates(sf::Mouse::getPosition(objectContext.window->GetWindow()));
 	auto mousePosition = sf::Mouse::getPosition(objectContext.window->GetWindow());
 
 	mousePosition.x -= WINDOW_WIDTH / 2;
 	mousePosition.y -= WINDOW_HEIGHT / 2;
 
-
 	if (spriteBounds.contains(mousePosition.x, mousePosition.y))
 	{
-		Debug::Log("Intersection");
+		OnButtonHover();
+		if (Input::IsKeyDown(Input::Key::LMouseButton))
+		{
+			OnButtonClick();
+		}
 	}
-	//Debug::Log("===");
-	Debug::Log(sf::Vector2f(mousePosition));
-	//Debug::Log(sf::Vector2f(spriteBounds.left, spriteBounds.top));
-	//Debug::Log("===");
-
 }
 
 void UIButton::UpdateUI()

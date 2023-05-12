@@ -7,6 +7,8 @@
 #include "Debug.h"
 
 #include "OnComponentDestroyedEvent.h"
+#include "OnComponentEnabledEvent.h"
+#include "OnComponentDisabledEvent.h"
 
 class IComponent
 {
@@ -19,6 +21,25 @@ public:
 	}
 
 	virtual void Awake() {}
+
+	void Enable() 
+	{
+		OnEnable();
+
+		EventData data(OnComponentEnabledEvent::GetType());
+		data.id = componentId;
+
+		OnComponentEnabledEvent::Invoke(data);
+	}
+	void Disable() 
+	{
+		OnDisable();
+
+		EventData data(OnComponentDisabledEvent::GetType());
+		data.id = componentId;
+
+		OnComponentDisabledEvent::Invoke(data);
+	}
 
 	virtual void EarlyUpdate() {}
 	virtual void Update() {}
@@ -34,6 +55,9 @@ public:
 	/// Called before destroying component
 	/// </summary>
 	virtual void OnDestroy() {}
+
+	virtual void OnEnable() {}
+	virtual void OnDisable() {}
 
 	void Destroy()
 	{

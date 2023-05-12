@@ -7,7 +7,7 @@ Enemy::Enemy() : Damageble(entityId)
 
 void Enemy::Awake()
 {
-	MakeDrawable(true, drawLayer);
+	AddSpriteComponent(true, drawLayer);
 	SetTexture(enemyTexture);
 
 	MakePhysical();

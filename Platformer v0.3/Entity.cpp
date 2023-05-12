@@ -2,6 +2,8 @@
 
 Entity::~Entity()
 {
+	UnsubscribeFromEvent<OnComponentEnabledEvent>();
+
 	if (components.size() > 0)
 	{
 		for (auto& component : components)
@@ -10,22 +12,10 @@ Entity::~Entity()
 			GarbageCollector::DestroyComponent(componentId);
 		}
 	}
+
 }
 
-void Entity::DeleteComponent(ComponentId id)
-{
-	auto componentType = ComponentManager::GetComponentTypeById(id);
-	auto itr = components.find(componentType);
-	if (itr != components.end())
-	{
-		ComponentManager::DestroyComponent(id);
-		//if (componentType == typeid(DrawableComponent).name())
-		//{
-
-		//}
-		components.erase(itr);
-	}
-}
+//void Entity::DeleteComponent(ComponentId id)
 
 void Entity::RecalculateComponentsOrder()
 {

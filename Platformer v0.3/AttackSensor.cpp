@@ -21,7 +21,7 @@ void AttackSensor::Awake()
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
-		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensorLeft));
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensor));
 		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
 
 		sensorLeft = physicComponent->AddSensor(boxFixtureDef);
@@ -39,7 +39,7 @@ void AttackSensor::Awake()
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
 		boxFixtureDef.isSensor = true;
-		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensorLeft));
+		boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::AttackSensor));
 		boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Enemy));
 
 		sensorRight = physicComponent->AddSensor(boxFixtureDef);
@@ -50,7 +50,7 @@ void AttackSensor::Awake()
 	}
 
 	collisionMask.SetBit((uint16)CollisionLayers::Enemy);
-	collisionMask.SetBit((uint16)CollisionLayers::AttackSensorLeft);
+	collisionMask.SetBit((uint16)CollisionLayers::AttackSensor);
 
 	//Debug::Log("attack mask");
 	//Debug::Log(collisionMask.GetMask());

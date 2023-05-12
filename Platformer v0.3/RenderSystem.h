@@ -5,9 +5,12 @@
 #include <vector>
 
 #include "Window.h"
-#include "DrawableComponent.h"
+//#include "DrawableComponent.h"
+#include "DrawableSpriteComponent.h"
+#include "DrawableTextComponent.h"
 
 #include "EventListener.h"
+
 #include "OnEntityDestroyedEvent.h"
 
 /// <summary>
@@ -20,6 +23,10 @@ public:
 	~RenderSystem()
 	{
 		//TODO добавить логику для очистки всех списков
+		for (auto& item : drawMapNew)
+		{
+			delete item.second;
+		}
 	}
 
 	void SubscribeOnEvents()
@@ -29,7 +36,9 @@ public:
 
 	void Draw();
 
-	static void AddDrawable(EntityId entityId, DrawableComponent* drawable, bool isEnabled);
+	//static void AddDrawable(EntityId entityId, DrawableComponent* drawable, bool isEnabled);
+	static void AddDrawable(EntityId entityId, DrawableSpriteComponent* drawable, bool isEnabled);
+	static void AddDrawable(EntityId entityId, DrawableTextComponent* drawable, bool isEnabled);
 
 	static void DeleteDrawable(EntityId entityId);
 
@@ -46,21 +55,64 @@ public:
 			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
 			DeleteDrawable(data.id);
 		}
+		
 	}
 
 private:
 
-	static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable);
+	//static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable);
+
+	static void AddToDrawMap(EntityId entityId, DrawableSpriteComponent* drawable);
+	static void AddToDrawMap(EntityId entityId, DrawableTextComponent* drawable);
 
 	static void DeleteFromDrawMap(EntityId entityId);
 
-	static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawMap;
-	//TODO совместить все в один буфер
-	static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawPauseBuffer;
+	static void UpdateDrawMap(EntityId entityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent* > pair)
+	{
+		auto itr = drawMapNew.find(-10000);
+		if (pair.first != nullptr)
+		{
+			itr = drawMapNew.find(pair.first->GetDrawLayer());
+		}
+		else
+		{
+			itr = drawMapNew.find(pair.first->GetDrawLayer());
+		}
 
-	static std::unordered_map<EntityId, DrawableComponent*> enabledDrawables;
-	static std::unordered_map<EntityId, DrawableComponent*> disabledDrawables;
-	static std::unordered_map<EntityId, DrawableComponent*> pauseBuffer;
+		if (itr != drawMapNew.end())
+		{
+			auto pairFound = itr->second->find(entityId);
+			if (pairFound != itr->second->end())
+			{
+				pairFound->second = pair;
+			}
+			else
+			{
+				Debug::LogWarning("Can't update drawable map\nDrawable with EntityId: " + std::to_string(entityId) + " not found", typeid(RenderSystem).name());
+			}
+		}
+		else
+		{
+			Debug::LogWarning("Can't update drawable map", typeid(RenderSystem).name());
+		}
+	}
+
+
+	//TODO заменить DrawableComponent на map с ComponentId и DrawableComponent
+	//static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawMap;
+	static std::map<DrawLayer, std::map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>>*> drawMapNew;
+	
+	//TODO совместить все в один буфер
+	//static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawPauseBuffer;
+	static std::map<DrawLayer, std::map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>>*> drawPauseBufferNew;
+
+	//static std::unordered_map<EntityId, DrawableComponent*> enabledDrawables;
+	//static std::unordered_map<EntityId, DrawableComponent*> disabledDrawables;
+	//static std::unordered_map<EntityId, DrawableComponent*> pauseBuffer;
+
+	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> enabledDrawablesNew;
+	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> disabledDrawablesNew;
+	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> pauseBufferNew;
 
 	Window* window;
 };

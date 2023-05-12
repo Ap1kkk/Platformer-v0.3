@@ -3,6 +3,9 @@
 std::multimap<Bitmask, std::pair<EntityId, IEntity*>> WorldContactListener::entityHandlers = {};
 std::multimap<Bitmask, std::pair<ComponentId, IComponent*>> WorldContactListener::componentHandlers = {};
 
+std::vector<std::multimap<Bitmask, std::pair<EntityId, IEntity*>>::iterator> WorldContactListener::entityHandlersRemovables = {};
+std::vector<std::multimap<Bitmask, std::pair<ComponentId, IComponent*>>::iterator> WorldContactListener::componentHandlersRemovables = {};
+
 void WorldContactListener::BeginContact(b2Contact* contact)
 {
 	auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
@@ -33,7 +36,10 @@ void WorldContactListener::BeginContact(b2Contact* contact)
 			pair.second.second->OnCollisionEnter(contact);
 		}
 	}
+
+	ClearRemovables();
 }
+
 void WorldContactListener::EndContact(b2Contact* contact)
 {
 	auto fixtureA = static_cast<Fixture*>(contact->GetFixtureA());
@@ -57,6 +63,8 @@ void WorldContactListener::EndContact(b2Contact* contact)
 			pair.second.second->OnCollisionExit(contact);
 		}
 	}
+
+	ClearRemovables();
 }
 
 void WorldContactListener::AddHandler(const Bitmask& bitmask, IEntity* entity)
@@ -96,7 +104,8 @@ void WorldContactListener::DeleteEntityHandler(EntityId entityId)
 	{
 		if (entityId == itr->second.first)
 		{
-			entityHandlers.erase(itr);
+			//entityHandlers.erase(itr);
+			entityHandlersRemovables.push_back(itr);
 			Debug::LogWarning("Object handler with ObjectId: " + std::to_string(entityId) + " was deleted", typeid(WorldContactListener).name());
 			return;
 		}
@@ -106,11 +115,13 @@ void WorldContactListener::DeleteEntityHandler(EntityId entityId)
 }
 void WorldContactListener::DeleteComponentHandler(ComponentId componentId)
 {
+	//TODO переделать
 	for (auto itr = componentHandlers.begin(); itr != componentHandlers.end(); ++itr)
 	{
 		if (componentId == itr->second.first)
 		{
-			componentHandlers.erase(itr);
+			//componentHandlers.erase(itr);
+			componentHandlersRemovables.push_back(itr);
 			Debug::LogWarning("Component handler with ComponentId: " + std::to_string(componentId) + " was deleted", typeid(WorldContactListener).name());
 			return;
 		}
