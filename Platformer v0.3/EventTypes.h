@@ -18,8 +18,10 @@ enum class EventType
 
 	OnSpriteDrawableEnabled,
 	OnSpriteDrawableDisabled,
+	OnSpriteDrawableDestroyed,
 
 	OnTextDrawableEnabled,
 	OnTextDrawableDisabled,
+	OnTextDrawableDestroyed,
 
 };

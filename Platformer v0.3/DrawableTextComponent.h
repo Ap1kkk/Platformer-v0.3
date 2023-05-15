@@ -45,7 +45,12 @@ public:
 	void OnEnable() override
 	{
 		EventData data(EventType::OnTextDrawableEnabled);
+		
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
 		data.id = componentId;
+		data.userData = userData;
 
 		Event::Invoke(data);
 	}
@@ -53,7 +58,25 @@ public:
 	void OnDisable() override
 	{
 		EventData data(EventType::OnTextDrawableDisabled);
+		
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
 		data.id = componentId;
+		data.userData = userData;
+
+		Event::Invoke(data);
+	}
+
+	void OnDestroy() override
+	{
+		EventData data(EventType::OnTextDrawableDestroyed);
+
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
+		data.id = ownerId;
+		data.userData = userData;
 
 		Event::Invoke(data);
 	}

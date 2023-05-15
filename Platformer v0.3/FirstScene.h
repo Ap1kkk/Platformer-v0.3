@@ -15,6 +15,8 @@
 #include "TestChunk2.h"
 #include "TestChunk3.h"
 
+#include "LevelSwitcher.h"
+
 class FirstScene : public IScene
 {
 public:
@@ -55,6 +57,8 @@ private:
 	TestChunk1* chunk1;
 	TestChunk2* chunk2;
 	TestChunk3* chunk3;
+
+	LevelSwitcher* levelSwitcher;
 
 	DrawLayer floorDrawLayer = 100;
 };

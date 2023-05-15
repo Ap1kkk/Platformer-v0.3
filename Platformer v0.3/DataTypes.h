@@ -63,7 +63,9 @@ enum class CollisionLayers
 
 enum class GameLevels
 {
-	MainLevel = 0,
+	FirstScene = 0,
+	PauseScene,
+	MainLevel,
 	ShopLevel,
 	FirstLevel,
 	SecondLevel,

@@ -12,7 +12,7 @@ class UIObject : public Entity
 public:
 	UIObject();
 
-	void Initialize(bool isEnabledToDraw, DrawLayer drawLayer);
+	void Initialize(DrawLayer drawLayer);
 
 	void SetTexture(const std::string& filename);
 

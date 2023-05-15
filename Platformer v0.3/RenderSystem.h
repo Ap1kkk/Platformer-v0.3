@@ -19,8 +19,7 @@ public:
 	RenderSystem(Window* window);
 	~RenderSystem()
 	{
-		//TODO добавить логику для очистки всех списков
-		for (auto& item : drawMapNew)
+		for (auto& item : drawMap)
 		{
 			delete item.second;
 		}
@@ -28,94 +27,82 @@ public:
 
 	void SubscribeOnEvents()
 	{
-		SubscribeOnEvent(EventType::OnEntityDestroyedEvent);
+		//SubscribeOnEvent(EventType::OnEntityDestroyedEvent);
 
-		SubscribeOnEvent(EventType::OnSpriteDrawableEnabled); 
-		SubscribeOnEvent(EventType::OnSpriteDrawableDisabled); 
-		SubscribeOnEvent(EventType::OnTextDrawableEnabled); 
+		SubscribeOnEvent(EventType::OnSpriteDrawableEnabled);
+		SubscribeOnEvent(EventType::OnSpriteDrawableDisabled);
+		SubscribeOnEvent(EventType::OnSpriteDrawableDestroyed);
+		SubscribeOnEvent(EventType::OnTextDrawableEnabled);
 		SubscribeOnEvent(EventType::OnTextDrawableDisabled);
+		SubscribeOnEvent(EventType::OnTextDrawableDestroyed);
 	}
 
 	void Draw();
 
-	static void AddDrawable(EntityId entityId, DrawableSpriteComponent* drawable, bool isEnabled);
-	static void AddDrawable(EntityId entityId, DrawableTextComponent* drawable, bool isEnabled);
+	static void AddDrawable(DrawableSpriteComponent* drawable);
+	static void AddDrawable(DrawableTextComponent* drawable);
 
-	static void DeleteDrawable(EntityId entityId);
-
-	static void EnableDrawable(EntityId entityId);
-	static void DisableDrawable(EntityId entityId);
+	static void DeleteDrawable(DrawableSpriteComponent* drawable);
+	static void DeleteDrawable(DrawableTextComponent* drawable);
 
 	static void MoveActiveToPauseBuffer();
 	static void RetrieveActiveFromPauseBuffer();
 
 	void OnEventHappened(EventData& data) override
 	{
-		if (data.eventType == EventType::OnEntityDestroyedEvent)
+		switch (data.eventType)
 		{
-			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
-			DeleteDrawable(data.id);
+			case EventType::OnSpriteDrawableDestroyed:
+			{
+				Debug::LogWarning("Deleting Sprite Drawable with ownerId: " + std::to_string(data.id), typeid(*this).name());
+				auto userData = static_cast<ComponentUserData*>(data.userData);
+				DeleteDrawable(static_cast<DrawableSpriteComponent*>(userData->component)); 
+				break;
+			}
+			case EventType::OnTextDrawableDestroyed:
+			{
+				Debug::LogWarning("Deleting Text Drawable with ownerId: " + std::to_string(data.id), typeid(*this).name());
+				auto userData = static_cast<ComponentUserData*>(data.userData);
+				DeleteDrawable(static_cast<DrawableTextComponent*>(userData->component));
+				break;
+			}
+			case EventType::OnSpriteDrawableEnabled:
+			{
+				auto userData = static_cast<ComponentUserData*>(data.userData);
+				AddDrawable(static_cast<DrawableSpriteComponent*>(userData->component));
+				break;
+			}
+			case EventType::OnSpriteDrawableDisabled:
+			{
+				auto userData = static_cast<ComponentUserData*>(data.userData);
+				DeleteDrawable(static_cast<DrawableSpriteComponent*>(userData->component));
+				break;
+			}
+			case EventType::OnTextDrawableEnabled:
+			{
+				auto userData = static_cast<ComponentUserData*>(data.userData);
+				AddDrawable(static_cast<DrawableTextComponent*>(userData->component));
+				break;
+			}
+			case EventType::OnTextDrawableDisabled:
+			{
+				auto userData = static_cast<ComponentUserData*>(data.userData);
+				DeleteDrawable(static_cast<DrawableTextComponent*>(userData->component));
+				break;
+			}
 		}
-		//TODO добавить обработку и новые методы включения и выключения отдельных методов
 	}
 
 private:
 
-	//static void AddToDrawMap(EntityId entityId, DrawableComponent* drawable);
+	static void AddToDrawMap(DrawableSpriteComponent* drawable);
+	static void AddToDrawMap(DrawableTextComponent* drawable);
 
-	static void AddToDrawMap(EntityId entityId, DrawableSpriteComponent* drawable);
-	static void AddToDrawMap(EntityId entityId, DrawableTextComponent* drawable);
+	static void DeleteFromDrawMap(DrawableSpriteComponent* drawable);
+	static void DeleteFromDrawMap(DrawableTextComponent* drawable);
 
-	static void DeleteFromDrawMap(EntityId entityId);
-
-	static void UpdateDrawMap(EntityId entityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent* > pair)
-	{
-		auto itr = drawMapNew.find(-10000);
-		if (pair.first != nullptr)
-		{
-			itr = drawMapNew.find(pair.first->GetDrawLayer());
-		}
-		else
-		{
-			itr = drawMapNew.find(pair.first->GetDrawLayer());
-		}
-
-		if (itr != drawMapNew.end())
-		{
-			auto pairFound = itr->second->find(entityId);
-			if (pairFound != itr->second->end())
-			{
-				pairFound->second = pair;
-			}
-			else
-			{
-				Debug::LogWarning("Can't update drawable map\nDrawable with EntityId: " + std::to_string(entityId) + " not found", typeid(RenderSystem).name());
-			}
-		}
-		else
-		{
-			Debug::LogWarning("Can't update drawable map", typeid(RenderSystem).name());
-		}
-	}
-
-
-	//TODO заменить DrawableComponent на map с ComponentId и DrawableComponent
-	//static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawMap;
-	static std::map<DrawLayer, std::map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>>*> drawMapNew;
-	
-	//TODO совместить все в один буфер
-	//static std::multimap<DrawLayer, std::pair< EntityId, DrawableComponent*>> drawPauseBuffer;
-	static std::map<DrawLayer, std::map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>>*> drawPauseBufferNew;
-
-	//static std::unordered_map<EntityId, DrawableComponent*> enabledDrawables;
-	//static std::unordered_map<EntityId, DrawableComponent*> disabledDrawables;
-	//static std::unordered_map<EntityId, DrawableComponent*> pauseBuffer;
-
-
-	//TODO переработать и разделить на отдельные контейнеры
-	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> enabledDrawablesNew;
-	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> disabledDrawablesNew;
-	static std::unordered_map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>> pauseBufferNew;
+	static std::map<DrawLayer, std::map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>>*> drawMap;
+	static std::map<DrawLayer, std::map<EntityId, std::pair<DrawableSpriteComponent*, DrawableTextComponent*>>*> drawPauseBuffer;
 
 	Window* window;
 };

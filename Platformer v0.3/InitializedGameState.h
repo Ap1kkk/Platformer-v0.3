@@ -4,8 +4,10 @@
 
 #include "SharedContext.h"
 #include "SceneManager.h"
+
 #include "FirstScene.h"
 #include "PauseScene.h"
+#include "MainScene.h"
 
 #include "EventSystem.h"
 #include "EventListener.h"

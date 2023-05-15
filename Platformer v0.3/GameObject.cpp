@@ -6,58 +6,6 @@ GameObject::GameObject() : isDrawable(false), isEnabledToDraw(false), isPhysical
 	transform->SetPosition(0.f, 0.f);
 }
 
-//DrawableComponent* GameObject::MakeDrawable(bool isEnabledToDraw, DrawLayer drawLayer)
-//{
-//	isDrawable = true;
-//	this->isEnabledToDraw = isEnabledToDraw;
-//	////TODO пересмотреть
-//	//drawableComponent = AddComponent<DrawableComponent>();
-//	//drawableComponent->Initialize(transform);
-//	//drawableComponent->SetDrawLayer(drawLayer);
-//	//RenderSystem::AddDrawable(entityId, drawableComponent, isEnabledToDraw);
-//	return drawableComponent;
-//}
-
-void GameObject::EnableToDraw()
-{
-	if (isDrawable)
-	{
-		if (!isEnabledToDraw)
-		{
-			isEnabledToDraw = true;
-			RenderSystem::EnableDrawable(entityId);
-		}
-		else
-		{
-			Debug::LogWarning("Object is already enabled to draw");
-		}
-	}
-	else
-	{
-		Debug::LogWarning("Object with id: " + std::to_string(entityId) + " is not drawable");
-	}
-}
-
-void GameObject::DisableToDraw()
-{
-	if (isDrawable)
-	{
-		if (isEnabledToDraw)
-		{
-			isEnabledToDraw = false;
-			RenderSystem::DisableDrawable(entityId);
-		}
-		else
-		{
-			Debug::LogWarning("Object is already disabled to draw");
-		}
-	}
-	else
-	{
-		Debug::LogWarning("Object with id: " + std::to_string(entityId) + " is not drawable");
-	}
-}
-
 void GameObject::SetTexture(const Filename& filename)
 {
 	if (isDrawable)

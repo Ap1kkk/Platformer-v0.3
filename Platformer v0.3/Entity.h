@@ -25,6 +25,7 @@ public:
 	Entity() 
 	{
 		SubscribeOnEvent(EventType::OnComponentEnabledEvent);
+		SubscribeOnEvent(EventType::OnComponentDisabledEvent);
 	}
 	virtual ~Entity();
 
@@ -68,16 +69,10 @@ public:
 			component->SetOwnerId(entityId);
 			component->SetObjectContext(objectContext);
 			components.insert(std::make_pair(compType, static_cast<IComponent*>(component)));
-			componentsOrder.emplace_back(component);
 
-
-			//enabledComponents.emplace(std::make_pair(component->GetComponentLayer(), component));
 			AddToEnabledComponents(component);
 
-
 			notAwokenComponents.emplace_back(component);
-			RecalculateComponentsOrder();
-			//TODO заменить на событие
 			ObjectCollection::HasNotAwokenComponents(entityId);
 			return component;
 		}
@@ -118,17 +113,6 @@ public:
 	//TODO проверить на работоспособность
 	void DeleteComponent(ComponentId id)
 	{
-		//auto componentType = ComponentManager::GetComponentTypeById(id);
-		//auto itr = components.find(componentType);
-		//if (itr != components.end())
-		//{
-		//	//TODO убирать из всех списков
-		//	ComponentManager::DestroyComponent(id);
-		//	components.erase(itr);
-		//}
-
-		//новый вариант
-
 		auto component = ComponentManager::GetComponentById(id);
 		if (component != nullptr)
 		{
@@ -143,10 +127,6 @@ public:
 			ComponentManager::DestroyComponent(id);
 		}
 	}
-
-	//TODO убрать 
-	// ¬ызывать при изменении сло€ выполнени€ у компонента
-	void RecalculateComponentsOrder();
 
 	void ProcessNotAwokenComponents() override;
 
@@ -251,11 +231,6 @@ private:
 			if (itr != componentsMap->second->end())
 			{
 				componentsMap->second->erase(itr);
-				//if (componentsMap->second->empty())
-				//{
-				//	delete componentsMap->second;
-				//	enabledComponents.erase(componentsMap);
-				//}
 			}
 			else
 			{
@@ -330,10 +305,8 @@ private:
 	std::unordered_map<ComponentType, IComponent*> components;
 
 	std::map<ComponentLayer, std::map<ComponentId, IComponent*>*> enabledComponents;
-	//TODO перемещать туда все включенные компоненты
 	std::map<ComponentLayer, std::map<ComponentId, IComponent*>*> enabledComponentsBuffer;
 
-	std::vector<IComponent*> componentsOrder;
 	std::vector<IComponent*> notAwokenComponents;
 
 	std::map<ComponentId, IComponent*> disabledComponents;

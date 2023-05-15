@@ -3,6 +3,7 @@
 Entity::~Entity()
 {
 	UnsubscribeFromEvent(EventType::OnComponentEnabledEvent);
+	UnsubscribeFromEvent(EventType::OnComponentDisabledEvent);
 
 	if (components.size() > 0)
 	{
@@ -17,17 +18,6 @@ Entity::~Entity()
 	{
 		delete map.second;
 	}
-}
-
-void Entity::RecalculateComponentsOrder()
-{
-	std::sort(componentsOrder.begin(), componentsOrder.end(),
-		[](IComponent* a, IComponent* b)
-		{
-			ComponentLayer aLayer = a->GetComponentLayer();
-			ComponentLayer bLayer = b->GetComponentLayer();
-			return aLayer < bLayer;
-		});
 }
 
 void Entity::ProcessNotAwokenComponents()
@@ -45,11 +35,6 @@ void Entity::ProcessNotAwokenComponents()
 
 void Entity::ComponentsEarlyUpdate()
 {
-	//for (auto& component : componentsOrder)
-	//{
-	//	component->EarlyUpdate();
-	//}
-
 	for (auto& componentsMap : enabledComponents)
 	{
 		for (auto& pair : *componentsMap.second)
@@ -61,11 +46,6 @@ void Entity::ComponentsEarlyUpdate()
 
 void Entity::ComponentsUpdate()
 {
-	//for (auto& component : componentsOrder)
-	//{
-	//	component->Update();
-	//}
-
 	for (auto& componentsMap : enabledComponents)
 	{
 		for (auto& pair : *componentsMap.second)
@@ -77,11 +57,6 @@ void Entity::ComponentsUpdate()
 
 void Entity::ComponentsLateUpdate()
 {
-	//for (auto& component : componentsOrder)
-	//{
-	//	component->LateUpdate();
-	//}
-
 	for (auto& componentsMap : enabledComponents)
 	{
 		for (auto& pair : *componentsMap.second)
@@ -93,11 +68,6 @@ void Entity::ComponentsLateUpdate()
 
 void Entity::ComponentsUpdateUI()
 {
-	//for (auto& component : componentsOrder)
-	//{
-	//	component->UpdateUI();
-	//}
-
 	for (auto& componentsMap : enabledComponents)
 	{
 		for (auto& pair : *componentsMap.second)
@@ -120,7 +90,6 @@ void Entity::Destroy()
 	}
 	components.clear();
 
-	//GarbageCollector::DestroyEntity(this->entityId);
 	Event::Invoke(entityData);
 }
 

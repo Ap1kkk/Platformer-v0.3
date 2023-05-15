@@ -30,7 +30,6 @@ public:
 
 	static EntityId GetBodyOwnerId(b2Body* body);
 
-	//TODO надо протестить
 	template<class C>
 	static void SetContactListener(C* instancePtr)
 	{
@@ -48,7 +47,6 @@ public:
 
 private:
 	static std::unordered_map<EntityId, b2Body*> bodies;
-	//static std::unordered_map<EntityId, IConctactListener> contactListeners; 
 	static std::vector<b2Body*> destroyBuffer;
 
 	static b2World* world;

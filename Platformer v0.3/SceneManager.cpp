@@ -1,11 +1,15 @@
 #include "SceneManager.h"
 
-std::unordered_map<SceneId, IScene*> SceneManager::scenes = {};
+std::map<SceneId, IScene*> SceneManager::scenes = {};
 IScene* SceneManager::activeScene = nullptr;
 IScene* SceneManager::pauseScene = nullptr;
 
+bool SceneManager::isToSwitch = false;
+SceneId SceneManager::sceneIdToSwitch = 0;
+
 SceneManager::~SceneManager()
 {
+	//TODO очистить память из под всех сцен
 	if (activeScene != nullptr)
 	{
 		activeScene->Destroy(true, false);
@@ -65,7 +69,7 @@ void SceneManager::SwitchScene(SceneId fromSceneId, SceneId toSceneId)
 
 		if (fromSceneId != toSceneId)
 		{
-			previousScene->Destroy(true, false);
+			previousScene->Destroy(false, false);
 		}
 		else
 		{

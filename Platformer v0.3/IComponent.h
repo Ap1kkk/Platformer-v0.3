@@ -22,7 +22,6 @@ public:
 
 	void Enable() 
 	{
-		isEnabled = true;
 		OnEnable();
 
 		EventData data(EventType::OnComponentEnabledEvent);
@@ -33,10 +32,11 @@ public:
 		data.userData = userData;
 
 		Event::Invoke(data);
+		isEnabled = true;
+
 	}
 	void Disable() 
 	{
-		isEnabled = false;
 		OnDisable();
 
 		EventData data(EventType::OnComponentDisabledEvent);
@@ -48,6 +48,8 @@ public:
 		data.userData = userData;
 
 		Event::Invoke(data);
+		isEnabled = false;
+
 	}
 
 	bool IsEnabled() const { return isEnabled; }

@@ -43,6 +43,11 @@ void FirstScene::Initialize()
 	chunk3 = new TestChunk3(sharedContext, objectContext);
 	chunk3->Spawn(sf::Vector2f(1920.f * (-1), 0.f));
 
+	levelSwitcher = sharedContext.entityManger->CreateEntity<LevelSwitcher>(objectContext);
+	levelSwitcher->SetPosition(sf::Vector2f(100.f, 0.f));
+	levelSwitcher->SetLevelTotransit(GameLevels::MainLevel);
+	ObjectCollection::AddObject(levelSwitcher);
+
 	Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 }
 

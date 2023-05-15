@@ -21,6 +21,7 @@ void WorldContactListener::BeginContact(b2Contact* contact)
 			pair.second.second->OnCollisionEnter(contact);
 		}
 	}
+	ClearRemovables();
 
 	for (auto& pair : componentHandlers)
 	{
@@ -55,6 +56,7 @@ void WorldContactListener::EndContact(b2Contact* contact)
 			pair.second.second->OnCollisionExit(contact);
 		}
 	}
+	ClearRemovables();
 
 	for (auto& pair : componentHandlers)
 	{

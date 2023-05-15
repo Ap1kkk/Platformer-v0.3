@@ -2,7 +2,7 @@
 
 void UIButton::Awake()
 {
-	Initialize(true, drawLayer);
+	Initialize(drawLayer);
 	SetTexture("floor.png");
 	//sf::Font font;
 	//font = AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/calibri.ttf");

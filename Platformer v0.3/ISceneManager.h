@@ -20,6 +20,8 @@ public:
 
 	virtual void UpdatePauseScene() = 0;
 
+	virtual void UpdateSwitchBuffer() = 0;
+
 	virtual void ShowPauseScene() = 0;
 	virtual void HidePauseScene() = 0;
 

@@ -7,7 +7,7 @@ SmallObstacle::SmallObstacle()
 
 void SmallObstacle::Awake()
 {
-	AddSpriteComponent(true, drawLayer);
+	AddSpriteComponent(drawLayer);
 	SetTexture(textureFilename);
 
 	auto physicComponent = MakePhysical();

@@ -58,7 +58,6 @@ public:
 	{
 		Debug::Log("---------------" + std::to_string((short)levelToTransit));
 
-		//objectContext.sceneManager->SwitchToScene(0);
 		levelSwitcher->EnableDraw();
 	}
 	void OnCollisionExit(b2Contact* contact) override 

@@ -183,8 +183,10 @@
     <ClCompile Include="ITransform.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
     <ClCompile Include="LevelSwitcher.cpp" />
+    <ClCompile Include="LevelSwitcherComponent.cpp" />
     <ClCompile Include="LevelSwitcherSensor.cpp" />
     <ClCompile Include="MainChunk.cpp" />
+    <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectCollection.cpp" />
     <ClCompile Include="PausedGameState.cpp" />
@@ -264,8 +266,10 @@
     <ClInclude Include="ITransform.h" />
     <ClInclude Include="JumpSensor.h" />
     <ClInclude Include="LevelSwitcher.h" />
+    <ClInclude Include="LevelSwitcherComponent.h" />
     <ClInclude Include="LevelSwitcherSensor.h" />
     <ClInclude Include="MainChunk.h" />
+    <ClInclude Include="MainScene.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectCollection.h" />
     <ClInclude Include="ObjectContext.h" />

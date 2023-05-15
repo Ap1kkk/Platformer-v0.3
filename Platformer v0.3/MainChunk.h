@@ -26,7 +26,7 @@ private:
 	RoadSprite* road;
 	Background* background;
 
-	LevelSwitcher* levelSwitcher;
+	//LevelSwitcher* levelSwitcher;
 
 	Filename backgroundFilename = "Krill_House.png";
 };

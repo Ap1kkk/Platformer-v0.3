@@ -5,7 +5,7 @@ UIObject::UIObject()
 	Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
 }
 
-void UIObject::Initialize(bool isEnabledToDraw, DrawLayer drawLayer)
+void UIObject::Initialize(DrawLayer drawLayer)
 {
 	transformUI = AddComponent<TransformUIComponent>();
 
@@ -17,12 +17,12 @@ void UIObject::Initialize(bool isEnabledToDraw, DrawLayer drawLayer)
 	drawableSpriteComponent = AddComponent<DrawableSpriteComponent>();
 	drawableSpriteComponent->Initialize(transformUI);
 	drawableSpriteComponent->SetDrawLayer(drawLayer);
-	RenderSystem::AddDrawable(entityId, drawableSpriteComponent, isEnabledToDraw);
+	RenderSystem::AddDrawable(drawableSpriteComponent);
 
 	drawableTextComponent = AddComponent<DrawableTextComponent>();
 	drawableTextComponent->Initialize(transformUI);
 	drawableTextComponent->SetDrawLayer(drawLayer);
-	RenderSystem::AddDrawable(entityId, drawableTextComponent, isEnabledToDraw);
+	RenderSystem::AddDrawable(drawableTextComponent);
 }
 
 void UIObject::SetTexture(const std::string& filename)

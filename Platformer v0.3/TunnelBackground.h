@@ -18,7 +18,7 @@ public:
 
 	void Awake() override 
 	{
-		AddSpriteComponent(true, drawLayer);
+		AddSpriteComponent(drawLayer);
 		SetTexture(CalculateTextureFilename(tunnelNumber));
 
 		physicComponent = MakePhysical();

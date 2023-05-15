@@ -24,7 +24,7 @@ public:
 		auto itr = scenes.find(newSceneId);
 		if (itr == scenes.end())
 		{
-			scenes.emplace(newSceneId, scene);
+			scenes.insert(std::make_pair(newSceneId, static_cast<IScene*>(scene)));
 			return scene;
 		}
 		else
@@ -43,7 +43,9 @@ public:
 
 	void SwitchToScene(SceneId newSceneId) override
 	{
-		SwitchScene(activeScene->GetSceneId(), newSceneId);
+		//SwitchScene(activeScene->GetSceneId(), newSceneId);
+		isToSwitch = true;
+		sceneIdToSwitch = newSceneId;
 	}
 
 	void ShowPauseScene() override;
@@ -58,11 +60,24 @@ public:
 
 	void UpdatePauseScene() override;
 
+	void UpdateSwitchBuffer() override
+	{
+		if (isToSwitch)
+		{
+			SwitchScene(activeScene->GetSceneId(), sceneIdToSwitch);
+			isToSwitch = false;
+		}
+	}
+
+
 	void Draw(Window* window) override;
 
 private:
-	static std::unordered_map<SceneId, IScene*> scenes;
+	static std::map<SceneId, IScene*> scenes;
 	static IScene* activeScene;
 	static IScene* pauseScene;
+
+	static bool isToSwitch;
+	static SceneId sceneIdToSwitch;
 };
 

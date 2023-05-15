@@ -21,11 +21,11 @@ void InitializedGameState::EnterState()
 
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);
+	auto mainScene = SceneManager::AddScene<MainScene>(sharedContext);
 	//auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
 
 	sharedContext.sceneManager->Initialize(firstScene->GetSceneId());
 	sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());
-	//SceneManager::AddScene<>
 
 }
 

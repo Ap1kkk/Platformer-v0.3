@@ -2,6 +2,8 @@
 
 #include "DrawableComponent.h"
 
+#include "OnComponentUserData.h"
+
 class DrawableSpriteComponent : public DrawableComponent
 {
 public:
@@ -48,7 +50,12 @@ public:
 	void OnEnable() override
 	{
 		EventData data(EventType::OnSpriteDrawableEnabled);
+
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
 		data.id = componentId;
+		data.userData = userData;
 
 		Event::Invoke(data);
 	}
@@ -56,11 +63,28 @@ public:
 	void OnDisable() override
 	{
 		EventData data(EventType::OnSpriteDrawableDisabled);
+
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
 		data.id = componentId;
+		data.userData = userData;
 
 		Event::Invoke(data);
 	}
 
+	void OnDestroy() override
+	{
+		EventData data(EventType::OnSpriteDrawableDestroyed);
+
+		auto userData = new ComponentUserData;
+		userData->component = this;
+
+		data.id = ownerId;
+		data.userData = userData;
+
+		Event::Invoke(data);
+	}
 private:
 	sf::Sprite sprite;
 	std::string textureFilename;

@@ -3,18 +3,21 @@
 #include "ILevelSwitcher.h"
 
 #include "GameObject.h"
-#include "LevelSwitcherSensor.h"
 
+#include "LevelSwitcherSensor.h"
+#include "LevelSwitcherComponent.h"
 
 class LevelSwitcher : public GameObject, public ILevelSwitcher
 {
 public:
+	LevelSwitcher() : isReadyToSwitch(false) {}
 
 	void Awake() override
 	{
 		MakePhysical();
 
-		AddSpriteComponent(false, drawLayer);
+		AddSpriteComponent(drawLayer);
+		drawableSpriteComponent->Disable();
 		SetTexture(textureFilename);
 
 		b2BodyDef bodyDef;
@@ -27,6 +30,12 @@ public:
 		levelSwitcherSensor->SetPhysicComponent(physicComponent);
 		levelSwitcherSensor->SetILevelSwitcher(this);
 		levelSwitcherSensor->SetLevelToTransit(levelToSwitch);
+
+		levelSwitcherComponent = AddComponent<LevelSwitcherComponent>();
+		levelSwitcherComponent->Disable();
+		
+		//TODO ПОМЕНЯТЬ НА ENUM
+		levelSwitcherComponent->SetLevelToSwitch((short)levelToSwitch);
 	}
 
 	void SetPosition(const sf::Vector2f& position)
@@ -47,13 +56,16 @@ public:
 
 	void EnableDraw() override
 	{
-		EnableToDraw();
-		//TODO добавить включение компонента обработчика перехода
+		drawableSpriteComponent->Enable();
+		levelSwitcherComponent->Enable();
+
 	}
 
 	void DisableDraw() override
 	{
-		DisableToDraw();
+		drawableSpriteComponent->Disable();
+		levelSwitcherComponent->Disable();
+
 	}
 
 	void OnDestroy() override
@@ -64,9 +76,12 @@ public:
 private:
 	sf::Vector2f size = { 20.f, 50.f };
 	LevelSwitcherSensor* levelSwitcherSensor;
+	LevelSwitcherComponent* levelSwitcherComponent;
 	GameLevels levelToSwitch;
 
 	DrawLayer drawLayer = 100;
 	Filename textureFilename = "floor.png";
+
+	bool isReadyToSwitch;
 };
 

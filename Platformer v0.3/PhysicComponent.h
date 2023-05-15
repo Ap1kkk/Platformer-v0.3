@@ -89,6 +89,16 @@ public:
 
 	void OnDestroy() override;
 
+	void OnEnable() override
+	{
+		body->SetAwake(true);
+	}
+
+	void OnDisable() override
+	{
+		body->SetAwake(false);
+	}
+
 private:
 	sf::Vector2f bodyPosition;
 	float bodyAngle;

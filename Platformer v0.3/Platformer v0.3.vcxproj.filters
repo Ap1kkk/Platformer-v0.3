@@ -326,6 +326,12 @@
     <ClCompile Include="DrawableTextComponent.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="LevelSwitcherComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -565,12 +571,6 @@
     <ClInclude Include="ILevelSwitcher.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableSpriteComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawableTextComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerTurnedFaceData.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
@@ -579,6 +579,18 @@
     </ClInclude>
     <ClInclude Include="EventTypes.h">
       <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableSpriteComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableTextComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcherComponent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
