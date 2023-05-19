@@ -41,7 +41,6 @@ public:
 		drawableTextComponent->Initialize(transform);
 		drawableTextComponent->SetDrawLayer(drawLayer);
 		RenderSystem::AddDrawable(drawableTextComponent);
-		drawableTextComponent->Disable();
 		return drawableTextComponent;
 	}
 

@@ -58,6 +58,13 @@ private:
 	TestChunk2* chunk2;
 	TestChunk3* chunk3;
 
+
+	MainChunk* shopLevel;
+	MainChunk* firstLevel;
+	MainChunk* secondLevel;
+	MainChunk* thirdLevel;
+	MainChunk* fourthLevel;
+
 	LevelSwitcher* levelSwitcher;
 
 	DrawLayer floorDrawLayer = 100;

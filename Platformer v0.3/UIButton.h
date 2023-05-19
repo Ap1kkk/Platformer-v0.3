@@ -28,16 +28,16 @@ public:
 	}
 	virtual void OnButtonClick()
 	{
-		Debug::Log("Click");
+		//Debug::Log("Click");
 
-		if (drawableSpriteComponent->IsEnabled())
-		{
-			drawableSpriteComponent->Disable();
-		}
-		else
-		{
-			drawableSpriteComponent->Enable();
-		}
+		//if (drawableSpriteComponent->IsEnabled())
+		//{
+		//	drawableSpriteComponent->Disable();
+		//}
+		//else
+		//{
+		//	drawableSpriteComponent->Enable();
+		//}
 	}
 
 private:

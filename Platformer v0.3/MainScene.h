@@ -16,17 +16,16 @@ public:
 
 	void Initialize() override
 	{
-		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
-		player->SetSpawnPosition(0.f, 20.f);
-		ObjectCollection::AddObject(player);
-
 		mainChunk = new MainChunk(sharedContext, objectContext);
+		mainChunk->SetLevelName("Main Scene");
+		mainChunk->SetLevelToSwitch(GameLevels::FirstScene);
 		mainChunk->Spawn(sf::Vector2f(0.f, 0.f));
 
-		levelSwitcher = sharedContext.entityManger->CreateEntity<LevelSwitcher>(objectContext);
-		levelSwitcher->SetPosition(sf::Vector2f(100.f, 0.f));
-		levelSwitcher->SetLevelTotransit(GameLevels::FirstScene);
-		ObjectCollection::AddObject(levelSwitcher);
+
+		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
+		player->SetSpawnPosition(150.f, -100.f);
+		ObjectCollection::AddObject(player);
+
 	}
 
 	void ProcessNotAwoken() override;
@@ -61,5 +60,7 @@ private:
 	Player* player;
 	MainChunk* mainChunk;
 	LevelSwitcher* levelSwitcher;
+
+
 };
 

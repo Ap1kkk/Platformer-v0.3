@@ -45,7 +45,7 @@ public:
 			boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::LevelSwitcher));
 			boxFixtureDef.filter.maskBits = (1 << ((uint16)CollisionLayers::Player));
 
-			physicComponent->AddSensor(boxFixtureDef);
+			sensor = physicComponent->AddSensor(boxFixtureDef);
 		}
 
 		collisionMask.SetBit((uint16)CollisionLayers::Player);
@@ -56,14 +56,32 @@ public:
 
 	void OnCollisionEnter(b2Contact* contact) override 
 	{
-		Debug::Log("---------------" + std::to_string((short)levelToTransit));
+		auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
+		auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
 
-		levelSwitcher->EnableDraw();
+		if (fix1 != nullptr && fix2 != nullptr)
+		{
+			if (fix1->GetFixtureId() == sensor->GetFixtureId() || fix2->GetFixtureId() == sensor->GetFixtureId())
+			{
+				Debug::Log("---------------" + std::to_string((short)levelToTransit));
+				levelSwitcher->EnableDraw();
+			}
+		}
+
 	}
 	void OnCollisionExit(b2Contact* contact) override 
 	{
-		Debug::Log("---------------");
-		levelSwitcher->DisableDraw();
+		auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
+		auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
+
+		if (fix1 != nullptr && fix2 != nullptr)
+		{
+			if (fix1->GetFixtureId() == sensor->GetFixtureId() || fix2->GetFixtureId() == sensor->GetFixtureId())
+			{
+				Debug::Log("---------------");
+				levelSwitcher->DisableDraw();
+			}
+		}
 	}
 
 	void OnDestroy() override
@@ -88,11 +106,13 @@ private:
 	PhysicComponent* physicComponent;
 	Bitmask collisionMask;
 
+	Sensor* sensor;
+
 	GameLevels levelToTransit;
 
 	ILevelSwitcher* levelSwitcher;
 
-	sf::Vector2f size = { 20.f, 50.f };
+	sf::Vector2f size = { 100.f, 150.f };
 
 };
 

@@ -33,6 +33,9 @@ void JumpSensor::Awake()
 	collisionMask.SetBit((uint16)CollisionLayers::JumpSensor);
 	collisionMask.SetBit((uint16)CollisionLayers::SmallObstacle);
 	WorldContactListener::AddHandler(collisionMask, this);
+
+	////WARNING не очень надежно
+	//isEnabled = true;
 }
 
 void JumpSensor::OnCollisionEnter(b2Contact* contact)
@@ -41,6 +44,13 @@ void JumpSensor::OnCollisionEnter(b2Contact* contact)
 	{
 		Debug::Log("Entered Collision");
 		EnterCollision();
+		EventData data(EventType::OnPlayerLanded);
+		Event::Invoke(data);
+		//Debug::Log("### enter " + std::to_string(intersectsCount));
+		//Debug::Log(contact->GetFixtureA()->GetFilterData().categoryBits);
+		//Debug::Log(contact->GetFixtureA()->GetFilterData().maskBits);
+		//Debug::Log(contact->GetFixtureB()->GetFilterData().categoryBits);
+		//Debug::Log(contact->GetFixtureB()->GetFilterData().maskBits);
 	}
 }
 
@@ -50,6 +60,11 @@ void JumpSensor::OnCollisionExit(b2Contact* contact)
 	{
 		Debug::Log("Leaved Collision");
 		LeaveCollision();
+		//Debug::Log("### leave " + std::to_string(intersectsCount));
+		//Debug::Log(contact->GetFixtureA()->GetFilterData().categoryBits);
+		//Debug::Log(contact->GetFixtureA()->GetFilterData().maskBits);
+		//Debug::Log(contact->GetFixtureB()->GetFilterData().categoryBits);
+		//Debug::Log(contact->GetFixtureB()->GetFilterData().maskBits);
 	}
 }
 

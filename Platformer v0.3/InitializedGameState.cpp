@@ -22,7 +22,11 @@ void InitializedGameState::EnterState()
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);
 	auto mainScene = SceneManager::AddScene<MainScene>(sharedContext);
-	//auto secondScene = SceneManager::AddScene<FirstScene>(sharedContext);
+	auto shopLevel = SceneManager::AddScene<ShopLevel>(sharedContext);
+	auto firstLevel = SceneManager::AddScene<FirstLevel>(sharedContext);
+	auto secondLevel = SceneManager::AddScene<SecondLevel>(sharedContext);
+	auto thirdLevel = SceneManager::AddScene<ThirdLevel>(sharedContext);
+	auto fourthLevel = SceneManager::AddScene<FourthLevel>(sharedContext);
 
 	sharedContext.sceneManager->Initialize(firstScene->GetSceneId());
 	sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());

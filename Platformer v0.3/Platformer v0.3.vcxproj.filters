@@ -105,6 +105,12 @@
     <Filter Include="Файлы заголовков\Events">
       <UniqueIdentifier>{82178936-d4c0-4cbe-9123-003cb60e1911}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\AnimationStates">
+      <UniqueIdentifier>{065afcb5-e3ff-463b-bf5d-180a9fed3522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Animation">
+      <UniqueIdentifier>{8f40aa3d-c765-4fb6-9116-e744c1707c10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ComponentManager.cpp">
@@ -293,43 +299,94 @@
     <ClCompile Include="IEventListener.cpp">
       <Filter>Исходные файлы\Engine\EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Health.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="TunnelBackground.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="TunnelCollidersData.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="IBody.cpp">
       <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
-    <ClCompile Include="FixtureManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Damageble.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelSwitcher.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelSwitcherSensor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ILevelSwitcher.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="DrawableSpriteComponent.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
     </ClCompile>
     <ClCompile Include="DrawableTextComponent.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
     </ClCompile>
-    <ClCompile Include="LevelSwitcherComponent.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="FixtureManager.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ILevelSwitcher.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcher.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelBackground.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelCollidersData.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="MainScene.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcherComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcherSensor.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="FourthLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLabel.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnimator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnimationState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IdlePlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RunPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SprintedPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpRaisedPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpFallPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPlayerAnimState.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -541,35 +598,11 @@
     <ClInclude Include="IEventSystem.h">
       <Filter>Файлы заголовков\Engine\EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Health.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="TunnelBackground.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="TunnelCollidersData.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="FixtureManager.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Damageble.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelSwitcher.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelSwitcherSensor.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="OnEntityDiedData.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
     <ClInclude Include="OnLevelSwitchData.h">
       <Filter>Файлы заголовков\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="ILevelSwitcher.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="PlayerTurnedFaceData.h">
       <Filter>Файлы заголовков\Events</Filter>
@@ -586,11 +619,89 @@
     <ClInclude Include="DrawableTextComponent.h">
       <Filter>Файлы заголовков\Engine\Base Components</Filter>
     </ClInclude>
-    <ClInclude Include="LevelSwitcherComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="MainScene.h">
       <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Damageble.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="FixtureManager.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ILevelSwitcher.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcher.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcherComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcherSensor.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelBackground.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelCollidersData.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FourthLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLabel.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="IdlePlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationState.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationTypes.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimationState.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimator.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RunPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SprintedPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpRaisedPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpFallPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

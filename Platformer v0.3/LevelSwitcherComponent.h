@@ -16,17 +16,17 @@ public:
 		}
 	}
 
-	void SwitchLevel(SceneId nextLevel)
+	void SwitchLevel(GameLevels nextLevel)
 	{
-		objectContext.sceneManager->SwitchToScene(nextLevel);
+		objectContext.sceneManager->SwitchToScene((short)nextLevel);
 	}
 
-	void SetLevelToSwitch(SceneId levelToSwitch)
+	void SetLevelToSwitch(GameLevels levelToSwitch)
 	{
 		this->levelToSwitch = levelToSwitch;
 	}
 
 private:
-	SceneId levelToSwitch;
+	GameLevels levelToSwitch;
 };
 

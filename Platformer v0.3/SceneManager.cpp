@@ -10,9 +10,14 @@ SceneId SceneManager::sceneIdToSwitch = 0;
 SceneManager::~SceneManager()
 {
 	//TODO очистить память из под всех сцен
-	if (activeScene != nullptr)
+	//if (activeScene != nullptr)
+	//{
+	//	activeScene->Destroy(true, false);
+	//}
+
+	for (auto& scene : scenes)
 	{
-		activeScene->Destroy(true, false);
+		scene.second->Destroy(true, false);
 	}
 }
 

@@ -142,7 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationState.cpp" />
+    <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AssetAllocator.cpp" />
+    <ClCompile Include="AttackPlayerAnimState.cpp" />
     <ClCompile Include="AttackSensor.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bitmask.cpp" />
@@ -161,15 +165,20 @@
     <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="ExitedGameState.cpp" />
+    <ClCompile Include="FirstLevel.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="FixtureManager.cpp" />
+    <ClCompile Include="FourthLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="GarbageCollector.cpp" />
     <ClCompile Include="Health.cpp" />
+    <ClCompile Include="IAnimationState.cpp" />
+    <ClCompile Include="IAnimator.cpp" />
     <ClCompile Include="IBody.cpp" />
     <ClCompile Include="IComponent.cpp" />
+    <ClCompile Include="IdlePlayerAnimState.cpp" />
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="IEvent.cpp" />
     <ClCompile Include="IEventListener.cpp" />
@@ -181,7 +190,10 @@
     <ClCompile Include="ISceneManager.cpp" />
     <ClCompile Include="ISensor.cpp" />
     <ClCompile Include="ITransform.cpp" />
+    <ClCompile Include="JumpFallPlayerAnimState.cpp" />
+    <ClCompile Include="JumpRaisedPlayerAnimState.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
+    <ClCompile Include="LevelLabel.cpp" />
     <ClCompile Include="LevelSwitcher.cpp" />
     <ClCompile Include="LevelSwitcherComponent.cpp" />
     <ClCompile Include="LevelSwitcherSensor.cpp" />
@@ -200,11 +212,16 @@
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="RoadSprite.cpp" />
     <ClCompile Include="RunnedGameState.cpp" />
+    <ClCompile Include="RunPlayerAnimState.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SecondLevel.cpp" />
+    <ClCompile Include="ShopLevel.cpp" />
     <ClCompile Include="SmallObstacle.cpp" />
+    <ClCompile Include="SprintedPlayerAnimState.cpp" />
     <ClCompile Include="TestChunk1.cpp" />
     <ClCompile Include="TestChunk2.cpp" />
     <ClCompile Include="TestChunk3.cpp" />
+    <ClCompile Include="ThirdLevel.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="TileSet.cpp" />
@@ -219,7 +236,12 @@
     <ClCompile Include="WorldContactListener.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationState.h" />
+    <ClInclude Include="AnimationTypes.h" />
+    <ClInclude Include="Animator.h" />
     <ClInclude Include="AssetAllocator.h" />
+    <ClInclude Include="AttackPlayerAnimState.h" />
     <ClInclude Include="AttackSensor.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bitmask.h" />
@@ -241,16 +263,21 @@
     <ClInclude Include="EventSystem.h" />
     <ClInclude Include="EventTypes.h" />
     <ClInclude Include="ExitedGameState.h" />
+    <ClInclude Include="FirstLevel.h" />
     <ClInclude Include="FirstScene.h" />
     <ClInclude Include="FixtureManager.h" />
+    <ClInclude Include="FourthLevel.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="GarbageCollector.h" />
     <ClInclude Include="Health.h" />
+    <ClInclude Include="IAnimationState.h" />
+    <ClInclude Include="IAnimator.h" />
     <ClInclude Include="IBody.h" />
     <ClInclude Include="IComponent.h" />
+    <ClInclude Include="IdlePlayerAnimState.h" />
     <ClInclude Include="IEntity.h" />
     <ClInclude Include="IEvent.h" />
     <ClInclude Include="IEventListener.h" />
@@ -264,7 +291,10 @@
     <ClInclude Include="ISensor.h" />
     <ClInclude Include="ITileManager.h" />
     <ClInclude Include="ITransform.h" />
+    <ClInclude Include="JumpFallPlayerAnimState.h" />
+    <ClInclude Include="JumpRaisedPlayerAnimState.h" />
     <ClInclude Include="JumpSensor.h" />
+    <ClInclude Include="LevelLabel.h" />
     <ClInclude Include="LevelSwitcher.h" />
     <ClInclude Include="LevelSwitcherComponent.h" />
     <ClInclude Include="LevelSwitcherSensor.h" />
@@ -287,12 +317,17 @@
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RoadSprite.h" />
     <ClInclude Include="RunnedGameState.h" />
+    <ClInclude Include="RunPlayerAnimState.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SecondLevel.h" />
     <ClInclude Include="SharedContext.h" />
+    <ClInclude Include="ShopLevel.h" />
     <ClInclude Include="SmallObstacle.h" />
+    <ClInclude Include="SprintedPlayerAnimState.h" />
     <ClInclude Include="TestChunk1.h" />
     <ClInclude Include="TestChunk2.h" />
     <ClInclude Include="TestChunk3.h" />
+    <ClInclude Include="ThirdLevel.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="TileSet.h" />

@@ -4,12 +4,14 @@
 void Input::Update()
 {
     lastFrameKeys.SetMask(thisFrameKeys);
+    lastFrameInputAxes = inputAxes;
 
     float horizontal = (int)thisFrameKeys.GetBit((int)Key::Right) - (int)thisFrameKeys.GetBit((int)Key::Left);
     float vertical = (int)thisFrameKeys.GetBit((int)Key::Down) - (int)thisFrameKeys.GetBit((int)Key::Up);
 
     inputAxes.x = horizontal;
     inputAxes.y = vertical;
+
 
     thisFrameKeys.SetBit((int)Key::Left,
         (Keyboard::isKeyPressed(Keyboard::Left)) || (Keyboard::isKeyPressed(Keyboard::A)));
@@ -96,6 +98,22 @@ bool Input::IsKeyUp(Key keycode)
     return !thisFrame && lastFrame;
 }
 
+bool Input::IsInputAxesChanged()
+{
+    return inputAxes != lastFrameInputAxes;
+}
+
+bool Input::IsInputAxesEnabled()
+{
+    return inputAxes != sf::Vector2f(0.f, 0.f) && lastFrameInputAxes == sf::Vector2f(0.f, 0.f);
+}
+
+bool Input::IsInputAxesDisabled()
+{
+    return inputAxes == sf::Vector2f(0.f, 0.f) && lastFrameInputAxes != sf::Vector2f(0.f, 0.f);
+}
+
 Bitmask Input::thisFrameKeys;
 Bitmask Input::lastFrameKeys;
 sf::Vector2f Input::inputAxes;
+sf::Vector2f Input::lastFrameInputAxes;

@@ -12,7 +12,10 @@ class UIObject : public Entity
 public:
 	UIObject();
 
-	void Initialize(DrawLayer drawLayer);
+	void Initialize();
+
+	DrawableSpriteComponent* AddSpriteComponent(DrawLayer drawLayer);
+	DrawableTextComponent* AddTextComponent(DrawLayer drawLayer);
 
 	void SetTexture(const std::string& filename);
 
@@ -24,9 +27,6 @@ protected:
 	DrawableSpriteComponent* drawableSpriteComponent;
 	DrawableTextComponent* drawableTextComponent;
 	TransformUIComponent* transformUI;
-
-	bool isEnabledToDraw = true;
-	DrawLayer drawLayer;
 
 	sf::Vector2f position;
 };

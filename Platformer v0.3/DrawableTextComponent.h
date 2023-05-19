@@ -16,7 +16,6 @@ public:
 	{
 		centerPosition += positionOffset;
 		text.setPosition(centerPosition);
-		//Debug::Log(centerPosition);
 	}
 	void SetRotation(float angleInDeg) override
 	{
@@ -27,14 +26,23 @@ public:
 	{
 		text.setFont(font);
 	}
-	void SetText(std::string string)
-	{
-		text.setCharacterSize(24);
-		text.setFillColor(sf::Color::Red);
-		text.setString(string);
+	void SetText(std::string string);
 
-		auto rect = text.getGlobalBounds();
-		text.setOrigin(rect.width / 2, rect.height / 2);
+	void SetTextSize(unsigned int size)
+	{
+		text.setCharacterSize(size);
+	}
+	void SetFillColor(const sf::Color& color)
+	{
+		text.setFillColor(color);
+	}
+	void SetOutlineColor(const sf::Color& color)
+	{
+		text.setOutlineColor(color);
+	}
+	void SetOutlineThickness(float thickness)
+	{
+		text.setOutlineThickness(thickness);
 	}
 
 	void SetPositionOffset(const sf::Vector2f& offset)

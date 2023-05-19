@@ -61,5 +61,5 @@ void GameObject::SetSpawnPosition(const float x, const float y)
 	spawnPosition.x = x;
 	spawnPosition.y = y;
 
-	Debug::Log(spawnPosition);
+	//Debug::Log(spawnPosition);
 }

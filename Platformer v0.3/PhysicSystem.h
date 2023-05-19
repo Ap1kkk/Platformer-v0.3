@@ -45,10 +45,21 @@ public:
 		destroyBuffer.clear();
 	}
 
+	//static void Reload()
+	//{
+	//	FixtureManager::ClearDestroyBuffer();
+	//	ClearDestroyBuffer();
+
+	//	delete world;
+	//	world = new b2World(gravity);
+	//	//world->SetAllowSleeping(false);
+	//}
+
 private:
 	static std::unordered_map<EntityId, b2Body*> bodies;
 	static std::vector<b2Body*> destroyBuffer;
 
 	static b2World* world;
+	static b2Vec2 gravity;
 };
 

@@ -44,6 +44,13 @@ public:
 		sprite.setOrigin(size.width / 2, size.height / 2);
 	}
 
+	void UpdateTextureRect(sf::IntRect intRect)
+	{
+		sprite.setTextureRect(intRect);
+		auto size = sprite.getGlobalBounds();
+		sprite.setOrigin(size.width / 2, size.height / 2);
+	}
+
 	inline sf::FloatRect GetSpriteBounds() const { return sprite.getGlobalBounds(); }
 
 

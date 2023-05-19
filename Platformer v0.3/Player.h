@@ -9,6 +9,16 @@
 #include "AttackSensor.h"
 #include "JumpSensor.h"
 
+#include "Animation.h"
+#include "Animator.h"
+
+#include "IdlePlayerAnimState.h"
+#include "RunPlayerAnimState.h"
+#include "SprintedPlayerAnimState.h"
+#include "JumpFallPlayerAnimState.h"
+#include "JumpRaisedPlayerAnimState.h"
+#include "AttackPlayerAnimState.h"
+
 class Player : public GameObject
 	//, public EventListener
 {
@@ -29,10 +39,17 @@ private:
 	PlayerMovement* playerMovement;
 	AttackSensor* attackSensor;
 	JumpSensor* jumpSensor;
+
+	Animator* animator;
+
 	Window* window;
 
-	Filename playerTexture = "hero.png";
+	//Filename playerTexture = "hero.png"; PrototypeHero_noSword.png
+	Filename playerTexture = "PrototypeHero_noSword.png";
 
 	DrawLayer drawLayer = 100;
+
+	const short FRAME_WIDTH = 100;
+	const short FRAME_HEIGHT = 80;
 };
 

@@ -1,7 +1,5 @@
 #pragma once
 
-//typedef std::string EventType;
-
 enum class EventType
 {
 	OnComponentDestroyedEvent,
@@ -24,4 +22,15 @@ enum class EventType
 	OnTextDrawableDisabled,
 	OnTextDrawableDestroyed,
 
+	OnPlayerStartedRunning,
+	OnPlayerStoppedRunning,
+
+	OnPlayerStartedSprinting,
+	OnPlayerStoppedSprinting,
+
+	OnPlayerJumpRaise,
+	OnPlayerJumpFall,
+
+	OnPlayerLanded,
+	OnJumpSensorLeftCollisions
 };

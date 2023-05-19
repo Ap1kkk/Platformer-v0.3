@@ -4,11 +4,13 @@ std::unordered_map<EntityId, b2Body*> PhysicSystem::bodies = {};
 std::vector<b2Body*> PhysicSystem::destroyBuffer = {};
 
 b2World* PhysicSystem::world = new b2World(b2Vec2(0, -10));
+b2Vec2 PhysicSystem::gravity = { 0.f, -10.f };
 
-PhysicSystem::PhysicSystem(b2Vec2 gravity)
+PhysicSystem::PhysicSystem(b2Vec2 worldGravity)
 {
+	gravity = worldGravity;
 	world->SetGravity(gravity);
-	world->SetAllowSleeping(false);
+	//world->SetAllowSleeping(false);
 	Debug::Log("Initialized", typeid(*this).name());
 }
 

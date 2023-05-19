@@ -9,6 +9,14 @@
 #include "PauseScene.h"
 #include "MainScene.h"
 
+#include "ShopLevel.h"
+
+#include "FirstLevel.h"
+#include "SecondLevel.h"
+#include "ThirdLevel.h"
+#include "FourthLevel.h"
+
+
 #include "EventSystem.h"
 #include "EventListener.h"
 #include "IEvent.h"

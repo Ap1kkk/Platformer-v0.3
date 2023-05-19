@@ -16,9 +16,15 @@ public:
 	{
 		MakePhysical();
 
-		AddSpriteComponent(drawLayer);
-		drawableSpriteComponent->Disable();
-		SetTexture(textureFilename);
+		//AddSpriteComponent(drawLayer);
+		//drawableSpriteComponent->Disable();
+		//SetTexture(textureFilename);
+
+		AddTextComponent(drawLayer);
+		drawableTextComponent->Disable();
+		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/Montserrat-Medium.ttf"));
+		drawableTextComponent->SetText("    Press E    \nTo switch level");
+
 
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_staticBody;
@@ -35,7 +41,7 @@ public:
 		levelSwitcherComponent->Disable();
 		
 		//TODO ÏÎÌÅÍßÒÜ ÍÀ ENUM
-		levelSwitcherComponent->SetLevelToSwitch((short)levelToSwitch);
+		levelSwitcherComponent->SetLevelToSwitch(levelToSwitch);
 	}
 
 	void SetPosition(const sf::Vector2f& position)
@@ -56,14 +62,18 @@ public:
 
 	void EnableDraw() override
 	{
-		drawableSpriteComponent->Enable();
+		//drawableSpriteComponent->Enable();
+		drawableTextComponent->Enable();
+
 		levelSwitcherComponent->Enable();
 
 	}
 
 	void DisableDraw() override
 	{
-		drawableSpriteComponent->Disable();
+		//drawableSpriteComponent->Disable();
+		drawableTextComponent->Disable();
+
 		levelSwitcherComponent->Disable();
 
 	}

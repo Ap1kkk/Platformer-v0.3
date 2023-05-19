@@ -2,13 +2,14 @@
 
 void UIButton::Awake()
 {
-	Initialize(drawLayer);
+	Initialize();
+	AddSpriteComponent(drawLayer);
+	AddTextComponent(drawLayer);
 	SetTexture("floor.png");
-	//sf::Font font;
-	//font = AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/calibri.ttf");
 	drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/calibri.ttf"));
 	drawableTextComponent->SetText("213455");
-	drawableTextComponent->SetPositionOffset(sf::Vector2f(0.f, -20.f));
+	drawableTextComponent->SetFillColor(sf::Color::Red);
+	//drawableTextComponent->SetPositionOffset(sf::Vector2f(0.f, -20.f));
 	SetUIPosition(position);
 	spriteBounds = drawableSpriteComponent->GetSpriteBounds();
 }

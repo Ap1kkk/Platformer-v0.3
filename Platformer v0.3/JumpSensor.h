@@ -15,6 +15,10 @@ class JumpSensor : public IComponent, public ISensor
 {
 public:
 	JumpSensor() {}
+	~JumpSensor()
+	{
+		Debug::LogWarning("Destroyed");
+	}
 
 	void SetPhysicComponent(PhysicComponent* physicComponent);
 
@@ -32,7 +36,15 @@ public:
 
 private:
 	void EnterCollision() { ++intersectsCount; }
-	void LeaveCollision() { --intersectsCount; }
+	void LeaveCollision() 
+	{ 
+		--intersectsCount;
+		if (intersectsCount == 0)
+		{
+			EventData data(EventType::OnJumpSensorLeftCollisions);
+			Event::Invoke(data);
+		}
+	}
 
 	unsigned int intersectsCount = 0;
 

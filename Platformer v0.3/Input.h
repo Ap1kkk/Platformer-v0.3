@@ -62,8 +62,13 @@ public:
 	static bool IsKeyDown(Key keycode);
 	static bool IsKeyUp(Key keycode);
 
+	static bool IsInputAxesChanged();
+	static bool IsInputAxesEnabled();
+	static bool IsInputAxesDisabled();
+
 private:
 	static Bitmask thisFrameKeys;
 	static Bitmask lastFrameKeys;
 	static sf::Vector2f inputAxes;
+	static sf::Vector2f lastFrameInputAxes;
 };
