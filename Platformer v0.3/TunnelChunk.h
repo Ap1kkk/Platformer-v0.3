@@ -8,10 +8,10 @@
 #include "TunnelBackground.h"
 #include "SmallObstacle.h"
 
-class TestChunk1 : public Chunk
+class TunnelChunk : public Chunk
 {
 public:
-	TestChunk1(SharedContext sharedContext, ObjectContext objectContext);
+	TunnelChunk(SharedContext sharedContext, ObjectContext objectContext);
 
 	void Spawn(sf::Vector2f chunkPosition) override
 	{
@@ -19,9 +19,14 @@ public:
 		
 		TunnelCollidersData data;
 
-		background->SetTunnelNumber(TUNNEL_CHUNK_NUMBER);
+		background->SetTunnelNumber(tunnelChunkNumber);
 		background->SetPosition(chunkPosition);
 		ObjectCollection::AddObject(background);
+	}
+
+	void SetTunnelChunkNumber(int number)
+	{
+		tunnelChunkNumber = number;
 	}
 
 	void Destroy() override
@@ -33,6 +38,8 @@ private:
 	TunnelBackground* background;
 
 	TunnelCollidersData collidersData;
+
+	int tunnelChunkNumber;
 	//SmallObstacle* smallObstacle1;
 
 	//Filename smallObstacle1Texture = "car2.png";

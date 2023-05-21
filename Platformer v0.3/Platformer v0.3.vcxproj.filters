@@ -206,13 +206,10 @@
     <ClCompile Include="JumpSensor.cpp">
       <Filter>Исходные файлы\Components\Jump</Filter>
     </ClCompile>
-    <ClCompile Include="TestChunk1.cpp">
+    <ClCompile Include="GroundChunk.cpp">
       <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
-    <ClCompile Include="TestChunk2.cpp">
-      <Filter>Исходные файлы\Chunks</Filter>
-    </ClCompile>
-    <ClCompile Include="TestChunk3.cpp">
+    <ClCompile Include="GroundToTunnelChunk.cpp">
       <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
     <ClCompile Include="MainChunk.cpp">
@@ -387,6 +384,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="AttackPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelChunk.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundToTunnel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBarrier.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -568,13 +574,10 @@
     <ClInclude Include="MainChunk.h">
       <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
-    <ClInclude Include="TestChunk1.h">
+    <ClInclude Include="GroundChunk.h">
       <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
-    <ClInclude Include="TestChunk2.h">
-      <Filter>Файлы заголовков\Chunks</Filter>
-    </ClInclude>
-    <ClInclude Include="TestChunk3.h">
+    <ClInclude Include="GroundToTunnelChunk.h">
       <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
@@ -701,6 +704,15 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="AttackPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelChunk.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundToTunnel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelBarrier.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

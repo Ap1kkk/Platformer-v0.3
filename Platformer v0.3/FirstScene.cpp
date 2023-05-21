@@ -20,13 +20,6 @@ void FirstScene::Initialize()
 
 	//----------player--------------
 
-	//auto tileSet = sharedContext.tileManager->CreateTileSet("Jungle Tiles.png", sf::Vector2i(32, 32), 50);
-	//
-	//for (int offset = 0; offset < 20 * 32; offset += 32)
-	//{
-	//	sharedContext.tileManager->CreateTile(tileSet, offset % 20, sf::Vector2f(-64 + offset, -20));
-	//}
-
 	//----------enemy--------------
 
 	enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
@@ -41,6 +34,7 @@ void FirstScene::Initialize()
 
 	firstLevel = new MainChunk(sharedContext, objectContext);
 	firstLevel->SetLevelName("First Level");
+	firstLevel->SetBackgroundTexture("First Level/Byers_House.png");
 	firstLevel->SetLevelToSwitch(GameLevels::FirstLevel);
 	firstLevel->Spawn(sf::Vector2f(1920.f * 1, 0.f));
 
@@ -59,21 +53,6 @@ void FirstScene::Initialize()
 	fourthLevel->SetLevelToSwitch(GameLevels::FourthLevel);
 	fourthLevel->Spawn(sf::Vector2f(1920.f * 4, 0.f));
 
-
-	//chunk1 = new TestChunk1(sharedContext, objectContext);
-	//chunk1->Spawn(sf::Vector2f(1920.f * 1, 0.f));
-
-	//chunk2 = new TestChunk2(sharedContext, objectContext);
-	//chunk2->Spawn(sf::Vector2f(1920.f * 2, 0.f));
-
-	//chunk3 = new TestChunk3(sharedContext, objectContext);
-	//chunk3->Spawn(sf::Vector2f(1920.f * (-1), 0.f));
-
-	//levelSwitcher = sharedContext.entityManger->CreateEntity<LevelSwitcher>(objectContext);
-	//levelSwitcher->SetPosition(sf::Vector2f(0.f, 200.f));
-	//levelSwitcher->SetLevelTotransit(GameLevels::MainLevel);
-	//ObjectCollection::AddObject(levelSwitcher);
-
 	Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 }
 
@@ -89,7 +68,6 @@ void FirstScene::CaptureEvents()
 	if (Input::IsKeyDown(Input::Key::R))
 	{
 		SceneManager::SwitchScene(sceneId, sceneId);
-		//Debug::Log("Left");
 	}
 
 	if (Input::IsKeyDown(Input::Key::Esc))
@@ -102,7 +80,6 @@ void FirstScene::CaptureEvents()
 		{
 			sharedContext.gameStateMachine->Pause();
 		}
-		//Debug::Log("Left");
 	}
 }
 

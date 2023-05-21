@@ -173,6 +173,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="GarbageCollector.cpp" />
+    <ClCompile Include="GroundToTunnel.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="IAnimationState.cpp" />
     <ClCompile Include="IAnimator.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="JumpFallPlayerAnimState.cpp" />
     <ClCompile Include="JumpRaisedPlayerAnimState.cpp" />
     <ClCompile Include="JumpSensor.cpp" />
+    <ClCompile Include="LevelBarrier.cpp" />
     <ClCompile Include="LevelLabel.cpp" />
     <ClCompile Include="LevelSwitcher.cpp" />
     <ClCompile Include="LevelSwitcherComponent.cpp" />
@@ -218,9 +220,9 @@
     <ClCompile Include="ShopLevel.cpp" />
     <ClCompile Include="SmallObstacle.cpp" />
     <ClCompile Include="SprintedPlayerAnimState.cpp" />
-    <ClCompile Include="TestChunk1.cpp" />
-    <ClCompile Include="TestChunk2.cpp" />
-    <ClCompile Include="TestChunk3.cpp" />
+    <ClCompile Include="TunnelChunk.cpp" />
+    <ClCompile Include="GroundChunk.cpp" />
+    <ClCompile Include="GroundToTunnelChunk.cpp" />
     <ClCompile Include="ThirdLevel.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileManager.cpp" />
@@ -272,6 +274,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="GarbageCollector.h" />
+    <ClInclude Include="GroundToTunnel.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="IAnimationState.h" />
     <ClInclude Include="IAnimator.h" />
@@ -294,6 +297,7 @@
     <ClInclude Include="JumpFallPlayerAnimState.h" />
     <ClInclude Include="JumpRaisedPlayerAnimState.h" />
     <ClInclude Include="JumpSensor.h" />
+    <ClInclude Include="LevelBarrier.h" />
     <ClInclude Include="LevelLabel.h" />
     <ClInclude Include="LevelSwitcher.h" />
     <ClInclude Include="LevelSwitcherComponent.h" />
@@ -324,9 +328,9 @@
     <ClInclude Include="ShopLevel.h" />
     <ClInclude Include="SmallObstacle.h" />
     <ClInclude Include="SprintedPlayerAnimState.h" />
-    <ClInclude Include="TestChunk1.h" />
-    <ClInclude Include="TestChunk2.h" />
-    <ClInclude Include="TestChunk3.h" />
+    <ClInclude Include="TunnelChunk.h" />
+    <ClInclude Include="GroundChunk.h" />
+    <ClInclude Include="GroundToTunnelChunk.h" />
     <ClInclude Include="ThirdLevel.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileManager.h" />

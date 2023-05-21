@@ -11,9 +11,6 @@
 #include "RoadSprite.h"
 
 #include "MainChunk.h"
-#include "TestChunk1.h"
-#include "TestChunk2.h"
-#include "TestChunk3.h"
 
 #include "LevelSwitcher.h"
 
@@ -54,9 +51,6 @@ private:
 	Enemy* enemy;
 
 	MainChunk* mainChunk;
-	TestChunk1* chunk1;
-	TestChunk2* chunk2;
-	TestChunk3* chunk3;
 
 
 	MainChunk* shopLevel;

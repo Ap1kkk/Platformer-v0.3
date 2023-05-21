@@ -29,6 +29,11 @@ public:
 		this->nextLevel = nextLevel;
 	}
 
+	void SetBackgroundTexture(Filename textureFilename)
+	{
+		backgroundFilename = textureFilename;
+	}
+
 	void Destroy() override
 	{
 	}
