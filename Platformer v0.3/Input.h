@@ -3,20 +3,55 @@
 #include "SFML/Graphics.hpp"
 #include "Bitmask.h"
 
+using Keyboard = sf::Keyboard;
+
 class Input
 {
 public:
 	enum class Key
 	{
 		None = 0,
-		Left = 1,
-		Right = 2,
-		Up = 3,
-		Down = 4,
-		Esc = 5,
-		LBracket = 6,
-		RBracket = 7,
-		E = 8
+		Left,
+		Right,
+		Up,
+		Down,
+		Horizontal,
+		Vertical,
+		Space,
+		Esc,
+		LBracket,
+		RBracket,
+		LShift,
+		RShift,
+		LMouseButton,
+		RMouseButton,
+		Q,
+		W,
+		E,
+		R,
+		T,
+		Y,
+		U,
+		I,
+		O,
+		P,
+		A,
+		S,
+		D,
+		F,
+		G,
+		H,
+		J,
+		K,
+		L,
+		Z,
+		X,
+		C,
+		V,
+		B,
+		N,
+		M,
+
 	};
 
 	static void Update();
@@ -27,8 +62,13 @@ public:
 	static bool IsKeyDown(Key keycode);
 	static bool IsKeyUp(Key keycode);
 
+	static bool IsInputAxesChanged();
+	static bool IsInputAxesEnabled();
+	static bool IsInputAxesDisabled();
+
 private:
 	static Bitmask thisFrameKeys;
 	static Bitmask lastFrameKeys;
 	static sf::Vector2f inputAxes;
+	static sf::Vector2f lastFrameInputAxes;
 };

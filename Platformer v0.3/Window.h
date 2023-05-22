@@ -3,10 +3,7 @@
 #include <string>
 
 #include "SFML/Graphics.hpp"
-
-#include "AssetAllocator.h"
-
-class Entity;
+#include "DataTypes.h"
 
 class Window
 {
@@ -23,6 +20,8 @@ public:
 	sf::Vector2u GetCentre() const;
 	const sf::View& GetView() const;
 	void SetView(const sf::View& view);
+
+	const sf::RenderWindow& GetWindow() const { return window; }
 
 	bool IsOpen();
 

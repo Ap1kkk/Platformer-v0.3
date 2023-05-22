@@ -2,84 +2,92 @@
 
 Game::Game(b2Vec2 gravity) : window("Platformer")
 {
+	Debug::Log("Start initializing...", typeid(*this).name());
+
+	Time::Restart();
+
+	eventSystem = new EventSystem;
+
+
+	objectCollection = new ObjectCollection;
 	assetAllocator = new AssetAllocator;
 	entityManger = new EntityManager;
+	componentManager = new ComponentManager;
 	physicSystem = new PhysicSystem(gravity);
+	renderSystem = new RenderSystem(&window);
+	sceneManager = new SceneManager;
+	tileManager = new TileManager;
+	gameStateMachine = new GameStateMachine();
+	worldContactListener = new WorldContactListener();
 
 	//-------------------Debug Draw-------------------------------
 	physicsDebugDraw = new PhysicsDebugDraw(&window);
 
+	physicSystem->SetContactListener<WorldContactListener>(worldContactListener);
+
 	physicSystem->SetDebugDraw(physicsDebugDraw);
 	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_aabbBit); //с отрисовкой площади
 	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
+
 	//-------------------Debug Draw-------------------------------
 
 
-	deltaTime = clock.restart().asSeconds();
+	sharedContext.window = &window;
+	sharedContext.objectCollection = objectCollection;
+	sharedContext.assetAllocator = assetAllocator;
+	sharedContext.entityManger = entityManger;
+	sharedContext.componentManager = componentManager;
+	sharedContext.physicsDebugDraw = physicsDebugDraw;
+	sharedContext.renderSystem = renderSystem;
+	sharedContext.tileManager = tileManager;
+	sharedContext.sceneManager = sceneManager;
+	sharedContext.gameStateMachine = gameStateMachine;
+	sharedContext.worldContactListener = worldContactListener;
+	sharedContext.eventSystem = eventSystem;
 
-	// -----------------------TEST------------------------------------
-
-	//----------ship--------------
-	ship = entityManger->CreateEntity<GameObject>();
-	ship->MakeDrawable();
-	ship->SetTexture("ship.png");
-
-	auto physicComponent = ship->MakePhysical();
-
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.position = b2Vec2(50, 20);
-	physicComponent->SetBodyDef(bodyDef);
-	physicComponent->InitializeBody();
-
-	b2CircleShape circleShape;
-	circleShape.m_p.Set(0, 0);
-	circleShape.m_radius = 20.f;
-
-	b2FixtureDef circleFixtureDef;
-
-	circleFixtureDef.shape = &circleShape;
-	circleFixtureDef.density = 1;
-
-	physicComponent->SetFixtureDef(circleFixtureDef);
-	//----------ship--------------
-
-
-	//----------floor--------------
-	
-	floor = entityManger->CreateEntity<GameObject>();
-	floor->MakeDrawable();
-	floor->SetTexture("floor.png");
-
-	auto physicComponent2 = floor->MakePhysical();
-
-	b2BodyDef bodyDef2;
-	bodyDef2.type = b2_staticBody;
-	bodyDef2.position = b2Vec2(50, 200);
-	physicComponent2->SetBodyDef(bodyDef2);
-	physicComponent2->InitializeBody();
-
-	b2PolygonShape boxShape2;
-	auto floorSpriteHSize = floor->GetSpriteBoxHalfSize();
-	boxShape2.SetAsBox(floorSpriteHSize.x, floorSpriteHSize.y);
-
-	b2FixtureDef boxFixtureDef2;
-	boxFixtureDef2.shape = &boxShape2;
-	boxFixtureDef2.density = 0;
-
-	physicComponent2->SetFixtureDef(boxFixtureDef2);
-
-	//----------floor--------------
-
-	// -----------------------TEST------------------------------------
 
 	Debug::Log("Initialized", typeid(*this).name());
 }
 
 Game::~Game()
 {
+	ObjectCollection::Clear();
 	delete assetAllocator;
 	delete entityManger;
+	delete physicSystem;
+	delete renderSystem;
+	delete sceneManager;
+	delete tileManager;
+	delete gameStateMachine;
+	delete worldContactListener;
+
+	delete eventSystem;
+
+	Debug::LogWarning("Game destroyed"); 
+}
+
+void Game::Initialize()
+{
+	//TODO сюда добавить логику инициализации состояний
+	gameStateMachine->AddState<CreatedGameState>(sharedContext);
+	gameStateMachine->AddState<InitializedGameState>(sharedContext);
+	gameStateMachine->AddState<RunnedGameState>(sharedContext);
+	gameStateMachine->AddState<PausedGameState>(sharedContext);
+
+	//TODO инициализировать все состояния
+
+	gameStateMachine->Create();
+}
+
+void Game::ProcessGameLoop()
+{
+	ProcessInput();
+	window.Update();
+	gameStateMachine->Update();
+	Draw();
+	sceneManager->UpdateSwitchBuffer();
+	EventSystem::ClearDestroyBuffer();
+	CalculateDeltaTime();
 }
 
 void Game::ProcessInput()
@@ -89,30 +97,32 @@ void Game::ProcessInput()
 
 void Game::EarlyUpdate()
 {
-	physicSystem->Update(1.f / 60.f, 6, 2);
-	ship->EarlyUpdate();
-	floor->EarlyUpdate();
+	physicSystem->Update(Time::FixedDeltaTime(), 6, 2);
+	sceneManager->EarlyUpdate();
 }
 
 void Game::Update()
 {
-
 	window.Update();
-	auto direction = Input::GetInputAxes();
+	sceneManager->Update();
 }
 
 void Game::LateUpdate()
 {
+	sceneManager->LateUpdate();
+}
+
+void Game::UpdateUI()
+{
+	sceneManager->UpdateUI();
 }
 
 void Game::Draw()
 {
 	window.BeginDraw();
 
-	//entityManger->Draw(&window);
-	////TODO вызов отрисовки у объектов
-	ship->Draw(&window);
-	floor->Draw(&window);
+	renderSystem->Draw();
+	sceneManager->Draw(&window);
 	physicSystem->DrawDebug();
 
 	window.EndDraw();
@@ -120,5 +130,5 @@ void Game::Draw()
 
 void Game::CalculateDeltaTime()
 {
-	deltaTime = clock.restart().asSeconds();
+	Time::Restart();
 }

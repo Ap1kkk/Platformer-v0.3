@@ -9,157 +9,746 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Файлы заголовков\Scenes">
+      <UniqueIdentifier>{6b7c3f8b-9dae-4eb6-85fa-5316675a8379}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Components">
+    <Filter Include="Файлы заголовков\Scenes\Scene utils">
+      <UniqueIdentifier>{459cb89e-0b89-472c-8af3-bbce313ec5e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Scenes">
+      <UniqueIdentifier>{bc24f03d-1df7-4130-a861-7ecbb3079592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Scenes\Scene utils">
+      <UniqueIdentifier>{acef1cbc-b46f-44c1-ad2c-cf4954515abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine">
+      <UniqueIdentifier>{a199cb4d-b2e2-4ace-b955-50bbb36d714d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GameObjects">
+      <UniqueIdentifier>{4ac8788b-b05f-41b5-9264-f6cfc5d5147f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Utils">
+      <UniqueIdentifier>{7510385b-d0c1-440c-b728-1d5a0abc59bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Utils\SFML libraries">
+      <UniqueIdentifier>{65bda31b-e48a-4e42-8686-2c6dea51aa31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Base Components">
       <UniqueIdentifier>{5b1b2d43-e280-40d8-a741-de5614f6b289}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Entities">
-      <UniqueIdentifier>{24621ca2-519d-4e51-bde3-ca42e63c9599}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Components\Component utils">
+    <Filter Include="Файлы заголовков\Engine\Base Components\Component utils">
       <UniqueIdentifier>{1b4494a8-dfa0-4956-ac37-0c763aae89f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Entities\Entity utils">
+    <Filter Include="Файлы заголовков\Engine\Base Entities">
+      <UniqueIdentifier>{24621ca2-519d-4e51-bde3-ca42e63c9599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Base Entities\Entity utils">
       <UniqueIdentifier>{97275342-7306-4cd6-9730-2545ef023c98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Components">
-      <UniqueIdentifier>{48784c1e-3647-4ce1-ac43-e7e33312fa3a}</UniqueIdentifier>
+    <Filter Include="Файлы заголовков\Components">
+      <UniqueIdentifier>{9bc83a7a-6480-45c3-a760-21e6d22501f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Components\Component utils">
-      <UniqueIdentifier>{1be2e4c7-be17-4ae8-8e0e-49bac6896d1f}</UniqueIdentifier>
+    <Filter Include="Исходные файлы\Engine">
+      <UniqueIdentifier>{e4770a5a-729a-4558-85a9-0aa64e6eaa7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Entities">
+    <Filter Include="Исходные файлы\Engine\Base Entities">
       <UniqueIdentifier>{25e46926-06f4-42fa-9f04-521fe57929fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Entities\Entity utils">
+    <Filter Include="Исходные файлы\Engine\Base Entities\Entity utils">
       <UniqueIdentifier>{52a91fac-e581-4c57-866c-9538fe8b39ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Base Components">
+      <UniqueIdentifier>{48784c1e-3647-4ce1-ac43-e7e33312fa3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Base Components\Component utils">
+      <UniqueIdentifier>{1be2e4c7-be17-4ae8-8e0e-49bac6896d1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameObjects">
+      <UniqueIdentifier>{c2825cca-2048-4d78-8ce6-1f97ee40b40c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Components">
+      <UniqueIdentifier>{9e221fec-fed4-4a57-b871-87729c2ce2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Tile">
+      <UniqueIdentifier>{0bb02602-215a-4b85-a9bd-6253c377fd6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\Tile">
+      <UniqueIdentifier>{6d80b1f9-c37e-466c-bc70-fcdc244885ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Components\Jump">
+      <UniqueIdentifier>{091c5e7a-9667-4a3d-8a0b-cfe64589b8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Components\Jump">
+      <UniqueIdentifier>{0a73bf2f-9cd1-416b-8f51-8d339c3d4668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\GameStates">
+      <UniqueIdentifier>{90bc5e76-3cd9-40a5-ac55-4e5868d1e8d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Chunks">
+      <UniqueIdentifier>{3a5195f4-bd3c-45b3-9b5b-aece873a8633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Chunks">
+      <UniqueIdentifier>{ddd93670-c8ab-4114-9786-e5b0b7394f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameStates">
+      <UniqueIdentifier>{40b71849-e756-46ce-a14c-136ee1a84a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\EventSystem">
+      <UniqueIdentifier>{ccb06484-5715-423b-aafa-a3b12b9ad605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Engine\EventSystem">
+      <UniqueIdentifier>{05ee7ebd-96c8-4d8e-9bc7-d398fa16ff07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Events">
+      <UniqueIdentifier>{b9b27c6d-81df-4ed8-bfdf-6373c8cad0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Events">
+      <UniqueIdentifier>{82178936-d4c0-4cbe-9123-003cb60e1911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\AnimationStates">
+      <UniqueIdentifier>{065afcb5-e3ff-463b-bf5d-180a9fed3522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine\Animation">
+      <UniqueIdentifier>{8f40aa3d-c765-4fb6-9116-e744c1707c10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ComponentManager.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
+    </ClCompile>
+    <ClCompile Include="IComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
+    </ClCompile>
+    <ClCompile Include="IEntity.cpp">
+      <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Исходные файлы\Engine\Base Entities\Entity utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="IScene.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstScene.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetAllocator.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmask.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectCollection.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsDebugDraw.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicSystem.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Исходные файлы\Engine\Base Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GarbageCollector.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
     <ClCompile Include="Platformer v0.3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="AssetAllocator.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="DrawableComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="TileSet.cpp">
+      <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="Debug.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="TileManager.cpp">
+      <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicSystem.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="ISensor.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+    <ClCompile Include="JumpSensor.cpp">
+      <Filter>Исходные файлы\Components\Jump</Filter>
     </ClCompile>
-    <ClCompile Include="ComponentManager.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+    <ClCompile Include="GroundChunk.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
-    <ClCompile Include="IComponent.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+    <ClCompile Include="GroundToTunnelChunk.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
-    <ClCompile Include="IEntity.cpp">
-      <Filter>Исходные файлы\Entities\Entity utils</Filter>
+    <ClCompile Include="MainChunk.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Исходные файлы\Entities\Entity utils</Filter>
+    <ClCompile Include="Chunk.cpp">
+      <Filter>Исходные файлы\Chunks</Filter>
     </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
-      <Filter>Исходные файлы\Entities\Entity utils</Filter>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="AttackSensor.cpp">
+      <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Bitmask.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Background.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ITransform.cpp">
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
+    </ClCompile>
+    <ClCompile Include="RoadSprite.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldContactListener.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformUIComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallObstacle.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="IGameStateMachine.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="InitializedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PausedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="RunnedGameState.cpp">
+      <Filter>Исходные файлы\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ISceneManager.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Исходные файлы\Scenes\Scene utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovement.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="EventListener.cpp">
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem.cpp">
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="IEvent.cpp">
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="IEventListener.cpp">
+      <Filter>Исходные файлы\Engine\EventSystem</Filter>
     </ClCompile>
     <ClCompile Include="IBody.cpp">
-      <Filter>Исходные файлы\Components\Component utils</Filter>
+      <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsDebugDraw.cpp">
+    <ClCompile Include="Damageble.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableSpriteComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableTextComponent.cpp">
+      <Filter>Исходные файлы\Engine\Base Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FixtureManager.cpp">
+      <Filter>Исходные файлы\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ILevelSwitcher.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcher.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelBackground.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelCollidersData.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcherComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSwitcherSensor.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="FourthLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdLevel.cpp">
+      <Filter>Исходные файлы\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
+    <ClCompile Include="LevelLabel.cpp">
+      <Filter>Исходные файлы\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnimator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnimationState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IdlePlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RunPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SprintedPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpRaisedPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpFallPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPlayerAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelChunk.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundToTunnel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBarrier.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssetAllocator.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicSystem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="DataTypes.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="GarbageCollector.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
-    </ClInclude>
     <ClInclude Include="ComponentManager.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
-    </ClInclude>
-    <ClInclude Include="IComponent.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Файлы заголовков\Entities\Entity utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities\Entity utils</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
-      <Filter>Файлы заголовков\Entities\Entity utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities\Entity utils</Filter>
     </ClInclude>
     <ClInclude Include="IEntity.h">
-      <Filter>Файлы заголовков\Entities\Entity utils</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities\Entity utils</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Файлы заголовков\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawableComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Bitmask.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\Base Entities</Filter>
     </ClInclude>
     <ClInclude Include="IBody.h">
-      <Filter>Файлы заголовков\Components\Component utils</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsDebugDraw.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
     <ClInclude Include="PhysicComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.h">
+      <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstScene.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetAllocator.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmask.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTypes.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GarbageCollector.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectCollection.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsDebugDraw.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicSystem.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedContext.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectContext.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ITileManager.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileManager.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileSet.h">
+      <Filter>Файлы заголовков\Engine\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpSensor.h">
+      <Filter>Файлы заголовков\Components\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="ISensor.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovement.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ISceneManager.h">
+      <Filter>Файлы заголовков\Scenes\Scene utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameStateMachine.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PausedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="InitializedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="RunnedGameState.h">
+      <Filter>Файлы заголовков\Engine\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScene.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RoadSprite.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackSensor.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ITransform.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallObstacle.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldContactListener.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformUIComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Chunk.h">
+      <Filter>Файлы заголовков\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="MainChunk.h">
+      <Filter>Файлы заголовков\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundChunk.h">
+      <Filter>Файлы заголовков\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundToTunnelChunk.h">
+      <Filter>Файлы заголовков\Chunks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EventData.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IEvent.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventListener.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventSystem.h">
+      <Filter>Файлы заголовков\Engine\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="OnEntityDiedData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnLevelSwitchData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTurnedFaceData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="OnComponentUserData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTypes.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableSpriteComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableTextComponent.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Damageble.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="FixtureManager.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ILevelSwitcher.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcher.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcherComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSwitcherSensor.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelBackground.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelCollidersData.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FourthLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdLevel.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLabel.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="IdlePlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationState.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationTypes.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimationState.h">
+      <Filter>Файлы заголовков\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Файлы заголовков\Engine\Base Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimator.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RunPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SprintedPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpRaisedPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpFallPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPlayerAnimState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelChunk.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundToTunnel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelBarrier.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sfml-audio-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-audio-d-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-graphics-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-graphics-d-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-network-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-network-d-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-system-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-system-d-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-window-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="sfml-window-d-2.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
+    <None Include="openal32.dll">
+      <Filter>Файлы заголовков\Engine\Utils\SFML libraries</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <box2d/b2_types.h>
 
 class Bitmask
 {
@@ -8,7 +9,8 @@ public:
 	Bitmask();
 
 	void SetMask(Bitmask& other);
-	uint32_t GetMask() const;
+	uint64_t GetMask() const;
+	uint16 GetMask16() const;
 
 	bool GetBit(int pos) const;
 	void SetBit(int pos, bool on);
@@ -18,6 +20,15 @@ public:
 
 	void Clear();
 
+	bool operator < (const Bitmask& right) const
+	{
+		return this->bits < right.bits;
+	}
+	bool operator > (const Bitmask& right) const
+	{
+		return this->bits > right.bits;
+	}
+
 private:
-	uint32_t bits;
+	uint64_t bits;
 };

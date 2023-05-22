@@ -1,6 +1,7 @@
 #include "Window.h"
 
-Window::Window(const std::string& windowName) : window(sf::VideoMode(1024, 768), windowName, sf::Style::Close | sf::Style::Titlebar)
+Window::Window(const std::string& windowName) : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), windowName, sf::Style::Close | sf::Style::Titlebar)
+//Window::Window(const std::string& windowName) : window(sf::VideoMode(1920, 1080), windowName, sf::Style::Close | sf::Style::Titlebar)
 {
 
 }

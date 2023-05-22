@@ -2,22 +2,22 @@
 
 #include "EntityManager.h"
 #include "ComponentManager.h"
+#include "RenderSystem.h"
+#include "ObjectCollection.h"
 
+#include "Debug.h"
+
+/// <summary>
+/// Responsible for correct deleting of objects
+/// </summary>
 class GarbageCollector
 {
 public:
-	// Методы для очистки объекта во всех системах
+	/// <summary>
+	/// Delete pointer to an destoryed object from all systems
+	/// </summary>
+	/// <param name="entityId"></param>
+	static void DestroyEntity(EntityId entityId);
 
-	static void DestroyEntity(EntityId entityId)
-	{
-		//TODO добавить очистку из всех систем
-		EntityManager::DestroyEntity(entityId);
-	}
-
-	static void DestroyComponent(ComponentId componentId)
-	{
-		ComponentManager::DestroyComponent(componentId);
-	}
-
-	//TODO добавить выключение и включение объекта в системе физики и отрисовки
+	static void DestroyComponent(ComponentId componentId);
 };

@@ -1,9 +1,11 @@
 #pragma once
-#include<SFML/Audio.hpp>
+
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
 #include <assert.h>
 #include <string>
-#include<map>
+#include <map>
 
 class AssetAllocator
 {
@@ -13,14 +15,14 @@ public:
 
 	static sf::Texture& GetTexture(std::string const& filename);
 	static sf::Texture* GetTexturePtr(std::string const& filename);
-	//static sf::SoundBuffer& GetSoundBuffer(std::string const& filename);
-	//static sf::Font& GetFont(std::string const& filename);
+	static sf::SoundBuffer& GetSoundBuffer(std::string const& filename);
+	static sf::Font& GetFont(std::string const& filename);
 	static std::string& GetPath();
 private:
 
-	std::map<std::string, sf::Texture> m_Textures;
-	std::map<std::string, sf::SoundBuffer> m_SoundBuffer;
-	std::map<std::string, sf::Font> m_Fonts;
+	std::map<std::string, sf::Texture> textures;
+	std::map<std::string, sf::SoundBuffer> soundBuffer;
+	std::map<std::string, sf::Font> fonts;
 
 	static std::string path;
 

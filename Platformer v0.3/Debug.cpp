@@ -69,6 +69,30 @@ void Debug::Log(const sf::Vector2f vector)
 	std::cout << "LOG: (" << vector.x << " ; " << vector.y << ")\n";
 }
 
+void Debug::Log(const b2Vec2 vector)
+{
+	std::cout << "LOG: (" << vector.x << " ; " << vector.y << ")\n";
+}
+
+void Debug::Log(const uint16 bitmask)
+{
+	std::cout << "LOG: " << bitmask << "\n";
+}
+
+void Debug::LogInfo(const std::string& msg)
+{
+	SetConsoleTextAttribute(handle, (int)ConsoleColor::CYAN);
+	std::cout << "INFO: " << msg << "\n";
+	SetConsoleTextAttribute(handle, (int)ConsoleColor::WHITE);
+}
+
+void Debug::LogInfo(const std::string& msg, const std::string& from)
+{
+	SetConsoleTextAttribute(handle, (int)ConsoleColor::CYAN);
+	std::cout << std::setiosflags(std::ios::left) << std::setw(DEBUG_LEFT_SIZE) << from << std::setiosflags(std::ios::left) << std::setw(DEBUG_TYPE_SIZE) << " INFO: " << msg << "\n";
+	SetConsoleTextAttribute(handle, (int)ConsoleColor::WHITE);
+}
+
 void Debug::LogWarning(const std::string& msg)
 {
 	SetConsoleTextAttribute(handle, (int)ConsoleColor::YELLOW);

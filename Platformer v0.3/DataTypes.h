@@ -2,10 +2,31 @@
 
 #include <string>
 
+#include <box2d/box2d.h>
+//#include <SFML/Graphics.hpp>
+
 typedef unsigned int EntityId;
 typedef unsigned int ComponentId;
+typedef unsigned int ComponentLayer;
+typedef int DrawLayer;
+typedef unsigned int SceneId;
+typedef unsigned int TileId;
+typedef unsigned int TileSetId;
+typedef unsigned int SensorId;
+typedef unsigned int FixtureId;
+typedef unsigned int ChunkId;
+typedef unsigned int ListenerId;
 
 typedef std::string ComponentType;
+typedef std::string Filename;
+
+//#define WINDOW_WIDTH 1366
+//#define WINDOW_HEIGHT 768
+#define WINDOW_WIDTH 1920
+#define WINDOW_HEIGHT 1080
+
+//#define FIXED_DELTA_TIME 1.f / 20.f;
+#define FIXED_DELTA_TIME 1.f / 45.f;
 
 // 1 meter (box2d) is more or less 64 pixels (sfml)
 #define RATIO 30.0f
@@ -16,4 +37,39 @@ typedef std::string ComponentType;
 #define METERS_PER_PIXEL UNRATIO
 
 //formula to convert radians to degrees = (radians * (pi/180))
-#define RADTODEG (b2_pi / 180.0)
+#define RADTODEG (180.f / b2_pi)
+
+enum class GameStateType
+{
+	Created = 0,
+	Initialized,
+	Runned,
+	Paused,
+	Exited
+};
+
+enum class CollisionLayers
+{
+	Default = 0,
+	Ground,
+	SmallObstacle,
+	Player,
+	Enemy,
+	Projectile,
+	Sensor,
+	JumpSensor,
+	AttackSensor,
+	LevelSwitcher
+};
+
+enum class GameLevels
+{
+	FirstScene = 0,
+	PauseScene,
+	MainLevel,
+	ShopLevel,
+	FirstLevel,
+	SecondLevel,
+	ThirdLevel,
+	FourthLevel
+};

@@ -54,6 +54,9 @@
 
 // User data
 
+//typedef unsigned int FixtureId;
+
+
 /// You can define this to inject whatever data you want in b2Body
 struct B2_API b2BodyUserData
 {
@@ -76,6 +79,17 @@ struct B2_API b2FixtureUserData
 
 	/// For legacy compatibility
 	uintptr_t pointer;
+
+	///Added by Ap1kkk for Platformer
+	bool operator == (const b2FixtureUserData& r)
+	{
+		return this->pointer == r.pointer;
+	}
+	///Added by Ap1kkk for Platformer
+	bool operator != (const b2FixtureUserData& r)
+	{
+		return !(*this == r);
+	}
 };
 
 /// You can define this to inject whatever data you want in b2Joint

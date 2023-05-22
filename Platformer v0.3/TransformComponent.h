@@ -1,45 +1,34 @@
 #pragma once
 
-#include "Component.h"
+//#include "IComponent.h"
+#include "ITransform.h"
 #include "Debug.h"
 
-class TransformComponent : public Component
+/// <summary>
+/// Contains position and rotation of an object
+/// Transforms synchronized with physic world
+/// </summary>
+class TransformComponent : public ITransform
 {
 public:
-	TransformComponent() {}
-	~TransformComponent() 
-	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
-	}
+	TransformComponent();
+	~TransformComponent() {}
 
-	void AddPosition(sf::Vector2f position)
-	{
-		this->position += position;
-	}
+	void AddPosition(sf::Vector2f position) override;
+	void AddPosition(float x, float y) override;
 
-	void AddPosition(float x, float y)
-	{
-		this->position.x += x;
-		this->position.y += y;
-	}
+	void SetPosition(sf::Vector2f position) override;
+	void SetPosition(float x, float y) override;
 
-	void SetPosition(sf::Vector2f position)
-	{
-		this->position = position;
-	}
-	void SetPosition(float x, float y)
-	{
-		this->position.x = x;
-		this->position.y = y;
-	}
+	void SetAngleInDeg(float angleInDeg) override;
+	void SetAngleInRad(float angleInRad) override;
 
-	sf::Vector2f& GetPosition()
-	{
-		return position;
-	}
+	float GetAngle() const override;
+	sf::Vector2f& GetPosition() override;
 
-	//TODO добавить rotation
+	//TODO добавить scale
 
 private:
-	sf::Vector2f position;
+	sf::Vector2f position = { 0.f, 0.f };
+	float angle = 0.f;
 };

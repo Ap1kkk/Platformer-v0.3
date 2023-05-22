@@ -1,30 +1,59 @@
 #pragma once
 
+#include "Time.h"
 #include "DataTypes.h"
+#include "ObjectContext.h"
 #include "Debug.h"
-//typedef unsigned int EntityTypeId;
 
+
+/// <summary>
+/// Interface for any game objects
+/// </summary>
 class IEntity
 {
 public:
 	IEntity() : entityId(entityIdCounter++) {}
-	virtual ~IEntity()
-	{
-		//Debug::LogWarning("Destructor", typeid(*this).name());
-	}
-	//virtual void EarlyUpdate(float deltaTime) = 0;
-	//virtual void Update(float deltaTime) = 0;
-	//virtual void LateUpdate(float deltaTime) = 0;
-	virtual void EarlyUpdate() = 0;
-	virtual void Update() = 0;
-	virtual void LateUpdate() = 0;
-	//virtual void Draw(Window* window) = 0;
+	virtual ~IEntity();
+
+	virtual void Awake() {}
+
+	virtual void Enable() = 0;
+	virtual void Disable() = 0;
+
+	virtual void EarlyUpdate() {}
+	virtual void Update() {}
+	virtual void LateUpdate() {}
+	virtual void Draw(Window* window) {}
+
+	virtual void UpdateUI() {}
+	virtual void UpdateViewCenter() {}
+
+	virtual void ProcessNotAwokenComponents() = 0;
+
+	virtual void ComponentsEarlyUpdate() = 0;
+	virtual void ComponentsUpdate() = 0;
+	virtual void ComponentsLateUpdate() = 0;
+	virtual void ComponentsUpdateUI() = 0;
+
+	virtual void OnCollisionEnter(b2Contact* contact) {}
+	virtual void OnCollisionExit(b2Contact* contact) {}
+
+	virtual void OnDestroy() {}
+
+	virtual void OnEnable() {}
+	virtual void OnDisable() {}
+
+	virtual void Destroy() = 0;
 
 	inline const EntityId GetEntityId() const { return entityId; }
 
-protected:
-	EntityId entityId;
+	inline void SetObjectContext(ObjectContext context) { objectContext = context; }
 
+protected:
+	const EntityId entityId;
+	ObjectContext objectContext;
+
+private:
 	static EntityId entityIdCounter;
 };
 

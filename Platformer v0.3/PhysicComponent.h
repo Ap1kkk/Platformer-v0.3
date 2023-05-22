@@ -1,54 +1,109 @@
 #pragma once
 
-#include "Component.h"
+#include "IComponent.h"
 #include "IBody.h"
+#include "PhysicSystem.h"
+#include "TransformComponent.h"
 #include "Debug.h"
 
-#include "PhysicSystem.h"
-
-class PhysicComponent : public Component, public IBody
+#include "FixtureManager.h"
+/// <summary>
+/// Responsible for physics part of an object
+/// Contains physic body of an object
+/// </summary>
+class PhysicComponent : public IComponent, public IBody
 {
 public:
-	PhysicComponent()
+	PhysicComponent();
+	~PhysicComponent() {}
+	
+	/// <summary>
+	/// Represents physic body position
+	/// </summary>
+	/// <returns>Vector2f with position x and y coord </returns>
+	sf::Vector2f GetBodyPosition();
+	
+	/// <summary>
+	/// Represents physic body angle in radians
+	/// </summary>
+	/// <returns>Body's angle</returns>
+	float GetBodyAngle();
+
+	/// <summary>
+	/// Returns a pointer to a physic body of an object
+	/// </summary>
+	/// <returns></returns>
+	b2Body* GetBody();
+
+	/// <summary>
+	/// Sets the pointer to owner's TransformComponent
+	/// </summary>
+	void Initialize(TransformComponent* transform);
+
+	/// <summary>
+	/// Make the box2d system create the body
+	/// </summary>
+	void InitializeBody();
+
+	void SetBodyDef(b2BodyDef newBodyDef);
+
+	//TODO переработать
+	Fixture* AddFixture(b2FixtureDef& newFixtureDef);
+
+	/// <summary>
+	/// Make the box2d system destroy a body fixture
+	/// </summary>
+	/// <param name="exitingFixture"></param>
+	void DeleteFixture(FixtureId fixtureId);
+
+	Sensor* AddSensor(b2FixtureDef& newFixtureDef)
 	{
-		bodyDef.position.Set(0.f, 0.f);
-	}
-	~PhysicComponent()
-	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
-		PhysicSystem::DestroyBody(this->body);
+		auto sensor = FixtureManager::CreateSensor(newFixtureDef, body, ownerId);
+		auto newSensorId = sensor->GetSensorId();
+		sensors.emplace(std::make_pair(newSensorId, sensor));
+
+		Debug::LogInfo("Added sensor with SensorId: " + std::to_string(newSensorId), typeid(*this).name());
+
+		return sensor;
 	}
 
-	sf::Vector2f GetBodyPosition()
+	void RemoveSensor(SensorId sensorId)
 	{
-		b2Vec2 position = body->GetPosition();
-		bodyPosition = { position.x, position.y };
-		Debug::Log(bodyPosition);
-		return bodyPosition;
+		auto itr = sensors.find(sensorId);
+		if (itr != sensors.end())
+		{
+			FixtureManager::DestroySensor(itr->second, body);
+			sensors.erase(itr);
+		}
+		else
+		{
+			Debug::LogWarning("Can't remove sensor with SensorId: " + std::to_string(sensorId) + "\nSensor not found", typeid(*this).name());
+		}
 	}
 
-	void InitializeBody()
+
+	//TODO доработать и узнать про динамическое изменение типа тела
+	void SetBodyType(b2BodyType type);
+
+	void LateUpdate() override;
+
+	void OnDestroy() override;
+
+	void OnEnable() override
 	{
-		SetBody(PhysicSystem::CreateBody(&bodyDef, this->ownerId));
+		body->SetAwake(true);
 	}
 
-	void SetBodyDef(b2BodyDef newBodyDef)
+	void OnDisable() override
 	{
-		bodyDef = newBodyDef;
-	}
-
-	void SetFixtureDef(b2FixtureDef newFixtureDef)
-	{
-		fixtureDef = newFixtureDef;
-		body->CreateFixture(&fixtureDef);
-	}
-
-	void SetBodyType(b2BodyType type)
-	{
-		bodyDef.type = type;
+		body->SetAwake(false);
 	}
 
 private:
 	sf::Vector2f bodyPosition;
+	float bodyAngle;
+	TransformComponent* ownerTransform;
+
+	std::unordered_map<SensorId, Sensor*> sensors;
 };
 

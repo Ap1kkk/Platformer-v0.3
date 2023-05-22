@@ -3,95 +3,71 @@
 #include "Entity.h"
 #include "Debug.h"
 #include "PhysicComponent.h"
+#include "RenderSystem.h"
+
+#include "DrawableSpriteComponent.h"
+#include "DrawableTextComponent.h"
 
 class GameObject : public Entity
 {
 public:
-	GameObject() : isDrawable(false), isPhysical(false)
-	{
-		transform = AddComponent<TransformComponent>();
-		transform->SetPosition(0.f, 0.f);
-	}
+	/// <summary>
+	/// By default contains TransformComponent
+	/// Also not drawable and not physical
+	/// </summary>
+	GameObject();
 
-	~GameObject()
-	{
-		Debug::LogWarning("Destructor", typeid(*this).name());
-	}
+	virtual ~GameObject() {}
 
-	void EarlyUpdate() override
-	{
-		if (isPhysical)
-		{
-			transform->SetPosition(physicComponent->GetBodyPosition());
-		}
-	}
-
-	void Update() override {}
-
-	void LateUpdate() override {}
-
-	//TODO после тестов сделать pure virtual
-	//virtual void Draw(Window* window) = 0;
-	void Draw(Window* window)
-	{
-		drawableComponent->Draw(window, transform->GetPosition());
-	}
-
-	//TODO добавить возможность включать и выключать отрисовку а также просчет физики
 	inline bool IsDrawable() { return isDrawable; }
 	inline bool IsPhysical() { return isPhysical; }
 
-
-	///Двигать объект отдельно двумя способами через TransformComponent и PhysicComponent
-
-	//После вызова метода нужно добавить объекту текстуру
-	DrawableComponent* MakeDrawable()
+	DrawableSpriteComponent* AddSpriteComponent(DrawLayer drawLayer) 
 	{
 		isDrawable = true;
-		drawableComponent = AddComponent<DrawableComponent>();
-		return drawableComponent;
+
+		drawableSpriteComponent = AddComponent<DrawableSpriteComponent>();
+		drawableSpriteComponent->Initialize(transform);
+		drawableSpriteComponent->SetDrawLayer(drawLayer);
+		RenderSystem::AddDrawable(drawableSpriteComponent);
+		return drawableSpriteComponent;
 	}
 
-	void SetTexture(const std::string& filename)
+	DrawableTextComponent* AddTextComponent(DrawLayer drawLayer)
 	{
-		if (isDrawable)
-		{
-			drawableComponent->SetTexture(filename);
-		}
-		else
-		{
-			Debug::LogWarning("Can't attach texture to not drawable object");
-		}
+		isDrawable = true;
+
+		drawableTextComponent = AddComponent<DrawableTextComponent>();
+		drawableTextComponent->Initialize(transform);
+		drawableTextComponent->SetDrawLayer(drawLayer);
+		RenderSystem::AddDrawable(drawableTextComponent);
+		return drawableTextComponent;
 	}
 
-	/// После добавления нужно будет вызвать метод Initialize,
-	/// который создаст в системе физическое тело
-	PhysicComponent* MakePhysical()
-	{
-		isPhysical = true;
-		physicComponent = AddComponent<PhysicComponent>();
-		return physicComponent;
-	}
+	virtual void SetTexture(const Filename& filename);
+	virtual void SetTextureRect(const Filename& filename, const sf::IntRect& intRect);
 
-	b2Vec2 GetSpriteBoxHalfSize()
-	{
-		if (isDrawable && isPhysical)
-		{
-			auto spriteRect = drawableComponent->GetSpriteBounds();
-			return b2Vec2(spriteRect.width / 2, spriteRect.height / 2);
-		}
-		else
-		{
-			Debug::LogWarning("Can't get sprite size because object must me drawable and physical");
-		}
-	}
+	PhysicComponent* MakePhysical();
 
-private:
+	/// <summary>
+	/// Return a vector with a half sizes of an object's sprite
+	/// </summary>
+	/// <returns></returns>
+	b2Vec2 GetSpriteBoxHalfSize();
+
+	void SetSpawnPosition(const sf::Vector2f& spawnPosition);
+	void SetSpawnPosition(const float x, const float y);
+
+protected:
 	bool isDrawable;
+	bool isEnabledToDraw;
 	bool isPhysical;
 
+	sf::Vector2f spawnPosition;
+
 	TransformComponent* transform;
-	DrawableComponent* drawableComponent;
 	PhysicComponent* physicComponent;
 
+	DrawableSpriteComponent* drawableSpriteComponent;
+	DrawableTextComponent* drawableTextComponent;
 };
