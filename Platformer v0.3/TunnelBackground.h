@@ -32,31 +32,12 @@ public:
 
 		for (auto& collider : collidersData)
 		{
-			//b2PolygonShape boxShape;
-			//b2Vec2 size = collider.shape;
-			//boxShape.SetAsBox(size.x, size.y, collider.centerPosition, 0.f);
-
-
 			b2FixtureDef boxFixtureDef;
-			//boxFixtureDef.shape = &boxShape;
 			boxFixtureDef.shape = &collider.shape;
 			boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Ground));
 
 			physicComponent->AddFixture(boxFixtureDef);
 		}
-		//for (auto collider = collidersData.colliders.begin(); collider != collidersData.colliders.end(); ++collider)
-		//{
-		//	b2PolygonShape boxShape;
-		//	b2Vec2 size = collider->shape;
-		//	boxShape.SetAsBox(size.x, size.y, collider->centerPosition, 0.f);
-
-
-		//	b2FixtureDef boxFixtureDef;
-		//	boxFixtureDef.shape = &boxShape;
-		//	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Ground));
-
-		//	physicComponent->AddFixture(boxFixtureDef);
-		//}
 	}
 
 	/// номер от 1 до 16
@@ -71,10 +52,21 @@ public:
 		this->collidersData = collidersData;
 	}
 
+	void SetEnemySpawnPositions(EnemySpawnPositions enemyPositions)
+	{
+		this->enemyPositions = enemyPositions;
+	}
+
 	void SetPosition(const sf::Vector2f& position)
 	{
 		transform->SetPosition(sf::Vector2f(position.x, position.y));
 		SetSpawnPosition(position);
+	}
+
+
+	void SpawnEnemyAll()
+	{
+
 	}
 
 private:
@@ -89,5 +81,6 @@ private:
 	int tunnelNumber = 1;
 
 	CollidersDataVector collidersData;
+	EnemySpawnPositions enemyPositions;
 };
 

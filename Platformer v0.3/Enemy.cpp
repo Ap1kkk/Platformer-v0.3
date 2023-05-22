@@ -14,7 +14,7 @@ void Enemy::Awake()
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position = b2Vec2(-100, 20);
+	bodyDef.position = b2Vec2(spawnPosition.x, spawnPosition.y);
 	bodyDef.fixedRotation = true;
 	physicComponent->SetBodyDef(bodyDef);
 	physicComponent->InitializeBody();

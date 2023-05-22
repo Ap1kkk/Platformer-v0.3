@@ -8,6 +8,8 @@
 #include "TunnelBackground.h"
 #include "SmallObstacle.h"
 
+#include "Enemy.h"
+
 class TunnelChunk : public Chunk
 {
 public:
@@ -22,6 +24,15 @@ public:
 		background->SetTunnelNumber(tunnelChunkNumber);
 		background->SetPosition(chunkPosition);
 		ObjectCollection::AddObject(background);
+
+		auto enemyPositions = TunnelCollidersData::GetEnemySpawnData(tunnelChunkNumber);
+
+		for (auto& position : enemyPositions)
+		{
+			auto enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
+			enemy->SetSpawnPosition(chunkPosition + position);
+			ObjectCollection::AddObject(enemy);
+		}
 	}
 
 	void SetTunnelChunkNumber(int number)

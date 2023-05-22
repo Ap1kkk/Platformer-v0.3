@@ -21,7 +21,19 @@ void Player::Awake()
 
 	b2PolygonShape boxShape;
 	//b2Vec2 size = GetSpriteBoxHalfSize();
-	boxShape.SetAsBox(12 , 42);
+
+	const short SIZE = 6;
+	b2Vec2 vertices[SIZE];
+
+	vertices[0].Set(-3.f * 3, 21.f * 2);
+	vertices[1].Set(-6.f * 3, 15.f * 2);
+	vertices[2].Set(-6.f * 3, -21.f);
+	vertices[3].Set(6.f * 3, -21.f);
+	vertices[4].Set(6.f * 3, 15.f * 2);
+	vertices[5].Set(3.f * 3, 21.f * 2);
+
+	//boxShape.SetAsBox(12, 42);
+	boxShape.Set(vertices, SIZE);
 
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;

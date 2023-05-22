@@ -110,7 +110,7 @@ public:
 		auto itr = attackBufferLeft.find(ownerId);
 		if (itr != attackBufferLeft.end())
 		{
-			attackBufferRemovablesLeft.push_back(itr);
+			attackBufferRemovablesLeft.push_back(itr->first);
 			Debug::Log("Removed from attack buffer");
 		}
 	}
@@ -140,7 +140,7 @@ public:
 		auto itr = attackBufferRight.find(ownerId);
 		if (itr != attackBufferRight.end())
 		{
-			attackBufferRemovablesRight.push_back(itr);
+			attackBufferRemovablesRight.push_back(itr->first);
 			Debug::Log("Removed from attack buffer");
 		}
 	}
@@ -169,8 +169,10 @@ private:
 
 	std::map<EntityId, Damageble*> attackBufferLeft;
 	std::map<EntityId, Damageble*> attackBufferRight;
-	std::vector<std::map<EntityId, Damageble*>::iterator> attackBufferRemovablesLeft;
-	std::vector<std::map<EntityId, Damageble*>::iterator> attackBufferRemovablesRight;
+	//std::vector<std::map<EntityId, Damageble*>::iterator> attackBufferRemovablesLeft;
+	//std::vector<std::map<EntityId, Damageble*>::iterator> attackBufferRemovablesRight;
+	std::vector<EntityId> attackBufferRemovablesLeft;
+	std::vector<EntityId> attackBufferRemovablesRight;
 
 	bool isEnabledToJump;
 	FixtureUserData* userData;

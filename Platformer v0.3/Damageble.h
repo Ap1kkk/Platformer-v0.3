@@ -31,7 +31,10 @@ public:
 			auto damageData = static_cast<OnEntityDiedData*>(eventData.userData);
 			Debug::Log("Died");
 			Debug::Log(damageData->entityId);
-			OnEntityDied();
+			if (ownerId == damageData->entityId)
+			{
+				OnEntityDied();
+			}
 		}
 	}
 

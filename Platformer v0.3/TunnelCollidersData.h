@@ -16,6 +16,7 @@ struct ColliderData
 };
 
 using CollidersDataVector = std::vector<ColliderData>;
+using EnemySpawnPositions = std::vector<sf::Vector2f>;
 
 class TunnelCollidersData
 {
@@ -30,6 +31,20 @@ public:
 		auto itr = collidersMap.find(tunnelNumber);
 
 		if (itr != collidersMap.end())
+		{
+			return itr->second;
+		}
+		else
+		{
+			Debug::LogError("Wrong tunnel number", typeid(TunnelCollidersData).name());
+		}
+	}
+
+	static EnemySpawnPositions GetEnemySpawnData(short tunnelNumber)
+	{
+		auto itr = enemySpawnMap.find(tunnelNumber);
+
+		if (itr != enemySpawnMap.end())
 		{
 			return itr->second;
 		}
@@ -59,6 +74,21 @@ private:
 			colliders.push_back(data2);
 
 			collidersMap.emplace(std::make_pair(1, colliders));
+
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(-760.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(760.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(1, enemySpawns));
+			}
+
 		}
 		///--------- 1 туннель ---------
 
@@ -104,6 +134,16 @@ private:
 
 			}
 			collidersMap.emplace(std::make_pair(2, colliders));
+
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(2, enemySpawns));
+			}
 		}
 		///--------- 2 туннель ---------
 
@@ -148,6 +188,15 @@ private:
 				colliders.push_back(data);
 			}
 			collidersMap.emplace(std::make_pair(3, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(3, enemySpawns));
+			}
 		}
 		///--------- 3 туннель ---------
 
@@ -194,6 +243,15 @@ private:
 				colliders.push_back(data);
 			}
 			collidersMap.emplace(std::make_pair(4, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(4, enemySpawns));
+			}
 		}
 		///--------- 4 туннель ---------
 
@@ -240,6 +298,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(5, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(5, enemySpawns));
+			}
 		}
 		///--------- 5 туннель ---------
 
@@ -308,6 +375,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(6, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(6, enemySpawns));
+			}
 		}
 		///--------- 6 туннель ---------
 
@@ -376,6 +452,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(7, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(7, enemySpawns));
+			}
 		}
 		///--------- 7 туннель ---------
 
@@ -444,6 +529,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(8, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(8, enemySpawns));
+			}
 		}
 		///--------- 8 туннель ---------
 
@@ -512,6 +606,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(9, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(9, enemySpawns));
+			}
 		}
 		///--------- 9 туннель ---------
 
@@ -660,6 +763,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(10, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(10, enemySpawns));
+			}
 
 		}
 		///--------- 10 туннель ---------
@@ -809,6 +921,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(11, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(11, enemySpawns));
+			}
 
 		}
 		///--------- 11 туннель ---------
@@ -958,7 +1079,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(12, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
 
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(12, enemySpawns));
+			}
 		}
 		///--------- 12 туннель ---------
 
@@ -1107,7 +1236,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(13, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
 
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(13, enemySpawns));
+			}
 		}
 		///--------- 13 туннель ---------
 
@@ -1160,6 +1297,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(14, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(14, enemySpawns));
+			}
 		}
 		///--------- 14 туннель ---------
 
@@ -1212,6 +1358,15 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(15, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(15, enemySpawns));
+			}
 		}
 		///--------- 15 туннель ---------
 
@@ -1280,12 +1435,616 @@ private:
 			}
 
 			collidersMap.emplace(std::make_pair(16, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(16, enemySpawns));
+			}
 		}
 		///--------- 16 туннель ---------
+
+		///--------- 17 туннель ---------
+		{
+			CollidersDataVector colliders;
+
+			{
+				ColliderData data;
+				const short SIZE = 4;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 0.f);
+				vertices[1].Set(WIDTH_CENTER + 432.f, HEIGHT_CENTER + 0.f);
+				vertices[2].Set(WIDTH_CENTER + 261.f, HEIGHT_CENTER + 218.f);
+				vertices[3].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 355.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 6;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 0.f);
+				vertices[1].Set(WIDTH_CENTER + 885.f, HEIGHT_CENTER + 0.f);
+				vertices[2].Set(WIDTH_CENTER + 1063.f, HEIGHT_CENTER + 152.f);
+				vertices[3].Set(WIDTH_CENTER + 1340.f, HEIGHT_CENTER + 298.f);
+				vertices[4].Set(WIDTH_CENTER + 1700.f, HEIGHT_CENTER + 372.f);
+				vertices[5].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 365.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 6;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 730.f);
+				vertices[1].Set(WIDTH_CENTER + 292.f, HEIGHT_CENTER + 607.f);
+				vertices[2].Set(WIDTH_CENTER + 968.f, HEIGHT_CENTER + 650.f);
+				vertices[3].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 724.f);
+				vertices[4].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 1080.f);
+				vertices[5].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 1080.f);
+
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 4;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 292.f, HEIGHT_CENTER + 607.f);
+				vertices[1].Set(WIDTH_CENTER + 587.f, HEIGHT_CENTER + 300.f);
+				vertices[2].Set(WIDTH_CENTER + 587.f, HEIGHT_CENTER + 330.f);
+				vertices[3].Set(WIDTH_CENTER + 292.f, HEIGHT_CENTER + 637.f);
+
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 5;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 587.f, HEIGHT_CENTER + 300.f);
+				vertices[1].Set(WIDTH_CENTER + 668.f, HEIGHT_CENTER + 277.f);
+				vertices[2].Set(WIDTH_CENTER + 748.f, HEIGHT_CENTER + 294.f);
+				vertices[3].Set(WIDTH_CENTER + 748.f, HEIGHT_CENTER + 330.f);
+				vertices[4].Set(WIDTH_CENTER + 587.f, HEIGHT_CENTER + 330.f);
+
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 5;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 748.f, HEIGHT_CENTER + 294.f);
+				vertices[1].Set(WIDTH_CENTER + 871.f, HEIGHT_CENTER + 380.f);
+				vertices[2].Set(WIDTH_CENTER + 970.f, HEIGHT_CENTER + 530.f);
+				vertices[3].Set(WIDTH_CENTER + 950.f, HEIGHT_CENTER + 530.f);
+				vertices[4].Set(WIDTH_CENTER + 748.f, HEIGHT_CENTER + 350.f);
+
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 4;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 970.f, HEIGHT_CENTER + 530.f);
+				vertices[1].Set(WIDTH_CENTER + 1259.f, HEIGHT_CENTER + 676.f);
+				vertices[2].Set(WIDTH_CENTER + 1259.f, HEIGHT_CENTER + 700.f);
+				vertices[3].Set(WIDTH_CENTER + 970.f, HEIGHT_CENTER + 550.f);
+
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+
+			collidersMap.emplace(std::make_pair(17, colliders));
+
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(17, enemySpawns));
+			}
+		}
+		///--------- 17 туннель ---------
+
+		///--------- 18 туннель ---------
+		{
+			CollidersDataVector colliders;
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 360.f);
+				vertices[1].Set(WIDTH_CENTER + 1066.f, HEIGHT_CENTER + 339.f);
+				vertices[2].Set(WIDTH_CENTER + 1066.f, HEIGHT_CENTER + 300.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 722.f);
+				vertices[1].Set(WIDTH_CENTER + 1603.f, HEIGHT_CENTER + 765.f);
+				vertices[2].Set(WIDTH_CENTER + 1759.f, HEIGHT_CENTER + 776.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1603.f, HEIGHT_CENTER + 765.f);
+				vertices[1].Set(WIDTH_CENTER + 850.f, HEIGHT_CENTER + 923.f);
+				vertices[2].Set(WIDTH_CENTER + 1125.f, HEIGHT_CENTER + 960.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 850.f, HEIGHT_CENTER + 923.f);
+				vertices[1].Set(WIDTH_CENTER + 498.f, HEIGHT_CENTER + 824.f);
+				vertices[2].Set(WIDTH_CENTER + 683.f, HEIGHT_CENTER + 946.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 498.f, HEIGHT_CENTER + 824.f);
+				vertices[1].Set(WIDTH_CENTER + 333.f, HEIGHT_CENTER + 487.f);
+				vertices[2].Set(WIDTH_CENTER + 373.f, HEIGHT_CENTER + 768.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 333.f, HEIGHT_CENTER + 487.f);
+				vertices[1].Set(WIDTH_CENTER + 528.f, HEIGHT_CENTER + 261.f);
+				vertices[2].Set(WIDTH_CENTER + 366.f, HEIGHT_CENTER + 328.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 528.f, HEIGHT_CENTER + 261.f);
+				vertices[1].Set(WIDTH_CENTER + 789.f, HEIGHT_CENTER + 238.f);
+				vertices[2].Set(WIDTH_CENTER + 655.f, HEIGHT_CENTER + 197.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 789.f, HEIGHT_CENTER + 238.f);
+				vertices[1].Set(WIDTH_CENTER + 1066.f, HEIGHT_CENTER + 339.f);
+				vertices[2].Set(WIDTH_CENTER + 960.f, HEIGHT_CENTER + 275.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+
+
+			collidersMap.emplace(std::make_pair(18, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(18, enemySpawns));
+			}
+		}
+		///--------- 18 туннель ---------
+
+		///--------- 19 туннель ---------
+		{
+			CollidersDataVector colliders;
+
+			{
+				ColliderData data;
+				const short SIZE = 5;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 0.f);
+				vertices[1].Set(WIDTH_CENTER + 720.f, HEIGHT_CENTER + 0.f);
+				vertices[2].Set(WIDTH_CENTER + 552.f, HEIGHT_CENTER + 179.f);
+				vertices[3].Set(WIDTH_CENTER + 350.f, HEIGHT_CENTER + 279.f);
+				vertices[4].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 349.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 0.f, HEIGHT_CENTER + 724.f);
+				vertices[1].Set(WIDTH_CENTER + 371.f, HEIGHT_CENTER + 692.f);
+				vertices[2].Set(WIDTH_CENTER + 168.f, HEIGHT_CENTER + 759.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 371.f, HEIGHT_CENTER + 692.f);
+				vertices[1].Set(WIDTH_CENTER + 731.f, HEIGHT_CENTER + 433.f);
+				vertices[2].Set(WIDTH_CENTER + 772.f, HEIGHT_CENTER + 563.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 731.f, HEIGHT_CENTER + 433.f);
+				vertices[1].Set(WIDTH_CENTER + 855.f, HEIGHT_CENTER + 255.f);
+				vertices[2].Set(WIDTH_CENTER + 854.f, HEIGHT_CENTER + 300.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 855.f, HEIGHT_CENTER + 255.f);
+				vertices[1].Set(WIDTH_CENTER + 1023.f, HEIGHT_CENTER + 230.f);
+				vertices[2].Set(WIDTH_CENTER + 935.f, HEIGHT_CENTER + 222.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1023.f, HEIGHT_CENTER + 230.f);
+				vertices[1].Set(WIDTH_CENTER + 1191.f, HEIGHT_CENTER + 449.f);
+				vertices[2].Set(WIDTH_CENTER + 1100.f, HEIGHT_CENTER + 391.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1191.f, HEIGHT_CENTER + 449.f);
+				vertices[1].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 721.f);
+				vertices[2].Set(WIDTH_CENTER + 1500.f, HEIGHT_CENTER + 670.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 6;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1187.f, HEIGHT_CENTER + 0.f);
+				vertices[1].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 0.f);
+				vertices[2].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 358.f);
+				vertices[3].Set(WIDTH_CENTER + 1495.f, HEIGHT_CENTER + 312.f);
+				vertices[4].Set(WIDTH_CENTER + 1276.f, HEIGHT_CENTER + 192.f);
+				vertices[5].Set(WIDTH_CENTER + 1177.f, HEIGHT_CENTER + 54.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+
+
+			collidersMap.emplace(std::make_pair(19, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(19, enemySpawns));
+			}
+		}
+		///--------- 19 туннель ---------
+
+		///--------- 20 туннель ---------
+		{
+			CollidersDataVector colliders;
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 189.f);
+				vertices[1].Set(WIDTH_CENTER + 820.f, HEIGHT_CENTER + 116.f);
+				vertices[2].Set(WIDTH_CENTER + 906.f, HEIGHT_CENTER + 75.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 820.f, HEIGHT_CENTER + 116.f);
+				vertices[1].Set(WIDTH_CENTER + 393.f, HEIGHT_CENTER + 290.f);
+				vertices[2].Set(WIDTH_CENTER + 452.f, HEIGHT_CENTER + 197.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 393.f, HEIGHT_CENTER + 290.f);
+				vertices[1].Set(WIDTH_CENTER + 270.f, HEIGHT_CENTER + 548.f);
+				vertices[2].Set(WIDTH_CENTER + 298.f, HEIGHT_CENTER + 368.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 270.f, HEIGHT_CENTER + 548.f);
+				vertices[1].Set(WIDTH_CENTER + 344.f, HEIGHT_CENTER + 828.f);
+				vertices[2].Set(WIDTH_CENTER + 264.f, HEIGHT_CENTER + 800.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 344.f, HEIGHT_CENTER + 828.f);
+				vertices[1].Set(WIDTH_CENTER + 682.f, HEIGHT_CENTER + 952.f);
+				vertices[2].Set(WIDTH_CENTER + 500.f, HEIGHT_CENTER + 945.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 682.f, HEIGHT_CENTER + 952.f);
+				vertices[1].Set(WIDTH_CENTER + 1100.f, HEIGHT_CENTER + 970.f);
+				vertices[2].Set(WIDTH_CENTER + 930.f, HEIGHT_CENTER + 995.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1100.f, HEIGHT_CENTER + 970.f);
+				vertices[1].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 902.f);
+				vertices[2].Set(WIDTH_CENTER + 1660.f, HEIGHT_CENTER + 950.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 457.f);
+				vertices[1].Set(WIDTH_CENTER + 846.f, HEIGHT_CENTER + 412.f);
+				vertices[2].Set(WIDTH_CENTER + 1130.f, HEIGHT_CENTER + 440.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 4;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 846.f, HEIGHT_CENTER + 412.f);
+				vertices[1].Set(WIDTH_CENTER + 732.f, HEIGHT_CENTER + 442.f);
+				vertices[2].Set(WIDTH_CENTER + 670.f, HEIGHT_CENTER + 496.f);
+				vertices[3].Set(WIDTH_CENTER + 684.f, HEIGHT_CENTER + 532.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 4;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 670.f, HEIGHT_CENTER + 496.f);
+				vertices[1].Set(WIDTH_CENTER + 670.f, HEIGHT_CENTER + 600.f);
+				vertices[2].Set(WIDTH_CENTER + 731.f, HEIGHT_CENTER + 682.f);
+				vertices[3].Set(WIDTH_CENTER + 725.f, HEIGHT_CENTER + 600.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 4;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 731.f, HEIGHT_CENTER + 682.f);
+				vertices[1].Set(WIDTH_CENTER + 840.f, HEIGHT_CENTER + 722.f);
+				vertices[2].Set(WIDTH_CENTER + 992.f, HEIGHT_CENTER + 725.f);
+				vertices[3].Set(WIDTH_CENTER + 850.f, HEIGHT_CENTER + 680.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+			{
+				ColliderData data;
+				const short SIZE = 3;
+				b2Vec2 vertices[SIZE];
+
+				vertices[0].Set(WIDTH_CENTER + 992.f, HEIGHT_CENTER + 725.f);
+				vertices[1].Set(WIDTH_CENTER + 1920.f, HEIGHT_CENTER + 638.f);
+				vertices[2].Set(WIDTH_CENTER + 1516.f, HEIGHT_CENTER + 632.f);
+
+				data.shape.Set(vertices, SIZE);
+
+				colliders.push_back(data);
+			}
+
+
+
+			collidersMap.emplace(std::make_pair(20, colliders));
+			{
+				EnemySpawnPositions enemySpawns;
+
+				{
+					sf::Vector2f position(0.f, 0.f);
+					enemySpawns.push_back(position);
+				}
+				enemySpawnMap.emplace(std::make_pair(20, enemySpawns));
+			}
+		}
+		///--------- 20 туннель ---------
+
+
 
 	}
 
 	static std::map<short, CollidersDataVector> collidersMap;
+	static std::map<short, EnemySpawnPositions> enemySpawnMap;
 
 	const float WIDTH_CENTER = -1920.f / 2;
 	const float HEIGHT_CENTER = -1080.f / 2;
