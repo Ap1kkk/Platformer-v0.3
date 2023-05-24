@@ -43,6 +43,15 @@ public:
 		}
 	}
 
+	void CheckTransition() override 
+	{
+		if (isToTransit)
+		{
+			TransitToState(stateToTransit);
+			isToTransit = false;
+		}
+	}
+
 private:
 
 	void TransitToState(GameStateType nextState);
@@ -54,4 +63,7 @@ private:
 
 	GameState* currentState;
 	bool isPaused;
+
+	bool isToTransit;
+	GameStateType stateToTransit;
 };

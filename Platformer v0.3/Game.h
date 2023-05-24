@@ -8,7 +8,6 @@
 #include "Window.h"
 #include "EntityManager.h"
 #include "ComponentManager.h"
-#include "TileManager.h"
 #include "SceneManager.h"
 #include "PhysicSystem.h"
 #include "RenderSystem.h"
@@ -57,7 +56,6 @@ private:
 	RenderSystem* renderSystem;
 	PhysicsDebugDraw* physicsDebugDraw;
 	SceneManager* sceneManager;
-	TileManager* tileManager;
 	GameStateMachine* gameStateMachine;
 	WorldContactListener* worldContactListener;
 	EventSystem* eventSystem;

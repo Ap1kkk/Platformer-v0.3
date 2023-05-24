@@ -11,6 +11,14 @@
 
 #include "Debug.h"
 
+#include "ContinueGameButton.h"
+#include "SaveAndExitButton.h"
+#include "SaveGameButton.h"
+#include "LoadGameButton.h"
+
+#include "PauseBackground.h"
+#include "PauseLogo.h"
+
 class PauseScene : public IScene
 {
 public:
@@ -30,6 +38,12 @@ public:
 	void UpdateUI() override;
 
 private:
-	UIButton* button;
+	ContinueGameButton* continueButton;
+	SaveAndExitButton* saveAndExitButton;
+	LoadGameButton* loadButton;
+	SaveGameButton* saveButton;
+
+	PauseBackground* pauseBackground;
+	PauseLogo* pauseLogo;
 };
 

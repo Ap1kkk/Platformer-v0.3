@@ -23,14 +23,14 @@ void Enemy::Awake()
 	//circleShape.m_p.Set(0, 0);
 	//circleShape.m_radius = 15.f;
 	b2PolygonShape boxShape;
-	b2Vec2 size = GetSpriteBoxHalfSize();
-	boxShape.SetAsBox(size.x, size.y);
+	//b2Vec2 size = GetSpriteBoxHalfSize();
+	
+	boxShape.SetAsBox(colliderSize.x, colliderSize.y);
 
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;
 	boxFixtureDef.density = 1;
 	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Enemy));
-
 
 
 	auto fixture = physicComponent->AddFixture(boxFixtureDef);
@@ -43,4 +43,7 @@ void Enemy::Awake()
 
 	health = AddComponent<Health>();
 
+	attackSensor = AddComponent<EnemyAttackSensor>();
+	attackSensor->SetPhysicComponent(physicComponent);
+	attackSensor->SetOffset(attackSensorOffset);
 }

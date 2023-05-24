@@ -21,12 +21,12 @@ using EnemySpawnPositions = std::vector<sf::Vector2f>;
 class TunnelCollidersData
 {
 public:
-	TunnelCollidersData() 
+	TunnelCollidersData()
 	{
 		GenerateData();
 	}
 
-	static CollidersDataVector GetCollidersData(short tunnelNumber) 
+	static CollidersDataVector GetCollidersData(short tunnelNumber)
 	{
 		auto itr = collidersMap.find(tunnelNumber);
 
@@ -139,7 +139,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1747.f, HEIGHT_CENTER + 594.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 123.f, HEIGHT_CENTER + 569.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(2, enemySpawns));
@@ -192,7 +196,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1650.f, HEIGHT_CENTER + 560.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 123.f, HEIGHT_CENTER + 569.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(3, enemySpawns));
@@ -247,7 +255,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 853.f, HEIGHT_CENTER + 546.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1720.f, HEIGHT_CENTER + 545.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(4, enemySpawns));
@@ -302,7 +314,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1085.f, HEIGHT_CENTER + 522.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 231.f, HEIGHT_CENTER + 545.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(5, enemySpawns));
@@ -379,7 +395,7 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1234.f, HEIGHT_CENTER + 253.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(6, enemySpawns));
@@ -456,7 +472,7 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 610.f, HEIGHT_CENTER + 315.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(7, enemySpawns));
@@ -533,7 +549,7 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 610.f, HEIGHT_CENTER + 815.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(8, enemySpawns));
@@ -566,7 +582,7 @@ private:
 				b2Vec2 vertices[SIZE];
 
 				vertices[0].Set(WIDTH_CENTER + 1920 - 433.f, HEIGHT_CENTER + 1080 - 211.f);
-				vertices[1].Set(WIDTH_CENTER + 1920 - 715.f, HEIGHT_CENTER + 1080 - 0.f);
+				vertices[1].Set(WIDTH_CENTER + 1920 - 315.f, HEIGHT_CENTER + 1080 - 0.f);
 				vertices[2].Set(WIDTH_CENTER + 1920 - 695.f, HEIGHT_CENTER + 1080 - 0.f);
 				vertices[3].Set(WIDTH_CENTER + 1920 - 433.f, HEIGHT_CENTER + 1080 - 190.f);
 
@@ -610,7 +626,7 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1493.f, HEIGHT_CENTER + 738.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(9, enemySpawns));
@@ -767,7 +783,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 782.f, HEIGHT_CENTER + 325.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 114.f, HEIGHT_CENTER + 826.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(10, enemySpawns));
@@ -925,7 +945,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1100.f, HEIGHT_CENTER + 321.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1763.f, HEIGHT_CENTER + 839.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(11, enemySpawns));
@@ -1083,7 +1107,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 695.f, HEIGHT_CENTER + 166.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 711.f, HEIGHT_CENTER + 842.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(12, enemySpawns));
@@ -1240,7 +1268,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1253.f, HEIGHT_CENTER + 191.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1031.f, HEIGHT_CENTER + 843.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(13, enemySpawns));
@@ -1301,7 +1333,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 259.f, HEIGHT_CENTER + 666.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1663.f, HEIGHT_CENTER + 382.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(14, enemySpawns));
@@ -1362,7 +1398,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 318.f, HEIGHT_CENTER + 386.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1603.f, HEIGHT_CENTER + 639.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(15, enemySpawns));
@@ -1439,7 +1479,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 264.f, HEIGHT_CENTER + 396.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1546.f, HEIGHT_CENTER + 746.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(16, enemySpawns));
@@ -1574,9 +1618,10 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1400.f, HEIGHT_CENTER + 589.f);
 					enemySpawns.push_back(position);
 				}
+
 				enemySpawnMap.emplace(std::make_pair(17, enemySpawns));
 			}
 		}
@@ -1705,9 +1750,10 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 851.f, HEIGHT_CENTER + 739.f);
 					enemySpawns.push_back(position);
 				}
+
 				enemySpawnMap.emplace(std::make_pair(18, enemySpawns));
 			}
 		}
@@ -1841,9 +1887,10 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 437.f, HEIGHT_CENTER + 529.f);
 					enemySpawns.push_back(position);
 				}
+
 				enemySpawnMap.emplace(std::make_pair(19, enemySpawns));
 			}
 		}
@@ -2031,7 +2078,11 @@ private:
 				EnemySpawnPositions enemySpawns;
 
 				{
-					sf::Vector2f position(0.f, 0.f);
+					sf::Vector2f position(WIDTH_CENTER + 1238.f, HEIGHT_CENTER + 357.f);
+					enemySpawns.push_back(position);
+				}
+				{
+					sf::Vector2f position(WIDTH_CENTER + 1215.f, HEIGHT_CENTER + 873.f);
 					enemySpawns.push_back(position);
 				}
 				enemySpawnMap.emplace(std::make_pair(20, enemySpawns));

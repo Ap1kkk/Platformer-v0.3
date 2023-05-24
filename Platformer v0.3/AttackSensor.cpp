@@ -15,8 +15,7 @@ void AttackSensor::Awake()
 {
 	{
 		b2PolygonShape boxShape;
-		b2Vec2 size = { 20, 50 };
-		boxShape.SetAsBox(size.x, size.y, ownerBodyOffsetLeft, 0);
+		boxShape.SetAsBox(sizeLeft.x, sizeLeft.y, ownerBodyOffsetLeft, 0);
 
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;
@@ -33,8 +32,7 @@ void AttackSensor::Awake()
 
 	{
 		b2PolygonShape boxShape;
-		b2Vec2 size = { 20, 50 };
-		boxShape.SetAsBox(size.x, size.y, ownerBodyOffsetRight, 0);
+		boxShape.SetAsBox(sizeRight.x, sizeRight.y, ownerBodyOffsetRight, 0);
 
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &boxShape;

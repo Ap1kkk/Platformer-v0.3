@@ -16,7 +16,6 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	physicSystem = new PhysicSystem(gravity);
 	renderSystem = new RenderSystem(&window);
 	sceneManager = new SceneManager;
-	tileManager = new TileManager;
 	gameStateMachine = new GameStateMachine();
 	worldContactListener = new WorldContactListener();
 
@@ -39,7 +38,6 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.componentManager = componentManager;
 	sharedContext.physicsDebugDraw = physicsDebugDraw;
 	sharedContext.renderSystem = renderSystem;
-	sharedContext.tileManager = tileManager;
 	sharedContext.sceneManager = sceneManager;
 	sharedContext.gameStateMachine = gameStateMachine;
 	sharedContext.worldContactListener = worldContactListener;
@@ -57,7 +55,6 @@ Game::~Game()
 	delete physicSystem;
 	delete renderSystem;
 	delete sceneManager;
-	delete tileManager;
 	delete gameStateMachine;
 	delete worldContactListener;
 
@@ -85,6 +82,7 @@ void Game::ProcessGameLoop()
 	window.Update();
 	gameStateMachine->Update();
 	Draw();
+	gameStateMachine->CheckTransition();
 	sceneManager->UpdateSwitchBuffer();
 	EventSystem::ClearDestroyBuffer();
 	CalculateDeltaTime();

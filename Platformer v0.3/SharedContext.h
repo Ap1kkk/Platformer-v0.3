@@ -6,7 +6,6 @@
 #include "ComponentManager.h"
 #include "PhysicSystem.h"
 #include "RenderSystem.h"
-#include "TileManager.h"
 #include "ISceneManager.h"
 #include "IGameStateMachine.h"
 #include "WorldContactListener.h"
@@ -22,7 +21,6 @@ struct SharedContext
 	PhysicSystem* physicSystem;
 	PhysicsDebugDraw* physicsDebugDraw;
 	RenderSystem* renderSystem;
-	TileManager* tileManager;
 	ISceneManager* sceneManager;
 	IGameStateMachine* gameStateMachine;
 	WorldContactListener* worldContactListener;

@@ -69,6 +69,7 @@ void RenderSystem::MoveActiveToPauseBuffer()
 
 void RenderSystem::RetrieveActiveFromPauseBuffer()
 {
+	//TODO баг, если есть что-то с таким же слоем, то оно не извлечется
 	for (auto& drawPair : drawPauseBuffer)
 	{
 		drawMap.emplace(drawPair);

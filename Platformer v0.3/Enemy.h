@@ -7,6 +7,7 @@
 #include "Health.h"
 #include "Damageble.h"
 
+#include "EnemyAttackSensor.h"
 
 class Enemy : public GameObject, public Damageble
 {
@@ -28,10 +29,15 @@ public:
 private:
 	b2Body* body;
 
-	Filename enemyTexture = "hero.png";
+	Filename enemyTexture = "Characters/enemy.png";
 
 	DrawLayer drawLayer = 100;
 	Health* health;
 	FixtureUserData* userData;
+
+	EnemyAttackSensor* attackSensor;
+
+	sf::Vector2f colliderSize = { 80.f / 2, 180.f / 2 };
+	sf::Vector2f attackSensorOffset = { -50.f, 0.f };
 };
 

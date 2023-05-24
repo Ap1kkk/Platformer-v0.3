@@ -56,5 +56,7 @@ private:
 	bool isEnabledToJump;
 
 	Bitmask collisionMask;
+
+	b2Vec2 size = { 10, 6 };
 };
 

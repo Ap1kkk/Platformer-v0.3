@@ -21,6 +21,7 @@ void InitializedGameState::EnterState()
 
 	auto firstScene = SceneManager::AddScene<FirstScene>(sharedContext);
 	auto pauseScene = SceneManager::AddScene<PauseScene>(sharedContext);
+	auto mainMenu = SceneManager::AddScene<MainMenu>(sharedContext);
 	auto mainScene = SceneManager::AddScene<MainScene>(sharedContext);
 	auto shopLevel = SceneManager::AddScene<ShopLevel>(sharedContext);
 	auto firstLevel = SceneManager::AddScene<FirstLevel>(sharedContext);
@@ -28,7 +29,8 @@ void InitializedGameState::EnterState()
 	auto thirdLevel = SceneManager::AddScene<ThirdLevel>(sharedContext);
 	auto fourthLevel = SceneManager::AddScene<FourthLevel>(sharedContext);
 
-	sharedContext.sceneManager->Initialize(firstScene->GetSceneId());
+	//sharedContext.sceneManager->Initialize(firstScene->GetSceneId());
+	sharedContext.sceneManager->Initialize(mainMenu->GetSceneId());
 	sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());
 
 }

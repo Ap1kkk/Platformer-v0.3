@@ -9,7 +9,8 @@ public:
 	virtual void Initialize(SceneId startSceneId) = 0;
 	virtual void SetPauseScene(SceneId pauseSceneId) = 0;
 
-	virtual void SwitchToScene(SceneId newScene) = 0;
+	virtual void SwitchToScene(GameLevels nexteLevel) = 0;
+	//virtual void SwitchToScene(SceneId newScene) = 0;
 
 	virtual void ProcessNotAwoken() = 0;
 	virtual void CaptureEvents() = 0;
@@ -24,6 +25,7 @@ public:
 
 	virtual void ShowPauseScene() = 0;
 	virtual void HidePauseScene() = 0;
+	//virtual void ExitToMainMenu() = 0;
 
 	virtual void Draw(Window* window) = 0;
 

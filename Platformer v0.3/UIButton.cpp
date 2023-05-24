@@ -1,19 +1,5 @@
 #include "UIButton.h"
 
-void UIButton::Awake()
-{
-	Initialize();
-	AddSpriteComponent(drawLayer);
-	AddTextComponent(drawLayer);
-	SetTexture("floor.png");
-	drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/calibri.ttf"));
-	drawableTextComponent->SetText("213455");
-	drawableTextComponent->SetFillColor(sf::Color::Red);
-	//drawableTextComponent->SetPositionOffset(sf::Vector2f(0.f, -20.f));
-	SetUIPosition(position);
-	spriteBounds = drawableSpriteComponent->GetSpriteBounds();
-}
-
 void UIButton::CaptureMousePosition()
 {
 	auto mousePosition = sf::Mouse::getPosition(objectContext.window->GetWindow());
@@ -21,11 +7,15 @@ void UIButton::CaptureMousePosition()
 	mousePosition.x -= WINDOW_WIDTH / 2;
 	mousePosition.y -= WINDOW_HEIGHT / 2;
 
+	//Debug::Log(std::to_string(mousePosition.x) + "; " + std::to_string(mousePosition.y));
+
 	if (spriteBounds.contains(mousePosition.x, mousePosition.y))
 	{
+		//Debug::Log("Intersect");
 		OnButtonHover();
 		if (Input::IsKeyDown(Input::Key::LMouseButton))
 		{
+			Debug::Log("Click");
 			OnButtonClick();
 		}
 	}

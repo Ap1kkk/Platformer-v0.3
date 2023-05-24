@@ -29,10 +29,11 @@ public:
 		if (eventData.eventType == EventType::OnEntityDiedEvent)
 		{
 			auto damageData = static_cast<OnEntityDiedData*>(eventData.userData);
-			Debug::Log("Died");
-			Debug::Log(damageData->entityId);
+
 			if (ownerId == damageData->entityId)
 			{
+				Debug::Log("Died");
+				Debug::Log(damageData->entityId);
 				OnEntityDied();
 			}
 		}

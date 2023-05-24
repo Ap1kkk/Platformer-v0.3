@@ -2,6 +2,7 @@
 
 void GameStateMachine::Create()
 {
+
 	RunState(GameStateType::Created);
 }
 
@@ -12,24 +13,32 @@ void GameStateMachine::Initialize()
 
 void GameStateMachine::Run()
 {
-	TransitToState(GameStateType::Runned);
+	isToTransit = true;
+	stateToTransit = GameStateType::Runned;
+	//TransitToState(GameStateType::Runned);
 }
 
 void GameStateMachine::Pause()
 {
+	isToTransit = true;
+	stateToTransit = GameStateType::Paused;
 	isPaused = true;
-	TransitToState(GameStateType::Paused);
+	//TransitToState(GameStateType::Paused);
 }
 
 void GameStateMachine::Contintue()
 {
+	isToTransit = true;
+	stateToTransit = GameStateType::Runned;
 	isPaused = false;
-	TransitToState(GameStateType::Runned);
+	//TransitToState(GameStateType::Runned);
 }
 
 void GameStateMachine::ExitGame()
 {
-	TransitToState(GameStateType::Exited);
+	isToTransit = true;
+	stateToTransit = GameStateType::Exited;
+	//TransitToState(GameStateType::Exited);
 }
 
 void GameStateMachine::Update()

@@ -69,12 +69,6 @@
     <Filter Include="Исходные файлы\Components">
       <UniqueIdentifier>{9e221fec-fed4-4a57-b871-87729c2ce2f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Engine\Tile">
-      <UniqueIdentifier>{0bb02602-215a-4b85-a9bd-6253c377fd6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Engine\Tile">
-      <UniqueIdentifier>{6d80b1f9-c37e-466c-bc70-fcdc244885ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Components\Jump">
       <UniqueIdentifier>{091c5e7a-9667-4a3d-8a0b-cfe64589b8b4}</UniqueIdentifier>
     </Filter>
@@ -105,11 +99,14 @@
     <Filter Include="Файлы заголовков\Events">
       <UniqueIdentifier>{82178936-d4c0-4cbe-9123-003cb60e1911}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\AnimationStates">
-      <UniqueIdentifier>{065afcb5-e3ff-463b-bf5d-180a9fed3522}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Engine\Animation">
       <UniqueIdentifier>{8f40aa3d-c765-4fb6-9116-e744c1707c10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Animation states">
+      <UniqueIdentifier>{196ab93c-979d-478f-8aec-c94fa80f213f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Buttons">
+      <UniqueIdentifier>{2aa5bf2c-4b77-4c27-a055-24cf2bc92c75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -190,15 +187,6 @@
     </ClCompile>
     <ClCompile Include="DrawableComponent.cpp">
       <Filter>Исходные файлы\Engine\Base Components</Filter>
-    </ClCompile>
-    <ClCompile Include="TileSet.cpp">
-      <Filter>Исходные файлы\Engine\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Исходные файлы\Engine\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="TileManager.cpp">
-      <Filter>Исходные файлы\Engine\Tile</Filter>
     </ClCompile>
     <ClCompile Include="ISensor.cpp">
       <Filter>Исходные файлы\Engine\Base Components\Component utils</Filter>
@@ -395,6 +383,60 @@
     <ClCompile Include="LevelBarrier.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="LevelFinisher.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelFinisherSensor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelFinisherComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ILevelFinisher.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="StartGameButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveGameButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadGameButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitGameButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveAndExitButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ContinueGameButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadAndContinueGameButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAttackSensor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAttackComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLogo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuBackground.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseLogo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseBackground.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -486,18 +528,6 @@
     </ClInclude>
     <ClInclude Include="ObjectContext.h">
       <Filter>Файлы заголовков\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ITileManager.h">
-      <Filter>Файлы заголовков\Engine\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Файлы заголовков\Engine\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="TileManager.h">
-      <Filter>Файлы заголовков\Engine\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="TileSet.h">
-      <Filter>Файлы заголовков\Engine\Tile</Filter>
     </ClInclude>
     <ClInclude Include="JumpSensor.h">
       <Filter>Файлы заголовков\Components\Jump</Filter>
@@ -670,9 +700,6 @@
     <ClInclude Include="LevelLabel.h">
       <Filter>Файлы заголовков\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="IdlePlayerAnimState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Файлы заголовков\Engine\Animation</Filter>
     </ClInclude>
@@ -691,28 +718,85 @@
     <ClInclude Include="IAnimator.h">
       <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
     </ClInclude>
-    <ClInclude Include="RunPlayerAnimState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="SprintedPlayerAnimState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="JumpRaisedPlayerAnimState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="JumpFallPlayerAnimState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackPlayerAnimState.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="TunnelChunk.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Chunks</Filter>
     </ClInclude>
     <ClInclude Include="GroundToTunnel.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="LevelBarrier.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPlayerAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="IdlePlayerAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpFallPlayerAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpRaisedPlayerAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="RunPlayerAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="SprintedPlayerAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="ILevelFinisher.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFinisher.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFinisherComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFinisherSensor.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinueGameButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitGameButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadGameButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveAndExitButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveGameButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="StartGameButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Файлы заголовков\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadAndContinueGameButton.h">
+      <Filter>Файлы заголовков\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAttackSensor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAttackComponent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuLogo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuBackground.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseLogo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseBackground.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

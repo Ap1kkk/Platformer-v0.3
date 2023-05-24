@@ -19,7 +19,10 @@
 #include "JumpRaisedPlayerAnimState.h"
 #include "AttackPlayerAnimState.h"
 
-class Player : public GameObject
+#include "Health.h"
+#include "Damageble.h"
+
+class Player : public GameObject, public Damageble
 	//, public EventListener
 {
 public:
@@ -32,6 +35,17 @@ public:
 	//	Debug::Log("OnEventHappened");
 	//}
 
+	void TakeDamage(DamageData* damageData) override
+	{
+		Debug::Log("--taken damage");
+		health->TakeDamage(damageData);
+	}
+
+	void OnEntityDied() override
+	{
+		Debug::Log("player died");
+		objectContext.sceneManager->SwitchToScene(GameLevels::MainMenu);
+	}
 
 private:
 	b2Body* body;
@@ -40,16 +54,22 @@ private:
 	AttackSensor* attackSensor;
 	JumpSensor* jumpSensor;
 
+	FixtureUserData* userData;
+
+	Health* health;
+
 	Animator* animator;
 
 	Window* window;
 
 	//Filename playerTexture = "hero.png"; PrototypeHero_noSword.png
-	Filename playerTexture = "PrototypeHero_noSword.png";
+	Filename playerTexture = "Characters/player.png";
 
 	DrawLayer drawLayer = 100;
 
 	const short FRAME_WIDTH = 100;
 	const short FRAME_HEIGHT = 80;
+
+	sf::Vector2f attackSensorOffset = { -50.f, 0.f };
 };
 

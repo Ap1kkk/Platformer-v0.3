@@ -13,7 +13,6 @@ void JumpSensor::SetOffset(sf::Vector2f offset)
 void JumpSensor::Awake()
 {
 	b2PolygonShape boxShape;
-	b2Vec2 size = { 10, 6 };
 	boxShape.SetAsBox(size.x, size.y, ownerBodyOffset, 0);
 
 	b2FixtureDef boxFixtureDef;
@@ -25,17 +24,12 @@ void JumpSensor::Awake()
 	Debug::Log(boxFixtureDef.filter.categoryBits);
 	Debug::Log(boxFixtureDef.filter.maskBits);
 
-	//TODO добавить маску слоев коллизий
-
 	sensor = physicComponent->AddSensor(boxFixtureDef);
 
 	collisionMask.SetBit((uint16)CollisionLayers::Ground);
 	collisionMask.SetBit((uint16)CollisionLayers::JumpSensor);
 	collisionMask.SetBit((uint16)CollisionLayers::SmallObstacle);
 	WorldContactListener::AddHandler(collisionMask, this);
-
-	////WARNING не очень надежно
-	//isEnabled = true;
 }
 
 void JumpSensor::OnCollisionEnter(b2Contact* contact)

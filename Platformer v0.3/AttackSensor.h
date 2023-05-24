@@ -176,5 +176,8 @@ private:
 
 	bool isEnabledToJump;
 	FixtureUserData* userData;
+
+	b2Vec2 sizeLeft = { 50, 100 };
+	b2Vec2 sizeRight = { 50, 100 };
 };
 

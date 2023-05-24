@@ -18,7 +18,7 @@ public:
 
 	void SwitchLevel(GameLevels nextLevel)
 	{
-		objectContext.sceneManager->SwitchToScene((short)nextLevel);
+		objectContext.sceneManager->SwitchToScene(nextLevel);
 	}
 
 	void SetLevelToSwitch(GameLevels levelToSwitch)

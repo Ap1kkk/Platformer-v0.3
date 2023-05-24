@@ -4,10 +4,29 @@ void PauseScene::Initialize()
 {
 	Debug::Log("Start initializing...", typeid(*this).name());
 
-	button = sharedContext.entityManger->CreateEntity<UIButton>(objectContext);
-	button->SetPosition(0.f, 0.f);
+	pauseBackground = sharedContext.entityManger->CreateEntity<PauseBackground>(objectContext);
+	pauseBackground->SetPosition(0.f, 0.f);
+	ObjectCollection::AddUiObject(pauseBackground);
 
-	ObjectCollection::AddUiObject(button);
+	pauseLogo = sharedContext.entityManger->CreateEntity<PauseLogo>(objectContext);
+	pauseLogo->SetPosition(0.f, -250.f);
+	ObjectCollection::AddUiObject(pauseLogo);
+
+	continueButton = sharedContext.entityManger->CreateEntity<ContinueGameButton>(objectContext);
+	continueButton->SetPosition(-200.f, 0.f);
+	ObjectCollection::AddUiObject(continueButton);
+
+	loadButton = sharedContext.entityManger->CreateEntity<LoadGameButton>(objectContext);
+	loadButton->SetPosition(-200.f, 150.f);
+	ObjectCollection::AddUiObject(loadButton);
+
+	saveButton = sharedContext.entityManger->CreateEntity<SaveGameButton>(objectContext);
+	saveButton->SetPosition(200.f, 0.f);
+	ObjectCollection::AddUiObject(saveButton);
+
+	saveAndExitButton = sharedContext.entityManger->CreateEntity<SaveAndExitButton>(objectContext);
+	saveAndExitButton->SetPosition(200.f, 150.f);
+	ObjectCollection::AddUiObject(saveAndExitButton);
 
 	Debug::Log("Initialised with id: " + std::to_string(sceneId), typeid(*this).name());
 }

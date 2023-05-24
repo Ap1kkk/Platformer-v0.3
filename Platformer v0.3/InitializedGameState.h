@@ -7,6 +7,7 @@
 
 #include "FirstScene.h"
 #include "PauseScene.h"
+#include "MainMenu.h"
 #include "MainScene.h"
 
 #include "ShopLevel.h"

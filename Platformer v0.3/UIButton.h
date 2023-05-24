@@ -11,8 +11,6 @@ class UIButton : public UIObject
 public:
 	UIButton() {}
 
-	void Awake() override;
-
 	void CaptureMousePosition();
 
 	void UpdateUI() override;
@@ -22,28 +20,15 @@ public:
 	
 	void SetDrawLayer(DrawLayer drawlayer);
 
-	virtual void OnButtonHover()
-	{
-		
-	}
-	virtual void OnButtonClick()
-	{
-		//Debug::Log("Click");
+	virtual void OnButtonHover() {}
+	virtual void OnButtonClick() = 0;
 
-		//if (drawableSpriteComponent->IsEnabled())
-		//{
-		//	drawableSpriteComponent->Disable();
-		//}
-		//else
-		//{
-		//	drawableSpriteComponent->Enable();
-		//}
-	}
+protected:
+	sf::Vector2f position;
+	sf::FloatRect spriteBounds;
 
 private:
 	DrawLayer drawLayer = 200;
-	sf::Vector2f position;
 
-	sf::FloatRect spriteBounds;
 };
 

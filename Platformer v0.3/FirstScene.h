@@ -13,6 +13,7 @@
 #include "MainChunk.h"
 
 #include "LevelSwitcher.h"
+#include "LevelFinisher.h"
 
 class FirstScene : public IScene
 {
@@ -60,6 +61,7 @@ private:
 	MainChunk* fourthLevel;
 
 	LevelSwitcher* levelSwitcher;
+	LevelFinisher* levelFinisher;
 
 	DrawLayer floorDrawLayer = 100;
 };

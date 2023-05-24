@@ -8,9 +8,13 @@ public:
 	virtual void Run() = 0;
 	virtual void Pause() = 0;
 	virtual void Contintue() = 0;
+	//virtual void ExitToMainMenu() = 0;
 	virtual void ExitGame() = 0;
+	
 	virtual void Update() = 0;
 
 	virtual bool IsPaused() = 0;
+
+	virtual void CheckTransition() = 0;
 };
 

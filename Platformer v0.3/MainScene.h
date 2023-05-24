@@ -61,6 +61,5 @@ private:
 	MainChunk* mainChunk;
 	LevelSwitcher* levelSwitcher;
 
-
 };
 

@@ -41,15 +41,31 @@ public:
 
 	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId);
 
-	void SwitchToScene(SceneId newSceneId) override
+	void SwitchToScene(GameLevels nexteLevel) override
 	{
 		//SwitchScene(activeScene->GetSceneId(), newSceneId);
 		isToSwitch = true;
-		sceneIdToSwitch = newSceneId;
+		sceneIdToSwitch = (int)nexteLevel;
 	}
+
+	//void SwitchToScene(SceneId newSceneId) override
+	//{
+	//	//SwitchScene(activeScene->GetSceneId(), newSceneId);
+	//	isToSwitch = true;
+	//	sceneIdToSwitch = newSceneId;
+	//}
 
 	void ShowPauseScene() override;
 	void HidePauseScene() override;
+
+	//void ExitToMainMenu() override
+	//{
+	//	if (pauseScene != nullptr)
+	//	{
+	//		pauseScene->Destroy(false, true);
+	//	}
+	//	activeScene->Destroy(false, false);
+	//}
 
 	void ProcessNotAwoken() override;
 	void CaptureEvents() override;
