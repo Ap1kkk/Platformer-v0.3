@@ -8,6 +8,8 @@
 
 #include "OnComponentUserData.h"
 
+#include "ComponentsOrder.h"
+
 class IComponent
 {
 public:
@@ -87,6 +89,7 @@ public:
 	inline void SetOwnerId(EntityId id) {	ownerId = id; }
 	inline EntityId GetOwnerId() const { return ownerId; }
 
+	inline void SetComponentLayer(ComponentOrder layer) { componentLayer = (ComponentLayer)layer; }
 	inline void SetComponentLayer(ComponentLayer layer) { componentLayer = layer; }
 	inline ComponentLayer GetComponentLayer() const { return componentLayer; }
 

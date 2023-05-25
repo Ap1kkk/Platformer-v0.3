@@ -7,6 +7,8 @@ Enemy::Enemy() : Damageble(entityId)
 
 void Enemy::Awake()
 {
+	AddTextComponent(drawLayer);
+
 	AddSpriteComponent(drawLayer);
 	SetTexture(enemyTexture);
 
@@ -19,11 +21,8 @@ void Enemy::Awake()
 	physicComponent->SetBodyDef(bodyDef);
 	physicComponent->InitializeBody();
 
-	//b2CircleShape circleShape;  
-	//circleShape.m_p.Set(0, 0);
-	//circleShape.m_radius = 15.f;
+
 	b2PolygonShape boxShape;
-	//b2Vec2 size = GetSpriteBoxHalfSize();
 	
 	boxShape.SetAsBox(colliderSize.x, colliderSize.y);
 
@@ -42,6 +41,8 @@ void Enemy::Awake()
 	body = physicComponent->GetBody();
 
 	health = AddComponent<Health>();
+	health->SetDrawableComponent(drawableTextComponent);
+	health->SetTextOffset(hpOffset);
 
 	attackSensor = AddComponent<EnemyAttackSensor>();
 	attackSensor->SetPhysicComponent(physicComponent);

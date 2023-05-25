@@ -7,8 +7,9 @@ ExitedGameState::ExitedGameState(SharedContext context) : sharedContext(context)
 
 void ExitedGameState::EnterState()
 {
-	Debug::Log("Entered Paused state");
+	Debug::Log("Entered Exited state");
 	//TODO логика сохранения прогресса игры и очистка памяти
+	sharedContext.window->Close();
 }
 
 void ExitedGameState::Update()
@@ -18,5 +19,5 @@ void ExitedGameState::Update()
 
 void ExitedGameState::LeaveState()
 {
-	Debug::Log("Leaving Paused state");
+	Debug::Log("Leaving Exited state");
 }

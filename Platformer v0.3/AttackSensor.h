@@ -23,7 +23,10 @@
 class AttackSensor : public IComponent, public ISensor, public EventListener
 {
 public:
-	AttackSensor() {}
+	AttackSensor() 
+	{
+		SetComponentLayer(ComponentOrder::Sensors);
+	}
 
 	void SetPhysicComponent(PhysicComponent* physicComponent);
 
@@ -42,7 +45,7 @@ public:
 				if (attackBufferLeft.size() > 0)
 				{
 					auto damageData = new DamageData;
-					damageData->value = 50;
+					damageData->value = damagePerHit;
 
 					for (auto& enemy : attackBufferLeft)
 					{
@@ -57,7 +60,7 @@ public:
 				if (attackBufferRight.size() > 0)
 				{
 					auto damageData = new DamageData;
-					damageData->value = 50;
+					damageData->value = damagePerHit;
 
 					for (auto& enemy : attackBufferRight)
 					{
@@ -169,8 +172,6 @@ private:
 
 	std::map<EntityId, Damageble*> attackBufferLeft;
 	std::map<EntityId, Damageble*> attackBufferRight;
-	//std::vector<std::map<EntityId, Damageble*>::iterator> attackBufferRemovablesLeft;
-	//std::vector<std::map<EntityId, Damageble*>::iterator> attackBufferRemovablesRight;
 	std::vector<EntityId> attackBufferRemovablesLeft;
 	std::vector<EntityId> attackBufferRemovablesRight;
 
@@ -179,5 +180,7 @@ private:
 
 	b2Vec2 sizeLeft = { 50, 100 };
 	b2Vec2 sizeRight = { 50, 100 };
+
+	unsigned int damagePerHit = 30;
 };
 

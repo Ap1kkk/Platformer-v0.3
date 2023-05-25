@@ -23,6 +23,7 @@
 #include "InitializedGameState.h"
 #include "RunnedGameState.h"
 #include "PausedGameState.h"
+#include "ExitedGameState.h"
 
 #include "Debug.h"
 

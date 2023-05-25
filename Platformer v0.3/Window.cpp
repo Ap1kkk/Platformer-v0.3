@@ -13,7 +13,7 @@ void Window::Update()
 	{
 		if (event.type == sf::Event::Closed)
 		{
-			window.close();
+			Close();
 		}
 	}
 }
@@ -58,4 +58,9 @@ void Window::SetView(const sf::View& view)
 bool Window::IsOpen()
 {
 	return window.isOpen();
+}
+
+void Window::Close()
+{
+	window.close();
 }

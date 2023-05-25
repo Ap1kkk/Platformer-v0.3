@@ -2,7 +2,7 @@
 
 PlayerMovement::PlayerMovement()
 {
-	SetComponentLayer(3);
+	SetComponentLayer(ComponentOrder::PlayerMovement);
 	velocity = normalVelocity;
 }
 

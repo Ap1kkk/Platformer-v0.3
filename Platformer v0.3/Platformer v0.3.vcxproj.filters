@@ -799,6 +799,9 @@
     <ClInclude Include="PauseBackground.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentsOrder.h">
+      <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-2.dll">

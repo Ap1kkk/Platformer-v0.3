@@ -75,7 +75,7 @@ void AttackSensor::OnCollisionEnter(b2Contact* contact)
 		{
 			AddToAttackBufferLeft(enemy->GetDamagebleOwnerId(), enemy);
 		}
-		else
+		else if(fix1->GetFixtureId() == sensorRight->GetFixtureId())
 		{
 			AddToAttackBufferRight(enemy->GetDamagebleOwnerId(), enemy);
 		}

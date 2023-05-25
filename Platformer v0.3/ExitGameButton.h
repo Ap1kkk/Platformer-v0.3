@@ -30,6 +30,7 @@ public:
 	{
 		Debug::Log("Game Exit logic");
 		//TODO переключение в exit game state
+		objectContext.gameStateMachine->ExitGame();
 	}
 
 private:

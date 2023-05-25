@@ -13,7 +13,7 @@ public:
 	void Awake() override
 	{
 		AddTextComponent(drawLayer);
-		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/Montserrat-Medium.ttf"));
+		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + fontFilename));
 		drawableTextComponent->SetTextSize(30);
 		drawableTextComponent->SetText(label);
 
@@ -32,6 +32,7 @@ public:
 
 private:
 	std::string label;
+	Filename fontFilename = "Fonts/BenguiatStd-Bold.otf";
 
 	DrawLayer drawLayer = 100;
 };

@@ -100,6 +100,6 @@ private:
 	bool isTriggeredToAttack = false;
 	bool isFirstAttack = false;
 
-	unsigned int damagePerHit = 25;
+	unsigned int damagePerHit = 45;
 };
 

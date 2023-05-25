@@ -34,31 +34,33 @@ void JumpSensor::Awake()
 
 void JumpSensor::OnCollisionEnter(b2Contact* contact)
 {
-	if (contact)
+	auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
+	auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
+
+	if (fix1 != nullptr && fix2 != nullptr) 
 	{
-		Debug::Log("Entered Collision");
-		EnterCollision();
-		EventData data(EventType::OnPlayerLanded);
-		Event::Invoke(data);
-		//Debug::Log("### enter " + std::to_string(intersectsCount));
-		//Debug::Log(contact->GetFixtureA()->GetFilterData().categoryBits);
-		//Debug::Log(contact->GetFixtureA()->GetFilterData().maskBits);
-		//Debug::Log(contact->GetFixtureB()->GetFilterData().categoryBits);
-		//Debug::Log(contact->GetFixtureB()->GetFilterData().maskBits);
+		if(fix1->GetFixtureId() == sensor->GetFixtureId() || fix2->GetFixtureId() == sensor->GetFixtureId())
+		{
+			Debug::Log("Entered Collision");
+			EnterCollision();
+			EventData data(EventType::OnPlayerLanded);
+			Event::Invoke(data);
+		}
 	}
 }
 
 void JumpSensor::OnCollisionExit(b2Contact* contact)
 {
-	if (contact)
+	auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
+	auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
+
+	if (fix1 != nullptr && fix2 != nullptr)
 	{
-		Debug::Log("Leaved Collision");
-		LeaveCollision();
-		//Debug::Log("### leave " + std::to_string(intersectsCount));
-		//Debug::Log(contact->GetFixtureA()->GetFilterData().categoryBits);
-		//Debug::Log(contact->GetFixtureA()->GetFilterData().maskBits);
-		//Debug::Log(contact->GetFixtureB()->GetFilterData().categoryBits);
-		//Debug::Log(contact->GetFixtureB()->GetFilterData().maskBits);
+		if (fix1->GetFixtureId() == sensor->GetFixtureId() || fix2->GetFixtureId() == sensor->GetFixtureId())
+		{
+			Debug::Log("Leaved Collision");
+			LeaveCollision();
+		}
 	}
 }
 

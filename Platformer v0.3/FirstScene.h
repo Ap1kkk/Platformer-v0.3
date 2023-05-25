@@ -2,13 +2,11 @@
 
 #include "IScene.h"
 #include "Debug.h"
-#include "GameObject.h"
 #include "UIButton.h"
 #include "SceneManager.h"
 #include "Input.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "RoadSprite.h"
 
 #include "MainChunk.h"
 
@@ -45,8 +43,6 @@ public:
 	//}
 
 private:
-	GameObject* ship;
-	RoadSprite* road;
 	UIButton* uiButton;
 	Player* player;
 	Enemy* enemy;

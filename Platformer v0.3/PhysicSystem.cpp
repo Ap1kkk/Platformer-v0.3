@@ -10,7 +10,7 @@ PhysicSystem::PhysicSystem(b2Vec2 worldGravity)
 {
 	gravity = worldGravity;
 	world->SetGravity(gravity);
-	//world->SetAllowSleeping(false);
+	world->SetAllowSleeping(false);
 	Debug::Log("Initialized", typeid(*this).name());
 }
 

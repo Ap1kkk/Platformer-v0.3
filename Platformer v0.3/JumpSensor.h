@@ -14,7 +14,10 @@
 class JumpSensor : public IComponent, public ISensor
 {
 public:
-	JumpSensor() {}
+	JumpSensor() 
+	{
+		SetComponentLayer(ComponentOrder::Sensors);
+	}
 	~JumpSensor()
 	{
 		Debug::LogWarning("Destroyed");
@@ -57,6 +60,6 @@ private:
 
 	Bitmask collisionMask;
 
-	b2Vec2 size = { 10, 6 };
+	b2Vec2 size = { 40, 6 };
 };
 

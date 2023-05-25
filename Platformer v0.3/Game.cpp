@@ -70,6 +70,7 @@ void Game::Initialize()
 	gameStateMachine->AddState<InitializedGameState>(sharedContext);
 	gameStateMachine->AddState<RunnedGameState>(sharedContext);
 	gameStateMachine->AddState<PausedGameState>(sharedContext);
+	gameStateMachine->AddState<ExitedGameState>(sharedContext);
 
 	//TODO инициализировать все состояния
 

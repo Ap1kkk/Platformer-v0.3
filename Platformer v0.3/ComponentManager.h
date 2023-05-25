@@ -67,7 +67,7 @@ public:
 	{
 		if (data.eventType == EventType::OnComponentDestroyedEvent)
 		{
-			Debug::Log("Deleting entity with id: " + std::to_string(data.id), typeid(*this).name());
+			Debug::Log("Deleting component with id: " + std::to_string(data.id), typeid(*this).name());
 			DestroyComponent(data.id);
 		}
 	}

@@ -21,6 +21,15 @@ public:
 			for (auto itr = handlers.lower_bound(eventData.eventType); itr != handlers.upper_bound(eventData.eventType); ++itr)
 			{
 				itr->second.second->OnEventHappened(eventData);
+
+				//if (itr->second.second != nullptr)
+				//{
+				//	itr->second.second->OnEventHappened(eventData);
+				//}
+				//else
+				//{
+				//	Debug::LogError("Event listener was nullptr", typeid(*this).name());
+				//}
 			}
 		}
 		//ClearDestroyBuffer();

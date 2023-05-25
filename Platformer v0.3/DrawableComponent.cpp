@@ -2,7 +2,7 @@
 
 DrawableComponent::DrawableComponent()
 {
-	SetComponentLayer(100);
+	SetComponentLayer(ComponentOrder::DrawableComponent);
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 

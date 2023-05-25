@@ -2,7 +2,7 @@
 
 TransformUIComponent::TransformUIComponent()
 {
-	SetComponentLayer(1);
+	SetComponentLayer(ComponentOrder::TransfromComponent);
 	Debug::LogInfo("Created with id: " + std::to_string(componentId), typeid(*this).name());
 }
 

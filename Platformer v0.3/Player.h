@@ -57,6 +57,7 @@ private:
 	FixtureUserData* userData;
 
 	Health* health;
+	sf::Vector2f hpOffset = { 0.f, -100.f };
 
 	Animator* animator;
 

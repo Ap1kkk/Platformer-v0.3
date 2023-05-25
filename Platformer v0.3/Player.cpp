@@ -8,6 +8,7 @@ Player::Player() : Damageble(entityId)
 
 void Player::Awake()
 {
+	AddTextComponent(drawLayer);
 	AddSpriteComponent(drawLayer);
 	SetTexture(playerTexture);
 	//SetTextureRect(playerTexture, sf::IntRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT));
@@ -54,7 +55,7 @@ void Player::Awake()
 	 
 	jumpSensor = AddComponent<JumpSensor>();
 	jumpSensor->SetPhysicComponent(physicComponent);
-	jumpSensor->SetOffset(sf::Vector2f(0, 42));
+	jumpSensor->SetOffset(sf::Vector2f(0, 70));
 
 	playerMovement = AddComponent<PlayerMovement>();
 	playerMovement->SetBody(body);
@@ -65,7 +66,8 @@ void Player::Awake()
 	attackSensor->SetOffset(attackSensorOffset);
 
 	health = AddComponent<Health>();
-
+	health->SetDrawableComponent(drawableTextComponent);
+	health->SetTextOffset(hpOffset);
 	//animator = AddComponent<Animator>();
 	//
 	//auto animIdle = new Animation(true, 0.2f);

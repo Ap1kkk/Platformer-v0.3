@@ -25,6 +25,8 @@ public:
 
 	bool IsOpen();
 
+	void Close();
+
 private:
 	sf::RenderWindow window;
 

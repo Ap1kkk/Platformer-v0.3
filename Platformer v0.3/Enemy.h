@@ -31,6 +31,8 @@ private:
 
 	Filename enemyTexture = "Characters/enemy.png";
 
+	sf::Vector2f hpOffset = {0.f, -120.f};
+
 	DrawLayer drawLayer = 100;
 	Health* health;
 	FixtureUserData* userData;

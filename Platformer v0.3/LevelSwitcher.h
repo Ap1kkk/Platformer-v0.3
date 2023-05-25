@@ -22,7 +22,7 @@ public:
 
 		AddTextComponent(drawLayer);
 		drawableTextComponent->Disable();
-		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + "Fonts/Montserrat-Medium.ttf"));
+		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + fontFilename));
 		drawableTextComponent->SetText("    Press E    \nTo switch level");
 
 
@@ -91,6 +91,7 @@ private:
 
 	DrawLayer drawLayer = 100;
 	Filename textureFilename = "floor.png";
+	Filename fontFilename = "Fonts/BenguiatStd-Bold.otf";
 
 	bool isReadyToSwitch;
 };
