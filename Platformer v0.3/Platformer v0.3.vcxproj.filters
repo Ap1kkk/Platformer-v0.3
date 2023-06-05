@@ -437,6 +437,18 @@
     <ClCompile Include="PauseBackground.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="AttackEnemyAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleEnemyAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RunEnemyAnimState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComponentManager.h">
@@ -781,26 +793,41 @@
     <ClInclude Include="LoadAndContinueGameButton.h">
       <Filter>Файлы заголовков\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyAttackSensor.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyAttackComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuLogo.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuBackground.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseLogo.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseBackground.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ComponentsOrder.h">
       <Filter>Файлы заголовков\Engine\Base Components\Component utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuBackground.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuLogo.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseBackground.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseLogo.h">
+      <Filter>Файлы заголовков\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAttackComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAttackSensor.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackEnemyAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="RunEnemyAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleEnemyAnimState.h">
+      <Filter>Файлы заголовков\Animation states</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDataRequestData.h">
+      <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

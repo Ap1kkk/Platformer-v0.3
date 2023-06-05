@@ -10,6 +10,7 @@
 #include "IGameStateMachine.h"
 #include "WorldContactListener.h"
 #include "EventSystem.h"
+#include "SaveManager.h"
 
 struct SharedContext
 {
@@ -25,6 +26,7 @@ struct SharedContext
 	IGameStateMachine* gameStateMachine;
 	WorldContactListener* worldContactListener;
 	EventSystem* eventSystem;
+	SaveManager* saveManager;
 
 	//TODO добавить менеджера загрузки сохранений
 };

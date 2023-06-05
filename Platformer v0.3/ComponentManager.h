@@ -6,19 +6,10 @@
 
 #include "EventListener.h"
 
-/// <summary>
-/// Static class which creates, destroys and finds Component by its id
-/// </summary>
 class ComponentManager : public EventListener
 {
 public:
 
-	/// <summary>
-	/// Creates the Component
-	/// Component must inherit from IComponent
-	/// </summary>
-	/// <typeparam name="C"></typeparam>
-	/// <returns>Pointer to created component</returns>
 	template<class C>
 	static C* const CreateComponent()
 	{
@@ -32,17 +23,8 @@ public:
 		return component;
 	}
 
-	/// <summary>
-	/// Destoys the component and clears the memory taken by it
-	/// </summary>
-	/// <param name="comonentId">Id of destroying component</param>
 	static void DestroyComponent(ComponentId comonentId);
 
-	/// <summary>
-	/// Searches and returns the type of the component
-	/// </summary>
-	/// <param name="comonentId">Id of searching component</param>
-	/// <returns>Type of component</returns>
 	static ComponentType GetComponentTypeById(ComponentId comonentId);
 
 	static IComponent* GetComponentById(ComponentId componentId)

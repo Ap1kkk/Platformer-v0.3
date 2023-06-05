@@ -33,6 +33,10 @@ void InitializedGameState::EnterState()
 	sharedContext.sceneManager->Initialize(mainMenu->GetSceneId());
 	sharedContext.sceneManager->SetPauseScene(pauseScene->GetSceneId());
 
+	sharedContext.saveManager->SubscribeOnEvents();
+
+	TunnelCollidersData data;
+
 }
 
 void InitializedGameState::Update()

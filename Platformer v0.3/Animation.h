@@ -6,16 +6,20 @@
 #include "EventListener.h"
 #include "PlayerTurnedFaceData.h"
 
+#include "IAnimationState.h"
+
 class Animation : public EventListener
 {
 public:
-	Animation(bool isCyclic, float evaluationDelay) : isCyclic(isCyclic), evaluationDelay(evaluationDelay), drawable(nullptr) 
+	Animation(bool isCyclic, float evaluationDelay, EntityId ownerId) : isCyclic(isCyclic), evaluationDelay(evaluationDelay), ownerId(ownerId), drawable(nullptr)
 	{
 		SubscribeOnEvent(EventType::OnPlayerTurnedFaceEvent);
+		SubscribeOnEvent(EventType::OnEnemyTurnedFace);
 	}
 	~Animation()
 	{
 		UnsubscribeFromEvent(EventType::OnPlayerTurnedFaceEvent);
+		UnsubscribeFromEvent(EventType::OnEnemyTurnedFace);
 	}
 
 	void Evaluate()
@@ -23,8 +27,11 @@ public:
 		thisFrameTime += Time::DeltaTime();
 		if (thisFrameTime >= evaluationDelay)
 		{
-			SwitchFrame();
-			thisFrameTime = 0.f;
+			if (!isFinished)
+			{
+				SwitchFrame();
+				thisFrameTime = 0.f;
+			}
 		}
 	}
 
@@ -32,6 +39,12 @@ public:
 	{
 		frames.push_back(frameArea);
 		framesItr = 0;
+	}
+
+	void SetIAnimStatePtr(IAnimationState* animState) 
+	{ 
+		this->animState = animState;
+		animState->SetOwnerId(ownerId);
 	}
 
 	void SetDrawableSpriteComponent(DrawableSpriteComponent* drawable) { this->drawable = drawable; }
@@ -42,12 +55,23 @@ public:
 	{
 		if (data.eventType == EventType::OnPlayerTurnedFaceEvent)
 		{
-			auto userData = static_cast<PlayerTurnedFaceData*>(data.userData);
-			if (userData->direction == FaceDirection::Left && !isHorizontallyMirrored)
+			if (data.id == ownerId)
 			{
-				isHorizontallyMirrored = !isHorizontallyMirrored;
-			} 
-			else if (userData->direction == FaceDirection::Right && isHorizontallyMirrored)
+				auto userData = static_cast<PlayerTurnedFaceData*>(data.userData);
+				if (userData->direction == FaceDirection::Left && !isHorizontallyMirrored)
+				{
+					isHorizontallyMirrored = !isHorizontallyMirrored;
+				}
+				else if (userData->direction == FaceDirection::Right && isHorizontallyMirrored)
+				{
+					isHorizontallyMirrored = !isHorizontallyMirrored;
+				}
+			}
+		}
+
+		if (data.eventType == EventType::OnEnemyTurnedFace)
+		{
+			if (data.id == ownerId)
 			{
 				isHorizontallyMirrored = !isHorizontallyMirrored;
 			}
@@ -60,15 +84,18 @@ private:
 	{
 		if (framesItr + 1 >= frames.size())
 		{
-			if (isCyclic)
+			framesItr = 0;
+			if (!isCyclic)
 			{
-				framesItr = 0;
+				isFinished = true;
+				animState->OnNonCyclicAnimEnded();
 			}
 		}
 		else
 		{
 			++framesItr;
 		}
+
 		auto frameRect = frames[framesItr];
 		if (isHorizontallyMirrored)
 		{
@@ -84,6 +111,7 @@ private:
 	}
 
 	bool isCyclic;
+	bool isFinished = false;
 	float evaluationDelay = 0.f;
 	float thisFrameTime = 0.f;
 
@@ -94,5 +122,8 @@ private:
 
 	bool isHorizontallyMirrored;
 	bool isVerticallyMirrored;
+
+	IAnimationState* animState;
+	EntityId ownerId;
 };
 

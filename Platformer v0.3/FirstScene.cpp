@@ -15,7 +15,14 @@ void FirstScene::Initialize()
 	mainChunk->Spawn(sf::Vector2f(0.f, 0.f));
 
 	player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
-	player->SetSpawnPosition(150.f, -100.f);
+	if (SaveManager::IsGameLoaded())
+	{
+		player->SetSpawnPosition(SaveManager::GetPlayerPosition());
+	}
+	else
+	{
+		player->SetSpawnPosition(150.f, -100.f);
+	}
 	ObjectCollection::AddObject(player);
 
 	levelFinisher = sharedContext.entityManger->CreateEntity<LevelFinisher>(objectContext);
@@ -27,8 +34,11 @@ void FirstScene::Initialize()
 
 	//----------enemy--------------
 
-	enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
-	ObjectCollection::AddObject(enemy);
+	//if(SaveManager::IsGameLoaded())
+	//{
+	//	enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
+	//	ObjectCollection::AddObject(enemy);
+	//}
 
 	//----------enemy--------------
 

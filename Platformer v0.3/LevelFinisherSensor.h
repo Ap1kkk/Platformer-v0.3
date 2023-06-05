@@ -11,7 +11,7 @@
 
 #include "WorldContactListener.h"
 
-class LevelFinisherSensor : public IComponent
+class LevelFinisherSensor : public IComponent, public ISensor
 {
 public:
 	void SetPhysicComponent(PhysicComponent* physicComponent)
@@ -47,8 +47,8 @@ public:
 
 	void OnCollisionEnter(b2Contact* contact) override
 	{
-		auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
-		auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
+		auto fix1 = FixtureManager::GetFixture((FixtureId)contact->GetFixtureA()->GetUserData().pointer);
+		auto fix2 = FixtureManager::GetFixture((FixtureId)contact->GetFixtureB()->GetUserData().pointer);
 
 		if (fix1 != nullptr && fix2 != nullptr)
 		{
@@ -62,8 +62,8 @@ public:
 	}
 	void OnCollisionExit(b2Contact* contact) override
 	{
-		auto fix1 = FixtureManager::GetFixture(contact->GetFixtureA()->GetUserData().pointer);
-		auto fix2 = FixtureManager::GetFixture(contact->GetFixtureB()->GetUserData().pointer);
+		auto fix1 = FixtureManager::GetFixture((FixtureId)contact->GetFixtureA()->GetUserData().pointer);
+		auto fix2 = FixtureManager::GetFixture((FixtureId)contact->GetFixtureB()->GetUserData().pointer);
 
 		if (fix1 != nullptr && fix2 != nullptr)
 		{

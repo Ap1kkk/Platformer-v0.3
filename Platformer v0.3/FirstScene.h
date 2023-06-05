@@ -13,6 +13,8 @@
 #include "LevelSwitcher.h"
 #include "LevelFinisher.h"
 
+#include "SaveManager.h"
+
 class FirstScene : public IScene
 {
 public:

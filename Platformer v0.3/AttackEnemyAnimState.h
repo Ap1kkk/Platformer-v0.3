@@ -3,10 +3,10 @@
 #include "AnimationState.h"
 #include "EventListener.h"
 
-class AttackPlayerAnimState : public AnimationState, public EventListener
+class AttackEnemyAnimState : public AnimationState, public EventListener
 {
 public:
-	AttackPlayerAnimState() : AnimationState(AnimationType::Attack) {}
+	AttackEnemyAnimState() : AnimationState(AnimationType::Attack) {}
 
 	void OnStateEnter() override
 	{
@@ -20,15 +20,11 @@ public:
 
 	void OnEventHappened(EventData& data) override
 	{
-		if (data.eventType == EventType::OnPlayerStartedRunning)
-		{
-			ChangeState(AnimationType::Run);
-		}
+
 	}
 
 	void OnNonCyclicAnimEnded() override
 	{
-		ChangeState(AnimationType::Idle);
+		ChangeState(AnimationType::Run);
 	}
 };
-

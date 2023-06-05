@@ -6,5 +6,6 @@ enum class ComponentOrder
 	TransfromComponent,
 	PlayerMovement,
 	Sensors,
+	Health,
 	DrawableComponent,
 };

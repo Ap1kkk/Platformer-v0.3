@@ -3,6 +3,9 @@
 #include "UIButton.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+#include "TunnelCollidersData.h"
+
 class StartGameButton : public UIButton
 {
 public:
@@ -29,6 +32,8 @@ public:
 	void OnButtonClick() override
 	{
 		Debug::Log("Game start logic");
+		SaveManager::ResetIsGameLoaded();
+		SaveManager::SetDefaultValues();
 		objectContext.sceneManager->SwitchToScene(GameLevels::FirstScene);
 	}
 

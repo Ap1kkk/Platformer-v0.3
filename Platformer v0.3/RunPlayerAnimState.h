@@ -14,6 +14,7 @@ public:
 		SubscribeOnEvent(EventType::OnPlayerStartedSprinting);
 		SubscribeOnEvent(EventType::OnPlayerJumpRaise);
 		SubscribeOnEvent(EventType::OnJumpSensorLeftCollisions);
+		SubscribeOnEvent(EventType::OnPlayerAttack);
 	}
 
 	void OnStateExit() override
@@ -22,6 +23,8 @@ public:
 		UnsubscribeFromEvent(EventType::OnPlayerStartedSprinting);
 		UnsubscribeFromEvent(EventType::OnPlayerJumpRaise);
 		UnsubscribeFromEvent(EventType::OnJumpSensorLeftCollisions);
+		UnsubscribeFromEvent(EventType::OnPlayerAttack);
+
 	}
 
 	void OnEventHappened(EventData& data) override
@@ -47,6 +50,11 @@ public:
 			case EventType::OnJumpSensorLeftCollisions:
 			{
 				ChangeState(AnimationType::JumpFall);
+				break;
+			}
+			case EventType::OnPlayerAttack:
+			{
+				ChangeState(AnimationType::Attack);
 				break;
 			}
 		}

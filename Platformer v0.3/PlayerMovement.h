@@ -8,11 +8,18 @@
 #include "JumpSensor.h"
 
 #include "PlayerTurnedFaceData.h"
+#include "PlayerDataRequestData.h"
 
-class PlayerMovement : public IComponent
+#include "EventListener.h"
+
+class PlayerMovement : public IComponent, public EventListener
 {
 public:
 	PlayerMovement();
+	~PlayerMovement()
+	{
+		UnsubscribeFromEvent(EventType::OnPlayerDataRequest);
+	}
 
 	void SetBody(b2Body* body);
 	
@@ -20,12 +27,32 @@ public:
 
 	void Update() override;
 
+	void OnEventHappened(EventData& eventData) override
+	{
+		//if (eventData.eventType == EventType::OnPlayerDataRequest)
+		//{
+		//	EventData data(EventType::OnPlayerDataCallback);
+		//	
+		//	auto userData = new PlayerDataRequestData;
+		//	userData->position = sf::Vector2f{ body->GetPosition().x, body->GetPosition().y};
+		//	//userData->healthPoints = ;
+
+		//	data.userData = userData;
+
+		//	Event::Invoke(data);
+
+		//	delete userData;
+		//}
+	}
+
 	void CheckDirectionSwap(const sf::Vector2f& direction)
 	{
 
 		if (direction.x != (float)lastDirection && direction.x != 0.f)
 		{
 			EventData data(EventType::OnPlayerTurnedFaceEvent);
+
+			data.id = ownerId;
 
 			PlayerTurnedFaceData* userData = new PlayerTurnedFaceData;
 

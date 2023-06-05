@@ -68,6 +68,13 @@ public:
 		if (playerToAttack != nullptr)	
 		{
 			Debug::Log("ATTACK");
+
+			{
+				EventData data(EventType::OnEnemyAttacked);
+				data.id = ownerId;
+				Event::Invoke(data);
+			}
+
 			DamageData data;
 			data.value = damagePerHit;
 			playerToAttack->TakeDamage(&data);

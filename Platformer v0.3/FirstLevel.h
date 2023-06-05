@@ -11,6 +11,7 @@
 #include "GroundToTunnelChunk.h"
 
 #include "LevelBarrier.h"
+#include "SaveManager.h"
 
 const short LEVEL_WIDTH = 5;
 const short LEVEL_HEIGHT = 4;
@@ -36,7 +37,15 @@ public:
 	void Initialize() override
 	{
 		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
-		player->SetSpawnPosition(0.f, 20.f);
+		if (SaveManager::IsGameLoaded())
+		{
+			player->SetSpawnPosition(SaveManager::GetPlayerPosition());
+		}
+		else
+		{
+			player->SetSpawnPosition(0.f, 20.f);
+		}
+
 		ObjectCollection::AddObject(player);
 
 		mainChunk = new MainChunk(sharedContext, objectContext);
@@ -75,6 +84,7 @@ public:
 			{
 				auto tunnelChunk = new TunnelChunk(sharedContext, objectContext);
 				tunnelChunk->SetTunnelChunkNumber(tunnelNumbers[y][x]);
+				tunnelChunk->SetChunkSpawnId(y * LEVEL_HEIGHT + x);
 				tunnelChunk->Spawn(sf::Vector2f(1920.f * (-2) + 1920.f * x , 1080.f + 1080.f * y));
 
 				tunnels.push_back(tunnelChunk);
@@ -109,6 +119,16 @@ public:
 	void LateUpdate() override;
 
 	void UpdateUI() override;
+
+	void OnReload() override
+	{
+		Chunk::RefreshIdCounter();
+	}
+
+	void OnDestroy() override
+	{
+		Chunk::RefreshIdCounter();
+	}
 
 private:
 	Player* player;

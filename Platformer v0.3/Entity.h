@@ -135,10 +135,6 @@ public:
 	void ComponentsLateUpdate() override;
 	void ComponentsUpdateUI() override;
 
-	/// <summary>
-	/// Destroys an object and clears the memory after it
-	/// Can't be called twice or more
-	/// </summary>
 	void Destroy() override;
 
 	void Enable() override
@@ -302,7 +298,7 @@ private:
 		enabledComponentsBuffer.clear();
 	}
 
-	std::unordered_map<ComponentType, IComponent*> components;
+	std::map<ComponentType, IComponent*> components;
 
 	std::map<ComponentLayer, std::map<ComponentId, IComponent*>*> enabledComponents;
 	std::map<ComponentLayer, std::map<ComponentId, IComponent*>*> enabledComponentsBuffer;

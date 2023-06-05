@@ -6,6 +6,8 @@
 #include "ISceneManager.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+
 class SceneManager : public ISceneManager
 {
 public:
@@ -41,11 +43,15 @@ public:
 
 	static void SwitchScene(SceneId fromSceneId, SceneId toSceneId);
 
-	void SwitchToScene(GameLevels nexteLevel) override
+	void SwitchToScene(GameLevels nextLevel) override
 	{
 		//SwitchScene(activeScene->GetSceneId(), newSceneId);
 		isToSwitch = true;
-		sceneIdToSwitch = (int)nexteLevel;
+		sceneIdToSwitch = (int)nextLevel;
+		if(nextLevel != GameLevels::MainMenu)
+		{
+			SaveManager::SetActiveScene(nextLevel);
+		}
 	}
 
 	//void SwitchToScene(SceneId newSceneId) override

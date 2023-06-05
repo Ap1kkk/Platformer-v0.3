@@ -84,11 +84,18 @@ void Entity::Destroy()
 
 	OnDestroy();
 
-	for (auto& component : components)
+	for (auto itr = components.rbegin(); itr != components.rend(); ++itr)
 	{
-		component.second->Destroy();
+		itr->second->Destroy();
+
 	}
+	//for (auto& component : components)
+	//{
+	//	component.second->Destroy();
+	//}
 	components.clear();
+	enabledComponents.clear();
+	disabledComponents.clear();
 
 	Event::Invoke(entityData);
 }

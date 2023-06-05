@@ -46,6 +46,8 @@ public:
 		state->SetAnimation(animation);
 		state->SetIAnimator(this);
 
+		animation->SetIAnimStatePtr(state);
+
 		states.emplace(type, state);
 	}
 

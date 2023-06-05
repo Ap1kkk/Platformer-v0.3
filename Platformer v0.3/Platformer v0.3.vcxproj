@@ -146,6 +146,7 @@
     <ClCompile Include="AnimationState.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AssetAllocator.cpp" />
+    <ClCompile Include="AttackEnemyAnimState.cpp" />
     <ClCompile Include="AttackPlayerAnimState.cpp" />
     <ClCompile Include="AttackSensor.cpp" />
     <ClCompile Include="Background.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="IAnimator.cpp" />
     <ClCompile Include="IBody.cpp" />
     <ClCompile Include="IComponent.cpp" />
+    <ClCompile Include="IdleEnemyAnimState.cpp" />
     <ClCompile Include="IdlePlayerAnimState.cpp" />
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="IEvent.cpp" />
@@ -228,10 +230,12 @@
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="RoadSprite.cpp" />
+    <ClCompile Include="RunEnemyAnimState.cpp" />
     <ClCompile Include="RunnedGameState.cpp" />
     <ClCompile Include="RunPlayerAnimState.cpp" />
     <ClCompile Include="SaveAndExitButton.cpp" />
     <ClCompile Include="SaveGameButton.cpp" />
+    <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SecondLevel.cpp" />
     <ClCompile Include="ShopLevel.cpp" />
@@ -258,6 +262,7 @@
     <ClInclude Include="AnimationTypes.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="AssetAllocator.h" />
+    <ClInclude Include="AttackEnemyAnimState.h" />
     <ClInclude Include="AttackPlayerAnimState.h" />
     <ClInclude Include="AttackSensor.h" />
     <ClInclude Include="Background.h" />
@@ -300,6 +305,7 @@
     <ClInclude Include="IAnimator.h" />
     <ClInclude Include="IBody.h" />
     <ClInclude Include="IComponent.h" />
+    <ClInclude Include="IdleEnemyAnimState.h" />
     <ClInclude Include="IdlePlayerAnimState.h" />
     <ClInclude Include="IEntity.h" />
     <ClInclude Include="IEvent.h" />
@@ -347,13 +353,16 @@
     <ClInclude Include="PhysicSystem.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
+    <ClInclude Include="PlayerDataRequestData.h" />
     <ClInclude Include="PlayerTurnedFaceData.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RoadSprite.h" />
+    <ClInclude Include="RunEnemyAnimState.h" />
     <ClInclude Include="RunnedGameState.h" />
     <ClInclude Include="RunPlayerAnimState.h" />
     <ClInclude Include="SaveAndExitButton.h" />
     <ClInclude Include="SaveGameButton.h" />
+    <ClInclude Include="SaveManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SecondLevel.h" />
     <ClInclude Include="SharedContext.h" />

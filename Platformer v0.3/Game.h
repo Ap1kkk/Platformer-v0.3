@@ -25,6 +25,8 @@
 #include "PausedGameState.h"
 #include "ExitedGameState.h"
 
+#include "SaveManager.h"
+
 #include "Debug.h"
 
 class Game
@@ -60,6 +62,7 @@ private:
 	GameStateMachine* gameStateMachine;
 	WorldContactListener* worldContactListener;
 	EventSystem* eventSystem;
+	SaveManager* saveManager;
 
 	SharedContext sharedContext;
 };

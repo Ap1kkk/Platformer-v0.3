@@ -3,6 +3,8 @@
 #include "UIButton.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+
 class SaveAndExitButton : public UIButton
 {
 public:
@@ -35,6 +37,7 @@ public:
 		if(objectContext.gameStateMachine->IsPaused())
 		{
 			objectContext.gameStateMachine->Contintue();
+			SaveManager::SaveGame();
 			objectContext.sceneManager->SwitchToScene(GameLevels::MainMenu);
 		}
 	}

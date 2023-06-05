@@ -22,18 +22,36 @@
 #include "Health.h"
 #include "Damageble.h"
 
+
 class Player : public GameObject, public Damageble
 	//, public EventListener
 {
 public:
 	Player();
+	~Player()
+	{
+		Entity::UnsubscribeFromEvent(EventType::OnPlayerDataRequest);
+	}
 
 	void Awake() override;
  
-	//void OnEventHappened(EventData& data) override
-	//{
-	//	Debug::Log("OnEventHappened");
-	//}
+	void OnEventHappened(EventData& eventData) override
+	{
+		if (eventData.eventType == EventType::OnPlayerDataRequest)
+		{
+			EventData data(EventType::OnPlayerDataCallback);
+	
+			auto userData = new PlayerDataRequestData;
+			userData->position = sf::Vector2f{ body->GetPosition().x, body->GetPosition().y};
+			userData->healthPoints = health->GetHealthPoints();
+
+			data.userData = userData;
+
+			Event::Invoke(data);
+
+			delete userData;
+		}
+	}
 
 	void TakeDamage(DamageData* damageData) override
 	{
@@ -68,8 +86,8 @@ private:
 
 	DrawLayer drawLayer = 100;
 
-	const short FRAME_WIDTH = 100;
-	const short FRAME_HEIGHT = 80;
+	const short FRAME_WIDTH = 105;
+	const short FRAME_HEIGHT = 110;
 
 	sf::Vector2f attackSensorOffset = { -50.f, 0.f };
 };

@@ -77,7 +77,7 @@ public:
 
 		if (!isExists)
 		{
-			Debug::LogError("Can't add event listener\nListener to event type: " + std::to_string((int)eventType) + " is already added with ListenerId:" + std::to_string(listenerId));
+			Debug::LogError("Can't remove event listener\nListener to event type: " + std::to_string((int)eventType) + " is already removed with ListenerId:" + std::to_string(listenerId));
 		}
 	}
 

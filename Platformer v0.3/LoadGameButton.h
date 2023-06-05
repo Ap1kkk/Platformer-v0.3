@@ -3,6 +3,8 @@
 #include "UIButton.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+
 class LoadGameButton : public UIButton
 {
 public:
@@ -29,12 +31,19 @@ public:
 	void OnButtonClick() override
 	{
 		Debug::Log("Game Load logic");
+		SaveManager::SetIsGameLoaded();
+		auto startScene = SaveManager::GetActiveScene();
+		if (startScene != GameLevels::MainMenu)
+		{
+			objectContext.sceneManager->SwitchToScene(startScene);
+		}
+		
 	}
 
 private:
 	std::string buttonText = "Load game";
 
-	Filename buttonTexture = "Menu/load_pause_button.png";
+	Filename buttonTexture = "Menu/load_button.png";
 
 	//unsigned short textSize = 26;
 	//sf::Color textColor = sf::Color::Red;

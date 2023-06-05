@@ -3,15 +3,15 @@
 Player::Player() : Damageble(entityId)
 {
 	Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
-
+	Entity::SubscribeOnEvent(EventType::OnPlayerDataRequest);
 }
 
 void Player::Awake()
 {
 	AddTextComponent(drawLayer);
 	AddSpriteComponent(drawLayer);
-	SetTexture(playerTexture);
-	//SetTextureRect(playerTexture, sf::IntRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT));
+	//SetTexture(playerTexture);
+	SetTextureRect(playerTexture, sf::IntRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT));
 
 	MakePhysical();
 
@@ -68,70 +68,82 @@ void Player::Awake()
 	health = AddComponent<Health>();
 	health->SetDrawableComponent(drawableTextComponent);
 	health->SetTextOffset(hpOffset);
-	//animator = AddComponent<Animator>();
-	//
-	//auto animIdle = new Animation(true, 0.2f);
-	//animIdle->SetDrawableSpriteComponent(drawableSpriteComponent);
+	health->SetIsPlayer();
 
-	//animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animator = AddComponent<Animator>();
+	
+	auto animIdle = new Animation(true, 0.2f, entityId);
+	animIdle->SetDrawableSpriteComponent(drawableSpriteComponent);
+
+	animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 	//animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 	//animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 	//animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 	//animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 	//animIdle->AddFrame(sf::IntRect(FRAME_WIDTH * 5, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 
-	//animator->AddState<IdlePlayerAnimState>(AnimationType::Idle, animIdle);
-	//animator->SetInitialState(AnimationType::Idle);
+	animator->AddState<IdlePlayerAnimState>(AnimationType::Idle, animIdle);
+	animator->SetInitialState(AnimationType::Idle);
 
 
-	//auto animRun = new Animation(true, 0.2f);
-	//animRun->SetDrawableSpriteComponent(drawableSpriteComponent);
+	auto animRun = new Animation(true, 0.2f, entityId);
+	animRun->SetDrawableSpriteComponent(drawableSpriteComponent);
 
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 5, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 6, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 7, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 5, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 6, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animRun->AddFrame(sf::IntRect(FRAME_WIDTH * 7, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 
-	//animator->AddState<RunPlayerAnimState>(AnimationType::Run, animRun);
+	animator->AddState<RunPlayerAnimState>(AnimationType::Run, animRun);
 
-	//auto animSprint = new Animation(true, 0.1f);
-	//animSprint->SetDrawableSpriteComponent(drawableSpriteComponent);
+	auto animSprint = new Animation(true, 0.1f, entityId);
+	animSprint->SetDrawableSpriteComponent(drawableSpriteComponent);
 
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 5, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 6, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
-	//animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 7, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 5, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 6, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
+	animSprint->AddFrame(sf::IntRect(FRAME_WIDTH * 7, FRAME_HEIGHT * 0, FRAME_WIDTH, FRAME_HEIGHT));
 
-	//animator->AddState<SprintedPlayerAnimState>(AnimationType::Sprint, animSprint);
+	animator->AddState<SprintedPlayerAnimState>(AnimationType::Sprint, animSprint);
 
 
-	//auto animJumpRaise = new Animation(false, 0.1f);
-	//animJumpRaise->SetDrawableSpriteComponent(drawableSpriteComponent);
+	auto animJumpRaise = new Animation(false, 0.05f, entityId);
+	animJumpRaise->SetDrawableSpriteComponent(drawableSpriteComponent);
 
-	//animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
-	//animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
-	//animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
-	//animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
+	animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
+	animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
+	animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
+	animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
 	//animJumpRaise->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
 
-	//animator->AddState<JumpRaisedPlayerAnimState>(AnimationType::JumpRaise, animJumpRaise);
+	animator->AddState<JumpRaisedPlayerAnimState>(AnimationType::JumpRaise, animJumpRaise);
 
 
-	//auto animJumpFall = new Animation(false, 0.2f);
-	//animJumpFall->SetDrawableSpriteComponent(drawableSpriteComponent);
+	auto animJumpFall = new Animation(false, 0.01f, entityId);
+	animJumpFall->SetDrawableSpriteComponent(drawableSpriteComponent);
 
-	//animJumpFall->AddFrame(sf::IntRect(FRAME_WIDTH * 5, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
+	animJumpFall->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 1, FRAME_WIDTH, FRAME_HEIGHT));
 	//animJumpFall->AddFrame(sf::IntRect(FRAME_WIDTH * 6, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
 	//animJumpFall->AddFrame(sf::IntRect(FRAME_WIDTH * 7, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
 
-	//animator->AddState<JumpFallPlayerAnimState>(AnimationType::JumpFall, animJumpFall);
+	animator->AddState<JumpFallPlayerAnimState>(AnimationType::JumpFall, animJumpFall);
 
+	auto animAttack = new Animation(false, 0.1f, entityId);
+	animAttack->SetDrawableSpriteComponent(drawableSpriteComponent);
+
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
+
+	animator->AddState<AttackPlayerAnimState>(AnimationType::Attack, animAttack);
 }

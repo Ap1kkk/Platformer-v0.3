@@ -15,6 +15,7 @@ typedef unsigned int TileSetId;
 typedef unsigned int SensorId;
 typedef unsigned int FixtureId;
 typedef unsigned int ChunkId;
+typedef unsigned int ChunkSpawnId;
 typedef unsigned int ListenerId;
 
 typedef std::string ComponentType;

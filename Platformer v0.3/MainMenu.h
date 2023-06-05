@@ -6,7 +6,7 @@
 #include "Input.h"
 
 #include "StartGameButton.h"
-#include "LoadAndContinueGameButton.h"
+#include "LoadGameButton.h"
 #include "ExitGameButton.h"
 
 #include "MenuBackground.h"
@@ -24,9 +24,9 @@ public:
 		startGameButton->SetPosition(-400.f, 250.f);
 		ObjectCollection::AddUiObject(startGameButton);
 
-		loadAndContinueGameButton = sharedContext.entityManger->CreateEntity<LoadAndContinueGameButton>(objectContext);
-		loadAndContinueGameButton->SetPosition(0.f, 250.f);
-		ObjectCollection::AddUiObject(loadAndContinueGameButton);
+		loadGameButton = sharedContext.entityManger->CreateEntity<LoadGameButton>(objectContext);
+		loadGameButton->SetPosition(0.f, 250.f);
+		ObjectCollection::AddUiObject(loadGameButton);
 
 		exitGameButton = sharedContext.entityManger->CreateEntity<ExitGameButton>(objectContext);
 		exitGameButton->SetPosition(400.f, 250.f);
@@ -67,7 +67,7 @@ public:
 
 private:
 	StartGameButton* startGameButton;
-	LoadAndContinueGameButton* loadAndContinueGameButton;
+	LoadGameButton* loadGameButton;
 	ExitGameButton* exitGameButton;
 
 	MenuBackground* menuBackground;

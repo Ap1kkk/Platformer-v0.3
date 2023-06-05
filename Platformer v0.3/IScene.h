@@ -6,6 +6,8 @@
 #include "ObjectCollection.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+
 class IScene
 {
 public:

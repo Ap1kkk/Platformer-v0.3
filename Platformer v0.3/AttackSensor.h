@@ -40,6 +40,9 @@ public:
 		{
 			Debug::Log("lmb click");
 
+			EventData eventData(EventType::OnPlayerAttack);
+			Event::Invoke(eventData);
+
 			if (actualDirection == FaceDirection::Left)
 			{
 				if (attackBufferLeft.size() > 0)
@@ -53,12 +56,15 @@ public:
 					}
 
 					delete damageData;
+
 				}
 			}
 			else
 			{
 				if (attackBufferRight.size() > 0)
 				{
+
+
 					auto damageData = new DamageData;
 					damageData->value = damagePerHit;
 
@@ -68,6 +74,7 @@ public:
 					}
 
 					delete damageData;
+
 				}
 			}
 

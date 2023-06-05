@@ -4,6 +4,8 @@ PlayerMovement::PlayerMovement()
 {
 	SetComponentLayer(ComponentOrder::PlayerMovement);
 	velocity = normalVelocity;
+
+	SubscribeOnEvent(EventType::OnPlayerDataRequest);
 }
 
 void PlayerMovement::SetBody(b2Body* body)

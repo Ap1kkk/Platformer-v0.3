@@ -16,9 +16,9 @@ void PauseScene::Initialize()
 	continueButton->SetPosition(-200.f, 0.f);
 	ObjectCollection::AddUiObject(continueButton);
 
-	loadButton = sharedContext.entityManger->CreateEntity<LoadGameButton>(objectContext);
-	loadButton->SetPosition(-200.f, 150.f);
-	ObjectCollection::AddUiObject(loadButton);
+	loadAndContinueButton = sharedContext.entityManger->CreateEntity<LoadAndContinueGameButton>(objectContext);
+	loadAndContinueButton->SetPosition(-200.f, 150.f);
+	ObjectCollection::AddUiObject(loadAndContinueButton);
 
 	saveButton = sharedContext.entityManger->CreateEntity<SaveGameButton>(objectContext);
 	saveButton->SetPosition(200.f, 0.f);

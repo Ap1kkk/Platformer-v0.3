@@ -3,6 +3,8 @@
 #include "UIButton.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+
 class LoadAndContinueGameButton : public UIButton
 {
 public:
@@ -31,14 +33,17 @@ public:
 		Debug::Log("Game load and continue logic");
 		if (objectContext.gameStateMachine->IsPaused())
 		{
+			SaveManager::SetIsGameLoaded();
+
 			objectContext.gameStateMachine->Contintue();
+
 		}
 	}
 
 private:
 	std::string buttonText = "Load and continue game";
 
-	Filename buttonTexture = "Menu/load_button.png";
+	Filename buttonTexture = "Menu/load_pause_button.png";
 
 	//unsigned short textSize = 26;
 	//sf::Color textColor = sf::Color::Red;

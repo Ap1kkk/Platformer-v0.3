@@ -26,10 +26,11 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 
 	physicSystem->SetDebugDraw(physicsDebugDraw);
 	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_aabbBit); //с отрисовкой площади
-	physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
+	//physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
 
 	//-------------------Debug Draw-------------------------------
 
+	saveManager = new SaveManager;
 
 	sharedContext.window = &window;
 	sharedContext.objectCollection = objectCollection;
@@ -42,6 +43,7 @@ Game::Game(b2Vec2 gravity) : window("Platformer")
 	sharedContext.gameStateMachine = gameStateMachine;
 	sharedContext.worldContactListener = worldContactListener;
 	sharedContext.eventSystem = eventSystem;
+	sharedContext.saveManager = saveManager;
 
 
 	Debug::Log("Initialized", typeid(*this).name());
@@ -59,6 +61,7 @@ Game::~Game()
 	delete worldContactListener;
 
 	delete eventSystem;
+	delete saveManager;
 
 	Debug::LogWarning("Game destroyed"); 
 }

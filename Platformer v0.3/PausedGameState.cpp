@@ -30,5 +30,6 @@ void PausedGameState::LeaveState()
 
 	sharedContext.objectCollection->RetrieveAllFromPauseBuffer();
 	sharedContext.renderSystem->RetrieveActiveFromPauseBuffer();
-	sharedContext.physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
+	//TODO сделать настраиваемым
+	//sharedContext.physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
 }

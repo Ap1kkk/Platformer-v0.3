@@ -14,7 +14,7 @@
 #include "ContinueGameButton.h"
 #include "SaveAndExitButton.h"
 #include "SaveGameButton.h"
-#include "LoadGameButton.h"
+#include "LoadAndContinueGameButton.h"
 
 #include "PauseBackground.h"
 #include "PauseLogo.h"
@@ -40,7 +40,7 @@ public:
 private:
 	ContinueGameButton* continueButton;
 	SaveAndExitButton* saveAndExitButton;
-	LoadGameButton* loadButton;
+	LoadAndContinueGameButton* loadAndContinueButton;
 	SaveGameButton* saveButton;
 
 	PauseBackground* pauseBackground;

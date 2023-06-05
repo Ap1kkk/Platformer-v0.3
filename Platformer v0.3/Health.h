@@ -16,6 +16,7 @@ public:
 	Health()
 	{
 		healthPoints = START_HEALTH_POINTS;
+		SetComponentLayer(ComponentOrder::Health);
 	}
 	virtual ~Health()
 	{
@@ -35,11 +36,7 @@ public:
 	{
 		Debug::Log("damage taken");
 		ProcessDamage(damageData);
-		if (!IsAlive())
-		{
-			healthPoints = 0;
-		}
-		drawable->SetText(std::to_string(healthPoints));
+
 	}
 
 	void SetDrawableComponent(DrawableTextComponent* drawable)
@@ -50,6 +47,13 @@ public:
 	void SetTextOffset(sf::Vector2f offset)
 	{
 		textOffset = offset;
+	}
+	
+	void SetIsPlayer() { isPlayer = true; }
+	void SetEnemyData(ChunkId chunkId, sf::Vector2f spawnOffset) 
+	{
+		this->chunkId = chunkId;
+		this->spawnOffset = spawnOffset;
 	}
 
 	unsigned int GetHealthPoints()
@@ -70,10 +74,25 @@ private:
 
 		if (!IsAlive())
 		{
+			healthPoints = 0;
+		}
+		drawable->SetText(std::to_string(healthPoints));
+
+		if (!IsAlive())
+		{
 			EventData eventData(EventType::OnEntityDiedEvent);
 
 			auto userData = new OnEntityDiedData;
 			userData->entityId = ownerId;
+			if (isPlayer)
+			{
+				userData->isPlayer = true;
+			}
+			else
+			{
+				userData->chunkId = chunkId;
+				userData->spawnPosition = spawnOffset;
+			}
 			eventData.userData = userData;
 
 			Event::Invoke(eventData);
@@ -92,5 +111,9 @@ private:
 	sf::Color textColor = sf::Color::Red;
 	Filename fontFilename = "Fonts/BenguiatStd-Bold.otf";
 	sf::Vector2f textOffset = { 0.f, -120.f };
+
+	bool isPlayer;
+	ChunkId chunkId;
+	sf::Vector2f spawnOffset;
 };
 

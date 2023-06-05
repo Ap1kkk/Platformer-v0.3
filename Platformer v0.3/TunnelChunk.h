@@ -16,23 +16,33 @@ public:
 	TunnelChunk(SharedContext sharedContext, ObjectContext objectContext);
 
 	void Spawn(sf::Vector2f chunkPosition) override
-	{
+	{ 
 		background = sharedContext.entityManger->CreateEntity<TunnelBackground>(objectContext);
 		
-		TunnelCollidersData data;
 
 		background->SetTunnelNumber(tunnelChunkNumber);
 		background->SetPosition(chunkPosition);
 		ObjectCollection::AddObject(background);
 
-		auto enemyPositions = TunnelCollidersData::GetEnemySpawnData(tunnelChunkNumber);
+		EnemySpawnPositions enemyPositions;
+		if (!SaveManager::IsGameLoaded())
+		{
+			enemyPositions = TunnelCollidersData::GetEnemySpawnData(tunnelChunkNumber);
+		}
+		else
+		{
+			enemyPositions = SaveManager::GetEnemySpawnData(tunnelChunkNumber);
+
+		}
 
 		for (auto& position : enemyPositions)
 		{
 			auto enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
 			enemy->SetSpawnPosition(chunkPosition + position);
+			enemy->SetChunkData(chunkSpawnId, position);
 			ObjectCollection::AddObject(enemy);
 		}
+		
 	}
 
 	void SetTunnelChunkNumber(int number)
@@ -51,10 +61,5 @@ private:
 	TunnelCollidersData collidersData;
 
 	int tunnelChunkNumber;
-	//SmallObstacle* smallObstacle1;
-
-	//Filename smallObstacle1Texture = "car2.png";
-
-	//sf::Vector2f smallObstacle1Offset = { 500.f, 220.f + 100 };
 };
 

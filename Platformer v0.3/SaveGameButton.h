@@ -3,6 +3,8 @@
 #include "UIButton.h"
 #include "Debug.h"
 
+#include "SaveManager.h"
+
 class SaveGameButton : public UIButton
 {
 public:
@@ -29,6 +31,7 @@ public:
 	void OnButtonClick() override
 	{
 		Debug::Log("Game Save logic");
+		SaveManager::SaveGame();
 	}
 
 private:
