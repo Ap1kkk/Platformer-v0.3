@@ -149,11 +149,11 @@ void Player::Awake()
 	auto animAttack = new Animation(false, 0.1f, entityId);
 	animAttack->SetDrawableSpriteComponent(drawableSpriteComponent);
 
-	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
-	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
-	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
-	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
-	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 2 + 20.f, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 0, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 1, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 2, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 3, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
+	animAttack->AddFrame(sf::IntRect(FRAME_WIDTH * 4, FRAME_HEIGHT * 2, FRAME_WIDTH, FRAME_HEIGHT));
 
 	animator->AddState<AttackPlayerAnimState>(AnimationType::Attack, animAttack);
 }

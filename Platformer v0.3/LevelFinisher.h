@@ -21,6 +21,7 @@ public:
 		drawableTextComponent->Disable();
 		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + fontFilename));
 		drawableTextComponent->SetText("    Press E    \nTo finish level");
+		drawableTextComponent->SetFillColor(sf::Color::Red);
 		drawableTextComponent->SetPositionOffset(textOffset);
 
 

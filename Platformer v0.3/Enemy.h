@@ -119,7 +119,8 @@ private:
 	float movingTime = 1.5f;
 	float idleTime = 1.f;
 
-	float enemyVelocity = 500.f;
+	//float enemyVelocity = 500.f;
+	float enemyVelocity = 350.f;
 
 	float curentTime = 0.f;
 	FaceDirection faceDirection = FaceDirection::Right;

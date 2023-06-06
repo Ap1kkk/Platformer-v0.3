@@ -31,6 +31,7 @@ void Enemy::Awake()
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;
 	boxFixtureDef.density = 1;
+	boxFixtureDef.friction = 1;
 	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Enemy));
 
 

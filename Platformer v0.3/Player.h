@@ -97,8 +97,8 @@ private:
 
 	DrawLayer drawLayer = 100;
 
-	const short FRAME_WIDTH = 105;
-	const short FRAME_HEIGHT = 110;
+	const short FRAME_WIDTH = 785 / 8;
+	const short FRAME_HEIGHT = 348 / 3;
 
 	sf::Vector2f attackSensorOffset = { -50.f, 0.f };
 

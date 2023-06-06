@@ -78,8 +78,10 @@ private:
 	JumpSensor* jumpSensor;
 
 	float velocity;
-	float sprintVelocity = 1000.f;
-	float normalVelocity = 500.f;
+	//float sprintVelocity = 1000.f;
+	//float normalVelocity = 500.f;
+	float sprintVelocity = 600.f;
+	float normalVelocity = 350.f;
 
 	float jumpTime = 0.f;
 	float jumpMaxTime = 0.5f;
