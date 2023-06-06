@@ -3,6 +3,8 @@
 #include "UIObject.h"
 #include "DataTypes.h"
 
+#include "SaveManager.h"
+
 class MenuBackground : public UIObject
 {
 public:
@@ -12,10 +14,16 @@ public:
 	{
 		Initialize();
 		AddSpriteComponent(drawLayer);
-		SetTexture(textureFilename);
+		if (SaveManager::IsGameOver())
+		{
+			SetTexture(textureFilenameGameOver);
+		}
+		else
+		{
+			SetTexture(textureFilename);
+		}
 		SetUIPosition(position);
 	}
-
 
 	void SetPosition(sf::Vector2f position)
 	{
@@ -32,5 +40,5 @@ private:
 	sf::Vector2f position;
 	DrawLayer drawLayer = -200;
 	Filename textureFilename = "Menu/menu_background.png";
-
+	Filename textureFilenameGameOver = "Menu/game_over.png";
 };

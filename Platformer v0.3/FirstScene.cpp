@@ -17,7 +17,16 @@ void FirstScene::Initialize()
 	player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
 	if (SaveManager::IsGameLoaded())
 	{
-		player->SetSpawnPosition(SaveManager::GetPlayerPosition());
+		if (SaveManager::GetLastSavedScene() == GameLevels::FirstScene)
+		{
+			player->SetSpawnPosition(SaveManager::GetPlayerPosition());
+		}
+		else
+		{
+			player->SetSpawnPosition(150.f, -100.f);
+
+		}
+		player->SetHealthPoints(SaveManager::GetSavedPlayerHealthPoints());
 	}
 	else
 	{

@@ -1,12 +1,20 @@
 #include "SaveManager.h"
 
 bool SaveManager::isGameLoaded = false;
+bool SaveManager::isGameOver = false;
 
 GameLevels SaveManager::activeScene = GameLevels::FirstScene;
+GameLevels SaveManager::lastSavedScene = GameLevels::FirstScene;
 
-short SaveManager::playerHp = 100;
-sf::Vector2f SaveManager::playerPosition = {0.f, 0.f};
-std::map<ChunkId, std::vector<sf::Vector2f>> SaveManager::chunks = {};
+int SaveManager::playerHp = DEFAULT_PLAYER_HP;
+int SaveManager::savedPlayerHp = DEFAULT_PLAYER_HP;
+sf::Vector2f SaveManager::playerPosition = { 0.f, 0.f };
+sf::Vector2f SaveManager::savedPlayerPosition = {0.f, 0.f};
+std::map<ChunkId, std::vector<sf::Vector2f>> SaveManager::activeChunks = {};
+std::map<ChunkId, std::vector<sf::Vector2f>> SaveManager::savedChunks = {};
+std::map<ChunkId, int> SaveManager::activeEnemiesHp = {};
+std::map<ChunkId, int> SaveManager::savedEnemiesHp = {};
+
 std::map<ChunkId, std::pair<EntityId, short>> SaveManager::enemies = {};
 
 void SaveManager::ParceFromFile()
@@ -18,9 +26,55 @@ void SaveManager::ParceFromFile()
 	{
 		while (std::getline(in, line))
 		{
-			std::cout << line << std::endl;
+			if (line[0] == 'h')
+			{
+				savedPlayerHp = std::atoi(line.substr(1, line.length() - 1).c_str());
+				playerHp = savedPlayerHp;
+			}
+			if (line[0] == 's')
+			{
+				auto scene = std::atoi(line.substr(1, line.length() - 1).c_str());
+				lastSavedScene = (GameLevels)scene;
+				activeScene = lastSavedScene;
+			}
+			if (line[0] == 'p')
+			{
+				auto vectorStr = line.substr(1, line.length() - 1);
+				
+				auto delimiterIndex = vectorStr.find("/");
+				if (delimiterIndex != std::string::npos)
+				{
+					float xPos = (float)std::atof(vectorStr.substr(0, delimiterIndex).c_str());
+					float yPos = (float)std::atof(vectorStr.substr(delimiterIndex + 1, vectorStr.length() - 1).c_str());
+					savedPlayerPosition = { xPos, yPos };
+					playerPosition = savedPlayerPosition;
+				}
+			}
+			if (line[0] == 'c')
+			{
+				//TODO работает только для одной добавленной позиции
+				auto mainDelimiterIndex = line.find("|");
+				if (mainDelimiterIndex != std::string::npos)
+				{
+					ChunkSpawnId chunkSpawnId = std::atoi(line.substr(1, mainDelimiterIndex).c_str());
+					std::vector<sf::Vector2f> positions = {};
 
+					auto vectorStr = line.substr(mainDelimiterIndex + 1, line.length() - 1);
+
+					auto delimiterIndex = vectorStr.find("/");
+					if (delimiterIndex != std::string::npos)
+					{
+						sf::Vector2f spawnPosition;
+						float xPos = (float)std::atof(vectorStr.substr(0, delimiterIndex).c_str());
+						float yPos = (float)std::atof(vectorStr.substr(delimiterIndex + 1, vectorStr.length() - 1).c_str());
+						spawnPosition = { xPos, yPos };
+						positions.push_back(spawnPosition);
+					}
+					savedChunks[chunkSpawnId] = positions;
+				}
+			}
 		}
+		activeChunks = savedChunks;
 	}
 }
 
@@ -38,9 +92,9 @@ void SaveManager::SaveToFile()
 	out.open(SAVE_FILENAME);
 	if (out.is_open())
 	{
-		out << "h " + std::to_string(playerHp) << std::endl;
-		out << "p " + std::to_string(playerPosition.x) + " / " + std::to_string(playerPosition.y) << std::endl;
-		out << "s " + std::to_string((short)activeScene) << std::endl;
+		out << "h " + std::to_string(savedPlayerHp) << std::endl;
+		out << "p " + std::to_string(savedPlayerPosition.x) + " / " + std::to_string(savedPlayerPosition.y) << std::endl;
+		out << "s " + std::to_string((short)lastSavedScene) << std::endl;
 
 		for (int i = 0; i < 20; ++i)
 		{
@@ -53,8 +107,8 @@ void SaveManager::SaveToFile()
 			{
 				out << "c " + std::to_string(i);
 			}
-			auto itr = chunks.find(i);
-			if (itr != chunks.end())
+			auto itr = savedChunks.find(i);
+			if (itr != savedChunks.end())
 			{
 				for (auto& pos : itr->second)
 				{
@@ -64,6 +118,27 @@ void SaveManager::SaveToFile()
 			out << std::endl;
 		}
 
+		for (int i = 0; i < 20; ++i)
+		{
+			if (i < 10)
+			{
+				out << "e 0" + std::to_string(i);
+
+			}
+			else
+			{
+				out << "e " + std::to_string(i);
+			}
+			auto itr = savedChunks.find(i);
+			if (itr != savedChunks.end())
+			{
+				if (!itr->second.empty())
+				{
+					out << " | " + std::to_string(savedEnemiesHp[i]);
+				}
+			}
+			out << std::endl;
+		}
 	}
 	out.close();
 }

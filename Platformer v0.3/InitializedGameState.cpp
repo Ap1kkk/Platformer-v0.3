@@ -36,7 +36,7 @@ void InitializedGameState::EnterState()
 	sharedContext.saveManager->SubscribeOnEvents();
 
 	TunnelCollidersData data;
-
+	sharedContext.saveManager->ParceFromFile();
 }
 
 void InitializedGameState::Update()

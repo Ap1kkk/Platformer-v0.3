@@ -12,10 +12,14 @@
 #include "TunnelCollidersData.h"
 
 #include "PlayerDataRequestData.h"
+#include "EnemyDamagedData.h"
+
+#include "Debug.h"
 
 const std::string SAVE_FILENAME = "../Assets/Saves/save.txt";
 
 const short DEFAULT_PLAYER_HP = 100;
+const short DEFAULT_ENEMY_HP = 100;
 
 class SaveManager : public EventListener
 {
@@ -24,6 +28,7 @@ public:
 	{
 		SubscribeOnEvent(EventType::OnPlayerDataCallback);
 		SubscribeOnEvent(EventType::OnEntityDiedEvent);
+		SubscribeOnEvent(EventType::OnEnemyDamaged);
 	}
 
 	static void ParceFromFile();
@@ -33,15 +38,23 @@ public:
 	{ 
 		SetIsGameLoaded();
 
+		lastSavedScene = activeScene;
+		savedChunks = activeChunks;
 		EventData data(EventType::OnPlayerDataRequest);
 		Event::Invoke(data);
-
+		savedPlayerHp = playerHp;
+		savedPlayerPosition = playerPosition;
+		savedEnemiesHp = activeEnemiesHp;
 		SaveToFile();
 	}
 
 	static bool IsGameLoaded() { return isGameLoaded; }
 	static void SetIsGameLoaded() { isGameLoaded = true; }
 	static void ResetIsGameLoaded() { isGameLoaded = false; }
+
+	static bool IsGameOver() { return isGameOver; }
+	static void SetIsGameOver() { isGameOver = true; }
+	static void ResetIsGameOver() { isGameOver = false; }
 
 	static void SetDefaultValues() 
 	{
@@ -58,20 +71,23 @@ public:
 		for (auto chunkNumber = 0; chunkNumber < 20; ++chunkNumber)
 		{
 			auto enemyPositions = TunnelCollidersData::GetEnemySpawnData(tunnelNumbers[chunkNumber]);
-			chunks[chunkNumber] = enemyPositions;
+			activeChunks[chunkNumber] = enemyPositions;
+			activeEnemiesHp[chunkNumber] = DEFAULT_ENEMY_HP;
 		}
 
 	}
 
 	static void SetActiveScene(GameLevels scene) { activeScene = scene; }
 	static GameLevels GetActiveScene() { return activeScene; }
+	static GameLevels GetLastSavedScene() { return lastSavedScene; }
 
 	static sf::Vector2f GetPlayerPosition() { return playerPosition; }
+	static int GetSavedPlayerHealthPoints() { return savedPlayerHp; }
 
 	static std::vector<sf::Vector2f> GetEnemySpawnData(ChunkId chunkId)
 	{
-		auto itr = chunks.find(chunkId);
-		if (itr != chunks.end())
+		auto itr = savedChunks.find(chunkId);
+		if (itr != savedChunks.end())
 		{
 			return itr->second;
 		}
@@ -80,21 +96,6 @@ public:
 			return {};
 		}
 	}
-
-	//static void SetEnemyPosition(ChunkId chunkId, sf::Vector2f spawnPosition)
-	//{
-	//	auto chunkItr = chunks.find(chunkId);
-	//	if (chunkItr != chunks.end())
-	//	{
-	//		for (auto position = chunkItr->second.begin(); position != chunkItr->second.end(); ++position)
-	//		{
-	//			if (*position == spawnPosition)
-	//			{
-	//				chunkItr->second.erase(position);
-	//			}
-	//		}
-	//	}
-	//}
 
 	void OnEventHappened(EventData& data) override
 	{
@@ -109,8 +110,8 @@ public:
 			}
 			else
 			{
-				auto chunkItr = chunks.find(userData->chunkId);
-				if (chunkItr != chunks.end())
+				auto chunkItr = activeChunks.find(userData->chunkId);
+				if (chunkItr != activeChunks.end())
 				{
 					for (auto position = chunkItr->second.begin(); position != chunkItr->second.end(); ++position)
 					{
@@ -135,12 +136,20 @@ public:
 
 private:
 	static bool isGameLoaded;
+	static bool isGameOver;
 
 	static GameLevels activeScene;
+	static GameLevels lastSavedScene;
 
-	static short playerHp;
+	static int playerHp;
+	static int savedPlayerHp;
 	static sf::Vector2f playerPosition;
-	static std::map<ChunkId, std::vector<sf::Vector2f>> chunks;
+	static sf::Vector2f savedPlayerPosition;
+	static std::map<ChunkId, std::vector<sf::Vector2f>> activeChunks;
+	static std::map<ChunkId, std::vector<sf::Vector2f>> savedChunks;
+	static std::map<ChunkId, int> activeEnemiesHp;
+	static std::map<ChunkId, int> savedEnemiesHp;
+
 	static std::map<ChunkId, std::pair<EntityId, short>> enemies;
 };
 

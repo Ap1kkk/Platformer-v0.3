@@ -32,11 +32,11 @@ void Enemy::Awake()
 	boxFixtureDef.filter.categoryBits = (1 << ((uint16)CollisionLayers::Enemy));
 
 
-	auto fixture = physicComponent->AddFixture(boxFixtureDef);
+	bodyFixture = physicComponent->AddFixture(boxFixtureDef);
 
 	userData = new FixtureUserData;
 	userData->damageble = this;
-	fixture->SetUserData(userData);
+	bodyFixture->SetUserData(userData);
 
 	body = physicComponent->GetBody();
 

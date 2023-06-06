@@ -32,7 +32,8 @@ public:
 	{
 		Debug::Log("Game Load logic");
 		SaveManager::SetIsGameLoaded();
-		auto startScene = SaveManager::GetActiveScene();
+		SaveManager::ResetIsGameOver();
+		auto startScene = SaveManager::GetLastSavedScene();
 		if (startScene != GameLevels::MainMenu)
 		{
 			objectContext.sceneManager->SwitchToScene(startScene);

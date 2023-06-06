@@ -69,6 +69,10 @@ void Player::Awake()
 	health->SetDrawableComponent(drawableTextComponent);
 	health->SetTextOffset(hpOffset);
 	health->SetIsPlayer();
+	if (initialHealthPoints != -1)
+	{
+		health->SetHealthPoints(initialHealthPoints);
+	}
 
 	animator = AddComponent<Animator>();
 	

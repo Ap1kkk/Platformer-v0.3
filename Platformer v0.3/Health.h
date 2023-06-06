@@ -38,6 +38,10 @@ public:
 		ProcessDamage(damageData);
 
 	}
+	void SetHealthPoints(int healthPoints)
+	{
+		this->healthPoints = healthPoints;
+	}
 
 	void SetDrawableComponent(DrawableTextComponent* drawable)
 	{

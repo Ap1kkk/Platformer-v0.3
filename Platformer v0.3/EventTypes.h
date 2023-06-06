@@ -37,12 +37,14 @@ enum class EventType
 	OnJumpSensorLeftCollisions,
 
 	OnEnemyStartedRunning,
-	OnEnemyStoppedRunning, 
+	OnEnemyStoppedRunning,
 	OnEnemyAttacked,
 	OnEnemyTurnedFace,
 
 	OnGameSaved,
 
 	OnPlayerDataRequest,
-	OnPlayerDataCallback
+	OnPlayerDataCallback,
+
+	OnEnemyDamaged,
 };

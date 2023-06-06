@@ -282,6 +282,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyAttackComponent.h" />
     <ClInclude Include="EnemyAttackSensor.h" />
+    <ClInclude Include="EnemyDamagedData.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EventData.h" />

@@ -22,6 +22,7 @@
 #include "Health.h"
 #include "Damageble.h"
 
+#include "SaveManager.h"
 
 class Player : public GameObject, public Damageble
 	//, public EventListener
@@ -51,6 +52,15 @@ public:
 
 			delete userData;
 		}
+		if (eventData.eventType == EventType::OnEntityDiedEvent)
+		{
+			Damageble::OnEventHappened(eventData);
+		}
+	}
+
+	void SetHealthPoints(int healthPoints)
+	{
+		initialHealthPoints = healthPoints;
 	}
 
 	void TakeDamage(DamageData* damageData) override
@@ -62,6 +72,7 @@ public:
 	void OnEntityDied() override
 	{
 		Debug::Log("player died");
+		SaveManager::SetIsGameOver();
 		objectContext.sceneManager->SwitchToScene(GameLevels::MainMenu);
 	}
 
@@ -90,5 +101,7 @@ private:
 	const short FRAME_HEIGHT = 110;
 
 	sf::Vector2f attackSensorOffset = { -50.f, 0.f };
+
+	int initialHealthPoints = -1;
 };
 

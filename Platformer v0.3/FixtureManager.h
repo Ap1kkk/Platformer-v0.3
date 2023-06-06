@@ -90,6 +90,12 @@ public:
 	{
 		for (auto& pair : destroyBuffer)
 		{
+			if (pair.first->GetUserData() != nullptr)
+			{
+				pair.first->GetUserData()->componentPtr = nullptr;
+				pair.first->GetUserData()->damageble = nullptr;
+				pair.first->GetUserData()->entityPtr = nullptr;
+			}
 			pair.second->DestroyFixture(pair.first->GetOwningFixture());
 		}
 		destroyBuffer.clear();

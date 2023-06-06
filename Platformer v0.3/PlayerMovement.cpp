@@ -97,5 +97,10 @@ void PlayerMovement::Update()
 		jumpTime = 0.f;
 	}
 
+	if (Input::IsKeyDown(Input::Key::P))
+	{
+		Debug::Log(body->GetPosition());
+	}
+
 	//lastFrameDirection = input;
 }

@@ -12,9 +12,9 @@
 
 struct FixtureUserData
 {
-	IComponent* componentPtr;
-	IEntity* entityPtr;
-	Damageble* damageble;
+	IComponent* componentPtr = nullptr;
+	IEntity* entityPtr = nullptr;
+	Damageble* damageble = nullptr;
 };
 
 class Fixture : public b2Fixture

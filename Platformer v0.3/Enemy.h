@@ -17,6 +17,8 @@
 
 #include "SaveManager.h"
 
+#include "EnemyDamagedData.h"
+
 class Enemy : public GameObject, public Damageble
 {
 public:
@@ -35,6 +37,18 @@ public:
 	void TakeDamage(DamageData* damageData)
 	{
 		health->TakeDamage(damageData);
+
+		EventData data(EventType::OnEnemyDamaged);
+		data.id = entityId;
+
+		auto userData = new EnemyDamagedData;
+		userData->chunkSpawnId = spawnChunkId;
+		
+		data.userData = userData;
+
+		Event::Invoke(data);
+
+		delete userData;
 	}
 
 	void OnEntityDied() override
@@ -52,6 +66,7 @@ public:
 
 private:
 	b2Body* body;
+	Fixture* bodyFixture;
 
 	Filename enemyTexture = "Characters/enemy.png";
 

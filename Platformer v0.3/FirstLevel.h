@@ -39,11 +39,20 @@ public:
 		player = sharedContext.entityManger->CreateEntity<Player>(objectContext);
 		if (SaveManager::IsGameLoaded())
 		{
-			player->SetSpawnPosition(SaveManager::GetPlayerPosition());
+			if (SaveManager::GetLastSavedScene() == GameLevels::FirstLevel)
+			{
+				player->SetSpawnPosition(SaveManager::GetPlayerPosition());
+			}
+			else
+			{
+				player->SetSpawnPosition(150.f, -100.f);
+
+			}
+			player->SetHealthPoints(SaveManager::GetSavedPlayerHealthPoints());
 		}
 		else
 		{
-			player->SetSpawnPosition(0.f, 20.f);
+			player->SetSpawnPosition(150.f, -100.f);
 		}
 
 		ObjectCollection::AddObject(player);

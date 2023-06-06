@@ -36,7 +36,7 @@ public:
 			SaveManager::SetIsGameLoaded();
 
 			objectContext.gameStateMachine->Contintue();
-
+			objectContext.sceneManager->SwitchToScene(SaveManager::GetLastSavedScene());
 		}
 	}
 

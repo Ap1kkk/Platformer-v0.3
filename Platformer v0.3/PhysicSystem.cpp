@@ -21,6 +21,7 @@ PhysicSystem::~PhysicSystem()
 
 void PhysicSystem::Update(float timeStep, int velocityIterations, int positionIterations)
 {
+	FixtureManager::ClearDestroyBuffer();
 	world->Step(timeStep, velocityIterations, positionIterations);
 	FixtureManager::ClearDestroyBuffer();
 	ClearDestroyBuffer();

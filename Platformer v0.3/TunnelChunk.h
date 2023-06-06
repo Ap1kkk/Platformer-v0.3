@@ -31,7 +31,7 @@ public:
 		}
 		else
 		{
-			enemyPositions = SaveManager::GetEnemySpawnData(tunnelChunkNumber);
+			enemyPositions = SaveManager::GetEnemySpawnData(chunkSpawnId);
 
 		}
 

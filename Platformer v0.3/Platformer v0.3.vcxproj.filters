@@ -829,6 +829,9 @@
     <ClInclude Include="PlayerDataRequestData.h">
       <Filter>Файлы заголовков\Events</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyDamagedData.h">
+      <Filter>Файлы заголовков\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-2.dll">
