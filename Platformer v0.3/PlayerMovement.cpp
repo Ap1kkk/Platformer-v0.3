@@ -5,7 +5,7 @@ PlayerMovement::PlayerMovement()
 	SetComponentLayer(ComponentOrder::PlayerMovement);
 	velocity = normalVelocity;
 
-	SubscribeOnEvent(EventType::OnPlayerDataRequest);
+	SubscribeOnEvent(EventType::OnPlayerMovementRequest);
 }
 
 void PlayerMovement::SetBody(b2Body* body)
@@ -22,10 +22,14 @@ void PlayerMovement::SetJumpSensor(JumpSensor* jumpSensor)
 void PlayerMovement::Update()
 {
 	auto input = Input::GetInputAxes();
+	isRunningData = false;
+
 
 	//Horizontal movement
 	if (Input::IsKeyPressed(Input::Key::Horizontal))
 	{
+		isRunningData = true;
+
 		CheckDirectionSwap(input);
 
 		auto vel = body->GetLinearVelocity();
@@ -49,6 +53,8 @@ void PlayerMovement::Update()
 	//Sprint
 	if (Input::IsKeyDown(Input::Key::LShift))
 	{
+		isSprintingData = true;
+
 		velocity = sprintVelocity;
 
 		EventData data(EventType::OnPlayerStartedSprinting);
@@ -56,6 +62,8 @@ void PlayerMovement::Update()
 	}
 	if (Input::IsKeyUp(Input::Key::LShift))
 	{
+		isSprintingData = false;
+
 		velocity = normalVelocity;
 
 		EventData data(EventType::OnPlayerStoppedSprinting);

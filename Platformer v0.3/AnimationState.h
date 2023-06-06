@@ -23,6 +23,8 @@ public:
 
 	void Update() override { animation->Evaluate(); }
 
+	void RefreshNonCyclicAnim() { animation->RefreshNonCyclicAnim(); }
+
 private:
 	AnimationType type;
 	IAnimator* animator;

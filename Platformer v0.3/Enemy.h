@@ -18,15 +18,46 @@
 #include "SaveManager.h"
 
 #include "EnemyDamagedData.h"
+#include "EnemyMovementData.h"
 
 class Enemy : public GameObject, public Damageble
 {
 public:
 	Enemy();
 
+	void OnDestroy() override
+	{
+		Entity::UnsubscribeFromEvent(EventType::OnEnemyMovementRequest);
+	}
+
 	void Awake() override;
 
 	void Update() override;
+
+	void OnEventHappened(EventData& eventData) override
+	{
+		if (eventData.eventType == EventType::OnEnemyMovementRequest)
+		{
+			if (eventData.id == entityId)
+			{
+				EventData data(EventType::OnEnemyMovementCallback);
+				data.id = entityId;
+
+				auto userData = new EnemyMovementData;
+				userData->isRunning = isRunningData;
+
+				data.userData = userData;
+
+				Event::Invoke(data);
+
+				delete userData;
+			}
+		}
+		if (eventData.eventType == EventType::OnEntityDiedEvent)
+		{
+			Damageble::OnEventHappened(eventData);
+		}
+	}
 
 	void SetChunkData(ChunkId chunkId, sf::Vector2f spawnOffset) 
 	{
@@ -61,14 +92,6 @@ public:
 	{
 		Destroy();
 	}
-
-	//void OnEventHappened(EventData& eventData) override
-	//{
-	//	if (eventData.eventType == EventType::OnGameSaved)
-	//	{
-	//		//SaveManager
-	//	}
-	//}
 
 private:
 	b2Body* body;
@@ -105,5 +128,7 @@ private:
 	sf::Vector2f spawnOffset;
 
 	int healthPointsToSet = -1;
+
+	bool isRunningData = false;
 };
 

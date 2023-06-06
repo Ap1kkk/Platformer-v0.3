@@ -3,6 +3,8 @@
 Enemy::Enemy() : Damageble(entityId)
 {
 	Debug::LogInfo("Created with id: " + std::to_string(entityId), typeid(*this).name());
+	
+	Entity::SubscribeOnEvent(EventType::OnEnemyMovementRequest);
 }
 
 void Enemy::Awake()
@@ -136,4 +138,5 @@ void Enemy::Update()
 			Event::Invoke(data);
 		}
 	}
+	isRunningData = isMoving;
 }

@@ -32,7 +32,15 @@ public:
 				SwitchFrame();
 				thisFrameTime = 0.f;
 			}
+			thisFrameTime = 0.f;
 		}
+	}
+	
+	void RefreshNonCyclicAnim()
+	{
+		isFinished = false;
+		thisFrameTime = 0.f;
+		framesItr = 0;
 	}
 
 	void AddFrame(sf::IntRect frameArea)

@@ -283,6 +283,7 @@
     <ClInclude Include="EnemyAttackComponent.h" />
     <ClInclude Include="EnemyAttackSensor.h" />
     <ClInclude Include="EnemyDamagedData.h" />
+    <ClInclude Include="EnemyMovementData.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EventData.h" />
@@ -355,6 +356,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerDataRequestData.h" />
+    <ClInclude Include="PlayerMovementData.h" />
     <ClInclude Include="PlayerTurnedFaceData.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RoadSprite.h" />

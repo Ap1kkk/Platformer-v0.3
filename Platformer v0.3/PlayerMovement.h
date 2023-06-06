@@ -8,7 +8,7 @@
 #include "JumpSensor.h"
 
 #include "PlayerTurnedFaceData.h"
-#include "PlayerDataRequestData.h"
+#include "PlayerMovementData.h"
 
 #include "EventListener.h"
 
@@ -18,7 +18,7 @@ public:
 	PlayerMovement();
 	~PlayerMovement()
 	{
-		UnsubscribeFromEvent(EventType::OnPlayerDataRequest);
+		UnsubscribeFromEvent(EventType::OnPlayerMovementRequest);
 	}
 
 	void SetBody(b2Body* body);
@@ -29,20 +29,20 @@ public:
 
 	void OnEventHappened(EventData& eventData) override
 	{
-		//if (eventData.eventType == EventType::OnPlayerDataRequest)
-		//{
-		//	EventData data(EventType::OnPlayerDataCallback);
-		//	
-		//	auto userData = new PlayerDataRequestData;
-		//	userData->position = sf::Vector2f{ body->GetPosition().x, body->GetPosition().y};
-		//	//userData->healthPoints = ;
+		if (eventData.eventType == EventType::OnPlayerMovementRequest)
+		{
+			EventData data(EventType::OnPlayerMovementCallback);
+			
+			auto userData = new PlayerMovementData;
+			userData->isRunning = isRunningData;
+			userData->isSprinting = isSprintingData;
 
-		//	data.userData = userData;
+			data.userData = userData;
 
-		//	Event::Invoke(data);
+			Event::Invoke(data);
 
-		//	delete userData;
-		//}
+			delete userData;
+		}
 	}
 
 	void CheckDirectionSwap(const sf::Vector2f& direction)
@@ -94,4 +94,7 @@ private:
 
 	sf::Vector2f lastFrameDirection;
 	FaceDirection lastDirection;
+
+	bool isRunningData = false;
+	bool isSprintingData = false;
 };

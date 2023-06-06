@@ -47,4 +47,10 @@ enum class EventType
 	OnPlayerDataCallback,
 
 	OnEnemyDamaged,
+
+	OnPlayerMovementRequest,
+	OnPlayerMovementCallback,
+
+	OnEnemyMovementRequest,
+	OnEnemyMovementCallback,
 };

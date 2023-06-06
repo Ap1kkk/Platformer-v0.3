@@ -15,6 +15,7 @@ public:
 
 	void OnStateExit() override
 	{
+		RefreshNonCyclicAnim();
 		UnsubscribeFromEvent(EventType::OnPlayerJumpFall);
 	}
 
