@@ -37,7 +37,7 @@ public:
 		if(objectContext.gameStateMachine->IsPaused())
 		{
 			objectContext.gameStateMachine->Contintue();
-			SaveManager::SaveGame();
+			//SaveManager::SaveGame();
 			objectContext.sceneManager->SwitchToScene(GameLevels::MainMenu);
 		}
 	}

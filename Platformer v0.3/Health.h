@@ -32,10 +32,10 @@ public:
 		drawable->SetPositionOffset(textOffset);
 	}
 
-	void TakeDamage(DamageData* damageData)
+	int TakeDamage(DamageData* damageData)
 	{
 		Debug::Log("damage taken");
-		ProcessDamage(damageData);
+		return ProcessDamage(damageData);
 
 	}
 	void SetHealthPoints(int healthPoints)
@@ -72,7 +72,7 @@ public:
 
 private:
 	//TODO добавить учет всевозможных сопротивлений и так далее
-	void ProcessDamage(DamageData* damageData)
+	int ProcessDamage(DamageData* damageData)
 	{
 		healthPoints -= damageData->value;
 
@@ -102,6 +102,14 @@ private:
 			Event::Invoke(eventData);
 
 			delete userData;
+		}
+		if (IsAlive())
+		{
+			return healthPoints;
+		}
+		else
+		{
+			return 0;
 		}
 	}
 

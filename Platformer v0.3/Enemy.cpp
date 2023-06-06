@@ -44,6 +44,10 @@ void Enemy::Awake()
 	health->SetDrawableComponent(drawableTextComponent);
 	health->SetTextOffset(hpOffset);
 	health->SetEnemyData(spawnChunkId, spawnOffset);
+	if (healthPointsToSet != -1)
+	{
+		health->SetHealthPoints(healthPointsToSet);
+	}
 
 	attackSensor = AddComponent<EnemyAttackSensor>();
 	attackSensor->SetPhysicComponent(physicComponent);

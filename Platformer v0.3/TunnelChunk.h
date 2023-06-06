@@ -40,6 +40,10 @@ public:
 			auto enemy = sharedContext.entityManger->CreateEntity<Enemy>(objectContext);
 			enemy->SetSpawnPosition(chunkPosition + position);
 			enemy->SetChunkData(chunkSpawnId, position);
+			if (SaveManager::IsGameLoaded())
+			{
+				enemy->SetHealthPoints(SaveManager::GetEnemyHealthPoints(chunkSpawnId));
+			}
 			ObjectCollection::AddObject(enemy);
 		}
 		

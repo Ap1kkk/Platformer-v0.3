@@ -34,6 +34,7 @@ public:
 		Debug::Log("Game start logic");
 		SaveManager::ResetIsGameLoaded();
 		SaveManager::ResetIsGameOver();
+		SaveManager::ResetIsGameWon();
 		SaveManager::SetDefaultValues();
 		objectContext.sceneManager->SwitchToScene(GameLevels::FirstScene);
 	}

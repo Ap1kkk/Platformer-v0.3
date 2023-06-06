@@ -56,6 +56,10 @@ public:
 	static void SetIsGameOver() { isGameOver = true; }
 	static void ResetIsGameOver() { isGameOver = false; }
 
+	static bool IsGameWon() { return isGameWon; }
+	static void SetIsGameWon() { isGameWon = true; }
+	static void ResetIsGameWon() { isGameWon = false; }
+
 	static void SetDefaultValues() 
 	{
 		playerHp = DEFAULT_PLAYER_HP;
@@ -96,6 +100,19 @@ public:
 			return {};
 		}
 	}
+	static int GetEnemyHealthPoints(ChunkId chunkId)
+	{
+		auto itr = savedEnemiesHp.find(chunkId);
+		if (itr != savedEnemiesHp.end())
+		{
+			return itr->second;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
 
 	void OnEventHappened(EventData& data) override
 	{
@@ -110,6 +127,11 @@ public:
 			}
 			else
 			{
+				auto enemiesItr = activeEnemiesHp.find(userData->chunkId);
+				if (enemiesItr != activeEnemiesHp.end())
+				{
+					activeEnemiesHp.erase(enemiesItr);
+				}
 				auto chunkItr = activeChunks.find(userData->chunkId);
 				if (chunkItr != activeChunks.end())
 				{
@@ -121,6 +143,7 @@ public:
 							break;
 						}
 					}
+					
 				}
 			}
 
@@ -132,11 +155,25 @@ public:
 			playerPosition = userData->position;
 			playerHp = userData->healthPoints;
 		}
+		if (data.eventType == EventType::OnEnemyDamaged)
+		{
+			auto userData = static_cast<EnemyDamagedData*>(data.userData);
+
+			auto itr = activeChunks.find(userData->chunkSpawnId);
+			if (itr != activeChunks.end())
+			{
+				if (!itr->second.empty())
+				{
+					activeEnemiesHp[userData->chunkSpawnId] = userData->hpAfterDamage;
+				}
+			}
+		}
 	}
 
 private:
 	static bool isGameLoaded;
 	static bool isGameOver;
+	static bool isGameWon;
 
 	static GameLevels activeScene;
 	static GameLevels lastSavedScene;

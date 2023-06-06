@@ -34,9 +34,9 @@ void FirstScene::Initialize()
 	}
 	ObjectCollection::AddObject(player);
 
-	levelFinisher = sharedContext.entityManger->CreateEntity<LevelFinisher>(objectContext);
-	levelFinisher->SetPosition(sf::Vector2f(300.f, 200.f));
-	ObjectCollection::AddObject(levelFinisher);
+	//levelFinisher = sharedContext.entityManger->CreateEntity<LevelFinisher>(objectContext);
+	//levelFinisher->SetPosition(sf::Vector2f(300.f, 200.f));
+	//ObjectCollection::AddObject(levelFinisher);
 
 
 	//----------player--------------

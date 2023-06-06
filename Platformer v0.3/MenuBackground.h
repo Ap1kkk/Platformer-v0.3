@@ -18,6 +18,10 @@ public:
 		{
 			SetTexture(textureFilenameGameOver);
 		}
+		else if (SaveManager::IsGameWon())
+		{
+			SetTexture(textureFilenameGameWon);
+		}
 		else
 		{
 			SetTexture(textureFilename);
@@ -41,4 +45,5 @@ private:
 	DrawLayer drawLayer = -200;
 	Filename textureFilename = "Menu/menu_background.png";
 	Filename textureFilenameGameOver = "Menu/game_over.png";
+	Filename textureFilenameGameWon = "Menu/game_won.png";
 };

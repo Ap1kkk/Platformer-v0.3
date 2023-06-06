@@ -14,10 +14,14 @@ public:
 	{
 		MakePhysical();
 
+		AddSpriteComponent(drawLayer);
+		SetTexture(textureFilename);
+
 		AddTextComponent(drawLayer);
 		drawableTextComponent->Disable();
 		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + fontFilename));
 		drawableTextComponent->SetText("    Press E    \nTo finish level");
+		drawableTextComponent->SetPositionOffset(textOffset);
 
 
 		b2BodyDef bodyDef;
@@ -44,7 +48,6 @@ public:
 
 	void EnableDraw() override
 	{
-		//drawableSpriteComponent->Enable();
 		drawableTextComponent->Enable();
 
 		levelSwitcherComponent->Enable();
@@ -65,8 +68,11 @@ private:
 	LevelFinisherComponent* levelSwitcherComponent;
 	
 	DrawLayer drawLayer = 100;
-	Filename textureFilename = "floor.png";
 	Filename fontFilename = "Fonts/BenguiatStd-Bold.otf";
+
+	Filename textureFilename = "Characters/finish_character.png";
+
+	sf::Vector2f textOffset = { 0.f, -100.f };
 
 	bool isReadyToSwitch;
 };

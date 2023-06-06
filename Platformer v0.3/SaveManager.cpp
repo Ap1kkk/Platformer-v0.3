@@ -2,6 +2,7 @@
 
 bool SaveManager::isGameLoaded = false;
 bool SaveManager::isGameOver = false;
+bool SaveManager::isGameWon = false;
 
 GameLevels SaveManager::activeScene = GameLevels::FirstScene;
 GameLevels SaveManager::lastSavedScene = GameLevels::FirstScene;
@@ -71,6 +72,19 @@ void SaveManager::ParceFromFile()
 						positions.push_back(spawnPosition);
 					}
 					savedChunks[chunkSpawnId] = positions;
+				}
+			}
+			if (line[0] == 'e')
+			{
+				//TODO работает только для одной добавленной позиции
+				auto mainDelimiterIndex = line.find("|");
+				if (mainDelimiterIndex != std::string::npos)
+				{
+					ChunkSpawnId chunkSpawnId = std::atoi(line.substr(1, mainDelimiterIndex).c_str());
+					
+					auto enemyHp = std::atoi(line.substr(mainDelimiterIndex + 1, line.length() - 1).c_str());
+					savedEnemiesHp[chunkSpawnId] = enemyHp;
+					activeEnemiesHp = savedEnemiesHp;
 				}
 			}
 		}

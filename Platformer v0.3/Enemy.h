@@ -34,16 +34,22 @@ public:
 		this->spawnOffset = spawnOffset;
 	}
 
+	void SetHealthPoints(int healthPoints)
+	{
+		healthPointsToSet = healthPoints;
+	}
+
 	void TakeDamage(DamageData* damageData)
 	{
-		health->TakeDamage(damageData);
+		auto hpAftedDamage = health->TakeDamage(damageData);
 
 		EventData data(EventType::OnEnemyDamaged);
 		data.id = entityId;
 
 		auto userData = new EnemyDamagedData;
 		userData->chunkSpawnId = spawnChunkId;
-		
+		userData->hpAfterDamage = hpAftedDamage;
+
 		data.userData = userData;
 
 		Event::Invoke(data);
@@ -97,5 +103,7 @@ private:
 
 	ChunkId spawnChunkId;
 	sf::Vector2f spawnOffset;
+
+	int healthPointsToSet = -1;
 };
 

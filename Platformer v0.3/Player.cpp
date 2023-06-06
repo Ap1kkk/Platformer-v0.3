@@ -27,12 +27,18 @@ void Player::Awake()
 	const short SIZE = 6;
 	b2Vec2 vertices[SIZE];
 
-	vertices[0].Set(-6.f * 3, 50.f + 20.f);
-	vertices[1].Set(-12.f * 3, 35.f + 20.f);
+	//vertices[0].Set(-6.f * 3, 50.f + 20.f);
+	//vertices[1].Set(-12.f * 3, 35.f + 20.f);
+	//vertices[2].Set(-12.f * 3, -50.f);
+	//vertices[3].Set(12.f * 3, -50.f);
+	//vertices[4].Set(12.f * 3, 35.f + 20.f);
+	//vertices[5].Set(6.f * 3, 50.f + 20.f);
+	vertices[0].Set(-6.f * 3, 50.f);
+	vertices[1].Set(-12.f * 3, 35.f);
 	vertices[2].Set(-12.f * 3, -50.f);
 	vertices[3].Set(12.f * 3, -50.f);
-	vertices[4].Set(12.f * 3, 35.f + 20.f);
-	vertices[5].Set(6.f * 3, 50.f + 20.f);
+	vertices[4].Set(12.f * 3, 35.f);
+	vertices[5].Set(6.f * 3, 50.f);
 
 	//boxShape.SetAsBox(12, 42);
 	boxShape.Set(vertices, SIZE);
@@ -55,7 +61,7 @@ void Player::Awake()
 	 
 	jumpSensor = AddComponent<JumpSensor>();
 	jumpSensor->SetPhysicComponent(physicComponent);
-	jumpSensor->SetOffset(sf::Vector2f(0, 70));
+	jumpSensor->SetOffset(sf::Vector2f(0, 50));
 
 	playerMovement = AddComponent<PlayerMovement>();
 	playerMovement->SetBody(body);

@@ -3,6 +3,7 @@
 #include "IComponent.h"
 
 #include "Input.h"
+#include "SaveManager.h"
 
 class LevelFinisherComponent : public IComponent
 {
@@ -18,7 +19,8 @@ public:
 
 	void FinishLevel()
 	{
-		objectContext.sceneManager->SwitchToScene(GameLevels::FirstScene);
+		SaveManager::SetIsGameWon();
+		objectContext.sceneManager->SwitchToScene(GameLevels::MainMenu);
 	}
 
 };

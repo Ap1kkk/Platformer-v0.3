@@ -10,6 +10,8 @@
 #include "GroundChunk.h"
 #include "GroundToTunnelChunk.h"
 
+#include "LevelFinisher.h"
+
 #include "LevelBarrier.h"
 #include "SaveManager.h"
 
@@ -79,6 +81,10 @@ public:
 		groundChunk4->SetBackgroundTexture("First Level/part4.png");
 		groundChunk4->Spawn(sf::Vector2f(1920.f * 2, 0.f));
 
+		levelFinisher = sharedContext.entityManger->CreateEntity<LevelFinisher>(objectContext);
+		levelFinisher->SetPosition(levelFinisherPosition);
+		ObjectCollection::AddObject(levelFinisher);
+
 		levelBarrierLeft = sharedContext.entityManger->CreateEntity<LevelBarrier>(objectContext);
 		levelBarrierLeft->SetSpawnPosition(sf::Vector2f(1920.f * (-2) - 754.f, 0.f));
 		ObjectCollection::AddObject(levelBarrierLeft);
@@ -108,6 +114,15 @@ public:
 		if (Input::IsKeyDown(Input::Key::R))
 		{
 			SceneManager::SwitchScene(sceneId, sceneId);
+		}
+
+		if (Input::IsKeyDown(Input::Key::L))
+		{
+			sharedContext.physicsDebugDraw->SetFlags(b2Draw::e_shapeBit);
+		}
+		if (Input::IsKeyDown(Input::Key::K))
+		{
+			sharedContext.physicsDebugDraw->SetFlags(0);
 		}
 
 		if (Input::IsKeyDown(Input::Key::Esc))
@@ -147,6 +162,8 @@ private:
 	GroundToTunnelChunk* groundChunk3;
 	GroundChunk* groundChunk4;
 
+	LevelFinisher* levelFinisher;
+
 	LevelBarrier* levelBarrierLeft;
 	LevelBarrier* levelBarrierRight;
 
@@ -159,5 +176,7 @@ private:
 		18,	19,	14,	16,	10,
 		20,	16,	15,	1,	7
 	};
+
+	sf::Vector2f levelFinisherPosition = { -3940.f, 3450.f };
 };
 

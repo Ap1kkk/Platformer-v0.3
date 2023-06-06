@@ -5,4 +5,5 @@
 struct EnemyDamagedData : public UserEventData
 {
 	ChunkSpawnId chunkSpawnId;
+	int hpAfterDamage;
 };

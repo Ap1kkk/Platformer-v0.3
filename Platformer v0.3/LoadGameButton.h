@@ -33,6 +33,7 @@ public:
 		Debug::Log("Game Load logic");
 		SaveManager::SetIsGameLoaded();
 		SaveManager::ResetIsGameOver();
+		SaveManager::ResetIsGameWon();
 		auto startScene = SaveManager::GetLastSavedScene();
 		if (startScene != GameLevels::MainMenu)
 		{

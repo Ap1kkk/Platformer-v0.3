@@ -16,11 +16,18 @@ public:
 		AddTextComponent(drawLayer);
 
 		SetTexture(buttonTexture);
-		//drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + fontFilename));
-		//drawableTextComponent->SetText(buttonText);
-		//drawableTextComponent->SetTextSize(textSize);
-		//drawableTextComponent->SetFillColor(textColor);
-		//drawableTextComponent->SetPositionOffset(textOffset);
+		drawableTextComponent->SetFont(AssetAllocator::GetFont(AssetAllocator::GetPath() + fontFilename));
+		drawableTextComponent->SetText(buttonText);
+		drawableTextComponent->SetTextSize(textSize);
+
+		drawableTextComponent->SetFillColor(sf::Color::Transparent);
+		drawableTextComponent->SetOutlineColor(textColor);
+		drawableTextComponent->SetOutlineThickness(thickness);
+
+		drawableTextComponent->SetPositionOffset(textOffset);
+
+		drawableTextComponent->Disable();
+
 		SetUIPosition(position);
 
 		spriteBounds = drawableSpriteComponent->GetSpriteBounds();
@@ -32,17 +39,21 @@ public:
 	{
 		Debug::Log("Game Save logic");
 		SaveManager::SaveGame();
+		drawableTextComponent->Enable();
+
 	}
 
 private:
-	std::string buttonText = "Save game";
+	std::string buttonText = "Game saved";
 
 	Filename buttonTexture = "Menu/save_pause_button.png";
 
-	//unsigned short textSize = 26;
-	//sf::Color textColor = sf::Color::Red;
-	//Filename fontFilename = "Fonts/BenguiatStd-Bold.otf";
-	//sf::Vector2f textOffset = { 0.f, 10.f };
+	unsigned short textSize = 60;
+	sf::Color textColor = sf::Color::Red;
+	Filename fontFilename = "Fonts/BenguiatStd-Bold.otf";
+	sf::Vector2f textOffset = { -310.f, 250.f };
+
+	float thickness = 1.f;
 
 	DrawLayer drawLayer = 300;
 };
